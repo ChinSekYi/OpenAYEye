@@ -13,8 +13,8 @@ import React, {useState, useEffect, useContext} from "react";
 const Team = () => {
   const [entries, setEntries] = useState([]);
   useEffect(() => {
-    // fetch("/getTable")
-    fetch("http://localhost:5000/getTable")
+    // fetch("/getTeams")
+    fetch("http://localhost:5000/getTeams")
     .then((res) => res.json())
     .then((data) => {
       setEntries(data.users);

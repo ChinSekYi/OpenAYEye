@@ -3,8 +3,19 @@ import { Header } from "../../components";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { mockDataContacts } from "../../data/mockData";
 import { tokens } from "../../theme";
+import React, {useState, useEffect, useContext} from "react";
 
 const Contacts = () => {
+  const [entries, setEntries] = useState([]);
+  useEffect(() => {
+    // fetch("/getContacts")
+    fetch("http://localhost:5000/getContacts")
+    .then((res) => res.json())
+    .then((data) => {
+      setEntries(data.users);
+    });
+  }, []);
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -93,7 +104,7 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={entries}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
           initialState={{

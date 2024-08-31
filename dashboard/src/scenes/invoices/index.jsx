@@ -3,8 +3,20 @@ import { Header } from "../../components";
 import { DataGrid } from "@mui/x-data-grid";
 import { mockDataInvoices } from "../../data/mockData";
 import { tokens } from "../../theme";
+import React, {useState, useEffect, useContext} from "react";
 
 const Invoices = () => {
+  const [entries, setEntries] = useState([]);
+  useEffect(() => {
+    // fetch("/getContacts")
+    fetch("http://localhost:5000/getInvoice")
+    .then((res) => res.json())
+    .then((data) => {
+      setEntries(data.invoice);
+    });
+  }, []);
+  console.log(entries)
+  
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
