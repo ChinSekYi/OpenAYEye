@@ -1,7 +1,5 @@
 name: flaskdev
 channels:
-    - pytorch
-    - nvidia
     - conda-forge
     - anaconda
     - defaults
