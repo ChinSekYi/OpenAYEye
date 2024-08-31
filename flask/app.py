@@ -12,8 +12,8 @@ def create_app():
     app.config['MYSQL_USER'] = 'root'
     app.config['MYSQL_PASSWORD'] = 'msql1234'
     app.config['MYSQL_DB'] = 'mock'
-    mysql = MySQL(app)  
-    CORS(app)
+    mysql = MySQL(app)
+    cors = CORS(app)
     return app, mysql
 
 app, mysql = create_app()
@@ -26,46 +26,24 @@ def health():
 def home():
     return app.send_static_file('index.html')
 
-def show_tables():
+# @app.get("/get_Table")
+@app.route('/getTable', methods=['GET'])
+def get_Entries(columns = ['id', 'name', 'email', 'age', 'phone', 'access'], table = 'users'):
+    curs = mysql.connection.cursor()
+    col_string = ", ".join(columns)
+    curs.execute('''SELECT {} FROM {} LIMIT 10'''.format(col_string, table))
+    fetched = curs.fetchall()
+    curs.close()
+    json_entry = [dict(zip(columns, i)) for i in fetched]
+    return {table : json_entry}
+
+@app.get("/showTables")
+def show_Tables():
     curs = mysql.connection.cursor()
     curs.execute('''SHOW TABLES''')
     fetched = curs.fetchall()
     curs.close()
-    return fetched 
-
-
-def select_All_Tables():
-    tables = [i[0] for i in show_tables()]
-    fetched = {}
-    curs = mysql.connection.cursor()
-    for table in tables:
-        curs.execute('''SELECT * FROM {} LIMIT 10'''.format(table))
-        fetched['{}'.format(table)] = curs.fetchall()
-    curs.close()
-    return fetched['users']
-    # [print(k) for k in fetched.keys()]
-    # return {'message': 'ok'}
-    # return {'Entry': fetched['country']}
-    # return {"{}".format(table) : fetched}
-
-@app.get("/get_All")
-def get_All():
-    return {"Entries": select_All_Tables()}
-    # return {'message': 'ok'}
-
-@app.get("/get_Table")
-def get_Table(table="users"):
-    curs = mysql.connection.cursor()
-    curs.execute('''SELECT * FROM {} LIMIT 10'''.format(table))
-    fetched = curs.fetchall()
-    curs.close()
-    # print(fetched)
-    return {"{}".format(table): fetched}
-
-@app.get("/get_Tables")
-def get_Tables():
-    return {"Tables": show_tables()}
-    # return {'message': 'ok'}
+    return {'Tables': fetched}
 
 if __name__ == '__main__':  
     app.run(host='localhost', port=5000, debug=True) 

@@ -11,6 +11,16 @@ import {
 import React, {useState, useEffect, useContext} from "react";
   
 const Team = () => {
+  const [entries, setEntries] = useState([]);
+  useEffect(() => {
+    // fetch("/get_Table")
+    fetch("http://localhost:5000/getTable")
+    .then((res) => res.json())
+    .then((data) => {
+      setEntries(data.users);
+    });
+  }, []);
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -60,29 +70,8 @@ const Team = () => {
       },
     },
   ];
-  // var col_names = Array.apply(null, {length: columns.length})
-  //   .map(Number.call, Number)
-  //   .map((x) => columns[x].field)
 
-  // console.log(col_names)
-  const col_names = {0:'id', 1:'name', 2:'email', 3:'age', 4:'phone', 5:'access'}
-  // const col_names = ['id', 'name', 'email', 'age', 'phone', 'access']
 
-  const [entries, setEntries] = useState([]);
-  useEffect(() => {
-    // fetch("/get_Table")
-    fetch("http://localhost:5000/get_Table")
-    .then((res) => res.json())
-    .then((data) => {
-      // setEntries(data.users);
-      // data.map((x) => data)
-      // console.log(col_names.reduce((a, v) => ({...a, [v]: 1}),{}))
-      
-      // console.log(data.users.map((x) => x))
-      // console.log(col_names.map( (x) => x))
-    });
-  }, []);
-  console.log(mockDataTeam)
   return (
     <Box m="20px">
       <Header title="TEAM" subtitle="Managing the Team Members" />
@@ -120,7 +109,7 @@ const Team = () => {
         }}
       >
         <DataGrid
-          rows={mockDataTeam}
+          rows={entries}
           columns={columns}
           initialState={{
             pagination: {

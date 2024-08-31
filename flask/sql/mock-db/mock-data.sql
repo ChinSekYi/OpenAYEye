@@ -11,7 +11,7 @@ USE mock;
 --
 
 SET AUTOCOMMIT=0;
-INSERT INTO users (id, username, email, age, phone, access) VALUES 
+INSERT INTO users (id, name, email, age, phone, access) VALUES 
 (1, "Jon Snow", "jonsnow@gmail.com", 35, "(665)121-5454", "admin"),
 (2, "Cersei Lannister", "cerseilannister@gmail.com", 42, "(421)314-2288", "manager"),
 (3, "Jaime Lannister", "jaimelannister@gmail.com", 45, "(422)982-6739", "user"),
