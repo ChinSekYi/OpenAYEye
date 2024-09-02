@@ -1,22 +1,26 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { Header } from "../../components";
 import { DataGrid } from "@mui/x-data-grid";
-import { mockDataInvoices } from "../../data/mockData";
+import { mockDataTeam } from "../../data/mockData";
 import { tokens } from "../../theme";
+import {
+  AdminPanelSettingsOutlined,
+  LockOpenOutlined,
+  SecurityOutlined,
+} from "@mui/icons-material";
 import React, {useState, useEffect, useContext} from "react";
-
-const Invoices = () => {
+  
+const Team = () => {
   const [entries, setEntries] = useState([]);
   useEffect(() => {
-    // fetch("/getContacts")
-    fetch("http://localhost:5000/getInvoice")
+    // fetch("/getTeams")
+    fetch("http://localhost:8000/getTeams")
     .then((res) => res.json())
     .then((data) => {
-      setEntries(data.invoice);
+      setEntries(data.users);
     });
   }, []);
-  console.log(entries)
-  
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -29,38 +33,52 @@ const Invoices = () => {
       cellClassName: "name-column--cell",
     },
     {
-      field: "phone",
-      headerName: "Phone Number",
-      flex: 1,
+      field: "age",
+      headerName: "Age",
+      type: "number",
+      headerAlign: "left",
+      align: "left",
     },
+    { field: "phone", headerName: "Phone Number", flex: 1 },
+    { field: "email", headerName: "Email", flex: 1 },
     {
-      field: "email",
-      headerName: "Email",
+      field: "access",
+      headerName: "Access Level",
       flex: 1,
-    },
-    {
-      field: "cost",
-      headerName: "Cost",
-      flex: 1,
-      renderCell: (params) => (
-        <Typography color={colors.greenAccent[500]}>
-          ${params.row.cost}
-        </Typography>
-      ),
-    },
-    {
-      field: "date",
-      headerName: "Date",
-      flex: 1,
+      renderCell: ({ row: { access } }) => {
+        return (
+          <Box
+            width="120px"
+            p={1}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap={1}
+            bgcolor={
+              access === "admin"
+                ? colors.greenAccent[600]
+                : colors.greenAccent[700]
+            }
+            borderRadius={1}
+          >
+            {access === "admin" && <AdminPanelSettingsOutlined />}
+            {access === "manager" && <SecurityOutlined />}
+            {access === "user" && <LockOpenOutlined />}
+            <Typography textTransform="capitalize">{access}</Typography>
+          </Box>
+        );
+      },
     },
   ];
+
+
   return (
     <Box m="20px">
-      <Header title="INVOICES" subtitle="List of Invoice Balances" />
+      <Header title="TEAM" subtitle="Managing the Team Members" />
       <Box
         mt="40px"
         height="75vh"
-        maxWidth="100%"
+        flex={1}
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -91,7 +109,7 @@ const Invoices = () => {
         }}
       >
         <DataGrid
-          rows={mockDataInvoices}
+          rows={entries}
           columns={columns}
           initialState={{
             pagination: {
@@ -107,4 +125,4 @@ const Invoices = () => {
   );
 };
 
-export default Invoices;
+export default Team;

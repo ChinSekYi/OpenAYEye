@@ -1,20 +1,15 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { Header } from "../../components";
-import { DataGrid } from "@mui/x-data-grid";
-import { mockDataTeam } from "../../data/mockData";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { mockDataContacts } from "../../data/mockData";
 import { tokens } from "../../theme";
-import {
-  AdminPanelSettingsOutlined,
-  LockOpenOutlined,
-  SecurityOutlined,
-} from "@mui/icons-material";
 import React, {useState, useEffect, useContext} from "react";
-  
-const Team = () => {
+
+const Contacts = () => {
   const [entries, setEntries] = useState([]);
   useEffect(() => {
-    // fetch("/getTeams")
-    fetch("http://localhost:5000/getTeams")
+    // fetch("/getContacts")
+    fetch("http://localhost:8000/getContacts")
     .then((res) => res.json())
     .then((data) => {
       setEntries(data.users);
@@ -25,7 +20,8 @@ const Team = () => {
   const colors = tokens(theme.palette.mode);
 
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "ID", flex: 0.5 },
+    { field: "registrarId", headerName: "Registrar ID" },
     {
       field: "name",
       headerName: "Name",
@@ -39,46 +35,42 @@ const Team = () => {
       headerAlign: "left",
       align: "left",
     },
-    { field: "phone", headerName: "Phone Number", flex: 1 },
-    { field: "email", headerName: "Email", flex: 1 },
     {
-      field: "access",
-      headerName: "Access Level",
+      field: "phone",
+      headerName: "Phone Number",
       flex: 1,
-      renderCell: ({ row: { access } }) => {
-        return (
-          <Box
-            width="120px"
-            p={1}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            gap={1}
-            bgcolor={
-              access === "admin"
-                ? colors.greenAccent[600]
-                : colors.greenAccent[700]
-            }
-            borderRadius={1}
-          >
-            {access === "admin" && <AdminPanelSettingsOutlined />}
-            {access === "manager" && <SecurityOutlined />}
-            {access === "user" && <LockOpenOutlined />}
-            <Typography textTransform="capitalize">{access}</Typography>
-          </Box>
-        );
-      },
+    },
+    {
+      field: "email",
+      headerName: "Email",
+      flex: 1,
+    },
+    {
+      field: "address",
+      headerName: "Address",
+      flex: 1,
+    },
+    {
+      field: "city",
+      headerName: "City",
+      flex: 1,
+    },
+    {
+      field: "zipCode",
+      headerName: "Zip Code",
+      flex: 1,
     },
   ];
-
-
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header
+        title="CONTACTS"
+        subtitle="List of Contacts for Future Reference"
+      />
       <Box
         mt="40px"
         height="75vh"
-        flex={1}
+        maxWidth="100%"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -106,11 +98,15 @@ const Team = () => {
           "& .MuiDataGrid-iconSeparator": {
             color: colors.primary[100],
           },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${colors.gray[100]} !important`,
+          },
         }}
       >
         <DataGrid
           rows={entries}
           columns={columns}
+          components={{ Toolbar: GridToolbar }}
           initialState={{
             pagination: {
               paginationModel: {
@@ -125,4 +121,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default Contacts;
