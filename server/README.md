@@ -1,4 +1,4 @@
-# Dashboard Frontend
+# Dashboard Backend
 To serve the flask app after the front end has been built,
 you need to build the react app in `./dashboard`. 
 ## Build React app
