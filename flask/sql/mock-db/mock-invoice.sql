@@ -20,7 +20,9 @@ INSERT INTO invoice (invoice_id, name, email, cost,  phone, date) VALUES
 (6, "Daenerys Targaryen", "daenerystargaryen@gmail.com", 1.24, "(421)445-1189", "2021-01-12"),
 (7, "Ever Melisandre", "evermelisandre@gmail.com", 63.12, "(232)545-6483", "2022-11-02"),
 (8, "Ferrara Clifford", "ferraraclifford@gmail.com", 52.42, "(543)124-0123", "2022-02-11"),
-(9, "Rossini Frances", "rossinifrances@gmail.com", 21.24, "(222)444-5555", "2021-05-02");
+(9, "Rossini Frances", "rossinifrances@gmail.com", 21.24, "(222)444-5555", "2021-05-02"),
+(10, "Cersei Lannister", "cerseilannister@gmail.com", 11.24, "(421)314-2288", "2021-07-15"),
+(11, "Apple Banana", "apple_bana#gmail.com", 12.69, "(65)696-5555", "2024-08-31");
 
 COMMIT;
 
