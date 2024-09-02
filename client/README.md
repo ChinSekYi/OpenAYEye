@@ -2,7 +2,7 @@
 ## Setup
 Cross over to this directory
 ```bash
-cd OpenAYEye/dashboard
+cd OpenAYEye/client
 ```
 
 In this directory, first install packages,

@@ -1,5 +1,5 @@
 # Dashboard Backend
-To serve the flask app after the front end has been built,
+To serve the app after the front end has been built,
 you need to build the react app in `./dashboard`. 
 ## Build React app
 To build the react dashboard, run
@@ -10,7 +10,7 @@ npm run build
 ## Setup
 Cross over to this directory
 ```bash
-cd OpenAYEye/flask
+cd OpenAYEye/server
 ```
 
 In this directory, first create and install conda env,
