@@ -8,9 +8,8 @@ cd OpenAYEye/client
 In this directory, first install packages,
 ```bash
 npm install
-# Will resolve dependency issues in future
 ```
-*Optional*
+## *Optional*
 Since there are legacy packages, you may attempt to fix the issues with
 ```bash
 npm audit fix

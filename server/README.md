@@ -1,11 +1,9 @@
 # Dashboard Backend
-To serve the app after the front end has been built,
-you need to build the react app in `./dashboard`. 
-## Build React app
+<!-- ## Build React app
 To build the react dashboard, run
 ```bash
 npm run build
-```
+``` -->
 
 ## Setup
 Cross over to this directory
@@ -26,8 +24,8 @@ Then enter conda environment
 ## Testing & Development
 Run
 ```bash
-flask --app app.py run
+fastapi dev app.py
 ```
 
-Default link to site 
-[http://localhost:5000](http://localhost:5000)
+<!-- Default link to site 
+[http://localhost:5000](http://localhost:5000) -->
