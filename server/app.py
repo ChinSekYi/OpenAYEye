@@ -11,7 +11,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 
 import uvicorn
-import sql
+# import sql
 
 
 def create_app(app = FastAPI(), origins = [

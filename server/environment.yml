@@ -1,4 +1,4 @@
-name: flaskdev
+name: server
 channels:
     - conda-forge
     - anaconda
@@ -9,6 +9,7 @@ dependencies:
     - numpy=1.26.4
     - pip
     - pip:  
-        - fastapi
         - sqlalchemy
+        - PyMySQL
+        - fastapi[standard]
         - uvicorn[standard]
