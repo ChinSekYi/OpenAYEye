@@ -3,10 +3,9 @@ USE mock;
 
 -- SELECT * FROM invoice;
 
-SELECT invoice.invoice_id, users.name, users.phone, users.email, cost, date
-FROM users
-CROSS JOIN invoice
-WHERE users.name = invoice.name
-AND users.email = invoice.email
-AND users.phone = invoice.phone
-ORDER BY invoice.invoice_id;
+SELECT u.name, u.phone, u.email, i.invoice_id, i.cost, i.date
+FROM users u, invoice i
+WHERE u.name = i.name
+AND u.email = i.email
+AND u.phone = i.phone
+ORDER BY i.invoice_id;
