@@ -11,10 +11,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer, MinMaxScaler
 
 
-
 # function to separate features and target
 def get_Xy(df):
     pass
+
     return X, y
 
 
@@ -27,4 +27,5 @@ def med_impute(X, y):
 # function to normalise numerical columns to remove effect of inconsistent scales
 def normalise(df):
     pass
+
     return X_scaled

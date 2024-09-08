@@ -7,8 +7,8 @@ test:
 	#--nbval notebook/EDA.ipynb notebook/MODEL_TRAINING.ipynb
 
 format:
-	isort *.py
-	black *.py
+	isort **/*.py
+	black **/*.py
 
 run:
 	python main.py
