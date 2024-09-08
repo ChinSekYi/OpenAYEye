@@ -1,4 +1,4 @@
-name: server
+name: serverdev
 channels:
     - conda-forge
     - anaconda
