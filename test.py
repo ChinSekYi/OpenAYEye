@@ -14,3 +14,7 @@ The test cases include:
 These tests are intended to be run as part of a Continuous Integration/Continuous 
 Deployment (CI/CD) pipeline to ensure code quality and reliability.
 """
+
+def test_placeholder():
+    """A placeholder test to ensure pytest runs."""
+    assert True
