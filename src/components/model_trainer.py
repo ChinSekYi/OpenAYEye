@@ -10,7 +10,6 @@ from sklearn.ensemble import AdaBoostRegressor, RandomForestRegressor
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.svm import SVC as SVM
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 
