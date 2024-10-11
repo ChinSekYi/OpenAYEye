@@ -3,8 +3,8 @@ This module defines a custom exception class that captures detailed error inform
 and a utility function to format error messages with file name, line number, and error message.
 """
 
-import sys
 import logging
+import sys
 
 
 def error_message_detail(error, error_detail: sys):
