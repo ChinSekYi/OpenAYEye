@@ -17,4 +17,4 @@ Deployment (CI/CD) pipeline to ensure code quality and reliability.
 
 def test_placeholder():
     """A placeholder test to ensure pytest runs."""
-    assert True
+    assert ("apple", function("apple"))
