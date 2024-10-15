@@ -11,6 +11,8 @@ import {
 import React, {useState, useEffect, useContext} from "react";
   
 const Team = () => {
+  
+  // Fetch team data from API
   const [entries, setEntries] = useState([]);
   useEffect(() => {
     // fetch("/getTeams")

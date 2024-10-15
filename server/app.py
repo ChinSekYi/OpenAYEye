@@ -67,6 +67,7 @@ async def index():
 
 @app.get("/getTeams")
 def getTeams(columns=["id", "name", "email", "age", "phone", "access"], table="users"):
+    # Runs query "SELECT id, name, age, phone, email, access FROM users;"
     return getEntries(columns, table)
 
 
@@ -96,8 +97,7 @@ def getInvoice(
     query_string = sqlalchemy.text(
         """
         SELECT invoice.invoice_id, users.name, users.phone, users.email, cost, date
-        FROM users
-        CROSS JOIN invoice
+        FROM users, invoice
         WHERE users.name = invoice.name
         AND users.email = invoice.email
         AND users.phone = invoice.phone
