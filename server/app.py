@@ -9,13 +9,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# import sql
-
-
 def create_app(
     app=FastAPI(),
     origins=[
         "http://127.0.0.1:5173",
+        "http://localhost:5173",
         "http://127.0.0.1:4173",
         "http://127.0.0.1:8000",
     ],
@@ -23,13 +21,10 @@ def create_app(
     app.add_middleware(
         CORSMiddleware,
         allow_origins=origins,
-        # allow_origins=["*"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    # app.mount("/static", StaticFiles(directory="static"), name="static")
-    # templates = Jinja2Templates(directory="dist")
     return app
 
 
@@ -41,7 +36,6 @@ def create_db(user="root", password="msql1234", server="localhost", database="mo
 
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
     Base = declarative_base()
-    # print(engine)
 
     return engine
 
@@ -73,6 +67,7 @@ async def index():
 
 @app.get("/getTeams")
 def getTeams(columns=["id", "name", "email", "age", "phone", "access"], table="users"):
+    # Runs query "SELECT id, name, age, phone, email, access FROM users;"
     return getEntries(columns, table)
 
 
@@ -102,8 +97,7 @@ def getInvoice(
     query_string = sqlalchemy.text(
         """
         SELECT invoice.invoice_id, users.name, users.phone, users.email, cost, date
-        FROM users
-        CROSS JOIN invoice
+        FROM users, invoice
         WHERE users.name = invoice.name
         AND users.email = invoice.email
         AND users.phone = invoice.phone
