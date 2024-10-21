@@ -247,7 +247,7 @@ const SideBar = () => {
           />
           <Item
             title="Box Plot"
-            path="/line" // change path
+            path="/boxplot" // change path
             colors={colors}
             icon={<TimelineOutlined />} // change icon
           />
