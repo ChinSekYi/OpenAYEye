@@ -17,6 +17,7 @@ import {
   ReceiptOutlined,
   TimelineOutlined,
   WavesOutlined,
+  CandlestickChartOutlined,
 } from "@mui/icons-material";
 import avatar from "../../../assets/images/avatar.png";
 import logo from "../../../assets/images/logo.png";
@@ -249,7 +250,7 @@ const SideBar = () => {
             title="Box Plot"
             path="/boxplot" // change path
             colors={colors}
-            icon={<TimelineOutlined />} // change icon
+            icon={<CandlestickChartOutlined />} // change icon
           />
           {/* <Item
             title="Geography Chart"
