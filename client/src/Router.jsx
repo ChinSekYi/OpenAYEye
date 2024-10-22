@@ -14,6 +14,7 @@ import {
   Geography,
   Calendar,
   Stream,
+  BoxPlot,
 } from "./scenes";
 
 const AppRouter = () => {
@@ -33,6 +34,7 @@ const AppRouter = () => {
           <Route path="/line" element={<Line />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/geography" element={<Geography />} />
+          <Route path="/boxplot" element={<BoxPlot />} />
         </Route>
       </Routes>
     </Router>
