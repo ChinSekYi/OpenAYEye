@@ -1,0 +1,1933 @@
+month,level_1,level_2,total_loans
+2004-03,Business,"Agriculture, Mining and Quarrying",2484.6
+2004-03,Business,Manufacturing,27557.8
+2004-03,Business,Building and Construction,29724.9
+2004-03,Business,General Commerce,30577.5
+2004-03,Business,"Transport, Storage and Communication",25227.6
+2004-03,Business,Business Services,4740.1
+2004-03,Business,Financial Institutions,50708.9
+2004-03,Business,Professional and Private Individuals - Business Purposes,4112.3
+2004-03,Business,Others,20586.3
+2004-03,Consumer,Housing and Bridging Loans,55419.4
+2004-03,Consumer,Professional and Private Individuals - Car Loans,11800.5
+2004-03,Consumer,Professional and Private Individuals - Credit Cards,3253.3
+2004-03,Consumer,Professional and Private Individuals - Share Financing,419.5
+2004-03,Consumer,Professional and Private Individuals - Others,27203.4
+2004-04,Business,"Agriculture, Mining and Quarrying",2191
+2004-04,Business,Manufacturing,27786.2
+2004-04,Business,Building and Construction,29079.7
+2004-04,Business,General Commerce,31640.4
+2004-04,Business,"Transport, Storage and Communication",24731.7
+2004-04,Business,Business Services,5074
+2004-04,Business,Financial Institutions,49990.9
+2004-04,Business,Professional and Private Individuals - Business Purposes,4625.7
+2004-04,Business,Others,21654.9
+2004-04,Consumer,Housing and Bridging Loans,56107
+2004-04,Consumer,Professional and Private Individuals - Car Loans,11911.9
+2004-04,Consumer,Professional and Private Individuals - Credit Cards,3253.3
+2004-04,Consumer,Professional and Private Individuals - Share Financing,421.7
+2004-04,Consumer,Professional and Private Individuals - Others,26940.4
+2004-05,Business,"Agriculture, Mining and Quarrying",2146.6
+2004-05,Business,Manufacturing,28589.5
+2004-05,Business,Building and Construction,29440.6
+2004-05,Business,General Commerce,32215.7
+2004-05,Business,"Transport, Storage and Communication",24937.1
+2004-05,Business,Business Services,4980.2
+2004-05,Business,Financial Institutions,49487.5
+2004-05,Business,Professional and Private Individuals - Business Purposes,4624.4
+2004-05,Business,Others,22600.5
+2004-05,Consumer,Housing and Bridging Loans,56604
+2004-05,Consumer,Professional and Private Individuals - Car Loans,11997.1
+2004-05,Consumer,Professional and Private Individuals - Credit Cards,3239.2
+2004-05,Consumer,Professional and Private Individuals - Share Financing,407.5
+2004-05,Consumer,Professional and Private Individuals - Others,27474.6
+2004-06,Business,"Agriculture, Mining and Quarrying",2273.2
+2004-06,Business,Manufacturing,28809.8
+2004-06,Business,Building and Construction,29524.1
+2004-06,Business,General Commerce,32380.9
+2004-06,Business,"Transport, Storage and Communication",25792.2
+2004-06,Business,Business Services,4854.8
+2004-06,Business,Financial Institutions,50281.9
+2004-06,Business,Professional and Private Individuals - Business Purposes,4534.5
+2004-06,Business,Others,21522.8
+2004-06,Consumer,Housing and Bridging Loans,57127.3
+2004-06,Consumer,Professional and Private Individuals - Car Loans,12104.8
+2004-06,Consumer,Professional and Private Individuals - Credit Cards,3347.1
+2004-06,Consumer,Professional and Private Individuals - Share Financing,413.8
+2004-06,Consumer,Professional and Private Individuals - Others,27978.5
+2004-07,Business,"Agriculture, Mining and Quarrying",2446.1
+2004-07,Business,Manufacturing,29133.3
+2004-07,Business,Building and Construction,28979.4
+2004-07,Business,General Commerce,32178.2
+2004-07,Business,"Transport, Storage and Communication",25440.1
+2004-07,Business,Business Services,5048
+2004-07,Business,Financial Institutions,51186.5
+2004-07,Business,Professional and Private Individuals - Business Purposes,5169.9
+2004-07,Business,Others,22543.5
+2004-07,Consumer,Housing and Bridging Loans,57617.6
+2004-07,Consumer,Professional and Private Individuals - Car Loans,11990.7
+2004-07,Consumer,Professional and Private Individuals - Credit Cards,3274
+2004-07,Consumer,Professional and Private Individuals - Share Financing,422.2
+2004-07,Consumer,Professional and Private Individuals - Others,28054.1
+2004-08,Business,"Agriculture, Mining and Quarrying",2650.4
+2004-08,Business,Manufacturing,29098.4
+2004-08,Business,Building and Construction,28761.8
+2004-08,Business,General Commerce,32303.2
+2004-08,Business,"Transport, Storage and Communication",25492.2
+2004-08,Business,Business Services,5173.9
+2004-08,Business,Financial Institutions,52988.9
+2004-08,Business,Professional and Private Individuals - Business Purposes,4992.3
+2004-08,Business,Others,23125
+2004-08,Consumer,Housing and Bridging Loans,58848.9
+2004-08,Consumer,Professional and Private Individuals - Car Loans,12073.9
+2004-08,Consumer,Professional and Private Individuals - Credit Cards,3306.2
+2004-08,Consumer,Professional and Private Individuals - Share Financing,399.2
+2004-08,Consumer,Professional and Private Individuals - Others,27943.6
+2004-09,Business,"Agriculture, Mining and Quarrying",2593.7
+2004-09,Business,Manufacturing,28866.4
+2004-09,Business,Building and Construction,28635.4
+2004-09,Business,General Commerce,31951.5
+2004-09,Business,"Transport, Storage and Communication",24868.8
+2004-09,Business,Business Services,5016.5
+2004-09,Business,Financial Institutions,54251
+2004-09,Business,Professional and Private Individuals - Business Purposes,4280.8
+2004-09,Business,Others,22025.3
+2004-09,Consumer,Housing and Bridging Loans,59344.2
+2004-09,Consumer,Professional and Private Individuals - Car Loans,12154.5
+2004-09,Consumer,Professional and Private Individuals - Credit Cards,3376.9
+2004-09,Consumer,Professional and Private Individuals - Share Financing,399.5
+2004-09,Consumer,Professional and Private Individuals - Others,28123.1
+2004-10,Business,"Agriculture, Mining and Quarrying",2609.2
+2004-10,Business,Manufacturing,29219.4
+2004-10,Business,Building and Construction,28728
+2004-10,Business,General Commerce,32188.1
+2004-10,Business,"Transport, Storage and Communication",24602.9
+2004-10,Business,Business Services,5282.5
+2004-10,Business,Financial Institutions,56865.4
+2004-10,Business,Professional and Private Individuals - Business Purposes,4189.8
+2004-10,Business,Others,21546.5
+2004-10,Consumer,Housing and Bridging Loans,59769.7
+2004-10,Consumer,Professional and Private Individuals - Car Loans,12274.5
+2004-10,Consumer,Professional and Private Individuals - Credit Cards,3372.4
+2004-10,Consumer,Professional and Private Individuals - Share Financing,414.8
+2004-10,Consumer,Professional and Private Individuals - Others,27745.7
+2004-11,Business,"Agriculture, Mining and Quarrying",2583.5
+2004-11,Business,Manufacturing,29003.2
+2004-11,Business,Building and Construction,28816.5
+2004-11,Business,General Commerce,31585.6
+2004-11,Business,"Transport, Storage and Communication",24768.9
+2004-11,Business,Business Services,4990.9
+2004-11,Business,Financial Institutions,59610.4
+2004-11,Business,Professional and Private Individuals - Business Purposes,4099.8
+2004-11,Business,Others,22359.1
+2004-11,Consumer,Housing and Bridging Loans,59903.7
+2004-11,Consumer,Professional and Private Individuals - Car Loans,12406.5
+2004-11,Consumer,Professional and Private Individuals - Credit Cards,3525.8
+2004-11,Consumer,Professional and Private Individuals - Share Financing,411.4
+2004-11,Consumer,Professional and Private Individuals - Others,27542.2
+2004-12,Business,"Agriculture, Mining and Quarrying",2797.6
+2004-12,Business,Manufacturing,28684.8
+2004-12,Business,Building and Construction,29113.3
+2004-12,Business,General Commerce,31346.5
+2004-12,Business,"Transport, Storage and Communication",23561.5
+2004-12,Business,Business Services,5153.3
+2004-12,Business,Financial Institutions,62451.6
+2004-12,Business,Professional and Private Individuals - Business Purposes,4163.6
+2004-12,Business,Others,21316.9
+2004-12,Consumer,Housing and Bridging Loans,60296
+2004-12,Consumer,Professional and Private Individuals - Car Loans,12552.2
+2004-12,Consumer,Professional and Private Individuals - Credit Cards,3541.1
+2004-12,Consumer,Professional and Private Individuals - Share Financing,391.6
+2004-12,Consumer,Professional and Private Individuals - Others,27451.9
+2005-01,Business,"Agriculture, Mining and Quarrying",2712
+2005-01,Business,Manufacturing,28726.8
+2005-01,Business,Building and Construction,29028.4
+2005-01,Business,General Commerce,31267.2
+2005-01,Business,"Transport, Storage and Communication",23251.3
+2005-01,Business,Business Services,5030.6
+2005-01,Business,Financial Institutions,63308.6
+2005-01,Business,Professional and Private Individuals - Business Purposes,4102.3
+2005-01,Business,Others,20710.2
+2005-01,Consumer,Housing and Bridging Loans,60829.4
+2005-01,Consumer,Professional and Private Individuals - Car Loans,12599.2
+2005-01,Consumer,Professional and Private Individuals - Credit Cards,3474.9
+2005-01,Consumer,Professional and Private Individuals - Share Financing,457.5
+2005-01,Consumer,Professional and Private Individuals - Others,27988.9
+2005-02,Business,"Agriculture, Mining and Quarrying",2639.4
+2005-02,Business,Manufacturing,28956.7
+2005-02,Business,Building and Construction,28958
+2005-02,Business,General Commerce,30881.8
+2005-02,Business,"Transport, Storage and Communication",22979.2
+2005-02,Business,Business Services,5052.5
+2005-02,Business,Financial Institutions,63632.2
+2005-02,Business,Professional and Private Individuals - Business Purposes,4736.7
+2005-02,Business,Others,19669.5
+2005-02,Consumer,Housing and Bridging Loans,61209
+2005-02,Consumer,Professional and Private Individuals - Car Loans,12635.4
+2005-02,Consumer,Professional and Private Individuals - Credit Cards,3378.5
+2005-02,Consumer,Professional and Private Individuals - Share Financing,498.9
+2005-02,Consumer,Professional and Private Individuals - Others,27124.9
+2005-03,Business,"Agriculture, Mining and Quarrying",2646
+2005-03,Business,Manufacturing,29343.3
+2005-03,Business,Building and Construction,28481.1
+2005-03,Business,General Commerce,31739.8
+2005-03,Business,"Transport, Storage and Communication",23381
+2005-03,Business,Business Services,4806.1
+2005-03,Business,Financial Institutions,60996.8
+2005-03,Business,Professional and Private Individuals - Business Purposes,4802.1
+2005-03,Business,Others,19623.4
+2005-03,Consumer,Housing and Bridging Loans,61640.3
+2005-03,Consumer,Professional and Private Individuals - Car Loans,12509.8
+2005-03,Consumer,Professional and Private Individuals - Credit Cards,3313.4
+2005-03,Consumer,Professional and Private Individuals - Share Financing,502.2
+2005-03,Consumer,Professional and Private Individuals - Others,27862.4
+2005-04,Business,"Agriculture, Mining and Quarrying",2804.7
+2005-04,Business,Manufacturing,29849.7
+2005-04,Business,Building and Construction,29452.5
+2005-04,Business,General Commerce,32618.7
+2005-04,Business,"Transport, Storage and Communication",23407.3
+2005-04,Business,Business Services,4863.4
+2005-04,Business,Financial Institutions,62291.4
+2005-04,Business,Professional and Private Individuals - Business Purposes,4775.4
+2005-04,Business,Others,19522.4
+2005-04,Consumer,Housing and Bridging Loans,61758.2
+2005-04,Consumer,Professional and Private Individuals - Car Loans,12598.1
+2005-04,Consumer,Professional and Private Individuals - Credit Cards,3322.9
+2005-04,Consumer,Professional and Private Individuals - Share Financing,508.9
+2005-04,Consumer,Professional and Private Individuals - Others,28468.9
+2005-05,Business,"Agriculture, Mining and Quarrying",2580.1
+2005-05,Business,Manufacturing,29163.7
+2005-05,Business,Building and Construction,29338.3
+2005-05,Business,General Commerce,33930.8
+2005-05,Business,"Transport, Storage and Communication",23769.5
+2005-05,Business,Business Services,5030.9
+2005-05,Business,Financial Institutions,62749.8
+2005-05,Business,Professional and Private Individuals - Business Purposes,4837
+2005-05,Business,Others,20295.9
+2005-05,Consumer,Housing and Bridging Loans,62066.5
+2005-05,Consumer,Professional and Private Individuals - Car Loans,12565.3
+2005-05,Consumer,Professional and Private Individuals - Credit Cards,3386.2
+2005-05,Consumer,Professional and Private Individuals - Share Financing,491.8
+2005-05,Consumer,Professional and Private Individuals - Others,28875.2
+2005-06,Business,"Agriculture, Mining and Quarrying",2401.3
+2005-06,Business,Manufacturing,31014.3
+2005-06,Business,Building and Construction,29514.6
+2005-06,Business,General Commerce,34323.5
+2005-06,Business,"Transport, Storage and Communication",25425.3
+2005-06,Business,Business Services,5192.1
+2005-06,Business,Financial Institutions,62880.8
+2005-06,Business,Professional and Private Individuals - Business Purposes,4807.3
+2005-06,Business,Others,20035.5
+2005-06,Consumer,Housing and Bridging Loans,62270.5
+2005-06,Consumer,Professional and Private Individuals - Car Loans,12602.4
+2005-06,Consumer,Professional and Private Individuals - Credit Cards,3473.1
+2005-06,Consumer,Professional and Private Individuals - Share Financing,479.1
+2005-06,Consumer,Professional and Private Individuals - Others,28871.3
+2005-07,Business,"Agriculture, Mining and Quarrying",2393.1
+2005-07,Business,Manufacturing,30665.6
+2005-07,Business,Building and Construction,29603.5
+2005-07,Business,General Commerce,34821.4
+2005-07,Business,"Transport, Storage and Communication",25244
+2005-07,Business,Business Services,4817.9
+2005-07,Business,Financial Institutions,63652.6
+2005-07,Business,Professional and Private Individuals - Business Purposes,4740.2
+2005-07,Business,Others,19485.2
+2005-07,Consumer,Housing and Bridging Loans,62408.7
+2005-07,Consumer,Professional and Private Individuals - Car Loans,12633
+2005-07,Consumer,Professional and Private Individuals - Credit Cards,3390.8
+2005-07,Consumer,Professional and Private Individuals - Share Financing,479.6
+2005-07,Consumer,Professional and Private Individuals - Others,27826.1
+2005-08,Business,"Agriculture, Mining and Quarrying",2416.8
+2005-08,Business,Manufacturing,31989.1
+2005-08,Business,Building and Construction,30109.9
+2005-08,Business,General Commerce,35432
+2005-08,Business,"Transport, Storage and Communication",25763.8
+2005-08,Business,Business Services,4443.2
+2005-08,Business,Financial Institutions,65835.2
+2005-08,Business,Professional and Private Individuals - Business Purposes,4756.4
+2005-08,Business,Others,20791.4
+2005-08,Consumer,Housing and Bridging Loans,62595.1
+2005-08,Consumer,Professional and Private Individuals - Car Loans,12619.7
+2005-08,Consumer,Professional and Private Individuals - Credit Cards,3428.6
+2005-08,Consumer,Professional and Private Individuals - Share Financing,504.6
+2005-08,Consumer,Professional and Private Individuals - Others,28281.1
+2005-09,Business,"Agriculture, Mining and Quarrying",2573.3
+2005-09,Business,Manufacturing,32712.8
+2005-09,Business,Building and Construction,29725.8
+2005-09,Business,General Commerce,35639.3
+2005-09,Business,"Transport, Storage and Communication",26292.5
+2005-09,Business,Business Services,4740.2
+2005-09,Business,Financial Institutions,66216
+2005-09,Business,Professional and Private Individuals - Business Purposes,5036
+2005-09,Business,Others,21046.8
+2005-09,Consumer,Housing and Bridging Loans,62718.4
+2005-09,Consumer,Professional and Private Individuals - Car Loans,12612.8
+2005-09,Consumer,Professional and Private Individuals - Credit Cards,3495.7
+2005-09,Consumer,Professional and Private Individuals - Share Financing,526.2
+2005-09,Consumer,Professional and Private Individuals - Others,28637.9
+2005-10,Business,"Agriculture, Mining and Quarrying",2897.2
+2005-10,Business,Manufacturing,32953.8
+2005-10,Business,Building and Construction,29203.1
+2005-10,Business,General Commerce,36416.8
+2005-10,Business,"Transport, Storage and Communication",26351.9
+2005-10,Business,Business Services,4950.9
+2005-10,Business,Financial Institutions,65675
+2005-10,Business,Professional and Private Individuals - Business Purposes,4822
+2005-10,Business,Others,20647.9
+2005-10,Consumer,Housing and Bridging Loans,62984.6
+2005-10,Consumer,Professional and Private Individuals - Car Loans,12562.4
+2005-10,Consumer,Professional and Private Individuals - Credit Cards,3535.6
+2005-10,Consumer,Professional and Private Individuals - Share Financing,516.7
+2005-10,Consumer,Professional and Private Individuals - Others,28868.9
+2005-11,Business,"Agriculture, Mining and Quarrying",2680
+2005-11,Business,Manufacturing,33088.3
+2005-11,Business,Building and Construction,29198.7
+2005-11,Business,General Commerce,35357.4
+2005-11,Business,"Transport, Storage and Communication",25831.3
+2005-11,Business,Business Services,4841.2
+2005-11,Business,Financial Institutions,87380
+2005-11,Business,Professional and Private Individuals - Business Purposes,3984.6
+2005-11,Business,Others,20983.8
+2005-11,Consumer,Housing and Bridging Loans,63183.9
+2005-11,Consumer,Professional and Private Individuals - Car Loans,12572.2
+2005-11,Consumer,Professional and Private Individuals - Credit Cards,3644.4
+2005-11,Consumer,Professional and Private Individuals - Share Financing,499.8
+2005-11,Consumer,Professional and Private Individuals - Others,29726.2
+2005-12,Business,"Agriculture, Mining and Quarrying",2711.1
+2005-12,Business,Manufacturing,31832.3
+2005-12,Business,Building and Construction,29544.5
+2005-12,Business,General Commerce,35337.6
+2005-12,Business,"Transport, Storage and Communication",26159.7
+2005-12,Business,Business Services,4624.5
+2005-12,Business,Financial Institutions,92636.3
+2005-12,Business,Professional and Private Individuals - Business Purposes,3727.4
+2005-12,Business,Others,20952.5
+2005-12,Consumer,Housing and Bridging Loans,63398.9
+2005-12,Consumer,Professional and Private Individuals - Car Loans,12578.4
+2005-12,Consumer,Professional and Private Individuals - Credit Cards,3794
+2005-12,Consumer,Professional and Private Individuals - Share Financing,514.1
+2005-12,Consumer,Professional and Private Individuals - Others,29338.1
+2006-01,Business,"Agriculture, Mining and Quarrying",2798
+2006-01,Business,Manufacturing,32295
+2006-01,Business,Building and Construction,29243.7
+2006-01,Business,General Commerce,34549.9
+2006-01,Business,"Transport, Storage and Communication",26376.2
+2006-01,Business,Business Services,4847.5
+2006-01,Business,Financial Institutions,90519.9
+2006-01,Business,Professional and Private Individuals - Business Purposes,3607.3
+2006-01,Business,Others,20182.3
+2006-01,Consumer,Housing and Bridging Loans,63547.4
+2006-01,Consumer,Professional and Private Individuals - Car Loans,12581.4
+2006-01,Consumer,Professional and Private Individuals - Credit Cards,3723.7
+2006-01,Consumer,Professional and Private Individuals - Share Financing,512.4
+2006-01,Consumer,Professional and Private Individuals - Others,28827.4
+2006-02,Business,"Agriculture, Mining and Quarrying",2879.9
+2006-02,Business,Manufacturing,31695.2
+2006-02,Business,Building and Construction,30254.2
+2006-02,Business,General Commerce,34340.7
+2006-02,Business,"Transport, Storage and Communication",26752.9
+2006-02,Business,Business Services,4699.1
+2006-02,Business,Financial Institutions,92795.1
+2006-02,Business,Professional and Private Individuals - Business Purposes,3608.1
+2006-02,Business,Others,19332.6
+2006-02,Consumer,Housing and Bridging Loans,63587.5
+2006-02,Consumer,Professional and Private Individuals - Car Loans,12522.3
+2006-02,Consumer,Professional and Private Individuals - Credit Cards,3650.1
+2006-02,Consumer,Professional and Private Individuals - Share Financing,499.2
+2006-02,Consumer,Professional and Private Individuals - Others,29088.7
+2006-03,Business,"Agriculture, Mining and Quarrying",3576.3
+2006-03,Business,Manufacturing,32161.4
+2006-03,Business,Building and Construction,29600.4
+2006-03,Business,General Commerce,33383
+2006-03,Business,"Transport, Storage and Communication",26915.1
+2006-03,Business,Business Services,4595.2
+2006-03,Business,Financial Institutions,85356.3
+2006-03,Business,Professional and Private Individuals - Business Purposes,3543.8
+2006-03,Business,Others,18286.8
+2006-03,Consumer,Housing and Bridging Loans,63513.5
+2006-03,Consumer,Professional and Private Individuals - Car Loans,12464.8
+2006-03,Consumer,Professional and Private Individuals - Credit Cards,3617.3
+2006-03,Consumer,Professional and Private Individuals - Share Financing,487.2
+2006-03,Consumer,Professional and Private Individuals - Others,28992.5
+2006-04,Business,"Agriculture, Mining and Quarrying",3650.4
+2006-04,Business,Manufacturing,32360.3
+2006-04,Business,Building and Construction,30298
+2006-04,Business,General Commerce,34217.4
+2006-04,Business,"Transport, Storage and Communication",27374.1
+2006-04,Business,Business Services,4749.1
+2006-04,Business,Financial Institutions,95644.3
+2006-04,Business,Professional and Private Individuals - Business Purposes,3502.6
+2006-04,Business,Others,17880.8
+2006-04,Consumer,Housing and Bridging Loans,63465.6
+2006-04,Consumer,Professional and Private Individuals - Car Loans,12470
+2006-04,Consumer,Professional and Private Individuals - Credit Cards,3654.2
+2006-04,Consumer,Professional and Private Individuals - Share Financing,512.9
+2006-04,Consumer,Professional and Private Individuals - Others,28926.8
+2006-05,Business,"Agriculture, Mining and Quarrying",3470.4
+2006-05,Business,Manufacturing,32855.7
+2006-05,Business,Building and Construction,32833.6
+2006-05,Business,General Commerce,33751.7
+2006-05,Business,"Transport, Storage and Communication",32750.7
+2006-05,Business,Business Services,4672.4
+2006-05,Business,Financial Institutions,94389.1
+2006-05,Business,Professional and Private Individuals - Business Purposes,3518.1
+2006-05,Business,Others,18462.5
+2006-05,Consumer,Housing and Bridging Loans,63528
+2006-05,Consumer,Professional and Private Individuals - Car Loans,12467.9
+2006-05,Consumer,Professional and Private Individuals - Credit Cards,3710.1
+2006-05,Consumer,Professional and Private Individuals - Share Financing,512.1
+2006-05,Consumer,Professional and Private Individuals - Others,29694.9
+2006-06,Business,"Agriculture, Mining and Quarrying",3125.9
+2006-06,Business,Manufacturing,33480.2
+2006-06,Business,Building and Construction,32839.2
+2006-06,Business,General Commerce,34342.8
+2006-06,Business,"Transport, Storage and Communication",32996.4
+2006-06,Business,Business Services,4703.3
+2006-06,Business,Financial Institutions,95588.4
+2006-06,Business,Professional and Private Individuals - Business Purposes,3478.9
+2006-06,Business,Others,19417.2
+2006-06,Consumer,Housing and Bridging Loans,63696.3
+2006-06,Consumer,Professional and Private Individuals - Car Loans,12475.3
+2006-06,Consumer,Professional and Private Individuals - Credit Cards,3786.5
+2006-06,Consumer,Professional and Private Individuals - Share Financing,490.7
+2006-06,Consumer,Professional and Private Individuals - Others,29436.7
+2006-07,Business,"Agriculture, Mining and Quarrying",3316.8
+2006-07,Business,Manufacturing,33482.1
+2006-07,Business,Building and Construction,33331.8
+2006-07,Business,General Commerce,34759.6
+2006-07,Business,"Transport, Storage and Communication",33573.3
+2006-07,Business,Business Services,5448.9
+2006-07,Business,Financial Institutions,96068.7
+2006-07,Business,Professional and Private Individuals - Business Purposes,3411.7
+2006-07,Business,Others,19604.1
+2006-07,Consumer,Housing and Bridging Loans,63998.9
+2006-07,Consumer,Professional and Private Individuals - Car Loans,12477.2
+2006-07,Consumer,Professional and Private Individuals - Credit Cards,3737.4
+2006-07,Consumer,Professional and Private Individuals - Share Financing,744
+2006-07,Consumer,Professional and Private Individuals - Others,28837.9
+2006-08,Business,"Agriculture, Mining and Quarrying",3215.4
+2006-08,Business,Manufacturing,34098.4
+2006-08,Business,Building and Construction,34502.5
+2006-08,Business,General Commerce,34643.3
+2006-08,Business,"Transport, Storage and Communication",34210.4
+2006-08,Business,Business Services,5913.6
+2006-08,Business,Financial Institutions,93090.4
+2006-08,Business,Professional and Private Individuals - Business Purposes,3321.7
+2006-08,Business,Others,20352.6
+2006-08,Consumer,Housing and Bridging Loans,64134.2
+2006-08,Consumer,Professional and Private Individuals - Car Loans,12440.5
+2006-08,Consumer,Professional and Private Individuals - Credit Cards,3739.7
+2006-08,Consumer,Professional and Private Individuals - Share Financing,731.8
+2006-08,Consumer,Professional and Private Individuals - Others,28787.1
+2006-09,Business,"Agriculture, Mining and Quarrying",3347.9
+2006-09,Business,Manufacturing,34919.3
+2006-09,Business,Building and Construction,33691.4
+2006-09,Business,General Commerce,35399.5
+2006-09,Business,"Transport, Storage and Communication",35823.8
+2006-09,Business,Business Services,6294
+2006-09,Business,Financial Institutions,93186.3
+2006-09,Business,Professional and Private Individuals - Business Purposes,3279.5
+2006-09,Business,Others,21176.1
+2006-09,Consumer,Housing and Bridging Loans,64464.8
+2006-09,Consumer,Professional and Private Individuals - Car Loans,12407.2
+2006-09,Consumer,Professional and Private Individuals - Credit Cards,3836.1
+2006-09,Consumer,Professional and Private Individuals - Share Financing,732.5
+2006-09,Consumer,Professional and Private Individuals - Others,28735.2
+2006-10,Business,"Agriculture, Mining and Quarrying",3804
+2006-10,Business,Manufacturing,36625.7
+2006-10,Business,Building and Construction,34171.6
+2006-10,Business,General Commerce,35060.1
+2006-10,Business,"Transport, Storage and Communication",35297.9
+2006-10,Business,Business Services,6115.3
+2006-10,Business,Financial Institutions,95623.4
+2006-10,Business,Professional and Private Individuals - Business Purposes,3162.1
+2006-10,Business,Others,20629
+2006-10,Consumer,Housing and Bridging Loans,64692.2
+2006-10,Consumer,Professional and Private Individuals - Car Loans,12382.2
+2006-10,Consumer,Professional and Private Individuals - Credit Cards,3909.3
+2006-10,Consumer,Professional and Private Individuals - Share Financing,829.4
+2006-10,Consumer,Professional and Private Individuals - Others,28065
+2006-11,Business,"Agriculture, Mining and Quarrying",3881.3
+2006-11,Business,Manufacturing,36341
+2006-11,Business,Building and Construction,34049.3
+2006-11,Business,General Commerce,35147.5
+2006-11,Business,"Transport, Storage and Communication",36011.9
+2006-11,Business,Business Services,6378.7
+2006-11,Business,Financial Institutions,98685.6
+2006-11,Business,Professional and Private Individuals - Business Purposes,3183.1
+2006-11,Business,Others,22937.3
+2006-11,Consumer,Housing and Bridging Loans,64999.1
+2006-11,Consumer,Professional and Private Individuals - Car Loans,12348
+2006-11,Consumer,Professional and Private Individuals - Credit Cards,4017.1
+2006-11,Consumer,Professional and Private Individuals - Share Financing,874.4
+2006-11,Consumer,Professional and Private Individuals - Others,28768.5
+2006-12,Business,"Agriculture, Mining and Quarrying",3911.9
+2006-12,Business,Manufacturing,36563.5
+2006-12,Business,Building and Construction,33565.7
+2006-12,Business,General Commerce,35740.8
+2006-12,Business,"Transport, Storage and Communication",35595.2
+2006-12,Business,Business Services,6944.7
+2006-12,Business,Financial Institutions,90014.4
+2006-12,Business,Professional and Private Individuals - Business Purposes,3160.2
+2006-12,Business,Others,23665.8
+2006-12,Consumer,Housing and Bridging Loans,65259.6
+2006-12,Consumer,Professional and Private Individuals - Car Loans,12377.9
+2006-12,Consumer,Professional and Private Individuals - Credit Cards,4175.8
+2006-12,Consumer,Professional and Private Individuals - Share Financing,913.4
+2006-12,Consumer,Professional and Private Individuals - Others,28332.1
+2007-01,Business,"Agriculture, Mining and Quarrying",4218.5
+2007-01,Business,Manufacturing,37418.6
+2007-01,Business,Building and Construction,34022.9
+2007-01,Business,General Commerce,35547.9
+2007-01,Business,"Transport, Storage and Communication",36124.1
+2007-01,Business,Business Services,6973.2
+2007-01,Business,Financial Institutions,91947.1
+2007-01,Business,Professional and Private Individuals - Business Purposes,3125.6
+2007-01,Business,Others,23184.6
+2007-01,Consumer,Housing and Bridging Loans,65638.7
+2007-01,Consumer,Professional and Private Individuals - Car Loans,12391.5
+2007-01,Consumer,Professional and Private Individuals - Credit Cards,4044.6
+2007-01,Consumer,Professional and Private Individuals - Share Financing,1004.6
+2007-01,Consumer,Professional and Private Individuals - Others,28168.4
+2007-02,Business,"Agriculture, Mining and Quarrying",4488.5
+2007-02,Business,Manufacturing,38145
+2007-02,Business,Building and Construction,34771.1
+2007-02,Business,General Commerce,35796.4
+2007-02,Business,"Transport, Storage and Communication",36914.9
+2007-02,Business,Business Services,7214
+2007-02,Business,Financial Institutions,93662.5
+2007-02,Business,Professional and Private Individuals - Business Purposes,3120.2
+2007-02,Business,Others,24408
+2007-02,Consumer,Housing and Bridging Loans,65814.3
+2007-02,Consumer,Professional and Private Individuals - Car Loans,12429.4
+2007-02,Consumer,Professional and Private Individuals - Credit Cards,4025.4
+2007-02,Consumer,Professional and Private Individuals - Share Financing,1021.2
+2007-02,Consumer,Professional and Private Individuals - Others,28662.3
+2007-03,Business,"Agriculture, Mining and Quarrying",4135.3
+2007-03,Business,Manufacturing,39544.7
+2007-03,Business,Building and Construction,35666.5
+2007-03,Business,General Commerce,36014.9
+2007-03,Business,"Transport, Storage and Communication",37619.1
+2007-03,Business,Business Services,7073
+2007-03,Business,Financial Institutions,97211.9
+2007-03,Business,Professional and Private Individuals - Business Purposes,3120.7
+2007-03,Business,Others,25107.7
+2007-03,Consumer,Housing and Bridging Loans,66318.6
+2007-03,Consumer,Professional and Private Individuals - Car Loans,12536.5
+2007-03,Consumer,Professional and Private Individuals - Credit Cards,4012.1
+2007-03,Consumer,Professional and Private Individuals - Share Financing,1034.7
+2007-03,Consumer,Professional and Private Individuals - Others,29077.1
+2007-04,Business,"Agriculture, Mining and Quarrying",4319.4
+2007-04,Business,Manufacturing,40888.5
+2007-04,Business,Building and Construction,36865.1
+2007-04,Business,General Commerce,37326.7
+2007-04,Business,"Transport, Storage and Communication",38345.9
+2007-04,Business,Business Services,7288.5
+2007-04,Business,Financial Institutions,95144.6
+2007-04,Business,Professional and Private Individuals - Business Purposes,3089.3
+2007-04,Business,Others,25919.8
+2007-04,Consumer,Housing and Bridging Loans,66931.9
+2007-04,Consumer,Professional and Private Individuals - Car Loans,12512.8
+2007-04,Consumer,Professional and Private Individuals - Credit Cards,4042.3
+2007-04,Consumer,Professional and Private Individuals - Share Financing,1190.4
+2007-04,Consumer,Professional and Private Individuals - Others,29868.6
+2007-05,Business,"Agriculture, Mining and Quarrying",4129.2
+2007-05,Business,Manufacturing,47502.4
+2007-05,Business,Building and Construction,38587.3
+2007-05,Business,General Commerce,37733.5
+2007-05,Business,"Transport, Storage and Communication",39332.9
+2007-05,Business,Business Services,7456.8
+2007-05,Business,Financial Institutions,98127.8
+2007-05,Business,Professional and Private Individuals - Business Purposes,3112.9
+2007-05,Business,Others,26924.4
+2007-05,Consumer,Housing and Bridging Loans,67550.2
+2007-05,Consumer,Professional and Private Individuals - Car Loans,12511.4
+2007-05,Consumer,Professional and Private Individuals - Credit Cards,4093.3
+2007-05,Consumer,Professional and Private Individuals - Share Financing,1158.7
+2007-05,Consumer,Professional and Private Individuals - Others,29803.3
+2007-06,Business,"Agriculture, Mining and Quarrying",3584.9
+2007-06,Business,Manufacturing,45884.6
+2007-06,Business,Building and Construction,39372.2
+2007-06,Business,General Commerce,38428.8
+2007-06,Business,"Transport, Storage and Communication",40893.7
+2007-06,Business,Business Services,7641.5
+2007-06,Business,Financial Institutions,104474.5
+2007-06,Business,Professional and Private Individuals - Business Purposes,3147.9
+2007-06,Business,Others,28589.2
+2007-06,Consumer,Housing and Bridging Loans,68468
+2007-06,Consumer,Professional and Private Individuals - Car Loans,12489.9
+2007-06,Consumer,Professional and Private Individuals - Credit Cards,4297.1
+2007-06,Consumer,Professional and Private Individuals - Share Financing,1719
+2007-06,Consumer,Professional and Private Individuals - Others,30809
+2007-07,Business,"Agriculture, Mining and Quarrying",4103.4
+2007-07,Business,Manufacturing,45406.4
+2007-07,Business,Building and Construction,39915.8
+2007-07,Business,General Commerce,39444.9
+2007-07,Business,"Transport, Storage and Communication",41999.4
+2007-07,Business,Business Services,7367.5
+2007-07,Business,Financial Institutions,103429.9
+2007-07,Business,Professional and Private Individuals - Business Purposes,3333.4
+2007-07,Business,Others,29868.7
+2007-07,Consumer,Housing and Bridging Loans,69540.5
+2007-07,Consumer,Professional and Private Individuals - Car Loans,12076.4
+2007-07,Consumer,Professional and Private Individuals - Credit Cards,4159.6
+2007-07,Consumer,Professional and Private Individuals - Share Financing,1725.2
+2007-07,Consumer,Professional and Private Individuals - Others,31648.2
+2007-08,Business,"Agriculture, Mining and Quarrying",4422.3
+2007-08,Business,Manufacturing,46429.8
+2007-08,Business,Building and Construction,40668.5
+2007-08,Business,General Commerce,40008.9
+2007-08,Business,"Transport, Storage and Communication",42702.2
+2007-08,Business,Business Services,7844.1
+2007-08,Business,Financial Institutions,107956.9
+2007-08,Business,Professional and Private Individuals - Business Purposes,3462.6
+2007-08,Business,Others,32655.6
+2007-08,Consumer,Housing and Bridging Loans,71358.7
+2007-08,Consumer,Professional and Private Individuals - Car Loans,12095.8
+2007-08,Consumer,Professional and Private Individuals - Credit Cards,4176.3
+2007-08,Consumer,Professional and Private Individuals - Share Financing,1465
+2009-08,Consumer,Housing and Bridging Loans,88143.7
+2007-08,Consumer,Professional and Private Individuals - Others,31910.5
+2007-09,Business,"Agriculture, Mining and Quarrying",4660.5
+2007-09,Business,Manufacturing,47408.9
+2007-09,Business,Building and Construction,41850.2
+2007-09,Business,General Commerce,39524.8
+2007-09,Business,"Transport, Storage and Communication",43357
+2007-09,Business,Business Services,10030.9
+2007-09,Business,Financial Institutions,109447.9
+2007-09,Business,Professional and Private Individuals - Business Purposes,3451.4
+2007-09,Business,Others,33901.5
+2007-09,Consumer,Housing and Bridging Loans,72758.7
+2007-09,Consumer,Professional and Private Individuals - Car Loans,12118.8
+2007-09,Consumer,Professional and Private Individuals - Credit Cards,4334.7
+2007-09,Consumer,Professional and Private Individuals - Share Financing,1564.5
+2007-09,Consumer,Professional and Private Individuals - Others,33680.6
+2007-10,Business,"Agriculture, Mining and Quarrying",4402.7
+2007-10,Business,Manufacturing,45054
+2007-10,Business,Building and Construction,43945.2
+2007-10,Business,General Commerce,39107.7
+2007-10,Business,"Transport, Storage and Communication",43985.1
+2007-10,Business,Business Services,10803.8
+2007-10,Business,Financial Institutions,109697.3
+2007-10,Business,Professional and Private Individuals - Business Purposes,3596.5
+2007-10,Business,Others,34501.5
+2007-10,Consumer,Housing and Bridging Loans,74162.5
+2007-10,Consumer,Professional and Private Individuals - Car Loans,12164.7
+2007-10,Consumer,Professional and Private Individuals - Credit Cards,4358.2
+2007-10,Consumer,Professional and Private Individuals - Share Financing,1665.6
+2007-10,Consumer,Professional and Private Individuals - Others,34128.6
+2007-11,Business,"Agriculture, Mining and Quarrying",4567.8
+2007-11,Business,Manufacturing,47361.6
+2007-11,Business,Building and Construction,45090.4
+2007-11,Business,General Commerce,40583.2
+2007-11,Business,"Transport, Storage and Communication",45088.5
+2007-11,Business,Business Services,10243.8
+2007-11,Business,Financial Institutions,111467.7
+2007-11,Business,Professional and Private Individuals - Business Purposes,3678
+2007-11,Business,Others,36613.2
+2007-11,Consumer,Housing and Bridging Loans,75142.1
+2007-11,Consumer,Professional and Private Individuals - Car Loans,12176.3
+2007-11,Consumer,Professional and Private Individuals - Credit Cards,4513.2
+2007-11,Consumer,Professional and Private Individuals - Share Financing,1628
+2007-11,Consumer,Professional and Private Individuals - Others,35455.9
+2007-12,Business,"Agriculture, Mining and Quarrying",5949.1
+2007-12,Business,Manufacturing,48015.6
+2007-12,Business,Building and Construction,49262.5
+2007-12,Business,General Commerce,41302.5
+2007-12,Business,"Transport, Storage and Communication",48022.5
+2007-12,Business,Business Services,9211.8
+2007-12,Business,Financial Institutions,118245.6
+2007-12,Business,Professional and Private Individuals - Business Purposes,3699
+2007-12,Business,Others,37913.1
+2007-12,Consumer,Housing and Bridging Loans,75588.7
+2007-12,Consumer,Professional and Private Individuals - Car Loans,12201
+2007-12,Consumer,Professional and Private Individuals - Credit Cards,4729.4
+2007-12,Consumer,Professional and Private Individuals - Share Financing,1622.7
+2007-12,Consumer,Professional and Private Individuals - Others,34102.7
+2008-01,Business,"Agriculture, Mining and Quarrying",5757.2
+2008-01,Business,Manufacturing,47115.2
+2008-01,Business,Building and Construction,50787.2
+2008-01,Business,General Commerce,44141.4
+2008-01,Business,"Transport, Storage and Communication",49340.3
+2008-01,Business,Business Services,10249.4
+2008-01,Business,Financial Institutions,119583.2
+2008-01,Business,Professional and Private Individuals - Business Purposes,3884.2
+2008-01,Business,Others,37643.5
+2008-01,Consumer,Housing and Bridging Loans,76369.2
+2008-01,Consumer,Professional and Private Individuals - Car Loans,12284.5
+2008-01,Consumer,Professional and Private Individuals - Credit Cards,4619.6
+2008-01,Consumer,Professional and Private Individuals - Share Financing,1333.7
+2008-01,Consumer,Professional and Private Individuals - Others,34852.8
+2008-02,Business,"Agriculture, Mining and Quarrying",5668.9
+2008-02,Business,Manufacturing,48107.1
+2008-02,Business,Building and Construction,52563.9
+2008-02,Business,General Commerce,45704.7
+2008-02,Business,"Transport, Storage and Communication",50165
+2008-02,Business,Business Services,10417.7
+2008-02,Business,Financial Institutions,117509.4
+2008-02,Business,Professional and Private Individuals - Business Purposes,3879.7
+2008-02,Business,Others,40159
+2008-02,Consumer,Housing and Bridging Loans,76613.4
+2008-02,Consumer,Professional and Private Individuals - Car Loans,12276.3
+2008-02,Consumer,Professional and Private Individuals - Credit Cards,4532.4
+2010-02,Consumer,Housing and Bridging Loans,96615
+2008-02,Consumer,Professional and Private Individuals - Share Financing,2713.3
+2008-02,Consumer,Professional and Private Individuals - Others,42234.9
+2008-03,Business,"Agriculture, Mining and Quarrying",5427
+2008-03,Business,Manufacturing,51588.5
+2008-03,Business,Building and Construction,55187.7
+2008-03,Business,General Commerce,48029.4
+2008-03,Business,"Transport, Storage and Communication",51418.6
+2008-03,Business,Business Services,10223
+2008-03,Business,Financial Institutions,119264.8
+2008-03,Business,Professional and Private Individuals - Business Purposes,3919.6
+2008-03,Business,Others,45790.3
+2008-03,Consumer,Housing and Bridging Loans,76825.4
+2008-03,Consumer,Professional and Private Individuals - Car Loans,12330.6
+2008-03,Consumer,Professional and Private Individuals - Credit Cards,4553.4
+2008-03,Consumer,Professional and Private Individuals - Share Financing,2557.6
+2008-03,Consumer,Professional and Private Individuals - Others,43879.3
+2008-04,Business,"Agriculture, Mining and Quarrying",6090.3
+2008-04,Business,Manufacturing,51697.3
+2008-04,Business,Building and Construction,57043.6
+2008-04,Business,General Commerce,50499.5
+2008-04,Business,"Transport, Storage and Communication",51985.1
+2008-04,Business,Business Services,9277.2
+2008-04,Business,Financial Institutions,118164.5
+2008-04,Business,Professional and Private Individuals - Business Purposes,3925.6
+2008-04,Business,Others,47235.1
+2008-04,Consumer,Housing and Bridging Loans,77261.5
+2008-04,Consumer,Professional and Private Individuals - Car Loans,12386.4
+2008-04,Consumer,Professional and Private Individuals - Credit Cards,4549.1
+2008-04,Consumer,Professional and Private Individuals - Share Financing,3284.3
+2008-04,Consumer,Professional and Private Individuals - Others,41624.5
+2008-05,Business,"Agriculture, Mining and Quarrying",6073.3
+2008-05,Business,Manufacturing,49312.4
+2008-05,Business,Building and Construction,57545.2
+2008-05,Business,General Commerce,51626.7
+2008-05,Business,"Transport, Storage and Communication",54159.7
+2008-05,Business,Business Services,9725.6
+2008-05,Business,Financial Institutions,120568.6
+2008-05,Business,Professional and Private Individuals - Business Purposes,4020.3
+2008-05,Business,Others,50397.1
+2008-05,Consumer,Housing and Bridging Loans,77705.6
+2008-05,Consumer,Professional and Private Individuals - Car Loans,12424.8
+2008-05,Consumer,Professional and Private Individuals - Credit Cards,4685.1
+2008-05,Consumer,Professional and Private Individuals - Share Financing,2625.6
+2008-05,Consumer,Professional and Private Individuals - Others,44566.5
+2008-06,Business,"Agriculture, Mining and Quarrying",6164.3
+2008-06,Business,Manufacturing,50541.5
+2008-06,Business,Building and Construction,60746.7
+2008-06,Business,General Commerce,52368.2
+2008-06,Business,"Transport, Storage and Communication",55652.4
+2008-06,Business,Business Services,10999.6
+2008-06,Business,Financial Institutions,119620
+2008-06,Business,Professional and Private Individuals - Business Purposes,4105.6
+2008-06,Business,Others,55443.6
+2008-06,Consumer,Housing and Bridging Loans,78729.1
+2008-06,Consumer,Professional and Private Individuals - Car Loans,12549.5
+2008-06,Consumer,Professional and Private Individuals - Credit Cards,4956.5
+2008-06,Consumer,Professional and Private Individuals - Share Financing,2776.1
+2008-06,Consumer,Professional and Private Individuals - Others,46660
+2008-07,Business,"Agriculture, Mining and Quarrying",6697.3
+2008-07,Business,Manufacturing,50478.7
+2008-07,Business,Building and Construction,61053.5
+2008-07,Business,General Commerce,54696.3
+2008-07,Business,"Transport, Storage and Communication",57282.3
+2008-07,Business,Business Services,11581.4
+2008-07,Business,Financial Institutions,122335.8
+2008-07,Business,Professional and Private Individuals - Business Purposes,4148.2
+2008-07,Business,Others,58690.8
+2008-07,Consumer,Housing and Bridging Loans,79434.7
+2008-07,Consumer,Professional and Private Individuals - Car Loans,12563.6
+2008-07,Consumer,Professional and Private Individuals - Credit Cards,4996.7
+2008-07,Consumer,Professional and Private Individuals - Share Financing,2802.9
+2008-07,Consumer,Professional and Private Individuals - Others,47153.7
+2008-08,Business,"Agriculture, Mining and Quarrying",7432.3
+2008-08,Business,Manufacturing,52712.7
+2008-08,Business,Building and Construction,61535.9
+2008-08,Business,General Commerce,55593.8
+2008-08,Business,"Transport, Storage and Communication",60102.5
+2008-08,Business,Business Services,12491.2
+2008-08,Business,Financial Institutions,122515.2
+2008-08,Business,Professional and Private Individuals - Business Purposes,4239.7
+2008-08,Business,Others,60400.3
+2008-08,Consumer,Housing and Bridging Loans,80004.5
+2008-08,Consumer,Professional and Private Individuals - Car Loans,12545.9
+2012-02,Business,Others,72214
+2008-08,Consumer,Professional and Private Individuals - Credit Cards,5084.2
+2008-08,Consumer,Professional and Private Individuals - Share Financing,2777.7
+2008-08,Consumer,Professional and Private Individuals - Others,48530.7
+2008-09,Business,"Agriculture, Mining and Quarrying",7564.8
+2008-09,Business,Manufacturing,54558.6
+2008-09,Business,Building and Construction,62267
+2008-09,Business,General Commerce,53428.5
+2008-09,Business,"Transport, Storage and Communication",61725.1
+2008-09,Business,Business Services,13244.5
+2008-09,Business,Financial Institutions,124579.3
+2008-09,Business,Professional and Private Individuals - Business Purposes,4208.7
+2008-09,Business,Others,61527.4
+2008-09,Consumer,Housing and Bridging Loans,80568.6
+2008-09,Consumer,Professional and Private Individuals - Car Loans,12387.5
+2008-09,Consumer,Professional and Private Individuals - Credit Cards,5179
+2008-09,Consumer,Professional and Private Individuals - Share Financing,2621.7
+2008-09,Consumer,Professional and Private Individuals - Others,49496.7
+2008-10,Business,"Agriculture, Mining and Quarrying",8510.2
+2008-10,Business,Manufacturing,58532.5
+2008-10,Business,Building and Construction,63818
+2008-10,Business,General Commerce,53815.1
+2008-10,Business,"Transport, Storage and Communication",62958.4
+2008-10,Business,Business Services,13203.9
+2008-10,Business,Financial Institutions,118893.8
+2008-10,Business,Professional and Private Individuals - Business Purposes,4112.1
+2008-10,Business,Others,60189.1
+2008-10,Consumer,Housing and Bridging Loans,81502.1
+2008-10,Consumer,Professional and Private Individuals - Car Loans,12396.9
+2008-10,Consumer,Professional and Private Individuals - Credit Cards,5187.1
+2008-10,Consumer,Professional and Private Individuals - Share Financing,2080.4
+2008-10,Consumer,Professional and Private Individuals - Others,44838.7
+2008-11,Business,"Agriculture, Mining and Quarrying",8675.2
+2008-11,Business,Manufacturing,57164.4
+2008-11,Business,Building and Construction,64216.6
+2008-11,Business,General Commerce,50419.2
+2008-11,Business,"Transport, Storage and Communication",64220.2
+2008-11,Business,Business Services,13609.7
+2008-11,Business,Financial Institutions,113319.7
+2008-11,Business,Professional and Private Individuals - Business Purposes,4048.7
+2008-11,Business,Others,57623.6
+2008-11,Consumer,Housing and Bridging Loans,81847
+2008-11,Consumer,Professional and Private Individuals - Car Loans,12430.5
+2008-11,Consumer,Professional and Private Individuals - Credit Cards,5373.8
+2008-11,Consumer,Professional and Private Individuals - Share Financing,1845.2
+2008-11,Consumer,Professional and Private Individuals - Others,42876.5
+2008-12,Business,"Agriculture, Mining and Quarrying",8293.9
+2008-12,Business,Manufacturing,54779.6
+2008-12,Business,Building and Construction,63937.8
+2008-12,Business,General Commerce,45785
+2008-12,Business,"Transport, Storage and Communication",62187.2
+2008-12,Business,Business Services,14840.5
+2008-12,Business,Financial Institutions,107591.8
+2008-12,Business,Professional and Private Individuals - Business Purposes,4161.3
+2008-12,Business,Others,53212.2
+2008-12,Consumer,Housing and Bridging Loans,82435.4
+2008-12,Consumer,Professional and Private Individuals - Car Loans,12466.6
+2008-12,Consumer,Professional and Private Individuals - Credit Cards,5495.2
+2008-12,Consumer,Professional and Private Individuals - Share Financing,1838.6
+2008-12,Consumer,Professional and Private Individuals - Others,41243.4
+2009-01,Business,"Agriculture, Mining and Quarrying",8164
+2009-01,Business,Manufacturing,56744.6
+2009-01,Business,Building and Construction,65180.8
+2009-01,Business,General Commerce,45892.6
+2009-01,Business,"Transport, Storage and Communication",65666.9
+2009-01,Business,Business Services,15671
+2009-01,Business,Financial Institutions,110203.2
+2009-01,Business,Professional and Private Individuals - Business Purposes,3858.3
+2009-01,Business,Others,51380.6
+2009-01,Consumer,Housing and Bridging Loans,83058.8
+2009-01,Consumer,Professional and Private Individuals - Car Loans,12472.5
+2009-01,Consumer,Professional and Private Individuals - Credit Cards,5351
+2009-01,Consumer,Professional and Private Individuals - Share Financing,1846.4
+2009-01,Consumer,Professional and Private Individuals - Others,41491.9
+2009-02,Business,"Agriculture, Mining and Quarrying",8774.3
+2009-02,Business,Manufacturing,57259
+2009-02,Business,Building and Construction,65548.5
+2009-02,Business,General Commerce,43961.6
+2009-02,Business,"Transport, Storage and Communication",66615.5
+2009-02,Business,Business Services,15328.9
+2009-02,Business,Financial Institutions,110507.6
+2009-02,Business,Professional and Private Individuals - Business Purposes,3987.6
+2009-02,Business,Others,50748.6
+2009-02,Consumer,Housing and Bridging Loans,83366.1
+2012-08,Business,Others,77519.5
+2009-02,Consumer,Professional and Private Individuals - Car Loans,12433
+2009-02,Consumer,Professional and Private Individuals - Credit Cards,5241.3
+2009-02,Consumer,Professional and Private Individuals - Share Financing,1910.2
+2009-02,Consumer,Professional and Private Individuals - Others,40859.5
+2009-03,Business,"Agriculture, Mining and Quarrying",8091.5
+2009-03,Business,Manufacturing,55037.7
+2009-03,Business,Building and Construction,66266.7
+2009-03,Business,General Commerce,44262
+2009-03,Business,"Transport, Storage and Communication",66306.7
+2009-03,Business,Business Services,14899.3
+2009-03,Business,Financial Institutions,108687.5
+2009-03,Business,Professional and Private Individuals - Business Purposes,4055.1
+2009-03,Business,Others,47685
+2009-03,Consumer,Housing and Bridging Loans,83697.4
+2009-03,Consumer,Professional and Private Individuals - Car Loans,12406.9
+2009-03,Consumer,Professional and Private Individuals - Credit Cards,5222.2
+2009-03,Consumer,Professional and Private Individuals - Share Financing,1792.7
+2009-03,Consumer,Professional and Private Individuals - Others,40212.7
+2009-04,Business,"Agriculture, Mining and Quarrying",7893.5
+2009-04,Business,Manufacturing,53495.3
+2009-04,Business,Building and Construction,65810.4
+2009-04,Business,General Commerce,44091.5
+2009-04,Business,"Transport, Storage and Communication",66147.9
+2009-04,Business,Business Services,14460
+2009-04,Business,Financial Institutions,106175.4
+2009-04,Business,Professional and Private Individuals - Business Purposes,4019.4
+2009-04,Business,Others,45762.5
+2009-04,Consumer,Housing and Bridging Loans,83915.3
+2009-04,Consumer,Professional and Private Individuals - Car Loans,12356.1
+2009-04,Consumer,Professional and Private Individuals - Credit Cards,5261.2
+2009-04,Consumer,Professional and Private Individuals - Share Financing,1619.7
+2009-04,Consumer,Professional and Private Individuals - Others,39115.1
+2009-05,Business,"Agriculture, Mining and Quarrying",7757.4
+2009-05,Business,Manufacturing,52837.9
+2009-05,Business,Building and Construction,65954.3
+2009-05,Business,General Commerce,45000.6
+2009-05,Business,"Transport, Storage and Communication",66102.5
+2009-05,Business,Business Services,14208.2
+2009-05,Business,Financial Institutions,106180.2
+2009-05,Business,Professional and Private Individuals - Business Purposes,4017.5
+2009-05,Business,Others,45005.1
+2009-05,Consumer,Housing and Bridging Loans,84651.3
+2009-05,Consumer,Professional and Private Individuals - Car Loans,12320.4
+2009-05,Consumer,Professional and Private Individuals - Credit Cards,5307.5
+2009-05,Consumer,Professional and Private Individuals - Share Financing,1784.2
+2009-05,Consumer,Professional and Private Individuals - Others,39191.3
+2009-06,Business,"Agriculture, Mining and Quarrying",7530.9
+2009-06,Business,Manufacturing,51875.8
+2009-06,Business,Building and Construction,67312.8
+2009-06,Business,General Commerce,46218.8
+2009-06,Business,"Transport, Storage and Communication",66638.2
+2009-06,Business,Business Services,13482.5
+2009-06,Business,Financial Institutions,103927.5
+2009-06,Business,Professional and Private Individuals - Business Purposes,4057.3
+2009-06,Business,Others,46516.2
+2009-06,Consumer,Housing and Bridging Loans,85980.7
+2009-06,Consumer,Professional and Private Individuals - Car Loans,12298.9
+2009-06,Consumer,Professional and Private Individuals - Credit Cards,5531.4
+2009-06,Consumer,Professional and Private Individuals - Share Financing,1894.8
+2009-06,Consumer,Professional and Private Individuals - Others,40289.1
+2009-07,Business,"Agriculture, Mining and Quarrying",7849.1
+2009-07,Business,Manufacturing,52066.8
+2009-07,Business,Building and Construction,65346.5
+2009-07,Business,General Commerce,47330.6
+2009-07,Business,"Transport, Storage and Communication",65862.7
+2009-07,Business,Business Services,13148.8
+2009-07,Business,Financial Institutions,102316.1
+2009-07,Business,Professional and Private Individuals - Business Purposes,4057.6
+2009-07,Business,Others,46135.5
+2009-07,Consumer,Housing and Bridging Loans,87432.8
+2009-07,Consumer,Professional and Private Individuals - Car Loans,12232.8
+2009-07,Consumer,Professional and Private Individuals - Credit Cards,5482.2
+2009-07,Consumer,Professional and Private Individuals - Share Financing,1898.8
+2009-07,Consumer,Professional and Private Individuals - Others,40224.7
+2009-08,Business,"Agriculture, Mining and Quarrying",7699.7
+2009-08,Business,Manufacturing,52633.6
+2009-08,Business,Building and Construction,65116.6
+2009-08,Business,General Commerce,48976.7
+2009-08,Business,"Transport, Storage and Communication",66031.2
+2009-08,Business,Business Services,13593.3
+2009-08,Business,Financial Institutions,102334.1
+2009-08,Business,Professional and Private Individuals - Business Purposes,3989.5
+2009-08,Business,Others,46478.1
+2013-02,Business,Others,87361.4
+2009-08,Consumer,Professional and Private Individuals - Car Loans,12188.5
+2009-08,Consumer,Professional and Private Individuals - Credit Cards,5573.4
+2009-08,Consumer,Professional and Private Individuals - Share Financing,2071.4
+2009-08,Consumer,Professional and Private Individuals - Others,40780
+2009-09,Business,"Agriculture, Mining and Quarrying",7787.2
+2009-09,Business,Manufacturing,52021.8
+2009-09,Business,Building and Construction,65198.4
+2009-09,Business,General Commerce,47698.8
+2009-09,Business,"Transport, Storage and Communication",65269.8
+2009-09,Business,Business Services,12503.7
+2009-09,Business,Financial Institutions,102242.5
+2009-09,Business,Professional and Private Individuals - Business Purposes,4021.8
+2009-09,Business,Others,46866.4
+2009-09,Consumer,Housing and Bridging Loans,90228.9
+2009-09,Consumer,Professional and Private Individuals - Car Loans,12110.6
+2009-09,Consumer,Professional and Private Individuals - Credit Cards,5770.5
+2009-09,Consumer,Professional and Private Individuals - Share Financing,2159.3
+2009-09,Consumer,Professional and Private Individuals - Others,40020.2
+2009-10,Business,"Agriculture, Mining and Quarrying",7986.5
+2009-10,Business,Manufacturing,51122.2
+2009-10,Business,Building and Construction,64674.9
+2009-10,Business,General Commerce,46686.9
+2009-10,Business,"Transport, Storage and Communication",64018.3
+2009-10,Business,Business Services,12504.7
+2009-10,Business,Financial Institutions,102129.6
+2009-10,Business,Professional and Private Individuals - Business Purposes,4046
+2009-10,Business,Others,44459.9
+2009-10,Consumer,Housing and Bridging Loans,92354.2
+2009-10,Consumer,Professional and Private Individuals - Car Loans,12062
+2009-10,Consumer,Professional and Private Individuals - Credit Cards,5807.1
+2009-10,Consumer,Professional and Private Individuals - Share Financing,2125.1
+2009-10,Consumer,Professional and Private Individuals - Others,40072
+2009-11,Business,"Agriculture, Mining and Quarrying",7669.1
+2009-11,Business,Manufacturing,51319.7
+2009-11,Business,Building and Construction,64272
+2009-11,Business,General Commerce,49190.5
+2009-11,Business,"Transport, Storage and Communication",63872.4
+2009-11,Business,Business Services,13228.5
+2009-11,Business,Financial Institutions,105516.7
+2009-11,Business,Professional and Private Individuals - Business Purposes,3994.1
+2009-11,Business,Others,45612.7
+2009-11,Consumer,Housing and Bridging Loans,94090.3
+2009-11,Consumer,Professional and Private Individuals - Car Loans,12037.2
+2009-11,Consumer,Professional and Private Individuals - Credit Cards,6038
+2009-11,Consumer,Professional and Private Individuals - Share Financing,2152.2
+2009-11,Consumer,Professional and Private Individuals - Others,40171.7
+2009-12,Business,"Agriculture, Mining and Quarrying",8995.3
+2009-12,Business,Manufacturing,51180
+2009-12,Business,Building and Construction,64605.2
+2009-12,Business,General Commerce,51490.1
+2009-12,Business,"Transport, Storage and Communication",63540.6
+2009-12,Business,Business Services,11417.6
+2009-12,Business,Financial Institutions,107890.3
+2009-12,Business,Professional and Private Individuals - Business Purposes,4021.4
+2009-12,Business,Others,46309.7
+2009-12,Consumer,Housing and Bridging Loans,94431.7
+2009-12,Consumer,Professional and Private Individuals - Car Loans,12001.7
+2009-12,Consumer,Professional and Private Individuals - Credit Cards,6162.9
+2009-12,Consumer,Professional and Private Individuals - Share Financing,2177.5
+2009-12,Consumer,Professional and Private Individuals - Others,40736.8
+2010-01,Business,"Agriculture, Mining and Quarrying",9765.8
+2010-01,Business,Manufacturing,50996.2
+2010-01,Business,Building and Construction,64906
+2010-01,Business,General Commerce,53336.1
+2010-01,Business,"Transport, Storage and Communication",64405.7
+2010-01,Business,Business Services,11466
+2010-01,Business,Financial Institutions,106921.7
+2010-01,Business,Professional and Private Individuals - Business Purposes,3988.6
+2010-01,Business,Others,46912
+2010-01,Consumer,Housing and Bridging Loans,95778.8
+2010-01,Consumer,Professional and Private Individuals - Car Loans,12017.7
+2010-01,Consumer,Professional and Private Individuals - Credit Cards,6053.3
+2010-01,Consumer,Professional and Private Individuals - Share Financing,1415.4
+2010-01,Consumer,Professional and Private Individuals - Others,41704.4
+2010-02,Business,"Agriculture, Mining and Quarrying",9672.1
+2010-02,Business,Manufacturing,51114.9
+2010-02,Business,Building and Construction,66816.4
+2010-02,Business,General Commerce,53350.9
+2010-02,Business,"Transport, Storage and Communication",64888
+2010-02,Business,Business Services,11612
+2010-02,Business,Financial Institutions,106740.1
+2010-02,Business,Professional and Private Individuals - Business Purposes,3976.7
+2010-02,Business,Others,47309.8
+2013-08,Business,Others,91364
+2010-02,Consumer,Professional and Private Individuals - Car Loans,12040.1
+2010-02,Consumer,Professional and Private Individuals - Credit Cards,6059.7
+2010-02,Consumer,Professional and Private Individuals - Share Financing,1280.9
+2010-02,Consumer,Professional and Private Individuals - Others,42317.1
+2010-03,Business,"Agriculture, Mining and Quarrying",9947.5
+2010-03,Business,Manufacturing,49724.1
+2010-03,Business,Building and Construction,65458.2
+2010-03,Business,General Commerce,56829
+2010-03,Business,"Transport, Storage and Communication",63937.4
+2010-03,Business,Business Services,11387.9
+2010-03,Business,Financial Institutions,111042.7
+2010-03,Business,Professional and Private Individuals - Business Purposes,4002
+2010-03,Business,Others,49298.6
+2010-03,Consumer,Housing and Bridging Loans,97919.1
+2010-03,Consumer,Professional and Private Individuals - Car Loans,11962.8
+2010-03,Consumer,Professional and Private Individuals - Credit Cards,5947.9
+2010-03,Consumer,Professional and Private Individuals - Share Financing,1306.5
+2010-03,Consumer,Professional and Private Individuals - Others,42004.8
+2010-04,Business,"Agriculture, Mining and Quarrying",10107.9
+2010-04,Business,Manufacturing,49216.8
+2010-04,Business,Building and Construction,64367.6
+2010-04,Business,General Commerce,58598.5
+2010-04,Business,"Transport, Storage and Communication",62899.8
+2010-04,Business,Business Services,11190.7
+2010-04,Business,Financial Institutions,114835.3
+2010-04,Business,Professional and Private Individuals - Business Purposes,3902
+2010-04,Business,Others,50046.7
+2010-04,Consumer,Housing and Bridging Loans,99503.9
+2010-04,Consumer,Professional and Private Individuals - Car Loans,11924.6
+2010-04,Consumer,Professional and Private Individuals - Credit Cards,5936.4
+2010-04,Consumer,Professional and Private Individuals - Share Financing,1378.7
+2010-04,Consumer,Professional and Private Individuals - Others,41334.1
+2010-05,Business,"Agriculture, Mining and Quarrying",10705.2
+2010-05,Business,Manufacturing,50590.3
+2010-05,Business,Building and Construction,64177.3
+2010-05,Business,General Commerce,62836.8
+2010-05,Business,"Transport, Storage and Communication",63842.4
+2010-05,Business,Business Services,11481.3
+2010-05,Business,Financial Institutions,114958
+2010-05,Business,Professional and Private Individuals - Business Purposes,4006.7
+2010-05,Business,Others,51620.2
+2010-05,Consumer,Housing and Bridging Loans,101404.9
+2010-05,Consumer,Professional and Private Individuals - Car Loans,11862.5
+2010-05,Consumer,Professional and Private Individuals - Credit Cards,5955
+2010-05,Consumer,Professional and Private Individuals - Share Financing,1248
+2010-05,Consumer,Professional and Private Individuals - Others,42912.5
+2010-06,Business,"Agriculture, Mining and Quarrying",11016.9
+2010-06,Business,Manufacturing,52520.2
+2010-06,Business,Building and Construction,64646.2
+2010-06,Business,General Commerce,63197.9
+2010-06,Business,"Transport, Storage and Communication",73054.8
+2010-06,Business,Business Services,12149.5
+2010-06,Business,Financial Institutions,116936.9
+2010-06,Business,Professional and Private Individuals - Business Purposes,3971.5
+2010-06,Business,Others,51808.4
+2010-06,Consumer,Housing and Bridging Loans,103987.9
+2010-06,Consumer,Professional and Private Individuals - Car Loans,11837
+2010-06,Consumer,Professional and Private Individuals - Credit Cards,6083.9
+2010-06,Consumer,Professional and Private Individuals - Share Financing,1246.6
+2010-06,Consumer,Professional and Private Individuals - Others,43601.9
+2010-07,Business,"Agriculture, Mining and Quarrying",10990.6
+2010-07,Business,Manufacturing,52613.6
+2010-07,Business,Building and Construction,65324.4
+2010-07,Business,General Commerce,64686.1
+2010-07,Business,"Transport, Storage and Communication",72511.8
+2010-07,Business,Business Services,12314.5
+2010-07,Business,Financial Institutions,113437.1
+2010-07,Business,Professional and Private Individuals - Business Purposes,4025.2
+2010-07,Business,Others,48977.6
+2010-07,Consumer,Housing and Bridging Loans,106507.5
+2010-07,Consumer,Professional and Private Individuals - Car Loans,11779
+2010-07,Consumer,Professional and Private Individuals - Credit Cards,6050.2
+2010-07,Consumer,Professional and Private Individuals - Share Financing,1265.5
+2010-07,Consumer,Professional and Private Individuals - Others,44005.8
+2010-08,Business,"Agriculture, Mining and Quarrying",10949.3
+2010-08,Business,Manufacturing,52882.3
+2010-08,Business,Building and Construction,66361.3
+2010-08,Business,General Commerce,63975.3
+2010-08,Business,"Transport, Storage and Communication",72299.2
+2010-08,Business,Business Services,11933.3
+2010-08,Business,Financial Institutions,114350.2
+2010-08,Business,Professional and Private Individuals - Business Purposes,4072
+2010-08,Business,Others,48848
+2010-08,Consumer,Housing and Bridging Loans,108012.8
+2010-08,Consumer,Professional and Private Individuals - Car Loans,11756.9
+2010-08,Consumer,Professional and Private Individuals - Credit Cards,6187.4
+2010-08,Consumer,Professional and Private Individuals - Share Financing,1266
+2010-08,Consumer,Professional and Private Individuals - Others,44752.9
+2010-09,Business,"Agriculture, Mining and Quarrying",11515
+2010-09,Business,Manufacturing,52837.6
+2010-09,Business,Building and Construction,67011.6
+2010-09,Business,General Commerce,63527.3
+2010-09,Business,"Transport, Storage and Communication",70776.9
+2010-09,Business,Business Services,12613.1
+2010-09,Business,Financial Institutions,113867.5
+2010-09,Business,Professional and Private Individuals - Business Purposes,4029.2
+2010-09,Business,Others,49152.3
+2010-09,Consumer,Housing and Bridging Loans,109891.4
+2010-09,Consumer,Professional and Private Individuals - Car Loans,11725.3
+2010-09,Consumer,Professional and Private Individuals - Credit Cards,6306.3
+2010-09,Consumer,Professional and Private Individuals - Share Financing,1350.9
+2010-09,Consumer,Professional and Private Individuals - Others,45289.1
+2010-10,Business,"Agriculture, Mining and Quarrying",11558.3
+2010-10,Business,Manufacturing,53701.9
+2010-10,Business,Building and Construction,66752.3
+2010-10,Business,General Commerce,64384.6
+2010-10,Business,"Transport, Storage and Communication",70858.1
+2010-10,Business,Business Services,8912.4
+2010-10,Business,Financial Institutions,114099.9
+2010-10,Business,Professional and Private Individuals - Business Purposes,4254.5
+2010-10,Business,Others,53270.6
+2010-10,Consumer,Housing and Bridging Loans,112215.5
+2010-10,Consumer,Professional and Private Individuals - Car Loans,11699.7
+2010-10,Consumer,Professional and Private Individuals - Credit Cards,6355.1
+2010-10,Consumer,Professional and Private Individuals - Share Financing,1463.5
+2010-10,Consumer,Professional and Private Individuals - Others,46011.6
+2010-11,Business,"Agriculture, Mining and Quarrying",11957.9
+2010-11,Business,Manufacturing,54837.2
+2010-11,Business,Building and Construction,68096.5
+2010-11,Business,General Commerce,67747.2
+2010-11,Business,"Transport, Storage and Communication",71568.9
+2010-11,Business,Business Services,9027.9
+2010-11,Business,Financial Institutions,115203.7
+2010-11,Business,Professional and Private Individuals - Business Purposes,4313.1
+2010-11,Business,Others,54388
+2010-11,Consumer,Housing and Bridging Loans,113994.1
+2010-11,Consumer,Professional and Private Individuals - Car Loans,11711
+2010-11,Consumer,Professional and Private Individuals - Credit Cards,6689.4
+2010-11,Consumer,Professional and Private Individuals - Share Financing,1464.1
+2010-11,Consumer,Professional and Private Individuals - Others,46829.7
+2010-12,Business,"Agriculture, Mining and Quarrying",12203.9
+2010-12,Business,Manufacturing,53926.4
+2010-12,Business,Building and Construction,68152.2
+2010-12,Business,General Commerce,68844.6
+2010-12,Business,"Transport, Storage and Communication",71046.2
+2010-12,Business,Business Services,8745.7
+2010-12,Business,Financial Institutions,116510.1
+2010-12,Business,Professional and Private Individuals - Business Purposes,4317.3
+2010-12,Business,Others,54788.2
+2010-12,Consumer,Housing and Bridging Loans,115424.5
+2010-12,Consumer,Professional and Private Individuals - Car Loans,11678.5
+2010-12,Consumer,Professional and Private Individuals - Credit Cards,6888.9
+2010-12,Consumer,Professional and Private Individuals - Share Financing,1579.2
+2010-12,Consumer,Professional and Private Individuals - Others,46950.1
+2011-01,Business,"Agriculture, Mining and Quarrying",12427.5
+2011-01,Business,Manufacturing,56453.8
+2011-01,Business,Building and Construction,67863.5
+2011-01,Business,General Commerce,73898.1
+2011-01,Business,"Transport, Storage and Communication",70763.3
+2011-01,Business,Business Services,8690.8
+2011-01,Business,Financial Institutions,119110.7
+2011-01,Business,Professional and Private Individuals - Business Purposes,4331.9
+2011-01,Business,Others,60081.1
+2011-01,Consumer,Housing and Bridging Loans,117256.6
+2011-01,Consumer,Professional and Private Individuals - Car Loans,11643.4
+2011-01,Consumer,Professional and Private Individuals - Credit Cards,6831.5
+2011-01,Consumer,Professional and Private Individuals - Share Financing,1622.2
+2011-01,Consumer,Professional and Private Individuals - Others,45574.5
+2011-02,Business,"Agriculture, Mining and Quarrying",13567.3
+2011-02,Business,Manufacturing,56587.9
+2011-02,Business,Building and Construction,68855.7
+2011-02,Business,General Commerce,77170.2
+2011-02,Business,"Transport, Storage and Communication",70215.9
+2011-02,Business,Business Services,8788
+2011-02,Business,Financial Institutions,119920.6
+2011-02,Business,Professional and Private Individuals - Business Purposes,4489.5
+2011-02,Business,Others,59429.9
+2011-02,Consumer,Housing and Bridging Loans,118360.3
+2011-02,Consumer,Professional and Private Individuals - Car Loans,11573
+2011-02,Consumer,Professional and Private Individuals - Credit Cards,6789.1
+2011-02,Consumer,Professional and Private Individuals - Share Financing,1622.2
+2011-02,Consumer,Professional and Private Individuals - Others,46290.9
+2011-03,Business,"Agriculture, Mining and Quarrying",14214
+2011-03,Business,Manufacturing,56300.7
+2011-03,Business,Building and Construction,69132
+2011-03,Business,General Commerce,77411.9
+2011-03,Business,"Transport, Storage and Communication",71033.7
+2011-03,Business,Business Services,8962.7
+2011-03,Business,Financial Institutions,122089.7
+2011-03,Business,Professional and Private Individuals - Business Purposes,4792.4
+2011-03,Business,Others,63426.2
+2011-03,Consumer,Housing and Bridging Loans,119796
+2011-03,Consumer,Professional and Private Individuals - Car Loans,11546
+2011-03,Consumer,Professional and Private Individuals - Credit Cards,6718.1
+2011-03,Consumer,Professional and Private Individuals - Share Financing,1579.5
+2011-03,Consumer,Professional and Private Individuals - Others,47214.5
+2011-04,Business,"Agriculture, Mining and Quarrying",14237.3
+2011-04,Business,Manufacturing,56282.8
+2011-04,Business,Building and Construction,70962.1
+2011-04,Business,General Commerce,79887
+2011-04,Business,"Transport, Storage and Communication",70438.3
+2011-04,Business,Business Services,9988
+2011-04,Business,Financial Institutions,121247.7
+2011-04,Business,Professional and Private Individuals - Business Purposes,5464.8
+2011-04,Business,Others,63138.5
+2011-04,Consumer,Housing and Bridging Loans,121204.9
+2011-04,Consumer,Professional and Private Individuals - Car Loans,11526.8
+2011-04,Consumer,Professional and Private Individuals - Credit Cards,6779.1
+2011-04,Consumer,Professional and Private Individuals - Share Financing,1652.4
+2011-04,Consumer,Professional and Private Individuals - Others,47353.4
+2011-05,Business,"Agriculture, Mining and Quarrying",15181.1
+2011-05,Business,Manufacturing,58183.6
+2011-05,Business,Building and Construction,72062
+2011-05,Business,General Commerce,82664.4
+2011-05,Business,"Transport, Storage and Communication",73167
+2011-05,Business,Business Services,10177.8
+2011-05,Business,Financial Institutions,121365.7
+2011-05,Business,Professional and Private Individuals - Business Purposes,5741.6
+2011-05,Business,Others,65320.5
+2011-05,Consumer,Housing and Bridging Loans,122891.5
+2011-05,Consumer,Professional and Private Individuals - Car Loans,11504.2
+2011-05,Consumer,Professional and Private Individuals - Credit Cards,6879.3
+2011-05,Consumer,Professional and Private Individuals - Share Financing,1648.5
+2011-05,Consumer,Professional and Private Individuals - Others,48942
+2011-06,Business,"Agriculture, Mining and Quarrying",14620.7
+2011-06,Business,Manufacturing,59656.6
+2011-06,Business,Building and Construction,70795.9
+2011-06,Business,General Commerce,82298
+2011-06,Business,"Transport, Storage and Communication",72953.4
+2011-06,Business,Business Services,9830.8
+2011-06,Business,Financial Institutions,126957.1
+2011-06,Business,Professional and Private Individuals - Business Purposes,5773.3
+2011-06,Business,Others,69576.2
+2011-06,Consumer,Housing and Bridging Loans,124493.8
+2011-06,Consumer,Professional and Private Individuals - Car Loans,11524.2
+2011-06,Consumer,Professional and Private Individuals - Credit Cards,7109.3
+2011-06,Consumer,Professional and Private Individuals - Share Financing,1577.9
+2011-06,Consumer,Professional and Private Individuals - Others,49985.6
+2011-07,Business,"Agriculture, Mining and Quarrying",14749.2
+2011-07,Business,Manufacturing,59505.2
+2011-07,Business,Building and Construction,72483.8
+2011-07,Business,General Commerce,85040.1
+2011-07,Business,"Transport, Storage and Communication",72921.4
+2011-07,Business,Business Services,10085.8
+2011-07,Business,Financial Institutions,130438.6
+2011-07,Business,Professional and Private Individuals - Business Purposes,5751.4
+2011-07,Business,Others,71452.7
+2011-07,Consumer,Housing and Bridging Loans,126081.1
+2011-07,Consumer,Professional and Private Individuals - Car Loans,11482.2
+2011-07,Consumer,Professional and Private Individuals - Credit Cards,7086
+2011-07,Consumer,Professional and Private Individuals - Share Financing,1562.4
+2011-07,Consumer,Professional and Private Individuals - Others,50581.6
+2011-08,Business,"Agriculture, Mining and Quarrying",15521.5
+2011-08,Business,Manufacturing,60810.8
+2011-08,Business,Building and Construction,75571.4
+2011-08,Business,General Commerce,88640.1
+2011-08,Business,"Transport, Storage and Communication",74224.5
+2011-08,Business,Business Services,10856.9
+2011-08,Business,Financial Institutions,131688.1
+2011-08,Business,Professional and Private Individuals - Business Purposes,6780.9
+2011-08,Business,Others,74178.3
+2011-08,Consumer,Housing and Bridging Loans,128134.2
+2011-08,Consumer,Professional and Private Individuals - Car Loans,11440.4
+2011-08,Consumer,Professional and Private Individuals - Credit Cards,7149.3
+2011-08,Consumer,Professional and Private Individuals - Share Financing,1368.4
+2011-08,Consumer,Professional and Private Individuals - Others,51264.8
+2011-09,Business,"Agriculture, Mining and Quarrying",17246.5
+2011-09,Business,Manufacturing,66665.3
+2011-09,Business,Building and Construction,76833.3
+2011-09,Business,General Commerce,97505.6
+2011-09,Business,"Transport, Storage and Communication",79999.4
+2011-09,Business,Business Services,11148.9
+2011-09,Business,Financial Institutions,135780.9
+2011-09,Business,Professional and Private Individuals - Business Purposes,7342.6
+2011-09,Business,Others,81400.6
+2011-09,Consumer,Housing and Bridging Loans,130007.6
+2011-09,Consumer,Professional and Private Individuals - Car Loans,11417.1
+2011-09,Consumer,Professional and Private Individuals - Credit Cards,7304.4
+2011-09,Consumer,Professional and Private Individuals - Share Financing,1449.1
+2011-09,Consumer,Professional and Private Individuals - Others,53610.8
+2011-10,Business,"Agriculture, Mining and Quarrying",18542.9
+2011-10,Business,Manufacturing,64597.9
+2011-10,Business,Building and Construction,76502
+2011-10,Business,General Commerce,96707
+2011-10,Business,"Transport, Storage and Communication",77558.6
+2011-10,Business,Business Services,10650.7
+2011-10,Business,Financial Institutions,133597.3
+2011-10,Business,Professional and Private Individuals - Business Purposes,4639.4
+2011-10,Business,Others,78172
+2011-10,Consumer,Housing and Bridging Loans,131450.5
+2011-10,Consumer,Professional and Private Individuals - Car Loans,11388.1
+2011-10,Consumer,Professional and Private Individuals - Credit Cards,7413.1
+2011-10,Consumer,Professional and Private Individuals - Share Financing,1377.5
+2011-10,Consumer,Professional and Private Individuals - Others,51198.9
+2011-11,Business,"Agriculture, Mining and Quarrying",19561.1
+2011-11,Business,Manufacturing,66782.1
+2011-11,Business,Building and Construction,78688.7
+2011-11,Business,General Commerce,101522.4
+2011-11,Business,"Transport, Storage and Communication",81352.5
+2011-11,Business,Business Services,11505.4
+2011-11,Business,Financial Institutions,136636.4
+2011-11,Business,Professional and Private Individuals - Business Purposes,5192.5
+2011-11,Business,Others,80477.6
+2011-11,Consumer,Housing and Bridging Loans,132885.3
+2011-11,Consumer,Professional and Private Individuals - Car Loans,11382.4
+2011-11,Consumer,Professional and Private Individuals - Credit Cards,7709.7
+2011-11,Consumer,Professional and Private Individuals - Share Financing,1441
+2011-11,Consumer,Professional and Private Individuals - Others,53224.2
+2011-12,Business,"Agriculture, Mining and Quarrying",20912.8
+2011-12,Business,Manufacturing,68425.5
+2011-12,Business,Building and Construction,81871.3
+2011-12,Business,General Commerce,98417.1
+2011-12,Business,"Transport, Storage and Communication",82170.4
+2011-12,Business,Business Services,10732.1
+2011-12,Business,Financial Institutions,138979.8
+2011-12,Business,Professional and Private Individuals - Business Purposes,5619.7
+2011-12,Business,Others,77695.7
+2011-12,Consumer,Housing and Bridging Loans,134513.5
+2011-12,Consumer,Professional and Private Individuals - Car Loans,12743.9
+2011-12,Consumer,Professional and Private Individuals - Credit Cards,7881.6
+2011-12,Consumer,Professional and Private Individuals - Share Financing,1463.6
+2011-12,Consumer,Professional and Private Individuals - Others,55020.1
+2012-01,Business,"Agriculture, Mining and Quarrying",21084.9
+2012-01,Business,Manufacturing,67353.4
+2012-01,Business,Building and Construction,83118.5
+2012-01,Business,General Commerce,97985.9
+2012-01,Business,"Transport, Storage and Communication",79997.9
+2012-01,Business,Business Services,10799.6
+2012-01,Business,Financial Institutions,137464.4
+2012-01,Business,Professional and Private Individuals - Business Purposes,5762.1
+2012-01,Business,Others,71256.7
+2012-01,Consumer,Housing and Bridging Loans,136054
+2012-01,Consumer,Professional and Private Individuals - Car Loans,12569.2
+2012-01,Consumer,Professional and Private Individuals - Credit Cards,7785.6
+2012-01,Consumer,Professional and Private Individuals - Share Financing,1424.8
+2012-01,Consumer,Professional and Private Individuals - Others,54656.3
+2012-02,Business,"Agriculture, Mining and Quarrying",21255.3
+2012-02,Business,Manufacturing,69392
+2012-02,Business,Building and Construction,84160
+2012-02,Business,General Commerce,100521.1
+2012-02,Business,"Transport, Storage and Communication",79640.8
+2012-02,Business,Business Services,10209.9
+2012-02,Business,Financial Institutions,138869.3
+2012-02,Business,Professional and Private Individuals - Business Purposes,6922.3
+2012-02,Consumer,Housing and Bridging Loans,137189.5
+2012-02,Consumer,Professional and Private Individuals - Car Loans,12568.9
+2012-02,Consumer,Professional and Private Individuals - Credit Cards,7682
+2012-02,Consumer,Professional and Private Individuals - Share Financing,1476
+2012-02,Consumer,Professional and Private Individuals - Others,54709.4
+2012-03,Business,"Agriculture, Mining and Quarrying",22788.6
+2012-03,Business,Manufacturing,69243.2
+2012-03,Business,Building and Construction,84869.3
+2012-03,Business,General Commerce,103868.7
+2012-03,Business,"Transport, Storage and Communication",78573.9
+2012-03,Business,Business Services,10594.5
+2012-03,Business,Financial Institutions,142792.3
+2012-03,Business,Professional and Private Individuals - Business Purposes,7111.6
+2012-03,Business,Others,73452.8
+2012-03,Consumer,Housing and Bridging Loans,138212.9
+2012-03,Consumer,Professional and Private Individuals - Car Loans,12597.9
+2012-03,Consumer,Professional and Private Individuals - Credit Cards,7709.1
+2012-03,Consumer,Professional and Private Individuals - Share Financing,1489.3
+2012-03,Consumer,Professional and Private Individuals - Others,56562.3
+2012-04,Business,"Agriculture, Mining and Quarrying",21044.8
+2012-04,Business,Manufacturing,69940.2
+2012-04,Business,Building and Construction,85791.2
+2012-04,Business,General Commerce,101327.6
+2012-04,Business,"Transport, Storage and Communication",78278.7
+2012-04,Business,Business Services,10785.5
+2012-04,Business,Financial Institutions,138443
+2012-04,Business,Professional and Private Individuals - Business Purposes,7412.1
+2012-04,Business,Others,76305.6
+2012-04,Consumer,Housing and Bridging Loans,139764.6
+2012-04,Consumer,Professional and Private Individuals - Car Loans,12597.4
+2012-04,Consumer,Professional and Private Individuals - Credit Cards,7764.9
+2012-04,Consumer,Professional and Private Individuals - Share Financing,1358.3
+2012-04,Consumer,Professional and Private Individuals - Others,56644.3
+2012-05,Business,"Agriculture, Mining and Quarrying",22056.5
+2012-05,Business,Manufacturing,73566.3
+2012-05,Business,Building and Construction,86628.1
+2012-05,Business,General Commerce,108203.2
+2012-05,Business,"Transport, Storage and Communication",81633.1
+2012-05,Business,Business Services,10108.8
+2012-05,Business,Financial Institutions,139467.5
+2012-05,Business,Professional and Private Individuals - Business Purposes,7803.5
+2012-05,Business,Others,78354.3
+2012-05,Consumer,Housing and Bridging Loans,141098.4
+2012-05,Consumer,Professional and Private Individuals - Car Loans,12605.3
+2012-05,Consumer,Professional and Private Individuals - Credit Cards,7891
+2012-05,Consumer,Professional and Private Individuals - Share Financing,1302
+2012-05,Consumer,Professional and Private Individuals - Others,58658.2
+2012-06,Business,"Agriculture, Mining and Quarrying",21713.5
+2012-06,Business,Manufacturing,76618
+2012-06,Business,Building and Construction,87257.9
+2012-06,Business,General Commerce,110322.5
+2012-06,Business,"Transport, Storage and Communication",80846.2
+2012-06,Business,Business Services,10081
+2012-06,Business,Financial Institutions,141259.9
+2012-06,Business,Professional and Private Individuals - Business Purposes,7841.4
+2012-06,Business,Others,77442.1
+2012-06,Consumer,Housing and Bridging Loans,143604.2
+2012-06,Consumer,Professional and Private Individuals - Car Loans,12624.1
+2012-06,Consumer,Professional and Private Individuals - Credit Cards,8161.9
+2012-06,Consumer,Professional and Private Individuals - Share Financing,1248
+2012-06,Consumer,Professional and Private Individuals - Others,58460.9
+2012-07,Business,"Agriculture, Mining and Quarrying",21053.4
+2012-07,Business,Manufacturing,76000.2
+2012-07,Business,Building and Construction,87940.7
+2012-07,Business,General Commerce,108920.9
+2012-07,Business,"Transport, Storage and Communication",79023
+2012-07,Business,Business Services,9984.5
+2012-07,Business,Financial Institutions,141392.3
+2012-07,Business,Professional and Private Individuals - Business Purposes,8224.5
+2012-07,Business,Others,76913.7
+2012-07,Consumer,Housing and Bridging Loans,145385.4
+2012-07,Consumer,Professional and Private Individuals - Car Loans,12634
+2012-07,Consumer,Professional and Private Individuals - Credit Cards,8131.4
+2012-07,Consumer,Professional and Private Individuals - Share Financing,1042.9
+2012-07,Consumer,Professional and Private Individuals - Others,60076.3
+2012-08,Business,"Agriculture, Mining and Quarrying",22582.9
+2012-08,Business,Manufacturing,79682.3
+2012-08,Business,Building and Construction,87907
+2012-08,Business,General Commerce,111158.1
+2012-08,Business,"Transport, Storage and Communication",79311.6
+2012-08,Business,Business Services,10448.8
+2012-08,Business,Financial Institutions,145016.3
+2012-08,Business,Professional and Private Individuals - Business Purposes,8332.8
+2012-08,Consumer,Housing and Bridging Loans,147413.4
+2012-08,Consumer,Professional and Private Individuals - Car Loans,12629.2
+2012-08,Consumer,Professional and Private Individuals - Credit Cards,8217.4
+2012-08,Consumer,Professional and Private Individuals - Share Financing,1056.8
+2012-08,Consumer,Professional and Private Individuals - Others,61045.9
+2012-09,Business,"Agriculture, Mining and Quarrying",21642.4
+2012-09,Business,Manufacturing,77168.9
+2012-09,Business,Building and Construction,88932.6
+2012-09,Business,General Commerce,111561.8
+2012-09,Business,"Transport, Storage and Communication",77571
+2012-09,Business,Business Services,9481.4
+2012-09,Business,Financial Institutions,147960.6
+2012-09,Business,Professional and Private Individuals - Business Purposes,8607.2
+2012-09,Business,Others,76982.5
+2012-09,Consumer,Housing and Bridging Loans,149108.1
+2012-09,Consumer,Professional and Private Individuals - Car Loans,12595.3
+2012-09,Consumer,Professional and Private Individuals - Credit Cards,8439.9
+2012-09,Consumer,Professional and Private Individuals - Share Financing,1099.7
+2012-09,Consumer,Professional and Private Individuals - Others,61816.9
+2012-10,Business,"Agriculture, Mining and Quarrying",21944.7
+2012-10,Business,Manufacturing,77180.4
+2012-10,Business,Building and Construction,90034.2
+2012-10,Business,General Commerce,111339.6
+2012-10,Business,"Transport, Storage and Communication",78023.7
+2012-10,Business,Business Services,9422
+2012-10,Business,Financial Institutions,150688.2
+2012-10,Business,Professional and Private Individuals - Business Purposes,8658.5
+2012-10,Business,Others,76956.7
+2012-10,Consumer,Housing and Bridging Loans,151411.3
+2012-10,Consumer,Professional and Private Individuals - Car Loans,12582.4
+2012-10,Consumer,Professional and Private Individuals - Credit Cards,8450.9
+2012-10,Consumer,Professional and Private Individuals - Share Financing,1092.9
+2012-10,Consumer,Professional and Private Individuals - Others,63088
+2012-11,Business,"Agriculture, Mining and Quarrying",22915.2
+2012-11,Business,Manufacturing,78713.2
+2012-11,Business,Building and Construction,91371
+2012-11,Business,General Commerce,111648.6
+2012-11,Business,"Transport, Storage and Communication",77384.5
+2012-11,Business,Business Services,9370
+2012-11,Business,Financial Institutions,149557.2
+2012-11,Business,Professional and Private Individuals - Business Purposes,8590.9
+2012-11,Business,Others,77355.7
+2012-11,Consumer,Housing and Bridging Loans,153730.6
+2012-11,Consumer,Professional and Private Individuals - Car Loans,12551.2
+2012-11,Consumer,Professional and Private Individuals - Credit Cards,8746.4
+2012-11,Consumer,Professional and Private Individuals - Share Financing,1067.5
+2012-11,Consumer,Professional and Private Individuals - Others,63805
+2012-12,Business,"Agriculture, Mining and Quarrying",21680.4
+2012-12,Business,Manufacturing,74807
+2012-12,Business,Building and Construction,93386.2
+2012-12,Business,General Commerce,114712.2
+2012-12,Business,"Transport, Storage and Communication",78067.7
+2012-12,Business,Business Services,9803.7
+2012-12,Business,Financial Institutions,153641.5
+2012-12,Business,Professional and Private Individuals - Business Purposes,8193.5
+2012-12,Business,Others,82884.2
+2012-12,Consumer,Housing and Bridging Loans,155016.7
+2012-12,Consumer,Professional and Private Individuals - Car Loans,12523.5
+2012-12,Consumer,Professional and Private Individuals - Credit Cards,8963.9
+2012-12,Consumer,Professional and Private Individuals - Share Financing,1099.7
+2012-12,Consumer,Professional and Private Individuals - Others,64413.1
+2013-01,Business,"Agriculture, Mining and Quarrying",21569.8
+2013-01,Business,Manufacturing,78346.7
+2013-01,Business,Building and Construction,94863.3
+2013-01,Business,General Commerce,120611.9
+2013-01,Business,"Transport, Storage and Communication",79598.2
+2013-01,Business,Business Services,9947.2
+2013-01,Business,Financial Institutions,160557
+2013-01,Business,Professional and Private Individuals - Business Purposes,8796.5
+2013-01,Business,Others,86077.7
+2013-01,Consumer,Housing and Bridging Loans,157165.5
+2013-01,Consumer,Professional and Private Individuals - Car Loans,12497.8
+2013-01,Consumer,Professional and Private Individuals - Credit Cards,8846
+2013-01,Consumer,Professional and Private Individuals - Share Financing,1277.8
+2013-01,Consumer,Professional and Private Individuals - Others,65660.2
+2013-02,Business,"Agriculture, Mining and Quarrying",22852.9
+2013-02,Business,Manufacturing,80143.2
+2013-02,Business,Building and Construction,97883.2
+2013-02,Business,General Commerce,122224.8
+2013-02,Business,"Transport, Storage and Communication",79216.1
+2013-02,Business,Business Services,10265.4
+2013-02,Business,Financial Institutions,161298.9
+2013-02,Business,Professional and Private Individuals - Business Purposes,8735
+2013-02,Consumer,Housing and Bridging Loans,158139.7
+2013-02,Consumer,Professional and Private Individuals - Car Loans,12434
+2013-02,Consumer,Professional and Private Individuals - Credit Cards,8852.5
+2013-02,Consumer,Professional and Private Individuals - Share Financing,1339.5
+2013-02,Consumer,Professional and Private Individuals - Others,66150.2
+2013-03,Business,"Agriculture, Mining and Quarrying",23307.8
+2013-03,Business,Manufacturing,87404.3
+2013-03,Business,Building and Construction,99563.9
+2013-03,Business,General Commerce,128544.3
+2013-03,Business,"Transport, Storage and Communication",80100.3
+2013-03,Business,Business Services,10064.7
+2013-03,Business,Financial Institutions,159625.1
+2013-03,Business,Professional and Private Individuals - Business Purposes,8918.3
+2013-03,Business,Others,86978.7
+2013-03,Consumer,Housing and Bridging Loans,159580.7
+2013-03,Consumer,Professional and Private Individuals - Car Loans,12325.2
+2013-03,Consumer,Professional and Private Individuals - Credit Cards,8722.3
+2013-03,Consumer,Professional and Private Individuals - Share Financing,1337
+2013-03,Consumer,Professional and Private Individuals - Others,67349.8
+2013-04,Business,"Agriculture, Mining and Quarrying",23903.4
+2013-04,Business,Manufacturing,88887.4
+2013-04,Business,Building and Construction,101413.8
+2013-04,Business,General Commerce,132437
+2013-04,Business,"Transport, Storage and Communication",79573.3
+2013-04,Business,Business Services,10024.5
+2013-04,Business,Financial Institutions,157828.8
+2013-04,Business,Professional and Private Individuals - Business Purposes,9655.1
+2013-04,Business,Others,85927
+2013-04,Consumer,Housing and Bridging Loans,161003.8
+2013-04,Consumer,Professional and Private Individuals - Car Loans,12212.8
+2013-04,Consumer,Professional and Private Individuals - Credit Cards,8778.1
+2013-04,Consumer,Professional and Private Individuals - Share Financing,1381.6
+2013-04,Consumer,Professional and Private Individuals - Others,67097.5
+2013-05,Business,"Agriculture, Mining and Quarrying",23351.6
+2013-05,Business,Manufacturing,88847.8
+2013-05,Business,Building and Construction,102895.2
+2013-05,Business,General Commerce,141115
+2013-05,Business,"Transport, Storage and Communication",80119.8
+2013-05,Business,Business Services,10265.7
+2013-05,Business,Financial Institutions,162045.5
+2013-05,Business,Professional and Private Individuals - Business Purposes,9928.2
+2013-05,Business,Others,88486.2
+2013-05,Consumer,Housing and Bridging Loans,161687.8
+2013-05,Consumer,Professional and Private Individuals - Car Loans,12097.3
+2013-05,Consumer,Professional and Private Individuals - Credit Cards,8919
+2013-05,Consumer,Professional and Private Individuals - Share Financing,1414.2
+2013-05,Consumer,Professional and Private Individuals - Others,69310.4
+2013-06,Business,"Agriculture, Mining and Quarrying",23496.8
+2013-06,Business,Manufacturing,89073.3
+2013-06,Business,Building and Construction,104230.6
+2013-06,Business,General Commerce,142469.2
+2013-06,Business,"Transport, Storage and Communication",81334.4
+2013-06,Business,Business Services,10284.8
+2013-06,Business,Financial Institutions,158385.9
+2013-06,Business,Professional and Private Individuals - Business Purposes,10196.2
+2013-06,Business,Others,88973.2
+2013-06,Consumer,Housing and Bridging Loans,162939.1
+2013-06,Consumer,Professional and Private Individuals - Car Loans,11936.2
+2013-06,Consumer,Professional and Private Individuals - Credit Cards,9216.4
+2013-06,Consumer,Professional and Private Individuals - Share Financing,1432.7
+2013-06,Consumer,Professional and Private Individuals - Others,69954.3
+2013-07,Business,"Agriculture, Mining and Quarrying",24603.2
+2013-07,Business,Manufacturing,89234.2
+2013-07,Business,Building and Construction,104105.8
+2013-07,Business,General Commerce,144897.9
+2013-07,Business,"Transport, Storage and Communication",77820.3
+2013-07,Business,Business Services,11281.7
+2013-07,Business,Financial Institutions,161779.3
+2013-07,Business,Professional and Private Individuals - Business Purposes,10517.8
+2013-07,Business,Others,91385.6
+2013-07,Consumer,Housing and Bridging Loans,164338.8
+2013-07,Consumer,Professional and Private Individuals - Car Loans,11697.9
+2013-07,Consumer,Professional and Private Individuals - Credit Cards,9122.7
+2013-07,Consumer,Professional and Private Individuals - Share Financing,1462.4
+2013-07,Consumer,Professional and Private Individuals - Others,70325.4
+2013-08,Business,"Agriculture, Mining and Quarrying",25934.7
+2013-08,Business,Manufacturing,87216.5
+2013-08,Business,Building and Construction,105741.2
+2013-08,Business,General Commerce,145839.8
+2013-08,Business,"Transport, Storage and Communication",78872.8
+2013-08,Business,Business Services,11461.3
+2013-08,Business,Financial Institutions,163763.4
+2013-08,Business,Professional and Private Individuals - Business Purposes,10836.5
+2013-08,Consumer,Housing and Bridging Loans,165754.4
+2013-08,Consumer,Professional and Private Individuals - Car Loans,11476.2
+2013-08,Consumer,Professional and Private Individuals - Credit Cards,9240.5
+2013-08,Consumer,Professional and Private Individuals - Share Financing,1490.1
+2013-08,Consumer,Professional and Private Individuals - Others,70785.9
+2013-09,Business,"Agriculture, Mining and Quarrying",26195
+2013-09,Business,Manufacturing,85967.5
+2013-09,Business,Building and Construction,106512.5
+2013-09,Business,General Commerce,147852.1
+2013-09,Business,"Transport, Storage and Communication",77679.2
+2013-09,Business,Business Services,11717.4
+2013-09,Business,Financial Institutions,169539.3
+2013-09,Business,Professional and Private Individuals - Business Purposes,11294.1
+2013-09,Business,Others,94232.5
+2013-09,Consumer,Housing and Bridging Loans,166893.1
+2013-09,Consumer,Professional and Private Individuals - Car Loans,11302.9
+2013-09,Consumer,Professional and Private Individuals - Credit Cards,9331.5
+2013-09,Consumer,Professional and Private Individuals - Share Financing,1462.8
+2013-09,Consumer,Professional and Private Individuals - Others,72842.9
+2013-10,Business,"Agriculture, Mining and Quarrying",26960
+2013-10,Business,Manufacturing,84839.1
+2013-10,Business,Building and Construction,107455.9
+2013-10,Business,General Commerce,150457.1
+2013-10,Business,"Transport, Storage and Communication",76906.7
+2013-10,Business,Business Services,11741.3
+2013-10,Business,Financial Institutions,171829.4
+2013-10,Business,Professional and Private Individuals - Business Purposes,12211.7
+2013-10,Business,Others,94073.3
+2013-10,Consumer,Housing and Bridging Loans,168011.9
+2013-10,Consumer,Professional and Private Individuals - Car Loans,11097.7
+2013-10,Consumer,Professional and Private Individuals - Credit Cards,9438.2
+2013-10,Consumer,Professional and Private Individuals - Share Financing,1344.5
+2013-10,Consumer,Professional and Private Individuals - Others,76424.6
+2013-11,Business,"Agriculture, Mining and Quarrying",29210.2
+2013-11,Business,Manufacturing,85837.9
+2013-11,Business,Building and Construction,107797.8
+2013-11,Business,General Commerce,158213.1
+2013-11,Business,"Transport, Storage and Communication",77706.1
+2013-11,Business,Business Services,12649.8
+2013-11,Business,Financial Institutions,178577.9
+2013-11,Business,Professional and Private Individuals - Business Purposes,12649.2
+2013-11,Business,Others,100359.6
+2013-11,Consumer,Housing and Bridging Loans,168983
+2013-11,Consumer,Professional and Private Individuals - Car Loans,10890
+2013-11,Consumer,Professional and Private Individuals - Credit Cards,9695.8
+2013-11,Consumer,Professional and Private Individuals - Share Financing,1312.3
+2013-11,Consumer,Professional and Private Individuals - Others,80759.4
+2013-12,Business,"Agriculture, Mining and Quarrying",29850
+2013-12,Business,Manufacturing,85971.1
+2013-12,Business,Building and Construction,108700.2
+2013-12,Business,General Commerce,162172.8
+2013-12,Business,"Transport, Storage and Communication",77234
+2013-12,Business,Business Services,14880.7
+2013-12,Business,Financial Institutions,180813.9
+2013-12,Business,Professional and Private Individuals - Business Purposes,12601.3
+2013-12,Business,Others,106872.8
+2013-12,Consumer,Housing and Bridging Loans,169692.4
+2013-12,Consumer,Professional and Private Individuals - Car Loans,10693.3
+2013-12,Consumer,Professional and Private Individuals - Credit Cards,9941.1
+2013-12,Consumer,Professional and Private Individuals - Share Financing,1315.9
+2013-12,Consumer,Professional and Private Individuals - Others,81410.3
+2014-01,Business,"Agriculture, Mining and Quarrying",31673.4
+2014-01,Business,Manufacturing,88512.1
+2014-01,Business,Building and Construction,110242.6
+2014-01,Business,General Commerce,165074.7
+2014-01,Business,"Transport, Storage and Communication",78266.8
+2014-01,Business,Business Services,14953.1
+2014-01,Business,Financial Institutions,176856.7
+2014-01,Business,Professional and Private Individuals - Business Purposes,13207
+2014-01,Business,Others,116584.5
+2014-01,Consumer,Housing and Bridging Loans,170489.4
+2014-01,Consumer,Professional and Private Individuals - Car Loans,10503.9
+2014-01,Consumer,Professional and Private Individuals - Credit Cards,9700.7
+2014-01,Consumer,Professional and Private Individuals - Share Financing,1309.9
+2014-01,Consumer,Professional and Private Individuals - Others,83265.1
+2014-02,Business,"Agriculture, Mining and Quarrying",31822.7
+2014-02,Business,Manufacturing,90830.6
+2014-02,Business,Building and Construction,109735.7
+2014-02,Business,General Commerce,164991.2
+2014-02,Business,"Transport, Storage and Communication",77254.3
+2014-02,Business,Business Services,14999.3
+2014-02,Business,Financial Institutions,180563.4
+2014-02,Business,Professional and Private Individuals - Business Purposes,13537.5
+2014-02,Business,Others,120404.2
+2014-02,Consumer,Housing and Bridging Loans,171360.7
+2014-02,Consumer,Professional and Private Individuals - Car Loans,10307.8
+2014-02,Consumer,Professional and Private Individuals - Credit Cards,9539.1
+2014-02,Consumer,Professional and Private Individuals - Share Financing,1311.9
+2014-02,Consumer,Professional and Private Individuals - Others,84078.9
+2014-03,Business,"Agriculture, Mining and Quarrying",32197.4
+2014-03,Business,Manufacturing,90214.4
+2014-03,Business,Building and Construction,109052.5
+2014-03,Business,General Commerce,173668.3
+2014-03,Business,"Transport, Storage and Communication",76836.9
+2014-03,Business,Business Services,14809.9
+2014-03,Business,Financial Institutions,186672.7
+2014-03,Business,Professional and Private Individuals - Business Purposes,14221.8
+2014-03,Business,Others,116375.1
+2014-03,Consumer,Housing and Bridging Loans,172061.8
+2014-03,Consumer,Professional and Private Individuals - Car Loans,10113.3
+2014-03,Consumer,Professional and Private Individuals - Credit Cards,9466.9
+2014-03,Consumer,Professional and Private Individuals - Share Financing,1282.2
+2014-03,Consumer,Professional and Private Individuals - Others,88804
+2014-04,Business,"Agriculture, Mining and Quarrying",30668.9
+2014-04,Business,Manufacturing,91634.2
+2014-04,Business,Building and Construction,110995
+2014-04,Business,General Commerce,173159.9
+2014-04,Business,"Transport, Storage and Communication",76589.3
+2014-04,Business,Business Services,14929.2
+2014-04,Business,Financial Institutions,188808.7
+2014-04,Business,Professional and Private Individuals - Business Purposes,14482.1
+2014-04,Business,Others,119094.1
+2014-04,Consumer,Housing and Bridging Loans,172683.9
+2014-04,Consumer,Professional and Private Individuals - Car Loans,9906.9
+2014-04,Consumer,Professional and Private Individuals - Credit Cards,9566
+2014-04,Consumer,Professional and Private Individuals - Share Financing,1256.6
+2014-04,Consumer,Professional and Private Individuals - Others,89778.6
+2014-05,Business,"Agriculture, Mining and Quarrying",31354.2
+2014-05,Business,Manufacturing,92009.5
+2014-05,Business,Building and Construction,111938.1
+2014-05,Business,General Commerce,177448
+2014-05,Business,"Transport, Storage and Communication",76161.9
+2014-05,Business,Business Services,14146.4
+2014-05,Business,Financial Institutions,191153.8
+2014-05,Business,Professional and Private Individuals - Business Purposes,14769.9
+2014-05,Business,Others,119864.3
+2014-05,Consumer,Housing and Bridging Loans,173898.9
+2014-05,Consumer,Professional and Private Individuals - Car Loans,9719.3
+2014-05,Consumer,Professional and Private Individuals - Credit Cards,9658.9
+2014-05,Consumer,Professional and Private Individuals - Share Financing,1193.1
+2014-05,Consumer,Professional and Private Individuals - Others,89934.6
+2014-06,Business,"Agriculture, Mining and Quarrying",32529.4
+2014-06,Business,Manufacturing,90790.8
+2014-06,Business,Building and Construction,113395.8
+2014-06,Business,General Commerce,174139.2
+2014-06,Business,"Transport, Storage and Communication",77879.9
+2014-06,Business,Business Services,14917.6
+2014-06,Business,Financial Institutions,191448.3
+2014-06,Business,Professional and Private Individuals - Business Purposes,15945.3
+2014-06,Business,Others,125046.2
+2014-06,Consumer,Housing and Bridging Loans,175059.6
+2014-06,Consumer,Professional and Private Individuals - Car Loans,9556.4
+2014-06,Consumer,Professional and Private Individuals - Credit Cards,9849.9
+2014-06,Consumer,Professional and Private Individuals - Share Financing,1242
+2014-06,Consumer,Professional and Private Individuals - Others,90918.4
+2014-07,Business,"Agriculture, Mining and Quarrying",32691.6
+2014-07,Business,Manufacturing,89786.7
+2014-07,Business,Building and Construction,114366.6
+2014-07,Business,General Commerce,173587
+2014-07,Business,"Transport, Storage and Communication",76404.4
+2014-07,Business,Business Services,16211.6
+2014-07,Business,Financial Institutions,192144.5
+2014-07,Business,Professional and Private Individuals - Business Purposes,16171.3
+2014-07,Business,Others,122607.7
+2014-07,Consumer,Housing and Bridging Loans,175809.8
+2014-07,Consumer,Professional and Private Individuals - Car Loans,9365.3
+2014-07,Consumer,Professional and Private Individuals - Credit Cards,9747.5
+2014-07,Consumer,Professional and Private Individuals - Share Financing,1267.5
+2014-07,Consumer,Professional and Private Individuals - Others,91627.7
+2014-08,Business,"Agriculture, Mining and Quarrying",33605.6
+2014-08,Business,Manufacturing,89993.2
+2014-08,Business,Building and Construction,116616.3
+2014-08,Business,General Commerce,172265.3
+2014-08,Business,"Transport, Storage and Communication",78778.2
+2014-08,Business,Business Services,15541.5
+2014-08,Business,Financial Institutions,192089.2
+2014-08,Business,Professional and Private Individuals - Business Purposes,16045.6
+2014-08,Business,Others,121945.1
+2014-08,Consumer,Housing and Bridging Loans,176712.5
+2014-08,Consumer,Professional and Private Individuals - Car Loans,9213.6
+2014-08,Consumer,Professional and Private Individuals - Credit Cards,9792.2
+2014-08,Consumer,Professional and Private Individuals - Share Financing,1182
+2014-08,Consumer,Professional and Private Individuals - Others,92121
+2014-09,Business,"Agriculture, Mining and Quarrying",35582.8
+2014-09,Business,Manufacturing,89129.8
+2014-09,Business,Building and Construction,116326.1
+2014-09,Business,General Commerce,173872.4
+2014-09,Business,"Transport, Storage and Communication",79913.9
+2014-09,Business,Business Services,15676.2
+2014-09,Business,Financial Institutions,193147.3
+2014-09,Business,Professional and Private Individuals - Business Purposes,16294.6
+2014-09,Business,Others,120720.6
+2014-09,Consumer,Housing and Bridging Loans,177655.9
+2014-09,Consumer,Professional and Private Individuals - Car Loans,9054.7
+2014-09,Consumer,Professional and Private Individuals - Credit Cards,9985.4
+2014-09,Consumer,Professional and Private Individuals - Share Financing,1186
+2014-09,Consumer,Professional and Private Individuals - Others,93297.7
+2014-10,Business,"Agriculture, Mining and Quarrying",35951.8
+2014-10,Business,Manufacturing,88229.4
+2014-10,Business,Building and Construction,120552.7
+2014-10,Business,General Commerce,171602.4
+2014-10,Business,"Transport, Storage and Communication",78787.7
+2014-10,Business,Business Services,15906.2
+2014-10,Business,Financial Institutions,197005.9
+2014-10,Business,Professional and Private Individuals - Business Purposes,17320.6
+2014-10,Business,Others,115399.1
+2014-10,Consumer,Housing and Bridging Loans,178581.8
+2014-10,Consumer,Professional and Private Individuals - Car Loans,8898.9
+2014-10,Consumer,Professional and Private Individuals - Credit Cards,9998.2
+2014-10,Consumer,Professional and Private Individuals - Share Financing,1112.3
+2014-10,Consumer,Professional and Private Individuals - Others,93317.5
+2014-11,Business,"Agriculture, Mining and Quarrying",36507.7
+2014-11,Business,Manufacturing,91264.2
+2014-11,Business,Building and Construction,122833.3
+2014-11,Business,General Commerce,174139.8
+2014-11,Business,"Transport, Storage and Communication",81165.2
+2014-11,Business,Business Services,16694.6
+2014-11,Business,Financial Institutions,201709.7
+2014-11,Business,Professional and Private Individuals - Business Purposes,17772.5
+2014-11,Business,Others,112337.3
+2014-11,Consumer,Housing and Bridging Loans,179324.3
+2014-11,Consumer,Professional and Private Individuals - Car Loans,8778
+2014-11,Consumer,Professional and Private Individuals - Credit Cards,10219.1
+2014-11,Consumer,Professional and Private Individuals - Share Financing,1130.1
+2014-11,Consumer,Professional and Private Individuals - Others,94141.7
+2014-12,Business,"Agriculture, Mining and Quarrying",35865.2
+2014-12,Business,Manufacturing,89083.6
+2014-12,Business,Building and Construction,124725.4
+2014-12,Business,General Commerce,170897.4
+2014-12,Business,"Transport, Storage and Communication",84210.9
+2014-12,Business,Business Services,17105
+2014-12,Business,Financial Institutions,199053.6
+2014-12,Business,Professional and Private Individuals - Business Purposes,17965.1
+2014-12,Business,Others,114788.8
+2014-12,Consumer,Housing and Bridging Loans,180860.4
+2014-12,Consumer,Professional and Private Individuals - Car Loans,8641.8
+2014-12,Consumer,Professional and Private Individuals - Credit Cards,10422.4
+2014-12,Consumer,Professional and Private Individuals - Share Financing,1113.4
+2014-12,Consumer,Professional and Private Individuals - Others,94167.7
+2015-01,Business,"Agriculture, Mining and Quarrying",37433.2
+2015-01,Business,Manufacturing,93755.2
+2015-01,Business,Building and Construction,125575.8
+2015-01,Business,General Commerce,168475.5
+2015-01,Business,"Transport, Storage and Communication",84470.7
+2015-01,Business,Business Services,16216
+2015-01,Business,Financial Institutions,203546.5
+2015-01,Business,Professional and Private Individuals - Business Purposes,18192.7
+2015-01,Business,Others,115871.5
+2015-01,Consumer,Housing and Bridging Loans,182095.7
+2015-01,Consumer,Professional and Private Individuals - Car Loans,8528.6
+2015-01,Consumer,Professional and Private Individuals - Credit Cards,10222.3
+2015-01,Consumer,Professional and Private Individuals - Share Financing,1216.1
+2015-01,Consumer,Professional and Private Individuals - Others,95521.5
+2015-02,Business,"Agriculture, Mining and Quarrying",37767.3
+2015-02,Business,Manufacturing,94293.6
+2015-02,Business,Building and Construction,125081.1
+2015-02,Business,General Commerce,167190
+2015-02,Business,"Transport, Storage and Communication",84583.3
+2015-02,Business,Business Services,16479.4
+2015-02,Business,Financial Institutions,203437.1
+2015-02,Business,Professional and Private Individuals - Business Purposes,18062.3
+2015-02,Business,Others,116361
+2015-02,Consumer,Housing and Bridging Loans,181721.9
+2015-02,Consumer,Professional and Private Individuals - Car Loans,8428.5
+2015-02,Consumer,Professional and Private Individuals - Credit Cards,10166.4
+2015-02,Consumer,Professional and Private Individuals - Share Financing,1187.7
+2015-02,Consumer,Professional and Private Individuals - Others,96877.9
+2015-03,Business,"Agriculture, Mining and Quarrying",37973.4
+2015-03,Business,Manufacturing,95081.3
+2015-03,Business,Building and Construction,126204.6
+2015-03,Business,General Commerce,166608.8
+2015-03,Business,"Transport, Storage and Communication",85239.8
+2015-03,Business,Business Services,17166.1
+2015-03,Business,Financial Institutions,203220.3
+2015-03,Business,Professional and Private Individuals - Business Purposes,18091.8
+2015-03,Business,Others,120084.4
+2015-03,Consumer,Housing and Bridging Loans,182461.4
+2015-03,Consumer,Professional and Private Individuals - Car Loans,8289.8
+2015-03,Consumer,Professional and Private Individuals - Credit Cards,9943.4
+2015-03,Consumer,Professional and Private Individuals - Share Financing,1130.7
+2015-03,Consumer,Professional and Private Individuals - Others,97663
+2015-04,Business,"Agriculture, Mining and Quarrying",36909.4
+2015-04,Business,Manufacturing,90736.9
+2015-04,Business,Building and Construction,125985
+2015-04,Business,General Commerce,163024.2
+2015-04,Business,"Transport, Storage and Communication",81718.3
+2015-04,Business,Business Services,16366.6
+2015-04,Business,Financial Institutions,198660.2
+2015-04,Business,Professional and Private Individuals - Business Purposes,18226.1
+2015-04,Business,Others,115515.3
+2015-04,Consumer,Housing and Bridging Loans,181989.1
+2015-04,Consumer,Professional and Private Individuals - Car Loans,8198.8
+2015-04,Consumer,Professional and Private Individuals - Credit Cards,9606.6
+2015-04,Consumer,Professional and Private Individuals - Share Financing,1127.3
+2015-04,Consumer,Professional and Private Individuals - Others,95446
+2015-05,Business,"Agriculture, Mining and Quarrying",37730.4
+2015-05,Business,Manufacturing,91129.6
+2015-05,Business,Building and Construction,126501.1
+2015-05,Business,General Commerce,168152.5
+2015-05,Business,"Transport, Storage and Communication",80503.9
+2015-05,Business,Business Services,16160.6
+2015-05,Business,Financial Institutions,201930.5
+2015-05,Business,Professional and Private Individuals - Business Purposes,18507.8
+2015-05,Business,Others,114597
+2015-05,Consumer,Housing and Bridging Loans,182031.6
+2015-05,Consumer,Professional and Private Individuals - Car Loans,8110.9
+2015-05,Consumer,Professional and Private Individuals - Credit Cards,9636.5
+2015-05,Consumer,Professional and Private Individuals - Share Financing,1197.2
+2015-05,Consumer,Professional and Private Individuals - Others,96515.9
+2015-06,Business,"Agriculture, Mining and Quarrying",36370.7
+2015-06,Business,Manufacturing,90161.6
+2015-06,Business,Building and Construction,140800.3
+2015-06,Business,General Commerce,171617.5
+2015-06,Business,"Transport, Storage and Communication",80953.1
+2015-06,Business,Business Services,16237
+2015-06,Business,Financial Institutions,192890.9
+2015-06,Business,Professional and Private Individuals - Business Purposes,18226.7
+2015-06,Business,Others,113585.3
+2015-06,Consumer,Housing and Bridging Loans,183056
+2015-06,Consumer,Professional and Private Individuals - Car Loans,8085.2
+2015-06,Consumer,Professional and Private Individuals - Credit Cards,9737.2
+2015-06,Consumer,Professional and Private Individuals - Share Financing,1191
+2015-06,Consumer,Professional and Private Individuals - Others,98415.2
+2015-07,Business,"Agriculture, Mining and Quarrying",37463.2
+2015-07,Business,Manufacturing,90604.5
+2015-07,Business,Building and Construction,142812
+2015-07,Business,General Commerce,174990.6
+2015-07,Business,"Transport, Storage and Communication",82462.1
+2015-07,Business,Business Services,17248.3
+2015-07,Business,Financial Institutions,191065.5
+2015-07,Business,Professional and Private Individuals - Business Purposes,18006.3
+2015-07,Business,Others,114883.2
+2015-07,Consumer,Housing and Bridging Loans,184336.6
+2015-07,Consumer,Professional and Private Individuals - Car Loans,8004.3
+2015-07,Consumer,Professional and Private Individuals - Credit Cards,9812.9
+2015-07,Consumer,Professional and Private Individuals - Share Financing,1158.2
+2015-07,Consumer,Professional and Private Individuals - Others,98940.6
+2015-08,Business,"Agriculture, Mining and Quarrying",38975.3
+2015-08,Business,Manufacturing,89345.9
+2015-08,Business,Building and Construction,144749.8
+2015-08,Business,General Commerce,175910.8
+2015-08,Business,"Transport, Storage and Communication",84863.5
+2015-08,Business,Business Services,18793.9
+2015-08,Business,Financial Institutions,196384.4
+2015-08,Business,Professional and Private Individuals - Business Purposes,18059.6
+2015-08,Business,Others,117699.2
+2015-08,Consumer,Housing and Bridging Loans,184783.5
+2015-08,Consumer,Professional and Private Individuals - Car Loans,7943.6
+2015-08,Consumer,Professional and Private Individuals - Credit Cards,9820
+2015-08,Consumer,Professional and Private Individuals - Share Financing,1022.6
+2015-08,Consumer,Professional and Private Individuals - Others,100036.1

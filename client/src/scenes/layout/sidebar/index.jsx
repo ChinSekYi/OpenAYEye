@@ -17,6 +17,7 @@ import {
   ReceiptOutlined,
   TimelineOutlined,
   WavesOutlined,
+  CandlestickChartOutlined,
 } from "@mui/icons-material";
 import avatar from "../../../assets/images/avatar.png";
 import logo from "../../../assets/images/logo.png";
@@ -233,12 +234,12 @@ const SideBar = () => {
             colors={colors}
             icon={<BarChartOutlined />}
           />
-          <Item
+          {/* <Item
             title="Pie Chart"
             path="/pie"
             colors={colors}
             icon={<DonutLargeOutlined />}
-          />
+          /> */}
           <Item
             title="Line Chart"
             path="/line"
@@ -246,17 +247,23 @@ const SideBar = () => {
             icon={<TimelineOutlined />}
           />
           <Item
+            title="Box Plot"
+            path="/boxplot" // change path
+            colors={colors}
+            icon={<CandlestickChartOutlined />} // change icon
+          />
+          {/* <Item
             title="Geography Chart"
             path="/geography"
             colors={colors}
             icon={<MapOutlined />}
-          />
-          <Item
+          /> */}
+          {/* <Item
             title="Stream Chart"
             path="/stream"
             colors={colors}
             icon={<WavesOutlined />}
-          />
+          /> */}
         </Menu>
       </Box>
     </Sidebar>
