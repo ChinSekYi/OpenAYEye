@@ -13,6 +13,7 @@ from sklearn.preprocessing import FunctionTransformer, MinMaxScaler
 functions starting with df_ can generate a processed dataframe directly
 """
 
+
 # function to separate features and target
 def get_Xy(df):
     X = df.iloc[:, 0 : len(df.columns) - 1]
@@ -51,6 +52,7 @@ def check_skewness(df):
     skewed_features = skewness[abs(skewness) > 0.5]
     num_skewed_features = len(skewed_features)
     return num_skewed_features
+
 
 # function for feature selection
 def drop_high_corr(X, threshold=0.7):
