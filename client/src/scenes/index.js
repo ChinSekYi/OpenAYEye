@@ -8,6 +8,7 @@ import Form from "./form";
 import Calendar from "./calendar";
 import Bar from "./bar";
 import Line from "./line";
+import BoxPlot from "./boxplot";
 import Pie from "./pie";
 import Stream from "./stream";
 import FAQ from "./faq";
@@ -24,6 +25,7 @@ export {
   Calendar,
   Bar,
   Line,
+  BoxPlot,
   Pie,
   Stream,
   FAQ,
