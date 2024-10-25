@@ -8,3 +8,7 @@ FROM users;
 USE transact;
 SELECT *
 FROM credit_cards;
+
+USE transact;
+SELECT *
+FROM transactions;
