@@ -18,5 +18,6 @@ SELECT *
 FROM engagement;
 
 USE transact;
-SELECT *
-FROM santender;
+SELECT san.customer_id, COUNT(san.credit_card)
+FROM santender san
+GROUP BY san.customer_id;
