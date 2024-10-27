@@ -4,10 +4,6 @@ roi_data_pipeline.py
 This module cleans and merges two raw datasets for ROI model training. It handles configuration, ingestion, 
 and transformation of data files, defining classes for data paths and ingestion processes.
 
-Classes:
-- DataIngestionConfig: Configuration class for data paths.
-- DataIngestion: Class for ingesting and cleaning data.
-
 Methods:
 - __init__(): Initializes with default configuration.
 - clean_dataset1(df): Cleans dataset 1 by removing duplicates and calculating the click-to-revenue ratio.
@@ -15,8 +11,8 @@ Methods:
 - initiate_data_ingestion(): Reads, cleans, and combines datasets for further processing.
 
 Output:
-- Creates 7 new CSV files for training and testing data: 
-  - Combined data
+- Creates 8 new CSV files for training and testing data: 
+  - Training and testing sets for combined data
   - Training and testing sets for clicks
   - Training and testing sets for leads
   - Training and testing sets for orders
@@ -174,21 +170,23 @@ class DataIngestion:
             output_path = self.ingestion_config.combined_data_path 
             df_combined.to_csv(output_path, index=False)
             logging.info("Combined data saved successfully.")
-            logging.info(f"Data ingestion and transformation for ROI model completed successfully. Combined data saved at: {output_path}")
+            logging.info(f"Data ingestion and transformation for ROI model completed successfully. Combined data saved at: {output_path}.")
             
             # Save training and test data
-            logging.info("Train test split initiated")
+            logging.info("Train test split initiated.")
             train_set, test_set = train_test_split(df_combined, test_size=0.2, random_state=42)
 
+            train_output_path = self.ingestion_config.train_data_path
             train_set.to_csv(
-                self.ingestion_config.train_data_path, index=False, header=True
+                train_output_path, index=False, header=True
             )
 
+            test_output_path = self.ingestion_config.test_data_path
             test_set.to_csv(
-                self.ingestion_config.test_data_path, index=False, header=True
+                test_output_path, index=False, header=True
             )
 
-            logging.info("Training and test data is saved successfully at: {train_data_path} and {test_data_path}")
+            logging.info(f"Training and test data is saved successfully at: {train_output_path} and {test_output_path}.")
 
             # Save training and test data for clicks
             clicks_train_set = train_set[['category', 'cost', 'clicks']]
@@ -215,12 +213,9 @@ class DataIngestion:
                 self.ingestion_config.test_data_path,
             )
         
-        
         except Exception as e:
             logging.error(f"Error during data ingestion: {str(e)}")
             raise CustomException(e, sys)
-
-
 
 
 

@@ -15,6 +15,8 @@ Usage:
 
 import os
 import sys
+import joblib
+
 import numpy as np
 import pandas as pd
 from dataclasses import dataclass
@@ -38,6 +40,7 @@ class ModelTrainerConfig:
     """
 
     trained_model_file_path = os.path.join("artifacts", "clicks_model.pkl")
+    encoder_path = os.path.join("artifacts", "onehot_encoder.pkl")
 
 class ModelTrainer:
     """
@@ -83,11 +86,22 @@ class ModelTrainer:
             encoder = OneHotEncoder(sparse_output=False)
             X_encoded = encoder.fit_transform(X[['category']])
             
+            # Get feature names for the one-hot encoded columns
+            encoded_columns = encoder.get_feature_names_out(['category'])
+            cost_column = ['cost']
+
+            # Combine column names
+            column_names = list(encoded_columns) + cost_column
+
             # Concatenate the encoded category with cost
             X_transformed = np.concatenate([X_encoded, X[['cost']].values], axis=1)
 
+            # Convert to DataFrame with proper column names
+            X_transformed_df = pd.DataFrame(X_transformed, columns=column_names)
+
             # Split the data into train and test sets
-            X_train, X_test, y_train, y_test = train_test_split(X_transformed, y, test_size=0.2, random_state=42)
+            logging.info("Train test split initiated in Model trainer")
+            X_train, X_test, y_train, y_test = train_test_split(X_transformed_df, y, test_size=0.2, random_state=42)
 
             # Define and train the RandomForestRegressor
             model = RandomForestRegressor(n_estimators=100, random_state=42)
@@ -119,6 +133,9 @@ class ModelTrainer:
                 file_path=self.model_trainer_config.trained_model_file_path,
                 obj=model,
             )
+
+            # Save the fitted OneHotEncoder to a .pkl file
+            joblib.dump(encoder, self.model_trainer_config.encoder_path)  # Save the encoder
 
             return output  # Return structured output
 

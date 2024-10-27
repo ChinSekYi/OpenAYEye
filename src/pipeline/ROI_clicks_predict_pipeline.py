@@ -8,12 +8,14 @@ It includes preprocessing, model training, evaluation, and prediction functions.
 
 import os
 import sys
+import joblib
 
 import pandas as pd
+import numpy as np
 
 from src.exception import CustomException
 from src.utils import load_object
-
+from sklearn.preprocessing import OneHotEncoder
 
 class PredictPipeline:
     """
@@ -35,13 +37,28 @@ class PredictPipeline:
         """
         try:
             model_path = os.path.join("artifacts", "clicks_model.pkl")
-            preprocessor_path = os.path.join("artifacts", "preprocessor.pkl")
-            model = load_object(file_path=model_path)
-            preprocessor = load_object(file_path=preprocessor_path)
+            encoder_path = os.path.join("artifacts", "onehot_encoder.pkl")
 
-            data_scaled = preprocessor.transform(features)
-            pred_result = model.predict(data_scaled)
-            return pred_result
+            model = load_object(file_path=model_path)
+            encoder = joblib.load(encoder_path) # Load pre-fitted OneHotEncoder
+            
+            # Apply the pre-fitted encoder to the new data
+            X_encoded = encoder.transform(features[['category']])  # Use transform, not fit_transform
+
+            # Get the expected encoded feature names from the encoder
+            encoded_columns = encoder.get_feature_names_out(['category'])
+            
+            # Concatenate the encoded category columns with the 'cost' column
+            X_transformed = np.concatenate([X_encoded, features[['cost']].values], axis=1)
+            
+            # Create a DataFrame to ensure column names match the expected structure
+            column_names = list(encoded_columns) + ['cost']
+            X_transformed_df = pd.DataFrame(X_transformed, columns=column_names)
+            
+            # Predict using the trained model
+            pred_result = model.predict(X_transformed_df)
+
+            return pred_result[0]
 
         except Exception as e:
             raise CustomException(e, sys)
@@ -87,8 +104,8 @@ if __name__ == "__main__":
 
     custom_data = CustomData(**customer_metrics)
     features_df = custom_data.get_data_as_dataframe()
-    print(features_df)
 
     pipeline = PredictPipeline()
     predictions = pipeline.predict(features_df)
-    print("Predicted Results:", predictions)
+    print(f'Input:\n {features_df}\n')
+    print("Predicted Results (Number of clicks):\n", predictions)

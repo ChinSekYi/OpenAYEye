@@ -45,7 +45,7 @@ def load_object(file_path):
         object: Loaded object.
     """
     try:
-        print(file_path)
+        # print(file_path)
         with open(file_path, "rb") as file_obj:
             return dill.load(file_obj)
 
