@@ -15,7 +15,6 @@ import numpy as np
 
 from src.exception import CustomException
 from src.utils import load_object
-from sklearn.preprocessing import OneHotEncoder
 
 class PredictPipeline:
     """
@@ -61,7 +60,7 @@ class PredictPipeline:
             return pred_result[0]
 
         except Exception as e:
-            raise CustomException(e, sys)
+            raise CustomException(e, sys) from e
 
 
 class CustomData:
@@ -87,7 +86,7 @@ class CustomData:
             return pd.DataFrame(custom_data_input)
 
         except Exception as e:
-            raise CustomException(e, sys)
+            raise CustomException(e, sys) from e
 
 
 # Example Usage
