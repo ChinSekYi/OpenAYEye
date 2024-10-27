@@ -1,12 +1,8 @@
 """
 roi_data_pipeline.py
 
-For cleaning and merging of 2 raw datasets. The output from this file is used for roi model training. 
-
-This module handles the configuration, ingestion, and transformation of training, testing, and raw data files.
-It defines a DataIngestionConfig class for setting default paths and imports necessary components
-for data transformation, model training, exception handling, logging, and printing bankruptcy 
-outcomes.
+This module cleans and merges two raw datasets for ROI model training. It handles configuration, ingestion, 
+and transformation of data files, defining classes for data paths and ingestion processes.
 
 Classes:
 - DataIngestionConfig: Configuration class for data paths.
@@ -18,14 +14,18 @@ Methods:
 - clean_dataset2(df): Cleans dataset 2 by dropping null columns and calculating leads.
 - initiate_data_ingestion(): Reads, cleans, and combines datasets for further processing.
 
+Output:
+- Creates 7 new CSV files for training and testing data: 
+  - Combined data
+  - Training and testing sets for clicks
+  - Training and testing sets for leads
+  - Training and testing sets for orders
+
 Note:
-- This module imports components from src.components for data transformation (DataTransformation,
-  DataTransformationConfig), model training (ModelTrainer, ModelTrainerConfig), exception handling
-  (CustomException), logging (logging), and utility functions for printing bankruptcy outcomes
-  (print_bankruptcy_outcome).
-- It uses standard library modules such as os, sys, dataclasses, and pathlib, as well as third-party
-  modules like sklearn.model_selection.train_test_split.
+- Imports necessary components for data transformation, model training, exception handling, logging, and printing outcomes.
+- Utilizes standard libraries and third-party modules like sklearn for data handling.
 """
+
 
 
 import os
@@ -57,6 +57,15 @@ class DataIngestionConfig:
     combined_data_path: str = os.path.join("artifacts", "roi_model_data.csv")
     train_data_path: str = os.path.join("artifacts", "roi_model_training_data.csv")
     test_data_path: str = os.path.join("artifacts", "roi_model_test_data.csv")
+
+    clicks_train_data_path: str = os.path.join("artifacts", "roi_clicks_training_data.csv")
+    clicks_test_data_path: str = os.path.join("artifacts", "roi_clicks_test_data.csv")
+
+    leads_train_data_path: str = os.path.join("artifacts", "roi_leads_training_data.csv")
+    leads_test_data_path: str = os.path.join("artifacts", "roi_leads_test_data.csv")
+
+    orders_train_data_path: str = os.path.join("artifacts", "roi_orders_training_data.csv")
+    orders_test_data_path: str = os.path.join("artifacts", "roi_orders_test_data.csv")
 
 
 class DataIngestion:
@@ -101,6 +110,7 @@ class DataIngestion:
         # Drop specified columns
         df_cleaned = df_cleaned.drop(columns=["month", "day", "campaign_number", "user_engagement", "banner"])
 
+        #TODO: remove impressions and post_click_conversions
         df_cleaned = df_cleaned.rename(columns={"placement": "category",
                                                 "displays": "impressions",
                                                 "post_click_conversions": "orders"})
@@ -128,6 +138,8 @@ class DataIngestion:
             'abc': 'media'
         })
 
+        df_cleaned = df_cleaned.drop(columns=['click_to_revenue_ratio', 'impressions'])
+
         return df_cleaned
 
     def initiate_data_ingestion(self):
@@ -151,7 +163,7 @@ class DataIngestion:
             df2_cleaned = self.clean_dataset2(df2)
 
             # Combine datasets
-            common_columns = ["category", "impressions", "cost", "clicks", "leads", "orders", "revenue", "click_to_revenue_ratio"]
+            common_columns = ["category", "cost", "clicks", "leads", "orders", "revenue"]
 
             df_combined = pd.concat([
                 df1_cleaned[common_columns].reset_index(drop=True), 
@@ -164,6 +176,7 @@ class DataIngestion:
             logging.info("Combined data saved successfully.")
             logging.info(f"Data ingestion and transformation for ROI model completed successfully. Combined data saved at: {output_path}")
             
+            # Save training and test data
             logging.info("Train test split initiated")
             train_set, test_set = train_test_split(df_combined, test_size=0.2, random_state=42)
 
@@ -176,6 +189,26 @@ class DataIngestion:
             )
 
             logging.info("Training and test data is saved successfully at: {train_data_path} and {test_data_path}")
+
+            # Save training and test data for clicks
+            clicks_train_set = train_set[['category', 'cost', 'clicks']]
+            clicks_test_set = test_set[['category', 'cost', 'clicks']]
+            clicks_train_set.to_csv(self.ingestion_config.clicks_train_data_path, index=False)
+            clicks_test_set.to_csv(self.ingestion_config.clicks_test_data_path, index=False)
+
+            # Save training and test data for leads
+            leads_train_set = train_set[['category', 'cost', 'leads']]
+            leads_test_set = test_set[['category', 'cost', 'leads']]
+            leads_train_set.to_csv(self.ingestion_config.leads_train_data_path, index=False)
+            leads_test_set.to_csv(self.ingestion_config.leads_test_data_path, index=False)
+
+            # Save training and test data for orders
+            orders_train_set = train_set[['category', 'cost', 'orders']]
+            orders_test_set = test_set[['category', 'cost', 'orders']]
+            orders_train_set.to_csv(self.ingestion_config.orders_train_data_path, index=False)
+            orders_test_set.to_csv(self.ingestion_config.orders_test_data_path, index=False)
+            
+            logging.info("Training and test data for clicks, leads and orders is saved successfully.")
 
             return (
                 self.ingestion_config.train_data_path,
