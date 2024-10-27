@@ -35,12 +35,12 @@ class PredictPipeline:
         """
         try:
             model_path = os.path.join("artifacts", "model.pkl")
-            preprocessor_path = os.path.join("artifacts", "preprocessor.pkl")
+            #preprocessor_path = os.path.join("artifacts", "preprocessor.pkl")
             model = load_object(file_path=model_path)
-            preprocessor = load_object(file_path=preprocessor_path)
+            #preprocessor = load_object(file_path=preprocessor_path)
 
-            data_scaled = preprocessor.transform(features)
-            pred_result = model.predict(data_scaled)
+            #data_scaled = preprocessor.transform(features)
+            pred_result = model.predict(features)
             return pred_result
 
         except Exception as e:

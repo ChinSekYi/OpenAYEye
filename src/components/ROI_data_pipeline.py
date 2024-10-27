@@ -1,6 +1,8 @@
 """
 roi_data_pipeline.py
 
+For cleaning and merging of 2 raw datasets. The output from this file is used for roi model training. 
+
 This module handles the configuration, ingestion, and transformation of training, testing, and raw data files.
 It defines a DataIngestionConfig class for setting default paths and imports necessary components
 for data transformation, model training, exception handling, logging, and printing bankruptcy 
@@ -53,6 +55,8 @@ class DataIngestionConfig:
     dataset1_path: str = os.path.join("data", "Marketing.csv")
     dataset2_path: str = os.path.join("data", "online_advertising_performance_data.csv")
     combined_data_path: str = os.path.join("artifacts", "roi_model_data.csv")
+    train_data_path: str = os.path.join("artifacts", "roi_model_training_data.csv")
+    test_data_path: str = os.path.join("artifacts", "roi_model_test_data.csv")
 
 
 class DataIngestion:
@@ -160,7 +164,24 @@ class DataIngestion:
             logging.info("Combined data saved successfully.")
             logging.info(f"Data ingestion and transformation for ROI model completed successfully. Combined data saved at: {output_path}")
             
-            return output_path
+            logging.info("Train test split initiated")
+            train_set, test_set = train_test_split(df_combined, test_size=0.2, random_state=42)
+
+            train_set.to_csv(
+                self.ingestion_config.train_data_path, index=False, header=True
+            )
+
+            test_set.to_csv(
+                self.ingestion_config.test_data_path, index=False, header=True
+            )
+
+            logging.info("Training and test data is saved successfully at: {train_data_path} and {test_data_path}")
+
+            return (
+                self.ingestion_config.train_data_path,
+                self.ingestion_config.test_data_path,
+            )
+        
         
         except Exception as e:
             logging.error(f"Error during data ingestion: {str(e)}")
@@ -173,4 +194,4 @@ class DataIngestion:
 if __name__ == "__main__":
     ingestion = DataIngestion()
     combined_data_path = ingestion.initiate_data_ingestion()
-    print(f"Combined data saved at: {combined_data_path}")
+    print(f"Training and test data saved at: {combined_data_path}")
