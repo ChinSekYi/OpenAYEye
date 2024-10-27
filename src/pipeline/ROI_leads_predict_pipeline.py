@@ -19,7 +19,7 @@ from sklearn.preprocessing import OneHotEncoder
 
 class PredictPipeline:
     """
-    Implements a pipeline for predicting financial metrics using various models.
+    Implements a pipeline for predicting number of leads based on category and cost.
     """
 
     def __init__(self):
@@ -70,11 +70,6 @@ class CustomData:
     """
 
     def __init__(self, **kwargs):
-        """
-        Initialize CustomData with the provided financial metrics.
-        
-        Accepts keyword arguments for the financial metrics.
-        """
         self.__dict__.update(kwargs)
 
     def get_data_as_dataframe(self):
@@ -82,7 +77,7 @@ class CustomData:
         Converts the attributes of CustomData into a pandas DataFrame.
 
         Returns:
-            pd.DataFrame: A DataFrame where each row represents a financial metric attribute.
+            pd.DataFrame: A DataFrame where each row represents a [category, cost].
         """
         try:
             custom_data_input = {

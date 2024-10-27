@@ -1,6 +1,6 @@
 ## Python pipeline usages:
 
-ROI_data_pipeline:
+`ROI_data_pipeline`:
 - Used to ingest and transform raw data
 - Combines two cleaned datasets into one combined dataset
 - Split combined dataset into train and test data
@@ -8,8 +8,8 @@ ROI_data_pipeline:
 - Produces: 8 datasets in artifacts folder
 - Output: Train and test data file path
 
-
-ROI_clicks_model_trainer:
+---
+`ROI_clicks_model_trainer`:
 - Model training on `roi_clicks_train_data.csv`
 - Output: r2_score, mse_values  
     ``` 
@@ -18,11 +18,11 @@ ROI_clicks_model_trainer:
     ```
 
 
-ROI_clicks_data_pipeline_for_new_data.py:
+`ROI_clicks_data_pipeline_for_new_data.py`:
 - Perform transformation on new data features (category and cost)
 - Output: Training and test array, preprocessor object 
 
-ROI_clicks_predict_pipeline:
+`ROI_clicks_predict_pipeline`:
 - Enter category and cost
 - Output: Numbber of predicted clicks   
     ```
@@ -32,3 +32,6 @@ ROI_clicks_predict_pipeline:
 
     Predicted Results (Number of clicks):
     ```
+
+
+The same 3 files above is done for leads and orders too. 
