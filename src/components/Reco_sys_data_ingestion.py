@@ -48,7 +48,7 @@ class DataIngestionConfig:
 
     train_data_path: str = os.path.join("artifacts", "reco_sys_train_data.csv")
     test_data_path: str = os.path.join("artifacts", "reco_sys_test_data.csv")
-    raw_data_path: str = os.path.join("artifacts", "data.csv")
+    raw_data_path: str = os.path.join("data", "santander_train_small.csv")
 
 
 class DataIngestion:
@@ -83,16 +83,11 @@ class DataIngestion:
 
         Raises:
         - CustomException: If an error occurs during data ingestion process.
-
-        Usage:
-        >>> train_data_path, test_data_path = ingestion.initiate_data_ingestion()
         """
-        logging.info("Entered the data ingestion method or component")
+        logging.info("Entered the data ingestion component for Recommendation system.")
         try:
-            df = pd.read_csv(
-                "notebook/data/3year.csv"
-            )  # change this to read from other database
             logging.info("Read the dataset as dataframe")
+            df = pd.read_csv(self.ingestion_config.raw_data_path)
 
             os.makedirs(
                 os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True

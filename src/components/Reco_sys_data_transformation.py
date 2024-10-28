@@ -1,11 +1,4 @@
 """
-ROI_leads_data_pipeline_for_new_data.py
-
-This pipeline is used when new data is fed into the frontend.
-Output: preprocessor object
-"""
-
-"""
 Module for data transformation operations including preprocessing and saving the 
 preprocessor object.
 """
@@ -18,11 +11,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import FunctionTransformer, MinMaxScaler
 
-
+from notebook.data_cleaning import AsDiscrete, map_class_labels
 # Custom imports
 from src.exception import CustomException
 from src.logger import logging
@@ -38,7 +31,7 @@ class DataTransformationConfig:
     Configuration class for data transformation operations.
     """
 
-    preprocessor_ob_file_path = os.path.join("artifacts", "ROI_leads_preprocessor.pkl")
+    preprocessor_ob_file_path = os.path.join("artifacts", "reco_sys_preprocessor.pkl")
 
 
 class DataTransformation:
@@ -63,32 +56,32 @@ class DataTransformation:
         Returns the preprocessing object.
         """
         try:
-            # Define categorical and numerical columns
-            categorical_columns = ["category"]
-            numerical_columns = ["cost"]
-
-            # Define the categorical pipeline with one-hot encoding
-            cat_pipeline = Pipeline(
+            numerical_columns = list(range(0, 64))
+            categorical_columns = [64]
+            
+            num_pipeline = Pipeline(
                 steps=[
-                    ("onehot", OneHotEncoder(sparse_output=False, handle_unknown="ignore"))
+                    ("imputer", SimpleImputer(strategy="median")),
+                    ("scaler", MinMaxScaler()),
                 ]
             )
+            cat_pipeline = Pipeline(
+                ("label_mapping", FunctionTransformer(map_class_labels)),
+            )
 
-            # Combine pipelines in ColumnTransformer
+            logging.info(f"Categorical columns: {categorical_columns}")
+            logging.info(f"Numerical columns: {numerical_columns}")
+
             preprocessor = ColumnTransformer(
                 transformers=[
+                    ("num_pipeline", num_pipeline, numerical_columns),
                     ("cat_pipeline", cat_pipeline, categorical_columns),
-                    ("num_pipeline", "passthrough", numerical_columns)
                 ]
             )
-            
-            #TODO: edit preprocessor
-            #preprocessor = ColumnTransformer(transformers=[])
 
             return preprocessor
 
         except Exception as e:
-            logging.error(f"Error in data transformation pipeline: {e}")
             raise CustomException(e, sys) from e
 
     def initiate_data_transformation(self, train_path, test_path):
@@ -112,27 +105,28 @@ class DataTransformation:
 
             preprocessing_obj = self.get_data_transformer_object()
 
-            logging.info(f"Train DataFrame columns: {train_df.columns.tolist()}")
-            logging.info(f"Test DataFrame columns: {test_df.columns.tolist()}")
+            # numerical_columns = list(range(0, 64))
+            target_column_index = 64
 
+            logging.info("Renaming columns")
+            column_names = pd.read_csv("src/components/column_names.txt", header=None)
+            train_df.columns = list(column_names[0])
+            test_df.columns = list(column_names[0])
 
-            input_feature_columns = ['category', 'cost']  # Input features
-            target_columns = ['leads']  # Targets
+            input_feature_train_df = train_df.drop(
+                train_df.columns[target_column_index], axis=1, inplace=False
+            )
+            target_feature_train_df = train_df.iloc[:, target_column_index]
 
-            # Separate the features and target variables
-            input_feature_train_df = train_df[input_feature_columns]
-            target_feature_train_df = train_df[target_columns]
-
-            input_feature_test_df = test_df[input_feature_columns]
-            target_feature_test_df = test_df[target_columns]
-
-            logging.info(f"Input feature training DataFrame shape: {input_feature_train_df.shape}")
-            logging.info(f"Input feature testing DataFrame shape: {input_feature_test_df.shape}")
+            input_feature_test_df = test_df.drop(
+                train_df.columns[target_column_index], axis=1, inplace=False
+            )
+            target_feature_test_df = test_df.iloc[:, target_column_index]
 
             logging.info(
                 "Applying preprocessing object on training dataframe and testing dataframe"
             )
-            
+
             input_feature_train_arr = preprocessing_obj.fit_transform(
                 input_feature_train_df
             )
@@ -157,26 +151,4 @@ class DataTransformation:
             )
 
         except Exception as e:
-            logging.error(f"An error occurred: {str(e)}")
             raise CustomException(e, sys) from e
-
-if __name__ == "__main__":
-    train_data_path = 'artifacts/roi_model_train_data.csv'
-    test_data_path = 'artifacts/roi_model_test_data.csv'
-
-    # Initialize the DataTransformation class
-    data_transformation = DataTransformation()
-
-    try:
-        # Call the initiate_data_transformation method and capture the output
-        train_array, test_array, preprocessor_path = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
-        
-        # Print the results
-        # print("Training Data Array:\n", train_array)
-        # print("Testing Data Array:\n", test_array)
-        print("Preprocessor object saved at:\n", preprocessor_path)
-
-    except CustomException as ce:
-        print(f"Custom Exception occurred: {ce}")
-    except Exception as e:
-        print(f"An error occurred: {e}")

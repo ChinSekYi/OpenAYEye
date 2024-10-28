@@ -38,7 +38,7 @@ class DataTransformationConfig:
     Configuration class for data transformation operations.
     """
 
-    preprocessor_ob_file_path = os.path.join("artifacts", "preprocessor.pkl")
+    preprocessor_ob_file_path = os.path.join("artifacts", "ROI_clicks_preprocessor.pkl")
 
 
 class DataTransformation:
@@ -161,7 +161,7 @@ class DataTransformation:
             raise CustomException(e, sys) from e
 
 if __name__ == "__main__":
-    train_data_path = 'artifacts/roi_model_training_data.csv'
+    train_data_path = 'artifacts/roi_model_train_data.csv'
     test_data_path = 'artifacts/roi_model_test_data.csv'
 
     # Initialize the DataTransformation class
