@@ -10,11 +10,11 @@ import { mockScatterData as data } from "../data/mockData";
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-const Scatter = ({data}) => {
+const Scatter = ({isDashboard = false}) => {
     const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 
-    <ResponsiveScatterPlot
+    return <ResponsiveScatterPlot
         data={data}
         margin={{ top: 60, right: 140, bottom: 70, left: 90 }}
         xScale={{ type: 'linear', min: 0, max: 'auto' }}

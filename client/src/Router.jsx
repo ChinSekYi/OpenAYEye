@@ -15,7 +15,7 @@ import {
   Calendar,
   Stream,
   BoxPlot,
-  ScatterPlot,
+  ScatterPlot
 } from "./scenes";
 
 const AppRouter = () => {
