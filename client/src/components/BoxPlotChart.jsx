@@ -100,7 +100,7 @@ const BoxPlotChart = () => {
                 itemWidth: 60,
                 itemHeight: 20,
                 itemsSpacing: 3,
-                itemTextColor: '#999',
+                itemTextColor: '#000',
                 itemDirection: 'left-to-right',
                 symbolSize: 20,
                 symbolShape: 'square',
@@ -108,8 +108,9 @@ const BoxPlotChart = () => {
                     {
                         on: 'hover',
                         style: {
-                            itemTextColor: '#000'
-                        }
+                            itemBackground: "rgba(0, 0, 0, .03)",
+                            itemOpacity: 1,
+                          },
                     }
                 ]
             }

@@ -13,6 +13,7 @@ import Pie from "./pie";
 import Stream from "./stream";
 import FAQ from "./faq";
 import Geography from "./geography";
+import ScatterPlot from "./scatter";
 
 export {
   Navbar,
@@ -30,4 +31,5 @@ export {
   Stream,
   FAQ,
   Geography,
+  ScatterPlot,
 };
