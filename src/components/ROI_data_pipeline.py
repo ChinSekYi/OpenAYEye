@@ -51,16 +51,16 @@ class DataIngestionConfig:
     dataset1_path: str = os.path.join("data", "Marketing.csv")
     dataset2_path: str = os.path.join("data", "online_advertising_performance_data.csv")
     combined_data_path: str = os.path.join("artifacts", "roi_model_data.csv")
-    train_data_path: str = os.path.join("artifacts", "roi_model_training_data.csv")
+    train_data_path: str = os.path.join("artifacts", "roi_model_train_data.csv")
     test_data_path: str = os.path.join("artifacts", "roi_model_test_data.csv")
 
-    clicks_train_data_path: str = os.path.join("artifacts", "roi_clicks_training_data.csv")
+    clicks_train_data_path: str = os.path.join("artifacts", "roi_clicks_train_data.csv")
     clicks_test_data_path: str = os.path.join("artifacts", "roi_clicks_test_data.csv")
 
-    leads_train_data_path: str = os.path.join("artifacts", "roi_leads_training_data.csv")
+    leads_train_data_path: str = os.path.join("artifacts", "roi_leads_train_data.csv")
     leads_test_data_path: str = os.path.join("artifacts", "roi_leads_test_data.csv")
 
-    orders_train_data_path: str = os.path.join("artifacts", "roi_orders_training_data.csv")
+    orders_train_data_path: str = os.path.join("artifacts", "roi_orders_train_data.csv")
     orders_test_data_path: str = os.path.join("artifacts", "roi_orders_test_data.csv")
 
 

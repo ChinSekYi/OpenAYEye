@@ -148,7 +148,7 @@ if __name__ == "__main__":
     """
     try:
         # Load your dataset (adjust the path to your actual dataset)
-        df = pd.read_csv('artifacts/roi_orders_training_data.csv')  # Replace with your dataset path
+        df = pd.read_csv('artifacts/roi_orders_train_data.csv')  # Replace with your dataset path
 
         # Initialize the ModelTrainer
         trainer = ModelTrainer()

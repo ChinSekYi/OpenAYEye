@@ -1,7 +1,7 @@
 """
-ROI_predict_pipeline.py
+Reco_sys_predict_pipeline.py
 
-This module implements the prediction pipeline for bank marketing data analysis.
+This module implements the prediction pipeline for the recommendation system.
 It includes preprocessing, model training, evaluation, and prediction functions.
 
 """
@@ -18,7 +18,7 @@ from src.utils import load_object
 
 class PredictPipeline:
     """
-    Implements a pipeline for predicting number of leads based on category and cost.
+    Implements a pipeline for predicting the type of bank product a customer is likely to subscribe. 
     """
 
     def __init__(self):
@@ -26,7 +26,8 @@ class PredictPipeline:
 
     def predict(self, features):
         """
-        Predicts the leads based on the provided features.
+        Predicts the probability of a customer subscribing a particular bank product, using Logistic Regression.
+        Available bank products: 'fixed_deposits', 'loan', 'credit_card_debit_card', 'account'
 
         Args:
             features (pd.DataFrame): DataFrame containing the features for prediction.
@@ -35,7 +36,7 @@ class PredictPipeline:
             np.array: Predicted results.
         """
         try:
-            model_path = os.path.join("artifacts", "leads_model.pkl")
+            model_path = os.path.join("artifacts", "reco_sys_model.pkl")
             encoder_path = os.path.join("artifacts", "onehot_encoder.pkl")
 
             model = load_object(file_path=model_path)
@@ -92,8 +93,13 @@ class CustomData:
 # Example Usage
 if __name__ == "__main__":
     customer_metrics = {
-        "category": "social",
-        "cost": "50000"
+        "age" : "30",
+        "province_name": "search", #TODO: to one hot encode
+        'contract_length': "10", 
+        'seniority_months': "5", 
+        'primary_customer_status': "4",
+        'customer_type_start_month': "1.0", 
+        'customer_segment': "UNIVERSITARIO" #TODO: to one hot encode
     }
 
     custom_data = CustomData(**customer_metrics)
@@ -102,4 +108,4 @@ if __name__ == "__main__":
     pipeline = PredictPipeline()
     predictions = pipeline.predict(features_df)
     print(f'Input:\n {features_df}\n')
-    print("Predicted Results (Number of leads):\n", predictions)
+    print("Predicted Results (For top bank products recommended, and the prob of the customer subscribing to it):\n", predictions)
