@@ -20,6 +20,7 @@ from sklearn.preprocessing import FunctionTransformer, MinMaxScaler
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object, read_column_mapping
+from src.components.Reco_sys_data_ingestion import DataIngestion
 
 project_root = Path(__file__).resolve().parents[2]
 sys.path.append(str(project_root))
@@ -103,91 +104,6 @@ class DataTransformation:
         logging(f"CSV file successfully relabelled and saved to {output_file_path}")
         return df
 
-    def initiate_data_transformation(self, train_path, test_path):
-        """
-        Initiates the data transformation process.
-        Reads train and test datasets, applies preprocessing, and saves the preprocessor object.
-
-        Args:
-        - train_path (str): File path to the training dataset.
-        - test_path (str): File path to the testing dataset.
-
-        Returns:
-        - Tuple: Transformed train and test datasets and the file path of the preprocessor object.
-        """
-        try:
-            # Load column mapping from JSON
-            column_mapping = read_column_mapping("column_mapping.json")
-
-            # List of columns to drop if they exist
-            columns_to_drop = ['ult_fec_cli_1t', 'ind_actividad_cliente', 'cod_prov', 'conyuemp', 'tipodom']
-
-            # Process the training and testing datasets
-            train_df = self.process_csv(train_path, self.data_transformation_config.clean_train_file_path, column_mapping, columns_to_drop)
-            test_df = self.process_csv(test_path, self.data_transformation_config.clean_test_file_path, column_mapping, columns_to_drop)
-
-            # Making changes to the Spanish data file to suit our needs
-            train_df = self.create_additional_columns(train_df)
-            test_df = self.create_additional_columns(test_df)
-
-            # Prepare the data for machine learning
-            train_df = self.prepare_data_for_ml(train_df)
-            test_df = self.prepare_data_for_ml(test_df)
-
-            # Save preprocessor object
-            preprocessing_obj = self.get_data_transformer_object()
-
-            target_column_index = 
-
-            input_feature_train_df = train_df.drop(
-                train_df.columns[target_column_index], axis=1, inplace=False
-            )
-            target_feature_train_df = train_df.iloc[:, target_column_index]
-
-            input_feature_test_df = test_df.drop(
-                train_df.columns[target_column_index], axis=1, inplace=False
-            )
-            target_feature_test_df = test_df.iloc[:, target_column_index]
-
-            logging.info(
-                "Applying preprocessing object on training dataframe and testing dataframe"
-            )
-
-            input_feature_train_arr = preprocessing_obj.fit_transform(
-                input_feature_train_df
-            )
-            input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
-
-            train_arr = np.c_[
-                input_feature_train_arr, np.array(target_feature_train_df)
-            ]
-            test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
-
-            logging.info("Saved preprocessing object")
-
-            save_object(
-                file_path=self.data_transformation_config.preprocessor_ob_file_path,
-                obj=preprocessing_obj,
-            )
-
-            save_object(self.data_transformation_config.preprocessor_ob_file_path, preprocessing_obj)
-
-            logging.info("Data transformation completed")
-
-            logging.info("Cleaned train and test data saved to CSV files")
-            train_df.to_csv(self.data_transformation_config.clean_train_file_path, index=False)
-            test_df.to_csv(self.data_transformation_config.clean_test_file_path, index=False)
-
-            return (
-                train_arr,
-                test_arr,
-                self.data_transformation_config.preprocessor_ob_file_path,
-            )
-
-
-        except Exception as e:
-            raise CustomException(e, sys) from e
-
     def create_additional_columns(self, df):
         # Define new column names
         fixed_deposits_col = 'fixed_deposits'
@@ -242,6 +158,7 @@ class DataTransformation:
             'mortgage', 'pensions', 'loans', 'taxes', 'credit_card', 'securities', 'home_account', 
             'payroll', 'pensions_payments', 'direct_debit'
         ]
+
         # Drop the columns if they exist
         df = df.drop(columns=[col for col in columns_to_drop if col in df.columns])
         
@@ -295,8 +212,83 @@ class DataTransformation:
         account_column = df.pop('account')
         df['account'] = account_column
 
-        return df  # Return the updated DataFrame
+        return df
 
 
+    def initiate_data_transformation(self, train_path, test_path):
+        """
+        Initiates the data transformation process.
+        Reads train and test datasets, applies preprocessing, and saves the preprocessor object.
 
+        Args:
+        - train_path (str): File path to the training dataset.
+        - test_path (str): File path to the testing dataset.
+
+        Returns:
+        - Tuple: Transformed train and test datasets and the file path of the preprocessor object.
+        """
+        try:
+            # Load column mapping from JSON
+            column_mapping = read_column_mapping("column_mapping.json")
+
+            # List of columns to drop if they exist
+            columns_to_drop = ['ult_fec_cli_1t', 'ind_actividad_cliente', 'cod_prov', 'conyuemp', 'tipodom']
+
+            # Process the training and testing datasets
+            train_df = self.process_csv(train_path, self.data_transformation_config.clean_train_file_path, column_mapping, columns_to_drop)
+            test_df = self.process_csv(test_path, self.data_transformation_config.clean_test_file_path, column_mapping, columns_to_drop)
+
+            # Making changes to the Spanish data file to suit our needs
+            train_df = self.create_additional_columns(train_df)
+            test_df = self.create_additional_columns(test_df)
+
+            # Prepare the data for machine learning
+            train_df = self.prepare_data_for_ml(train_df)
+            test_df = self.prepare_data_for_ml(test_df)
+
+            #TODO: not used
+            # Save preprocessor object
+            preprocessing_obj = self.get_data_transformer_object()
+            logging.info("Saved preprocessing object")
+
+            save_object(
+                file_path=self.data_transformation_config.preprocessor_ob_file_path,
+                obj=preprocessing_obj,
+            )
+
+            logging.info("Cleaned train and test data saved to CSV files")
+            train_df.to_csv(self.data_transformation_config.clean_train_file_path, index=False)
+            test_df.to_csv(self.data_transformation_config.clean_test_file_path, index=False)
+
+            return (
+                train_df,
+                test_df,
+                self.data_transformation_config.preprocessor_ob_file_path,
+            )
+
+
+        except Exception as e:
+            raise CustomException(e, sys) from e
+
+if __name__ == "__main__":
+    try:
+        # Step 1: Initialize the DataIngestion class
+        data_ingestion = DataIngestion()
         
+        # Step 2: Initiate data ingestion to get train and test data paths
+        train_data_path, test_data_path = data_ingestion.initiate_data_ingestion()
+
+        # Step 3: Initialize the DataTransformation class
+        data_transformation = DataTransformation()
+
+        # Step 4: Initiate data transformation
+        train_df, test_df, preprocessor_path = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
+
+        # Optional: Print out paths of the cleaned datasets and the preprocessor
+        print(f"Cleaned train data saved to: {data_transformation.data_transformation_config.clean_train_file_path}")
+        print(f"Cleaned test data saved to: {data_transformation.data_transformation_config.clean_test_file_path}")
+        print(f"Preprocessor object saved to: {preprocessor_path}")
+
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+
