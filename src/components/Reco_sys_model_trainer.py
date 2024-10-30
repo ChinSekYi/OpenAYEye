@@ -21,6 +21,7 @@ import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
 
+from tqdm import tqdm 
 from dataclasses import dataclass
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold
@@ -96,7 +97,7 @@ class ModelTrainer:
         logging.info("Perform random search with cross-validation.")
         random_search = RandomizedSearchCV(lr_model, param_dist, n_iter=8, cv=skf, scoring='f1_macro', n_jobs=-1)
 
-        for i in range(y_train.shape[1]):
+        for i in tqdm(range(y_train.shape[1]), desc="Training Models", unit="model"):
             logging.info(f"Training model for target column {y_train.columns[i]}")
             
             # Train the model
@@ -184,6 +185,7 @@ class ModelTrainer:
             X_test = df_test.drop(columns=prediction_columns)  # First 86 columns (features)
             y_test = df_test[prediction_columns]
 
+            print(X_train.colums)
             # Normalize the feature columns
             #scaler = StandardScaler()
             #X_normalized = scaler.fit_transform(X)
@@ -226,7 +228,7 @@ if __name__ == "__main__":
         ORANGE = "\033[38;5;214m"  # An approximation of orange
                 
         # Print the structured output
-        print(f"{BOLD}{ORANGE}Metrics for each model:{RESET} \n {output[0]}\n")
+        print(f"\n{BOLD}{ORANGE}Metrics for each model:{RESET} \n {output[0]}\n")
         print(f"{BOLD}{ORANGE}Final trained models:{RESET} \n {output[1]}")
 
     except Exception as e:
