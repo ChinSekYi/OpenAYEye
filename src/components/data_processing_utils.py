@@ -24,8 +24,9 @@ from imblearn.over_sampling import SMOTE
 
 
 def prepare_data_for_ml(df):
-        logging.info("Preparing data for machine learning.")
+        
         # Specify date columns for conversion
+        logging.info(f"Preparing data for machine learning. {len(df.columns)}")
         date_columns = ['report_date', 'contract_start_date']  # Add any other date columns if necessary
         
         # Convert date columns to datetime
@@ -50,10 +51,19 @@ def prepare_data_for_ml(df):
         logging.debug("Replaced missing values in 'gross_income'.")
 
         # Handling 'age' column
-        age_new = df['age'].replace(' NA', None).dropna().astype(int)
-        med = median(age_new)
-        df['age'] = df['age'].replace(' NA', med).astype(int)
-        logging.debug(f"Replaced missing values in 'age' with median: {med}.")
+        df['age'] = pd.to_numeric(df['age'].replace(' NA', None), errors='coerce')
+        med_age = df['age'].median()
+        df['age'] = df['age'].fillna(med_age).astype(int)
+        logging.debug(f"Replaced missing values in 'age' with median: {med_age}.")
+
+        # Function to strip leading and trailing spaces from string columns
+        def strip_spaces(column):
+            if column.dtype == 'object':  # Check if the column is of string type
+                return column.str.strip()  # Strip leading and trailing spaces
+            return column
+
+        # Apply the strip_spaces function to all columns in the DataFrame
+        df = df.apply(strip_spaces)
 
         # Drop rows where 'country_residence' is NA
         df = df.dropna(subset=["country_residence"])
@@ -63,12 +73,29 @@ def prepare_data_for_ml(df):
         df['seniority_months'] = df['seniority_months'].astype(int)
         logging.debug("Converted 'seniority_months' to integer.")
 
-        # Drop 'employee_index' column
-        df = df.drop('employee_index', axis='columns')
-        logging.debug("Dropped 'employee_index' column.")
+        # Create a new 'region' column based on 'province_name'
+        region = []
+        for province in df['province_name']:
+            if province in ['CIUDAD REAL', 'SALAMANCA', 'TOLEDO', 'SEGOVIA', 'MADRID', 'GUADALAJARA', 'ALBACETE', 'SORIA', 'CUENCA', 'AVILA']:
+                region.append("CENTRAL")
+            elif province in ['ALAVA', 'GIPUZKOA', 'PALENCIA', 'BURGOS', 'NAVARRA', 'CANTABRIA', 'BIZKAIA', 'RIOJA, LA', 'ZARAGOZA', 'TARRAGONA', 'LERIDA', 'HUESCA']:
+                region.append("NORTH")
+            elif province in ['CADIZ', 'JAEN', 'SEVILLA', 'PALMAS, LAS', 'CORDOBA', 'GRANADA', 'SANTA CRUZ DE TENERIFE', 'MELILLA', 'CEUTA', 'MALAGA']:
+                region.append("SOUTH")
+            elif province in ['VALENCIA', 'TERUEL', 'BALEARS, ILLES', 'CASTELLON', 'ALICANTE', 'MURCIA', 'ALMERIA', 'BARCELONA', 'GIRONA']:
+                region.append("EAST")
+            elif province in ['ZAMORA', 'CACERES', 'HUELVA', 'BADAJOZ', 'ASTURIAS', 'LEON', 'LUGO', 'CORUÑA, A', 'OURENSE', 'VALLADOLID', 'PONTEVEDRA']:
+                region.append("WEST")
+            else:
+                region.append(None)  # Append None for unmatched provinces
+
+        # Assign the new region list to the DataFrame
+        df['region'] = region
+        df = df.drop(columns=['province_name'])  # Drop the original 'province_name' column
+        logging.debug(f"Dropped original 'province_name' column.{len(df.columns)}")
 
         # One-hot encode categorical variables
-        df = pd.get_dummies(df, columns=['customer_segment', 'province_name', 'join_channel', 'country_residence'], dtype=int)
+        df = pd.get_dummies(df, columns=['customer_segment', 'region', 'join_channel', 'country_residence'], dtype=int)
         df = pd.get_dummies(df, columns=['deceased_index', 'foreigner_index', 'residence_index', 'customer_relation_type', 'gender', 'new_customer_index'], drop_first=True, dtype=int)
         logging.debug("Performed one-hot encoding on categorical variables.")
 
@@ -197,7 +224,7 @@ def create_additional_columns(df):
         'junior_account', 'more_particular_account', 'particular_account', 'particular_plus_account', 
         'short_term_deposits', 'medium_term_deposits', 'long_term_deposits', 'e_account', 'funds', 
         'mortgage', 'pensions', 'loans', 'taxes', 'credit_card', 'securities', 'home_account', 
-        'payroll', 'pensions_payments', 'direct_debit'
+        'payroll', 'pensions_payments', 'direct_debit', 'employee_index'
     ]
 
     # Drop the columns if they exist
@@ -206,7 +233,6 @@ def create_additional_columns(df):
     return df
 
 def process_csv(csv_file_path, column_mapping):
-    # Read the original CSV file
     df = pd.read_csv(csv_file_path)
 
     # List of columns to drop if they exist

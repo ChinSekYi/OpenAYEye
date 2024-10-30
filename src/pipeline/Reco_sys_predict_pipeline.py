@@ -80,49 +80,79 @@ class CustomData:
                 "seniority_months": [self.seniority_months],
                 "gross_income": [self.gross_income],
                 "primary_customer_status": [self.primary_customer_status],
-                "join_channel_KAT": [1 if self.join_channel == 'KAT' else 0],
-                "join_channel_KAZ": [1 if self.join_channel == 'KAZ' else 0],
-                "deceased_index": [self.deceased_index],
-                "foreigner_index": [self.foreigner_index],
                 "residence_index": [self.residence_index],
                 "customer_relation_type": [self.customer_relation_type],
-                "gender": [self.gender],
-                "new_customer_index": [self.new_customer_index],
                 'customer_type_start_month': [self.customer_type_start_month]
             }
 
             country_values = ['ES', 'AT', 'NL', 'FR', 'GB', 'CL', 'CH', 'DE', 'DO', 'BE', 
                               'AR', 'VE', 'US', 'MX', 'BR', 'IT', 'EC', 'PE', 'CO', 
                               'HN', 'FI', 'SE', 'AL', 'PT', 'MZ', 'CN', 'TW', 'PL', 
-                              'IN', 'CR', 'NI'] 
+                              'IN', 'CR', 'NI', 'CA', 'IE', 'AL'] 
             
             for country in country_values:
                 custom_data_input[f"country_residence_{country}"] = [1 if self.country_residence == country else 0]
 
-            province_values = ['CASTELLON', 'CADIZ', 'BADAJOZ', 'VALENCIA', 'CORUÑA, A', 
-                              'MADRID', 'OURENSE', 'CACERES', 'SEVILLA', 'PONTEVEDRA', 
-                              'HUELVA', 'CORDOBA', 'ZARAGOZA', 'LUGO', 'VALLADOLID', 
-                              'TERUEL', 'GRANADA', 'TOLEDO', 'LEON', 'MALAGA', 
-                              'CUENCA', 'BIZKAIA', 'BARCELONA', 'MURCIA', 'LERIDA', 
-                              'ASTURIAS', 'ALAVA', 'PALMAS, LAS', 'CIUDAD REAL', 
-                              'ZAMORA', 'TARRAGONA', 'CANTABRIA', 'NAVARRA', 
-                              'BURGOS', 'ALMERIA', 'SALAMANCA', 'ALBACETE', 
-                              'ALICANTE', 'AVILA', 'PALENCIA', 'JAEN', 
-                              'RIOJA, LA', 'HUESCA', 'GIPUZKOA', 'GUADALAJARA', 
-                              'MELILLA', 'GIRONA', 'SORIA', 'SANTA CRUZ DE TENERIFE', 
-                              'BALEARS, ILLES', 'SEGOVIA', 'CEUTA']  # List of unique province values
+            regions = ["CENTRAL", "NORTH", "SOUTH", "EAST", "WEST"]
 
-            for province in province_values:
-                custom_data_input[f"province_name_{province.replace(' ', '_').replace(',', '').replace('.', '')}"] = [
-                    1 if self.province_name == province else 0
+            for region in regions:
+                custom_data_input[f"region_{region}"] = [
+                    1 if self.region_name == region else 0
                 ]
 
             customer_segment_values = ['03 - UNIVERSITARIO', '02 - PARTICULARES', '01 - TOP']  # List of unique customer segments
-
+           
             for segment in customer_segment_values:
-                custom_data_input[f"customer_segment_{segment.replace(' ', '_').replace('-', '_').replace('.', '')}"] = [
+                custom_data_input[f"customer_segment_{segment}"] = [
                     1 if self.customer_segment == segment else 0
                 ]
+
+            join_channel_values = ['KAT', 'KAZ', 'KDH', 'KFA', 'KFC', 'KGN', 
+                       'KHC', 'KHD', 'KHE', 'KHK', 'KHL', 'KHM', 
+                       'KHO', 'RED']
+
+            for channel in join_channel_values:
+                custom_data_input[f"join_channel_{channel}"] = [1 if self.join_channel == channel else 0]
+
+            customer_relation_type_values = ['I', 'A', 'P']  
+
+            for relation_type in customer_relation_type_values:
+                custom_data_input[f"customer_relation_type_{relation_type}"] = [
+                    1 if self.customer_relation_type == relation_type else 0
+                ]
+
+            # List of unique deceased_index values
+            deceased_index_values = ['N', 'S']  
+
+            for index in deceased_index_values:
+                custom_data_input[f"deceased_index_{index}"] = [
+                    1 if self.deceased_index == index else 0
+                ]
+
+            # List of unique foreigner_index values
+            foreigner_index_values = ['S', 'N']  
+
+            for index in foreigner_index_values:
+                custom_data_input[f"foreigner_index_{index}"] = [
+                    1 if self.foreigner_index == index else 0
+                ]
+
+            # List of unique gender values
+            gender_values = ['H', 'V']  
+
+            for gender in gender_values:
+                custom_data_input[f"gender_{gender}"] = [
+                    1 if self.gender == gender else 0
+                ]
+
+            # List of unique new customer index values
+            new_customer_index_values = [0.0, 1.0]  
+
+            for index in new_customer_index_values:
+                custom_data_input[f"new_customer_index_{index}"] = [
+                    1 if self.new_customer_index == index else 0
+                ]
+
 
             return pd.DataFrame(custom_data_input)
         except Exception as e:
@@ -138,7 +168,7 @@ if __name__ == "__main__":
     'gross_income': 50000,
     'primary_customer_status': 'Active',
     'customer_segment': 'TOP',
-    'province_name': 'ALAVA',
+    'region_name': 'CENTRAL',
     'join_channel': 'KAT',
     'country_residence': 'CA',
     'deceased_index': 0,
@@ -153,6 +183,7 @@ if __name__ == "__main__":
 
     custom_data = CustomData(**user_input)
     features_df = custom_data.get_data_as_dataframe()
+    print(features_df.columns.tolist())
 
     pipeline = PredictPipeline()
     predictions = pipeline.predict(features_df)

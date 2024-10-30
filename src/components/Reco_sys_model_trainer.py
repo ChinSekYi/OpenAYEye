@@ -185,7 +185,7 @@ class ModelTrainer:
             X_test = df_test.drop(columns=prediction_columns)  # First 86 columns (features)
             y_test = df_test[prediction_columns]
 
-            print(X_train.colums)
+            print(len(X_train.columns))
             # Normalize the feature columns
             #scaler = StandardScaler()
             #X_normalized = scaler.fit_transform(X)

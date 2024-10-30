@@ -54,7 +54,7 @@ class DataIngestionConfig:
 
     train_data_path: str = os.path.join("artifacts", "reco_sys_train_data.csv")
     test_data_path: str = os.path.join("artifacts", "reco_sys_test_data.csv")
-    raw_data_path: str = os.path.join("data", "santander_train_small.csv")
+    raw_data_path: str = os.path.join("data", "recodataset.csv")
     column_mapping_path: str = os.path.join("src", "components", "column_mapping.json")
 
 
@@ -111,6 +111,8 @@ class DataIngestion:
             df = process_csv(self.ingestion_config.raw_data_path,column_mapping)
             df = create_additional_columns(df)
             df = prepare_data_for_ml(df)
+            print(df.columns)
+            print(len(df.columns)) 
 
             logging.info("Train test split initiated.")
             train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)
