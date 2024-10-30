@@ -28,7 +28,7 @@ from sklearn.preprocessing import OneHotEncoder
 
 from src.exception import CustomException
 from src.logger import logging
-
+from src.utils import read_column_mapping
 
 # Setting the project root path
 project_root = Path(__file__).resolve().parents[2]

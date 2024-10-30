@@ -8,6 +8,7 @@ model evaluation, and printing bankruptcy prediction outcomes.
 import os
 import pickle
 import sys
+import json
 
 import dill
 from sklearn.metrics import r2_score
@@ -51,3 +52,9 @@ def load_object(file_path):
 
     except Exception as e:
         raise CustomException(e, sys) from e
+
+
+def read_column_mapping(file_path):
+    with open(file_path, 'r') as file:
+        column_mapping = json.load(file)
+    return column_mapping
