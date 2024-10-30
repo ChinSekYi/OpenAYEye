@@ -111,7 +111,7 @@ class DataIngestion:
             df = process_csv(self.ingestion_config.raw_data_path,column_mapping)
             df = create_additional_columns(df)
             df = prepare_data_for_ml(df)
-            print(df.columns)
+            print(df.columns.to_list())
             print(len(df.columns)) 
 
             logging.info("Train test split initiated.")

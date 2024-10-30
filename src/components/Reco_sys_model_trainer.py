@@ -118,6 +118,7 @@ class ModelTrainer:
             column_name (str): The name of the target variable to evaluate.
         """
         y_pred = model.predict(X_test)
+        print(y_pred)
         confusion = confusion_matrix(y_test[column_name], y_pred)
         classification = classification_report(y_test[column_name], y_pred, output_dict=True)
 
@@ -185,7 +186,6 @@ class ModelTrainer:
             X_test = df_test.drop(columns=prediction_columns)  # First 86 columns (features)
             y_test = df_test[prediction_columns]
 
-            print(len(X_train.columns))
             # Normalize the feature columns
             #scaler = StandardScaler()
             #X_normalized = scaler.fit_transform(X)
@@ -203,7 +203,6 @@ class ModelTrainer:
             return self.output_metrics , self.models
 
         except Exception as e:
-            print(e)
             raise CustomException(e, sys) from e
 
 

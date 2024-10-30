@@ -22,6 +22,38 @@ from statistics import median
 from src.logger import logging
 from imblearn.over_sampling import SMOTE
 
+column_order = [
+    'age', 'gender_H', 'gender_V', 'gross_income', 
+    'customer_segment_03 - UNIVERSITARIO', 'customer_segment_02 - PARTICULARES', 
+    'customer_segment_01 - TOP', 'contract_length', 'seniority_months', 
+    'primary_customer_status', 'new_customer_index_0.0', 'new_customer_index_1.0', 
+    'customer_type_start_month', 'country_residence_ES', 'country_residence_AT', 
+    'country_residence_NL', 'country_residence_FR', 'country_residence_GB', 
+    'country_residence_CL', 'country_residence_CH', 'country_residence_DE', 
+    'country_residence_DO', 'country_residence_BE', 'country_residence_AR', 
+    'country_residence_VE', 'country_residence_US', 'country_residence_MX', 
+    'country_residence_BR', 'country_residence_IT', 'country_residence_EC', 
+    'country_residence_PE', 'country_residence_CO', 'country_residence_HN', 
+    'country_residence_FI', 'country_residence_SE', 'country_residence_AL', 
+    'country_residence_PT', 'country_residence_MZ', 'country_residence_CN', 
+    'country_residence_TW', 'country_residence_PL', 'country_residence_IN', 
+    'country_residence_CR', 'country_residence_NI', 'region_CENTRAL', 
+    'region_NORTH', 'region_SOUTH', 'region_EAST', 'region_WEST', 
+    'join_channel_KHE', 'join_channel_KHD', 'join_channel_KFA', 'join_channel_KHC', 
+    'join_channel_KAT', 'join_channel_KFC', 'join_channel_KAZ', 'join_channel_RED', 
+    'join_channel_KDH', 'join_channel_KHK', 'join_channel_KEH', 'join_channel_KAD', 
+    'join_channel_KBG', 'join_channel_KHL', 'join_channel_KGC', 'join_channel_KHF', 
+    'join_channel_KFK', 'join_channel_KHN', 'join_channel_KHA', 'join_channel_KHM', 
+    'join_channel_KAF', 'join_channel_KGX', 'join_channel_KFD', 'join_channel_KAG', 
+    'join_channel_KFG', 'join_channel_KAB', 'join_channel_KCC', 'join_channel_KAE', 
+    'join_channel_KAH', 'join_channel_KAR', 'join_channel_KFJ', 'join_channel_KFL', 
+    'join_channel_KAI', 'join_channel_KFU', 'join_channel_KAQ', 'join_channel_KFS', 
+    'join_channel_KAA', 'join_channel_KFP', 'join_channel_KAJ', 'join_channel_KFN', 
+    'join_channel_KGV', 'join_channel_KGY', 'join_channel_KFF', 'join_channel_KAP', 
+    'deceased_index_N', 'deceased_index_S', 'foreigner_index_S', 'foreigner_index_N', 
+    'residence_index_S', 'residence_index_N', 'customer_relation_type_I', 
+    'customer_relation_type_A', 'fixed_deposits', 'loan', 'credit_card_debit_card', 'account'
+]
 
 def prepare_data_for_ml(df):
         
@@ -65,9 +97,17 @@ def prepare_data_for_ml(df):
         # Apply the strip_spaces function to all columns in the DataFrame
         df = df.apply(strip_spaces)
 
-        # Drop rows where 'country_residence' is NA
-        df = df.dropna(subset=["country_residence"])
-        logging.debug("Dropped rows with missing 'country_residence'.")
+        columns_with_na = [
+        'country_residence', 'gender', 
+        'customer_relation_type', 'residence_index', 
+        'foreigner_index', 'join_channel', 'deceased_index', 
+        'customer_segment', 'new_customer_index'
+        ]
+
+        # Drop rows with NA values in the specified columns
+        df = df.dropna(subset=columns_with_na)
+        logging.debug("Dropped rows with missing values.")
+
 
         # Convert 'seniority_months' to integers
         df['seniority_months'] = df['seniority_months'].astype(int)
@@ -95,10 +135,10 @@ def prepare_data_for_ml(df):
         logging.debug(f"Dropped original 'province_name' column.{len(df.columns)}")
 
         # One-hot encode categorical variables
-        df = pd.get_dummies(df, columns=['customer_segment', 'region', 'join_channel', 'country_residence'], dtype=int)
-        df = pd.get_dummies(df, columns=['deceased_index', 'foreigner_index', 'residence_index', 'customer_relation_type', 'gender', 'new_customer_index'], drop_first=True, dtype=int)
+        df = pd.get_dummies(df, columns=['customer_segment', 'region', 'join_channel', 'country_residence'], drop_first=False, dtype=int)
+        df = pd.get_dummies(df, columns=['deceased_index', 'foreigner_index', 'residence_index', 'customer_relation_type', 'gender', 'new_customer_index'], drop_first=False, dtype=int)
         logging.debug("Performed one-hot encoding on categorical variables.")
-
+ 
         # Reorder columns if needed (maintain original logic)
         cols = df.columns.tolist()
         cols = cols[:5] + cols[9:] + cols[5:9]  # Adjust indexing as needed
@@ -109,6 +149,8 @@ def prepare_data_for_ml(df):
         account_column = df.pop('account')
         df['account'] = account_column
         logging.debug("Moved 'account' column to the last position.")
+
+        df = df[column_order]
 
         return df
     
@@ -153,7 +195,10 @@ def perform_SMOTE(df):
 
         # Create a DataFrame from the resampled data
         resampled_df = pd.DataFrame(X_resampled, columns=X_balance.columns)
-        resampled_df[label] = y_resampled  # Add the resampled label back
+        #resampled_df[label] = y_resampled  # Add the resampled label back
+
+        # Combine the features and the resampled label into one DataFrame
+        resampled_df = pd.concat([resampled_df, pd.Series(y_resampled, name=label)], axis=1)
 
         # Append the resampled data to the balanced_df
         balanced_df = pd.concat([balanced_df, resampled_df], ignore_index=True)
