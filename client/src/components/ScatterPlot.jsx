@@ -16,6 +16,39 @@ const Scatter = ({isDashboard = false}) => {
 
     return <ResponsiveScatterPlot
         data={data}
+        theme={{
+            axis: {
+              domain: {
+                line: {
+                  stroke: colors.gray[100],
+                },
+              },
+              legend: {
+                text: {
+                  fill: colors.gray[100],
+                },
+              },
+              ticks: {
+                line: {
+                  stroke: colors.gray[100],
+                  strokeWidth: 1,
+                },
+                text: {
+                  fill: colors.gray[100],
+                },
+              },
+            },
+            legends: {
+              text: {
+                fill: colors.gray[100],
+              },
+            },
+            tooltip: {
+              container: {
+                color: colors.primary[500],
+              },
+            },
+          }}
         margin={{ top: 60, right: 140, bottom: 70, left: 90 }}
         xScale={{ type: 'linear', min: 0, max: 'auto' }}
         xFormat=">-.2f"
