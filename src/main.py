@@ -95,7 +95,6 @@ def main():
     except CustomException as e:
         print(f"An error occurred in ROI prediction: {e}")
 
-
     # Example user input for recommendation system
     user_input = {
         "age": 92,
