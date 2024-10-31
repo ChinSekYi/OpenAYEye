@@ -31,7 +31,7 @@ from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from src.components.data_processing_utils import *
+from src.components.reco_sys.data_processing_utils import *
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import read_column_mapping
@@ -55,7 +55,7 @@ class DataIngestionConfig:
     train_data_path: str = os.path.join("artifacts", "reco_sys_train_data.csv")
     test_data_path: str = os.path.join("artifacts", "reco_sys_test_data.csv")
     raw_data_path: str = os.path.join("data", "recodataset.csv")
-    column_mapping_path: str = os.path.join("src", "components", "column_mapping.json")
+    column_mapping_path: str = os.path.join("src", "components", "reco_sys", "column_mapping.json")
 
 
 class DataIngestion:
@@ -111,8 +111,6 @@ class DataIngestion:
             df = process_csv(self.ingestion_config.raw_data_path,column_mapping)
             df = create_additional_columns(df)
             df = prepare_data_for_ml(df)
-            print(df.columns.to_list())
-            print(len(df.columns)) 
 
             logging.info("Train test split initiated.")
             train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)

@@ -68,5 +68,3 @@ def list_files(startpath):
         subindent = ' ' * 4 * (level + 1)
         for f in files:
             print(f"{subindent}{f}")
-
-print(list_files(os.getcwd()))  # Replace with your repository path

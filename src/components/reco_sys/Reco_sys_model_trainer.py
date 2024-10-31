@@ -118,7 +118,6 @@ class ModelTrainer:
             column_name (str): The name of the target variable to evaluate.
         """
         y_pred = model.predict(X_test)
-        print(y_pred)
         confusion = confusion_matrix(y_test[column_name], y_pred)
         classification = classification_report(y_test[column_name], y_pred, output_dict=True)
 
