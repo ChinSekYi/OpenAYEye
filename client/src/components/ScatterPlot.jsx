@@ -78,7 +78,6 @@ const Scatter = ({isDashboard = false}) => {
             legendOffset: -60,
             truncateTickAt: 0
         }}
-        debugMesh={true}
         legends={[
             {
                 anchor: 'bottom-right',
