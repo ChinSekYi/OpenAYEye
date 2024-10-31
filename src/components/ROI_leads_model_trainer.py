@@ -113,6 +113,9 @@ class ModelTrainer:
             # Evaluate the model using Mean Squared Error and R^2 score
             mse_value = mean_squared_error(y_test, y_pred, multioutput='raw_values')
             r2_value = r2_score(y_test, y_pred, multioutput='raw_values')
+            
+            #TODO: Use adjusted r2 score
+            #r2_value = adj_r2_score(y_test, y_pred, multioutput='raw_values')
 
             # Round MSE and R² scores to three decimal places
             mse_values_rounded = np.round(mse_value, 3)
