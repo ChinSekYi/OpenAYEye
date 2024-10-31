@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Amy",
+        "user_input": {
+            "age": 30,
+            "gender": "H",
+            "gross_income": 512431200,
+            "customer_segment": "03 - TOP",
+            "contract_length": 31,
+            "seniority_months": 12,
+            "primary_customer_status": "1",
+            "new_customer_index": 0.0,
+            "customer_type_start_month": 1,
+            "country_residence": "NI",
+            "region": "NORTH",
+            "join_channel": "KHA",
+            "deceased_index": "S",
+            "foreigner_index": "N",
+            "residence_index": "N",
+            "customer_relation_type": "I"
+        }
+"""
+Output:
+Ranked Recommendations:
+1. Fixed Deposits
+2. Account
+3. Loan
+4. Credit and Debit Card
+"""
+
+
+    },
+    {
+        "name": "Bob",
+        "user_input": {
+            "age": 92,
+            "gender": "H",
+            "gross_income": 500,
+            "customer_segment": "03 - TOP",
+            "contract_length": 31,
+            "seniority_months": 12,
+            "primary_customer_status": "1",
+            "new_customer_index": 0.0,
+            "customer_type_start_month": 1,
+            "country_residence": "NI",
+            "region": "NORTH",
+            "join_channel": "KHA",
+            "deceased_index": "S",
+            "foreigner_index": "N",
+            "residence_index": "S",
+            "customer_relation_type": "I"
+        }
+    }
+]
+"""
+Output:
+ Ranked Recommendations:
+1. Account
+2. Fixed Deposits
+3. Credit and Debit Card
+4. Loan
+"""
