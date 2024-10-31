@@ -9,6 +9,7 @@ import GeographyChart from "./GeographyChart";
 import ProgressCircle from "./ProgressCircle";
 import StatBox from "./StatBox";
 import ScatterPlot from "./ScatterPlot";
+import HeatMap from "./HeatMap";
 
 export {
   Header,
@@ -22,4 +23,5 @@ export {
   ProgressCircle,
   StatBox,
   ScatterPlot,
+  HeatMap,
 };

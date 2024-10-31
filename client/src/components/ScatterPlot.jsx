@@ -22,6 +22,7 @@ const Scatter = ({isDashboard = false}) => {
         yScale={{ type: 'linear', min: 0, max: 'auto' }}
         yFormat=">-.2f"
         blendMode="multiply"
+        nodeSize={12}
         axisTop={null}
         axisRight={null}
         axisBottom={{
@@ -44,6 +45,7 @@ const Scatter = ({isDashboard = false}) => {
             legendOffset: -60,
             truncateTickAt: 0
         }}
+        debugMesh={true}
         legends={[
             {
                 anchor: 'bottom-right',
@@ -61,7 +63,6 @@ const Scatter = ({isDashboard = false}) => {
                     {
                         on: 'hover',
                         style: {
-                            itemBackground: "rgba(0, 0, 0, .03)",
                             itemOpacity: 1,
                           },
                     }

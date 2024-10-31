@@ -259,6 +259,13 @@ const SideBar = () => {
             colors={colors}
             icon={<CandlestickChartOutlined />} // change icon
           />
+
+          <Item
+            title="Heat Map"
+            path="/heat" // change path
+            colors={colors}
+            icon={<CandlestickChartOutlined />} // change icon
+          />
           {/* <Item
             title="Geography Chart"
             path="/geography"

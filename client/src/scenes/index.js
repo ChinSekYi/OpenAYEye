@@ -14,6 +14,7 @@ import Stream from "./stream";
 import FAQ from "./faq";
 import Geography from "./geography";
 import ScatterPlot from "./scatter";
+import HeatMap from "./heat";
 
 export {
   Navbar,
@@ -32,4 +33,5 @@ export {
   FAQ,
   Geography,
   ScatterPlot,
+  HeatMap,
 };
