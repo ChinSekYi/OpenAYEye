@@ -58,3 +58,15 @@ def read_column_mapping(file_path):
     with open(file_path, "r") as file:
         column_mapping = json.load(file)
     return column_mapping
+
+
+def list_files(startpath):
+    for root, dirs, files in os.walk(startpath):
+        level = root.replace(startpath, '').count(os.sep)
+        indent = ' ' * 4 * (level)
+        print(f"{indent}{os.path.basename(root)}/")
+        subindent = ' ' * 4 * (level + 1)
+        for f in files:
+            print(f"{subindent}{f}")
+
+print(list_files(os.getcwd()))  # Replace with your repository path

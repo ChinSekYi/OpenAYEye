@@ -15,8 +15,8 @@ from src.pipeline.Reco_sys_custom_data import RecoSysCustomData
 from src.pipeline.Reco_sys_predict_pipeline import (
     PredictPipeline as RecoPredictPipeline,
 )
-from src.pipeline.ROI_predict_pipeline import CustomData as ROICustomData
-from src.pipeline.ROI_predict_pipeline import PredictPipeline as ROIPredictPipeline
+from src.pipeline.roi.ROI_predict_pipeline import CustomData as ROICustomData
+from src.pipeline.roi.ROI_predict_pipeline import PredictPipeline as ROIPredictPipeline
 
 
 def run_roi_prediction(customer_metrics):
