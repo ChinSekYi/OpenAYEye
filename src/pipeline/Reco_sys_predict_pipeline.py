@@ -219,7 +219,7 @@ if __name__ == "__main__":
     'age': 22,
     'gender': 'V',
     'gross_income': 500000,
-    'customer_segment': '03 - UNIVERSITARIO',
+    'customer_segment': '03 - TOP',
     'contract_length': 11,
     'seniority_months': 24,
     'primary_customer_status': '1',
@@ -229,7 +229,7 @@ if __name__ == "__main__":
     'region': 'CENTRAL',
     'join_channel': 'KHE',
     'deceased_index': 'N',
-    'foreigner_index': 'S',
+    'foreigner_index': 'N',
     'residence_index': 'S',
     'customer_relation_type': 'I',
     }
