@@ -22,8 +22,6 @@ Note:
 - Utilizes standard libraries and third-party modules like sklearn for data handling.
 """
 
-
-
 import os
 import sys
 from dataclasses import dataclass
@@ -32,7 +30,6 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder
 
 from src.exception import CustomException
 from src.logger import logging
@@ -50,7 +47,7 @@ class DataIngestionConfig:
     """
     dataset1_path: str = os.path.join("data", "Marketing.csv")
     dataset2_path: str = os.path.join("data", "online_advertising_performance_data.csv")
-    combined_data_path: str = os.path.join("artifacts", "roi_model_data.csv")
+    combined_data_path: str = os.path.join("artifacts", "roi_model_combined_data.csv")
     train_data_path: str = os.path.join("artifacts", "roi_model_train_data.csv")
     test_data_path: str = os.path.join("artifacts", "roi_model_test_data.csv")
 
@@ -187,26 +184,6 @@ class DataIngestion:
             )
 
             logging.info(f"Training and test data is saved successfully at: {train_output_path} and {test_output_path}.")
-
-            # Save training and test data for clicks
-            clicks_train_set = train_set[['category', 'cost', 'clicks']]
-            clicks_test_set = test_set[['category', 'cost', 'clicks']]
-            clicks_train_set.to_csv(self.ingestion_config.clicks_train_data_path, index=False)
-            clicks_test_set.to_csv(self.ingestion_config.clicks_test_data_path, index=False)
-
-            # Save training and test data for leads
-            leads_train_set = train_set[['category', 'cost', 'leads']]
-            leads_test_set = test_set[['category', 'cost', 'leads']]
-            leads_train_set.to_csv(self.ingestion_config.leads_train_data_path, index=False)
-            leads_test_set.to_csv(self.ingestion_config.leads_test_data_path, index=False)
-
-            # Save training and test data for orders
-            orders_train_set = train_set[['category', 'cost', 'orders']]
-            orders_test_set = test_set[['category', 'cost', 'orders']]
-            orders_train_set.to_csv(self.ingestion_config.orders_train_data_path, index=False)
-            orders_test_set.to_csv(self.ingestion_config.orders_test_data_path, index=False)
-            
-            logging.info("Training and test data for clicks, leads and orders is saved successfully.")
 
             return (
                 self.ingestion_config.train_data_path,
