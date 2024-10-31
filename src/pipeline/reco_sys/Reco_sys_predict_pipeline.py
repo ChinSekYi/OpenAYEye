@@ -13,7 +13,7 @@ import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
 from src.exception import CustomException
-from src.pipeline.Reco_sys_custom_data import RecoSysCustomData  # Import the new class
+from src.pipeline.reco_sys.Reco_sys_custom_data import RecoSysCustomData  # Import the new class
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")
