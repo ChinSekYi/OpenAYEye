@@ -11,8 +11,8 @@ Instructions: Run `python3 -m src.main` in terminal.
 import sys
 
 from src.exception import CustomException
-from src.pipeline.Reco_sys_custom_data import RecoSysCustomData
-from src.pipeline.Reco_sys_predict_pipeline import (
+from src.pipeline.reco_sys.Reco_sys_custom_data import RecoSysCustomData
+from src.pipeline.reco_sys.Reco_sys_predict_pipeline import (
     PredictPipeline as RecoPredictPipeline,
 )
 from src.pipeline.roi.ROI_predict_pipeline import CustomData as ROICustomData
@@ -88,6 +88,14 @@ def main():
         "cost": "50000",  # Example cost with dollar sign for user-friendly input
     }
 
+    # Run ROI Prediction
+    try:
+        roi_predictions, roi_features = run_roi_prediction(customer_metrics)
+        print_input_output(roi_features, roi_predictions, "ROI Prediction Input")
+    except CustomException as e:
+        print(f"An error occurred in ROI prediction: {e}")
+
+
     # Example user input for recommendation system
     user_input = {
         "age": 92,
@@ -107,13 +115,6 @@ def main():
         "residence_index": "S",
         "customer_relation_type": "I",
     }
-
-    # Run ROI Prediction
-    try:
-        roi_predictions, roi_features = run_roi_prediction(customer_metrics)
-        print_input_output(roi_features, roi_predictions, "ROI Prediction Input")
-    except CustomException as e:
-        print(f"An error occurred in ROI prediction: {e}")
 
     # Run Recommendation Prediction
     try:
