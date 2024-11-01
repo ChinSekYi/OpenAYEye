@@ -114,23 +114,24 @@ class PredictPipeline:
 
 # Example Usage
 if __name__ == "__main__":
+    # Refer to `Reco_sys_custom_data` for possible input values
     user_input = {
-        'age': 92,
-        'gender': 'H',
-        'gross_income': 500,
-        'customer_segment': '03 - TOP',
+        'age': 42,
+        'gender': 'Female',
+        'gross_income': 6600,
+        'customer_segment': 'VIP',
         'contract_length': 31,
         'seniority_months': 12,
-        'primary_customer_status': '1',
-        'new_customer_index': 0.0,
-        'customer_type_start_month': 1,
-        'country_residence': 'NI',
-        'region': 'NORTH',
-        'join_channel': 'KHA',
-        'deceased_index': 'S',
-        'foreigner_index': 'N',
-        'residence_index': 'S',
-        'customer_relation_type': 'I',
+        'primary_customer_status': 'primary customer',
+        'new_customer_index': 'new customer',
+        'customer_type_start_month': "Jun",
+        'country_residence': 'Chile',
+        'region': 'North',
+        'join_channel': 'Online Banking',
+        'deceased_index': 'no',
+        'foreigner_index': 'yes',
+        'residence_index': 'no',
+        'customer_relation_type': 'Individual',
         }
 
     # Get input data in custom data format

@@ -101,13 +101,13 @@ class CustomData:
 
 # Example Usage
 if __name__ == "__main__":
-    customer_metrics = {
+    user_input = {
         "category": "social",
         "cost": "50000"
     }
 
     # Get input data in custom data format
-    custom_data = CustomData(**customer_metrics)
+    custom_data = CustomData(**user_input)
     features_df = custom_data.get_data_as_dataframe()
 
     # Run prediction pipeline

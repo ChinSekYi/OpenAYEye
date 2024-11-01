@@ -1,4 +1,4 @@
-deceased_index_mapping = {'no': 'N', 'yes': 'S'}
+deceased_index_mapping = {'yes': 'S', 'no': 'N'}
 foreigner_index_mapping = {'yes': 'S', 'no': 'N'}
 residence_index_mapping = {'yes': 'S', 'no': 'N'}
 gender_mapping = {'Female': 'V', 'Male': 'H'}
@@ -26,5 +26,5 @@ join_channel_mapping = {
     'Membership Offers': 'KHK', 'Radio Advertising': 'KHL', 'Career Expo': 'KHM',
     'Volunteer Event': 'KHN', 'Referral Program': 'RED'
 }
-customer_segment_mapping = {'Private': '02 - PARTICULARES', 'University': '03 - UNIVERSITARIO'}
+customer_segment_mapping = {'VIP': '01 - TOP', 'Private': '02 - PARTICULARES', 'University': '03 - UNIVERSITARIO'}
 region_mapping = {'East': 'EAST', 'North': 'NORTH', 'South': 'SOUTH', 'West': 'WEST'}
