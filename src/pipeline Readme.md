@@ -7,6 +7,10 @@ The Recommendation System model includes pipelines for data ingestion, training,
 
 ### Pipelines
 
+<div align="center">
+    <img src="image/Reco system pipeline flowchart.png" alt="Reco sys pipeline flowchart" width="450"/>
+</div>
+
 #### 1. `Reco_sys_data_pipeline`
 - **Purpose**: Ingest and transform raw data.
 - **Functionality**:
@@ -53,6 +57,10 @@ The Recommendation System model includes pipelines for data ingestion, training,
 The ROI model consists of several Python pipelines designed for data ingestion, transformation, model training, and prediction.
 
 ### Pipelines
+
+<div align="center">
+    <img src="image/ROI pipeline flowchart.png" alt="ROI Pipeline flowchart" width="300"/>
+</div>
 
 #### 1. `ROI_data_pipeline`
 - **Purpose**: Ingest and transform raw data.
