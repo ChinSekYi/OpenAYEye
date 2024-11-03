@@ -47,6 +47,11 @@ class ModelTrainerConfig:
     trained_credit_card_debit_card_file_path = os.path.join("artifacts", "reco_sys_credit_card_debit_card_model.pkl")
     trained_account_model_file_path = os.path.join("artifacts", "reco_sys_account_model.pkl")
 
+    trained_fixed_deposits_model_file_path = os.path.join("artifacts", "reco_sys_fixed_deposits_covid_model.pkl")
+    trained_loan_model_file_path = os.path.join("artifacts", "reco_sys_loan_covid_model.pkl")
+    trained_credit_card_debit_card_file_path = os.path.join("artifacts", "reco_sys_credit_card_debit_card_covid_model.pkl")
+    trained_account_model_file_path = os.path.join("artifacts", "reco_sys_account_covid_model.pkl")
+
 class ModelTrainer:
     """
     Class to handle the training and evaluation of Logistic Regression models for multi-output regression.
@@ -213,6 +218,10 @@ if __name__ == "__main__":
         # Load your dataset (adjust the path to your actual dataset)
         df_train = pd.read_csv('artifacts/reco_sys_train_data.csv') 
         df_test = pd.read_csv('artifacts/reco_sys_test_data.csv') 
+
+        # For covid dataset
+        df_train = pd.read_csv('artifacts/clean_train_reco_covid.csv') 
+        df_test = pd.read_csv('artifacts/clean_test_reco_covid.csv') 
 
         # Initialize the ModelTrainer
         trainer = ModelTrainer()
