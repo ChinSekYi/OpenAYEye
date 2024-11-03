@@ -49,6 +49,20 @@ The Recommendation System model includes pipelines for data ingestion, training,
     4. Loan
     ```
 
+### Instructions to Run Pipeline
+1. **Data Ingestion, Cleaning, and Transformation**:
+    ```
+    python3 -m src.components.reco_sys.Reco_sys_data_pipeline
+    ```
+2. **Model Training**:
+    ```
+    python3 -m src.components.reco_sys.Reco_sys_model_trainer
+    ```
+3. **Prediction on New Data**:
+    ```
+    python3 -m src.pipeline.reco_sys.Reco_sys_predict_pipeline
+    ```
+
 ---
 
 ## ROI Model
