@@ -104,7 +104,7 @@ def main():
         "contract_length": 31,
         "seniority_months": 12,
         "primary_customer_status": "primary customer",
-        "new_customer_index": 'existing customer',
+        "new_customer_index": "existing customer",
         "customer_type_start_month": "Dec",
         "country_residence": "NI",
         "region": "South",

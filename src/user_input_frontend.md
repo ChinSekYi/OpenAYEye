@@ -23,6 +23,7 @@ user_input = {
 ```
 
 ### Details for each attribute
+Use drop down list in frontend for categorical columns 
 ```
 age: int
 
