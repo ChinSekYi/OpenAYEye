@@ -34,18 +34,18 @@ class Engagement():
             fetched = pd.DataFrame(db.execute(query_string).fetchall())
             db.close()
         fetched['gender'] = fetched['gender'].replace({'Male':'M', 'Female':'F'})
+        self.df = fetched
+        # self.df = self.preprocess(fetched)
 
-        self.df = self.preprocess(fetched)
-
-    def get_X(self):
+    def get_X(self, data):
         if self.col_type == None:
             res = self.df.drop(['customerid', 'conversionrate'], axis = 1)
             return res
         else:
-            return self.df[self.col]
+            return data[self.col]
     
-    def get_y(self):
-        return self.df[[self.y_col]]
+    def get_y(self, data):
+        return data[[self.y_col]]
 
     def preprocess(self, data):
         categorical_cols = ['campaignchannel', 'campaigntype']
@@ -72,9 +72,10 @@ class Engagement():
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42)
         return X_train, X_test, y_train, y_test
     
-    def get_dataset(self):
-        X = self.get_X()
-        y = self.get_y()
+    def get_dataset(self, data): 
+        data = self.preprocess(self.df)
+        X = self.get_X(data)
+        y = self.get_y(data)
         X_train, X_test, y_train, y_test = self.get_split(X, y)
         if self.task == 'classification': 
             X_train, X_test, y_train, y_test = self.get_smote(X_train, X_test, y_train, y_test)
@@ -84,20 +85,25 @@ class Engagement():
         return self.df
 
 
-# def create_db(user="root", password="Chenlu1974", server="localhost", database="transact"):
-#     SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
-#         user, password, server, database
-#     )
-#     engine = create_engine(SQLALCHEMY_DATABASE_URL)
+def create_db(user="root", password="Chenlu1974", server="localhost", database="transact"):
+    SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
+        user, password, server, database
+    )
+    engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
-#     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-#     Base = declarative_base()
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    Base = declarative_base()
 
-#     return engine, SessionLocal, Base
+    return engine, SessionLocal, Base
 
-# engine, SessionLocal, Base = create_db(password='msql1234')
+engine, SessionLocal, Base = create_db()
 
-# eg = Engagement(engine, task='classification', col_type = 'market', y_col = 'conversion')
+eg = Engagement(engine, task='classification', col_type = 'market', y_col = 'conversion')
+data = eg.get_data()
+processed_data = eg.preprocess(data)
+X = eg.get_X(processed_data)
+y = eg.get_y(processed_data)
+print(y)
 # X_train, X_test, y_train, y_test = eg.get_dataset()
 # print(y_train.value_counts())
 # print(pd.concat([X_train, y_train], axis=1))

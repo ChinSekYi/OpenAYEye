@@ -1,15 +1,14 @@
 import numpy as np
-
-
 from sklearn.linear_model import SGDClassifier
 from .models import CLFSwitcher
-
-
 from sklearn.pipeline import Pipeline
-from sklearn.model_selection import GridSearchCV
+from sklearn.preprocessing import MinMaxScaler
 
 
 pipeline = Pipeline([
+    # scaling
+    ('min_max_scaler', MinMaxScaler()),
+    # recode
     ('clf', CLFSwitcher()),
 ])
 

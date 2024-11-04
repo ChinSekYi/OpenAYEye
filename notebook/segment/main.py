@@ -1,18 +1,11 @@
 # %%
-import re
-import time
-import datetime
-
 import pandas as pd
 import numpy as np
 
 import warnings
 warnings.filterwarnings("ignore")
 
-from dataset import engine, Churn, Engagement, RFM
-from models import MyRFClassifier, MyRFRegressor
-from configs import Config
-from myutils import show_cm, show_feature_importance
+from dataset import engine
 
 
 import sqlalchemy

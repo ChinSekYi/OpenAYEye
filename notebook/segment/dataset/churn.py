@@ -85,7 +85,7 @@ class Churn():
 
 # engine, SessionLocal, Base = create_db(password='msql1234')
 
-# churn = Churn(engine, col_type='demo')
+# # churn = Churn(engine, col_type='demo')
 # churn = Churn(engine, col_type='market')
 # X_train, X_test, y_train, y_test = churn.get_dataset()
 # print(X_train)
