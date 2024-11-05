@@ -13,80 +13,65 @@ from imblearn.over_sampling import SMOTE
 
 
 class Churn():
-    def __init__(self, engine, col_type):
-        self.engine = engine
-        self.col_type = col_type
-        if self.col_type == 'demo':
-            self.cols = ['age', 'gender', 'income', 'geography']
-        elif self.col_type == 'market':
-            self.cols = ['isactivemember', 'numofproducts', 'balance',
-                         'hascrcard', 'tenure', 'creditscore']
-        
-        query='''SELECT * FROM churn;'''
+    def __init__(self, engine):
+        self.engine = engine  
+        query="""
+            SELECT u.*, c.churn_date
+            FROM users u
+            LEFT JOIN churn c
+            ON u.customer_id = c.customer_id;
+            """
         with engine.connect() as db:
             query_string = sqlalchemy.text(query)
             fetched = pd.DataFrame(db.execute(query_string).fetchall())
-            fetched = fetched.drop(['estimatedsalary'], axis = 1)
             db.close()
-        self.df = self.preprocess(fetched)
+        self.df = fetched
 
-    def get_X(self):
-        if self.col_type == None:
-            res = self.df.drop(['exited', 'surname', 'customerid'], axis = 1)
-            return res
-        else:
-            return self.df[self.cols]
-
+    def preprocess(self):
+        data = self.df.copy()
+        data = data.drop(['customer_id', 'person', 'retirement_age', 'birth_year_month',
+                   'address', 'apartment', 'zipcode',
+                   'latitude', 'longitude'], axis=1)
+        data['churn'] = np.where(data['churn_date'].isna(), 0, 1)
+        return data
+    
+    def get_num_cols(self):
+        data = self.preprocess()
+        num_cols = data.select_dtypes([np.number]).columns
+        return num_cols
+    
+    def get_cat_cols(self):
+        data = self.preprocess()
+        cat_cols = data.select_dtypes(['category', 'object']).columns
+        return cat_cols
+    
+    def get_dat_cols(self):
+        data = self.preprocess()
+        dat_cols = data.select_dtypes(['datetime64']).columns
+        return dat_cols
+    
+    def get_X(self, col_type = 'market'):
+        data = self.preprocess()
+        X = data.drop(['churn', 'churn_date'], axis = 1)
+        return X
     def get_y(self):
-        return self.df[['exited']]
-    
-    def preprocess(self, X, y):
-        # Get all the categorical data
-        categorical_cols = X.select_dtypes(include=['category', 'object']).columns
+        data = self.preprocess()
+        return data[['churn']]
 
-        le = LabelEncoder()
-        for col in categorical_cols:
-            X[col] = le.fit_transform(X[col])
+def create_db(user="root", password="Chenlu1974", server="localhost", database="transact"):
+    SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
+        user, password, server, database
+    )
+    engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
-        y['exited'] = le.fit_transform(y)
-        return X, y
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    Base = declarative_base()
 
-    def get_smote(self, X_train, X_test, y_train, y_test):
-        smote = SMOTE(random_state=42)
-        X_train, y_train = smote.fit_resample(X_train, y_train)
-        X_test, y_test = smote.fit_resample(X_test, y_test)
-        return X_train, X_test, y_train, y_test
+    return engine, SessionLocal, Base
 
-    def get_split(self, X, y, test_size=0.2):
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42)
-        return X_train, X_test, y_train, y_test
-    
-    def get_dataset(self):
-        X = self.get_X()
-        y = self.get_y()
-        # X, y = self.recode(X, y)
-        # print(self.get_split(X, y))
-        X_train, X_test, y_train, y_test = self.get_split(X, y)
-        X_train, X_test, y_train, y_test = self.get_smote(X_train, X_test, y_train, y_test)
-        return X_train, X_test, y_train, y_test
+engine, SessionLocal, Base = create_db()
 
-    def get_data(self):
-        return self.df
-# def create_db(user="root", password="Chenlu1974", server="localhost", database="transact"):
-#     SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
-#         user, password, server, database
-#     )
-#     engine = create_engine(SQLALCHEMY_DATABASE_URL)
-
-#     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-#     Base = declarative_base()
-
-#     return engine, SessionLocal, Base
-
-# engine, SessionLocal, Base = create_db(password='msql1234')
-
-# # churn = Churn(engine, col_type='demo')
-# churn = Churn(engine, col_type='market')
-# X_train, X_test, y_train, y_test = churn.get_dataset()
-# print(X_train)
-# print(y_train)
+# churn = Churn(engine, col_type='demo')
+churn = Churn(engine)
+print(churn.get_X())
+print(churn.get_y())
