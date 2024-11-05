@@ -64,3 +64,18 @@ WHERE c.campaign_id = e.campaign_id) AS t1
 GROUP BY t1.campaign_id, t1.channel
 ORDER BY t1.campaign_id, t1.start_date, t1.channel;
 -- GROUP BY t1.campaign_id, t1.action_type;
+
+USE transact;
+SELECT c.campaign_id,
+c.campaign_name, 
+c.start_date, c.end_date,
+c.target_segment, 
+c.budget,
+c.channel,
+e.customer_id, 
+e.engagement_date, 
+e.action_type, e.device_type, e.feedback_score,
+e.conversion_value
+FROM campaign c, engagement e
+WHERE c.campaign_id = e.campaign_id
+LIMIT 100;
