@@ -69,9 +69,9 @@ def create_db(user="root", password="Chenlu1974", server="localhost", database="
 
     return engine, SessionLocal, Base
 
-engine, SessionLocal, Base = create_db()
+# engine, SessionLocal, Base = create_db()
 
 # churn = Churn(engine, col_type='demo')
-churn = Churn(engine)
-print(churn.get_X())
-print(churn.get_y())
+# churn = Churn(engine)
+# print(churn.get_X())
+# print(churn.get_y())

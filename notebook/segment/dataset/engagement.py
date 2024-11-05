@@ -85,25 +85,25 @@ class Engagement():
         return self.df
 
 
-def create_db(user="root", password="Chenlu1974", server="localhost", database="transact"):
-    SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
-        user, password, server, database
-    )
-    engine = create_engine(SQLALCHEMY_DATABASE_URL)
+# def create_db(user="root", password="Chenlu1974", server="localhost", database="transact"):
+#     SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
+#         user, password, server, database
+#     )
+#     engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
-    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    Base = declarative_base()
+#     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+#     Base = declarative_base()
 
-    return engine, SessionLocal, Base
+#     return engine, SessionLocal, Base
 
-engine, SessionLocal, Base = create_db()
+# engine, SessionLocal, Base = create_db()
 
-eg = Engagement(engine, task='classification', col_type = 'market', y_col = 'conversion')
-data = eg.get_data()
-processed_data = eg.preprocess(data)
-X = eg.get_X(processed_data)
-y = eg.get_y(processed_data)
-print(y)
+# eg = Engagement(engine, task='classification', col_type = 'market', y_col = 'conversion')
+# data = eg.get_data()
+# processed_data = eg.preprocess(data)
+# X = eg.get_X(processed_data)
+# y = eg.get_y(processed_data)
+# print(y)
 # X_train, X_test, y_train, y_test = eg.get_dataset()
 # print(y_train.value_counts())
 # print(pd.concat([X_train, y_train], axis=1))

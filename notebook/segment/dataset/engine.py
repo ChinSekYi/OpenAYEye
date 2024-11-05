@@ -18,4 +18,4 @@ def create_db(user="root", password="Chenlu1974", server="localhost", database="
 
     return engine, SessionLocal, Base
 
-engine, SessionLocal, Base = create_db()
+engine, SessionLocal, Base = create_db(password='msql1234')

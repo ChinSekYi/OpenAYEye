@@ -1,13 +1,6 @@
-from xgboost import XGBRFClassifier, XGBRFRegressor
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import pandas as pd
 
 from sklearn.base import BaseEstimator
-
-# import sklearn
 
 from sklearn.linear_model import SGDClassifier
 from sklearn.naive_bayes import MultinomialNB
@@ -20,6 +13,7 @@ from sklearn.model_selection import GridSearchCV
 
 from sklearn.metrics import f1_score
 from sklearn.metrics import classification_report
+from sklearn.multiclass import OneVsOneClassifier, OneVsRestClassifier
 
 class CLFSwitcher(BaseEstimator):
 
@@ -33,6 +27,7 @@ class CLFSwitcher(BaseEstimator):
 		""" 
 		self.linear_lst = [i.__name__ for i in [
 			SGDClassifier,
+			OneVsRestClassifier
 		]]
 		self.NB_lst = [i.__name__ for i in [
 			MultinomialNB,
