@@ -13,7 +13,7 @@ def random_date(start, end):
     return start + timedelta(days=random.randint(0, (end - start).days))
 
 # Define possible values for each column
-campaign_ids = [f"{str(i).zfill(4)}" for i in range(0, len(campaign))]  # 50 campaign IDs
+campaign_ids = [f"{str(i).zfill(4)}" for i in range(1, len(campaign))]  # 50 campaign IDs
 customer_ids = [f"{str(i).zfill(4)}" for i in range(0, 2000)]  # 2000 customer IDs
 action_types = ["scrolled", "clicked", "credentials", "converted"]
 device_types = ["mobile", "laptop", "desktop"]
