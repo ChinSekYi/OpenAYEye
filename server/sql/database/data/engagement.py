@@ -14,7 +14,7 @@ def random_date(start, end):
 
 # Define possible values for each column
 campaign_ids = [f"{str(i).zfill(4)}" for i in range(1, len(campaign))]  # 50 campaign IDs
-customer_ids = [f"{str(i).zfill(4)}" for i in range(1, 2001)]  # 2000 customer IDs
+customer_ids = [f"{str(i).zfill(4)}" for i in range(0, 2000)]  # 2000 customer IDs
 action_types = ["scrolled", "clicked", "credentials", "converted"]
 device_types = ["mobile", "laptop", "desktop"]
 feedback_scores = list(range(1, 6))  # Feedback scores from 1 to 5
