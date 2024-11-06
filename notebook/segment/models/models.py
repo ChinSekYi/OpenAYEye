@@ -13,7 +13,6 @@ from sklearn.model_selection import GridSearchCV
 
 from sklearn.metrics import f1_score
 from sklearn.metrics import classification_report
-from sklearn.multiclass import OneVsOneClassifier, OneVsRestClassifier
 
 class CLFSwitcher(BaseEstimator):
 
@@ -27,7 +26,6 @@ class CLFSwitcher(BaseEstimator):
 		""" 
 		self.linear_lst = [i.__name__ for i in [
 			SGDClassifier,
-			OneVsRestClassifier
 		]]
 		self.NB_lst = [i.__name__ for i in [
 			MultinomialNB,
