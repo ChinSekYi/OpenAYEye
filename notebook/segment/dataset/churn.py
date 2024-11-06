@@ -58,16 +58,16 @@ class Churn():
         data = self.preprocess()
         return data[['churn']]
 
-def create_db(user="root", password="Chenlu1974", server="localhost", database="transact"):
-    SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
-        user, password, server, database
-    )
-    engine = create_engine(SQLALCHEMY_DATABASE_URL)
+# def create_db(user="root", password="Chenlu1974", server="localhost", database="transact"):
+#     SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
+#         user, password, server, database
+#     )
+#     engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
-    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    Base = declarative_base()
+#     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+#     Base = declarative_base()
 
-    return engine, SessionLocal, Base
+#     return engine, SessionLocal, Base
 
 # engine, SessionLocal, Base = create_db()
 
