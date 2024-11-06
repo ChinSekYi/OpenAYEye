@@ -61,7 +61,8 @@ class CLFSwitcher(BaseEstimator):
 		return classification_report(y, self.predict(X))
 
 	def score(self, X, y):
-		return f1_score(y, self.predict(X), average='micro')
+		# return f1_score(y, self.predict(X), average='micro')
+		return self.estimator.score(X, y)
 
 	def feature_importance(self):
 		model_name = self.estimator.__class__.__name__

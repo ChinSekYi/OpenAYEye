@@ -32,3 +32,9 @@ class Data():
     def get_dataset(self):
         data = self.preprocess()
         return data
+
+    def get_X(self):
+        pass
+    
+    def get_X(self):
+        pass

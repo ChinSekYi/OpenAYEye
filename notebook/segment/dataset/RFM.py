@@ -1,11 +1,6 @@
 import pandas as pd
 import numpy as np
 
-import sqlalchemy
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
-
 from .data import Data
 # from engine import engine
 
@@ -25,9 +20,6 @@ class RFM(Data):
             'birth_year_month', 'address', 'apartment', 'zipcode', 
             'city', 'latitude', 'longitude'], axis=1)
 
-        data['day'] = data['date'].dt.day
-        data['month'] = data['date'].dt.month
-        data['year'] = data['date'].dt.year
         data.rename(columns={'current_age':'age'}, inplace = True)
         return data
 
@@ -68,6 +60,9 @@ class RFM(Data):
             }
         ):
         data = self.preprocess()
+        data['day'] = data['date'].dt.day
+        data['month'] = data['date'].dt.month
+        data['year'] = data['date'].dt.year
         # data = data.sort_values(by=group)
         recency = (data['date'].max() - data.groupby(group).agg({"date":"max"})).rename(columns = {"date":"recency"})
         recency['recency'] = recency['recency'].apply(lambda x: x.days)
@@ -90,6 +85,15 @@ class RFM(Data):
 
         rfm = rfm.drop(columns=['recency', 'frequency', 'monetary'], axis=1)
         return rfm
+
+    def get_X(self):
+        data = self.get_dataset()
+        X = data.drop(['segment'], axis = 1)
+        return X
+
+    def get_y(self):
+        data = self.get_dataset()
+        return data[['segment']]
 
 # segments = [
 #     'Hibernating', 'At Risk', 
