@@ -79,3 +79,8 @@ e.conversion_value
 FROM campaign c, engagement e
 WHERE c.campaign_id = e.campaign_id
 LIMIT 100;
+
+USE transact;
+SELECT COUNT(DISTINCT e.customer_id)
+FROM engagement e
+WHERE e.action_type = 'converted';

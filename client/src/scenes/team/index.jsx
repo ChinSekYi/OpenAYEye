@@ -1,7 +1,7 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { Header } from "../../components";
 import { DataGrid } from "@mui/x-data-grid";
-// import { mockDataTeam } from "../../data/mockData";
+import { mockDataTeam } from "../../data/mockData";
 import { tokens } from "../../theme";
 import {
   AdminPanelSettingsOutlined,
@@ -25,15 +25,16 @@ const Team = () => {
   
   // Fetch team data from API
   const [entries, setEntries] = useState([]);
-  useEffect(() => {
-    // fetch("/getTeams")
-    fetch("http://localhost:8000/getChurn")
-    .then((res) => res.json())
-    .then((data) => {
-      // console.log(data);
-      setEntries(data);
-    });
-  }, []);
+  setEntries(mockDataTeam);
+  // useEffect(() => {
+  //   // fetch("/getTeams")
+  //   fetch("http://localhost:8000/getChurn")
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     // console.log(data);
+  //     setEntries(data);
+  //   });
+  // }, []);
 
   // console.log(entries)
 

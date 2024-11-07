@@ -25,6 +25,8 @@ import {
 } from "@mui/icons-material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
+import React, {useState, useEffect, useContext} from "react";
+import { api } from "../API/backend";
 
 function Dashboard() {
   const theme = useTheme();
@@ -32,6 +34,36 @@ function Dashboard() {
   const isXlDevices = useMediaQuery("(min-width: 1260px)");
   const isMdDevices = useMediaQuery("(min-width: 724px)");
   const isXsDevices = useMediaQuery("(max-width: 436px)");
+  const [totalTraffic, setTraffic] = useState([]);
+  const [convertedClients, setConverted] = useState([]);
+  const [campaignReach, setCampaign] = useState([]);
+  useEffect(() => {
+    api.get('totalTraffic')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setTraffic(data);
+    });
+  }, []);
+  // console.log(totalTraffic)
+
+  useEffect(() => {
+    api.get('convertedClients')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setConverted(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('campaignReach')
+      .then((res) => res.data.data)
+      .then((data) => {
+      setCampaign(data);
+    });
+  }, []);
+  // console.log(campaignReach)
+
+
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between">
@@ -82,7 +114,7 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="100,000"
+            title={ totalTraffic }
             subtitle="Traffic Received"
             // progress="0.19036168720569081"
             // increase="+14%"
@@ -101,7 +133,7 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="4582"
+            title={ convertedClients }
             subtitle="Converted Clients"
             // progress="0.50"
             // increase="+21%"
@@ -156,7 +188,7 @@ function Dashboard() {
         {/* Line Chart */}
         <Box
           gridColumn={
-            isXlDevices ? "span 8" : isMdDevices ? "span 6" : "span 3"
+            isXlDevices ? "span 8" : isMdDevices ? "span 6" : "span 4"
           }
           gridRow="span 2"
           bgcolor={colors.primary[400]}
@@ -173,15 +205,15 @@ function Dashboard() {
                 fontWeight="600"
                 color={colors.gray[100]}
               >
-                Revenue Generated
+                Campaign Reach
               </Typography>
-              <Typography
+              {/* <Typography
                 variant="h5"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
                 $59,342.32
-              </Typography>
+              </Typography> */}
             </Box>
             <IconButton>
               <DownloadOutlined
@@ -190,9 +222,14 @@ function Dashboard() {
             </IconButton>
           </Box>
           <Box height="250px" mt="-20px">
-            <LineChart isDashboard={true} />
+            <BarChart 
+            data = { campaignReach }
+            index = {"date"}
+            keys =  {['scrolled', 'clicked', 'credentials', 'converted',]}
+            isDashboard={false} />
           </Box>
         </Box>
+        
 
         {/* Transaction Data */}
         <Box
@@ -243,7 +280,7 @@ function Dashboard() {
         </Box>
 
         {/* Revenue Details */}
-        <Box
+        {/* <Box
           gridColumn={isXlDevices ? "span 4" : "span 3"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -271,7 +308,7 @@ function Dashboard() {
               Includes extra misc expenditures and costs
             </Typography>
           </Box>
-        </Box>
+        </Box> */}
 
         {/* Bar Chart */}
         {/* <Box
