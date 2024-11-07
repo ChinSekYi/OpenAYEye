@@ -18,6 +18,8 @@ import {
   TimelineOutlined,
   WavesOutlined,
   CandlestickChartOutlined,
+  ScatterPlotOutlined,
+  SquareOutlined
 } from "@mui/icons-material";
 import avatar from "../../../assets/images/avatar.png";
 import logo from "../../../assets/images/logo.png";
@@ -251,6 +253,20 @@ const SideBar = () => {
             path="/boxplot" // change path
             colors={colors}
             icon={<CandlestickChartOutlined />} // change icon
+          />
+
+          <Item
+            title="Scatter Plot"
+            path="/scatter" // change path
+            colors={colors}
+            icon={<ScatterPlotOutlined />} // change icon
+          />
+
+          <Item
+            title="Heat Map"
+            path="/heat" // change path
+            colors={colors}
+            icon={<SquareOutlined />} // change icon
           />
           {/* <Item
             title="Geography Chart"

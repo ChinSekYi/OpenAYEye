@@ -15,6 +15,8 @@ import {
   Calendar,
   Stream,
   BoxPlot,
+  ScatterPlot,
+  HeatMap
 } from "./scenes";
 
 const AppRouter = () => {
@@ -35,6 +37,8 @@ const AppRouter = () => {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/geography" element={<Geography />} />
           <Route path="/boxplot" element={<BoxPlot />} />
+          <Route path="/scatter" element={<ScatterPlot />} />
+          <Route path="/heat" element={<HeatMap />} />
         </Route>
       </Routes>
     </Router>

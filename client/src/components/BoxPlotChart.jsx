@@ -17,6 +17,39 @@ const BoxPlotChart = () => {
 	return(
     <ResponsiveBoxPlot
         data={data}
+        theme={{
+            axis: {
+              domain: {
+                line: {
+                  stroke: colors.gray[100],
+                },
+              },
+              legend: {
+                text: {
+                  fill: colors.gray[100],
+                },
+              },
+              ticks: {
+                line: {
+                  stroke: colors.gray[100],
+                  strokeWidth: 1,
+                },
+                text: {
+                  fill: colors.gray[100],
+                },
+              },
+            },
+            legends: {
+              text: {
+                fill: colors.gray[100],
+              },
+            },
+            tooltip: {
+              container: {
+                color: colors.primary[500],
+              },
+            },
+          }}
         margin={{ top: 60, right: 140, bottom: 60, left: 60 }}
         minValue={0}
         maxValue={10}
@@ -100,7 +133,7 @@ const BoxPlotChart = () => {
                 itemWidth: 60,
                 itemHeight: 20,
                 itemsSpacing: 3,
-                itemTextColor: '#999',
+                itemTextColor: '#000',
                 itemDirection: 'left-to-right',
                 symbolSize: 20,
                 symbolShape: 'square',
@@ -108,8 +141,9 @@ const BoxPlotChart = () => {
                     {
                         on: 'hover',
                         style: {
-                            itemTextColor: '#000'
-                        }
+                            itemBackground: "rgba(0, 0, 0, .03)",
+                            itemOpacity: 1,
+                          },
                     }
                 ]
             }

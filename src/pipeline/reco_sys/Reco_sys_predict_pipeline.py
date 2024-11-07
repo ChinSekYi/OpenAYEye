@@ -11,9 +11,8 @@ import sys
 import joblib
 import pandas as pd
 
-from sklearn.preprocessing import StandardScaler
 from src.exception import CustomException
-from src.pipeline.reco_sys.Reco_sys_custom_data import RecoSysCustomData  # Import the new class
+from src.pipeline.reco_sys.Reco_sys_custom_data import RecoSysCustomData
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")
@@ -37,10 +36,6 @@ class PredictPipeline:
         Returns:
             dict: A dictionary with model names as keys and their predicted probabilities as values.
         """
-        #scaler = StandardScaler()
-        #scaler.fit(new_data)
-        #new_data_normalized = scaler.transform(new_data)
-
         probabilities = {}
         for model_name, model in models.items():
             probabilities[model_name] = model.predict_proba(new_data)[:, 1][0]  # Probability of class 1
@@ -89,6 +84,16 @@ class PredictPipeline:
             card_model_path = os.path.join("artifacts", "reco_sys_credit_card_debit_card_model.pkl")
             fixed_model_deposits_path = os.path.join("artifacts", "reco_sys_fixed_deposits_model.pkl")
             loan_model_path = os.path.join("artifacts", "reco_sys_loan_model.pkl")
+
+            # For covid dataset
+            """
+            account_model_path = os.path.join("artifacts", "reco_sys_account_covid_model.pkl")
+            card_model_path = os.path.join("artifacts", "reco_sys_credit_card_debit_card_covid_model.pkl")
+            fixed_model_deposits_path = os.path.join("artifacts", "reco_sys_fixed_deposits_covid_model.pkl")
+            loan_model_path = os.path.join("artifacts", "reco_sys_loan_covid_model.pkl")
+            """
+
+            # For meteor
 
             # Load the models
             models = {
