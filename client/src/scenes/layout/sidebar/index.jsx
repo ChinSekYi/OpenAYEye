@@ -175,43 +175,7 @@ const SideBar = () => {
             icon={<ReceiptOutlined />}
           />
         </Menu>
-        <Typography
-          variant="h6"
-          color={colors.gray[300]}
-          sx={{ m: "15px 0 5px 20px" }}
-        >
-          {!collapsed ? "Pages" : " "}
-        </Typography>
-        <Menu
-          menuItemStyles={{
-            button: {
-              ":hover": {
-                color: "#868dfb",
-                background: "transparent",
-                transition: ".4s ease",
-              },
-            },
-          }}
-        >
-          <Item
-            title="Profile Form"
-            path="/form"
-            colors={colors}
-            icon={<PersonOutlined />}
-          />
-          <Item
-            title="Calendar"
-            path="/calendar"
-            colors={colors}
-            icon={<CalendarTodayOutlined />}
-          />
-          <Item
-            title="FAQ Page"
-            path="/faq"
-            colors={colors}
-            icon={<HelpOutlineOutlined />}
-          />
-        </Menu>
+
         <Typography
           variant="h6"
           color={colors.gray[300]}
@@ -280,6 +244,49 @@ const SideBar = () => {
             colors={colors}
             icon={<WavesOutlined />}
           /> */}
+          <Typography
+          variant="h6"
+          color={colors.gray[300]}
+          sx={{ m: "15px 0 5px 20px" }}
+        >
+          {!collapsed ? "ROI & Recomendations" : " "}
+        </Typography>
+        <Menu
+          menuItemStyles={{
+            button: {
+              ":hover": {
+                color: "#868dfb",
+                background: "transparent",
+                transition: ".4s ease",
+              },
+            },
+          }}
+        >
+          <Item
+            title="Return-on-Investments"
+            path="/form"
+            colors={colors}
+            icon={<PersonOutlined />}
+          />
+          <Item
+            title="Recommended Products"
+            path="/form"
+            colors={colors}
+            icon={<PersonOutlined />}
+          />
+          {/* <Item
+            title="Calendar"
+            path="/calendar"
+            colors={colors}
+            icon={<CalendarTodayOutlined />}
+          /> */}
+          {/* <Item
+            title="FAQ Page"
+            path="/faq"
+            colors={colors}
+            icon={<HelpOutlineOutlined />}
+          /> */}
+        </Menu>
         </Menu>
       </Box>
     </Sidebar>

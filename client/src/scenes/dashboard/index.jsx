@@ -19,6 +19,8 @@ import {
   Email,
   PersonAdd,
   PointOfSale,
+  NotInterested,
+  AddReaction, 
   Traffic,
 } from "@mui/icons-material";
 import { tokens } from "../../theme";
@@ -33,7 +35,7 @@ function Dashboard() {
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between">
-        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
+        <Header title="Campaign Tracking" subtitle="Welcome to your dashboard" />
         {!isXsDevices && (
           <Box>
             <Button
@@ -80,12 +82,12 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="11,361"
-            subtitle="Email Sent"
-            progress="0.75"
-            increase="+14%"
+            title="100,000"
+            subtitle="Traffic Received"
+            // progress="0.19036168720569081"
+            // increase="+14%"
             icon={
-              <Email
+              <Traffic
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -99,12 +101,12 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="431,225"
-            subtitle="Sales Obtained"
-            progress="0.50"
-            increase="+21%"
+            title="4582"
+            subtitle="Converted Clients"
+            // progress="0.50"
+            // increase="+21%"
             icon={
-              <PointOfSale
+              <AddReaction
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -118,10 +120,10 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="32,441"
-            subtitle="New Clients"
-            progress="0.30"
-            increase="+5%"
+            title="38, 314"
+            subtitle="Potential Clients"
+            // progress="0.30"
+            // increase="+5%"
             icon={
               <PersonAdd
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -137,10 +139,10 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="1,325,134"
-            subtitle="Traffic Received"
-            progress="0.80"
-            increase="+43%"
+            title="0.29"
+            subtitle="Click Through Rate"
+            // progress="0.80"
+            // increase="+43%"
             icon={
               <Traffic
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -272,7 +274,7 @@ function Dashboard() {
         </Box>
 
         {/* Bar Chart */}
-        <Box
+        {/* <Box
           gridColumn={isXlDevices ? "span 4" : "span 3"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -293,10 +295,10 @@ function Dashboard() {
           >
             <BarChart isDashboard={true} />
           </Box>
-        </Box>
+        </Box> */}
 
         {/* Geography Chart */}
-        <Box
+        {/* <Box
           gridColumn={isXlDevices ? "span 4" : "span 3"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -313,7 +315,7 @@ function Dashboard() {
           >
             <GeographyChart isDashboard={true} />
           </Box>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );
