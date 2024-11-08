@@ -36,6 +36,8 @@ function Dashboard() {
   const isXsDevices = useMediaQuery("(max-width: 436px)");
   const [totalTraffic, setTraffic] = useState([]);
   const [convertedClients, setConverted] = useState([]);
+  const [potentialCustomers, setPotential] = useState([]);
+  const [conversionRate, setRate] = useState([]);
   const [campaignReach, setCampaign] = useState([]);
   useEffect(() => {
     api.get('totalTraffic')
@@ -51,6 +53,22 @@ function Dashboard() {
       .then((res) => res.data.data)
       .then((data) => {
         setConverted(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('potentialCustomers')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setPotential(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('conversionRate')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setRate(data);
     });
   }, []);
 
@@ -152,7 +170,7 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="38, 314"
+            title={ potentialCustomers }
             subtitle="Potential Clients"
             // progress="0.30"
             // increase="+5%"
@@ -171,7 +189,7 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="0.29"
+            title={ conversionRate }
             subtitle="Click Through Rate"
             // progress="0.80"
             // increase="+43%"

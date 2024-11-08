@@ -89,14 +89,53 @@ async def getConvertedClients():
             '''
             SELECT COUNT(DISTINCT e.customer_id)
             FROM engagement e
-            WHERE e.action_type = 'converted';
+            WHERE e.action_type = 'converted'
+            AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
             ''')
         df = db.execute(query).fetchone()
         # print(df)
         db.close()
     data = df[0]
     return {'status': 'ok', 'data': "{:,}".format(data)}
-    
+
+
+@app.get("/potentialCustomers")
+async def getConvertedClients():
+    with engine.connect() as db:
+        query = sqlalchemy.text(
+            '''
+            SELECT COUNT(DISTINCT e.customer_id)
+            FROM engagement e
+            WHERE e.action_type IN ('credentials', 'clicked')
+            AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
+            ''')
+        df = db.execute(query).fetchone()
+        # print(df)
+        db.close()
+    data = df[0]
+    return {'status': 'ok', 'data': "{:,}".format(data)}
+
+
+@app.get("/conversionRate")
+async def getConvertedClients():
+    with engine.connect() as db:
+        query = sqlalchemy.text(
+            '''
+            SELECT t1.converted / t2.impressions FROM 
+            (SELECT COUNT(DISTINCT e.customer_id) AS converted
+            FROM engagement e
+            WHERE e.action_type = 'converted'
+            AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)) AS t1,
+            (SELECT COUNT(DISTINCT e.customer_id) AS impressions
+            FROM engagement e
+            WHERE e.action_type IN ('converted', 'credentials', 'clicked')
+            AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)) AS t2;
+            ''')
+        df = db.execute(query).fetchone()
+        # print(df)
+        db.close()
+    data = df[0]
+    return {'status': 'ok', 'data': "{:,}".format(data)}
     
 
 @app.get("/campaignReach")
