@@ -4,9 +4,9 @@ import { mockBarData } from "../data/mockData";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 
-const BarChart = ({ data,
-    index,
-    keys,
+const BarChart = ({ data = mockBarData,
+    index = 'date',
+    keys = ['scrolled', 'clicked', 'credentials', 'converted',],
     isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

@@ -39,6 +39,8 @@ function Dashboard() {
   const [potentialCustomers, setPotential] = useState([]);
   const [conversionRate, setRate] = useState([]);
   const [campaignReach, setCampaign] = useState([]);
+  const [latestEngage, setLatest] = useState([]);
+
   useEffect(() => {
     api.get('totalTraffic')
       .then((res) => res.data.data)
@@ -79,8 +81,14 @@ function Dashboard() {
       setCampaign(data);
     });
   }, []);
-  // console.log(campaignReach)
-
+  
+  useEffect(() => {
+    api.get('latestEngage')
+      .then((res) => res.data.data)
+      .then((data) => {
+      setLatest(data);
+    });
+  }, []);
 
   return (
     <Box m="20px">
@@ -256,13 +264,13 @@ function Dashboard() {
           bgcolor={colors.primary[400]}
           overflow="auto"
         >
-          <Box borderBottom={`4px solid ${colors.primary[500]}`} p="15px">
-            <Typography color={colors.gray[100]} variant="h5" fontWeight="600">
-              Recent Transactions
+          <Box borderBottom={`4px solid ${colors.primary[500]}`} p="15px" >
+            <Typography color={colors.gray[100]} variant="h5" fontWeight="600" justify="space-between">
+              Recent Engagements
             </Typography>
           </Box>
 
-          {mockTransactions.map((transaction, index) => (
+          {latestEngage.map((transaction, index) => (
             <Box
               key={`${transaction.txId}-${index}`}
               display="flex"
@@ -277,22 +285,25 @@ function Dashboard() {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.txId}
+                  {transaction.action}
                 </Typography>
                 <Typography color={colors.gray[100]}>
-                  {transaction.user}
+                  {transaction.id}
                 </Typography>
               </Box>
               <Typography color={colors.gray[100]}>
                 {transaction.date}
               </Typography>
-              <Box
+              <Typography color={colors.gray[100]}>
+                {transaction.score}/5 Rating
+              </Typography>
+              {/* <Box
                 bgcolor={colors.greenAccent[500]}
                 p="5px 10px"
                 borderRadius="4px"
               >
                 ${transaction.cost}
-              </Box>
+              </Box> */}
             </Box>
           ))}
         </Box>

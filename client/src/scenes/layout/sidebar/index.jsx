@@ -138,7 +138,7 @@ const SideBar = () => {
             icon={<DashboardOutlined />}
           />
         </Menu>
-        <Typography
+        {/* <Typography
           variant="h6"
           color={colors.gray[300]}
           sx={{ m: "15px 0 5px 20px" }}
@@ -174,7 +174,7 @@ const SideBar = () => {
             colors={colors}
             icon={<ReceiptOutlined />}
           />
-        </Menu>
+        </Menu> */}
 
         <Typography
           variant="h6"

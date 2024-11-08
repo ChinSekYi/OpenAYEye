@@ -167,3 +167,23 @@ async def getReach():
 
     return {'status': 'ok', 'data': data}
 
+@app.get("/latestEngage")
+async def getLatest():
+    with engine.connect() as db:
+        query = sqlalchemy.text(
+            '''
+            SELECT *
+            FROM engagement e
+            ORDER BY e.engagement_date DESC
+            LIMIT 10;
+            ''')
+        df = pd.DataFrame(db.execute(query).fetchall())
+        db.close()
+
+    df['engagement_date'] = df['engagement_date'].astype(str)
+    df = df.loc[:, ['customer_id', 'engagement_date', 'action_type', 'feedback_score']]
+    df = df.rename(columns={'customer_id': 'id', 'engagement_date': 'date', 'action_type': 'action', 'feedback_score': 'score'})
+    data = df.to_dict(orient='records')
+
+    return {'status': 'ok', 'data': data}
+
