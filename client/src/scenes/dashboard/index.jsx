@@ -40,6 +40,7 @@ function Dashboard() {
   const [conversionRate, setRate] = useState([]);
   const [campaignReach, setCampaign] = useState([]);
   const [latestEngage, setLatest] = useState([]);
+  const [adSpend, setSpend] = useState([]); 
 
   useEffect(() => {
     api.get('totalTraffic')
@@ -89,6 +90,17 @@ function Dashboard() {
       setLatest(data);
     });
   }, []);
+
+  useEffect(() => {
+    api.get('adSpend')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setSpend(data);
+    });
+  }, []);
+
+  // console.log(adSpend)
+
 
   return (
     <Box m="20px">
@@ -308,6 +320,231 @@ function Dashboard() {
           ))}
         </Box>
 
+        {/* Line Chart */}
+        <Box
+          gridColumn={
+            isXlDevices ? "span 12" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+        <Box
+            mt="25px"
+            px="30px"
+            display="flex"
+            justifyContent="space-between"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.gray[100]}
+              >
+                Ad Spending
+              </Typography>
+              {/* <Typography
+                variant="h5"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                $59,342.32
+              </Typography> */}
+            </Box>
+            <IconButton>
+              <DownloadOutlined
+                sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+              />
+            </IconButton>
+          </Box>
+          <Box height="250px" mt="-20px">
+            <BarChart 
+            data = { adSpend }
+            index = {"date"}
+            keys =  {['spending']}
+            isDashboard={false} />
+          </Box>
+        
+        </Box>
+
+        {/* Line Chart */}
+        <Box
+          gridColumn={
+            isXlDevices ? "span 12" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+        <Box
+            mt="25px"
+            px="30px"
+            display="flex"
+            justifyContent="space-between"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.gray[100]}
+              >
+                Predicted ROI 
+              </Typography>
+              {/* <Typography
+                variant="h5"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                $59,342.32
+              </Typography> */}
+            </Box>
+            <IconButton>
+              <DownloadOutlined
+                sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+              />
+            </IconButton>
+          </Box>
+          <Box height="250px" mt="-20px">
+            {/* <BarChart 
+            data = { adSpend }
+            index = {"date"}
+            keys =  {['spending']}
+            isDashboard={false} /> */}
+          </Box>
+        
+        </Box>  
+
+
+
+
+        <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+            <Box>
+            <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Hibernating
+                </Typography>
+                
+            </Box>
+            <Box height="250px" mt="-20px"></Box>
+          </Box>
+        </Box>   
+        <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+            <Box>
+            <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  New Customers
+                </Typography>
+                
+            </Box>
+            <Box height="250px" mt="-20px"></Box>
+          </Box>
+        </Box>   
+        <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+            <Box>
+            <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Cannot Lose
+                </Typography>
+                
+            </Box>
+            <Box height="250px" mt="-20px"></Box>
+          </Box>
+        </Box>   
+        <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+            <Box>
+            <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Need Attention
+                </Typography>
+                
+            </Box>
+            <Box height="250px" mt="-20px"></Box>
+          </Box>
+        </Box>  
+        {/* <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+            <Box>
+            <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Loyal Customers
+                </Typography>
+                
+            </Box>
+            <Box height="250px" mt="-20px"></Box>
+          </Box>
+        </Box>      */}
         {/* Revenue Details */}
         {/* <Box
           gridColumn={isXlDevices ? "span 4" : "span 3"}

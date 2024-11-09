@@ -108,3 +108,10 @@ SELECT COUNT(DISTINCT e.customer_id)
 FROM engagement e
 WHERE e.action_type IN ('converted', 'credentials', 'clicked')
 AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
+
+
+USE transact;
+SELECT  SUM(c.budget)
+FROM campaign c
+WHERE c.start_date >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
+GROUP BY GROUP BY YEAR(c.start_date), MONTH(c.start_date)

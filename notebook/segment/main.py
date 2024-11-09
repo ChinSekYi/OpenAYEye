@@ -187,3 +187,23 @@ async def getLatest():
 
     return {'status': 'ok', 'data': data}
 
+
+@app.get("/adSpend")
+async def getReach():
+    with engine.connect() as db:
+        query = sqlalchemy.text(
+            '''
+            SELECT * 
+            FROM campaign c;
+            ''')
+        df = pd.DataFrame(db.execute(query).fetchall())
+        db.close()
+    data = df[df['start_date'] >= df['start_date'].max() - relativedelta(months=11)] \
+        .groupby([df['start_date'].dt.to_period("M")]) \
+        .agg({"budget": ['sum']})['budget'].reset_index().rename(columns={'start_date':'date', 'sum':'spending'})
+    data['date'] = data['date'].astype(str)
+    data['spending'] = data['spending'].astype(int)
+    data['spendingColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
+    data = data.to_dict(orient='records')
+
+    return {'status': 'ok', 'data': data}

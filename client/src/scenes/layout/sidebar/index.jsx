@@ -68,18 +68,18 @@ const SideBar = () => {
                 gap="12px"
                 sx={{ transition: ".3s ease" }}
               >
-                <img
+                {/* <img
                   style={{ width: "30px", height: "30px", borderRadius: "8px" }}
                   src={logo}
                   alt="Argon"
-                />
+                /> */}
                 <Typography
                   variant="h4"
                   fontWeight="bold"
                   textTransform="capitalize"
                   color={colors.greenAccent[500]}
                 >
-                  Argon
+                  Bank-Marketing
                 </Typography>
               </Box>
             )}
@@ -99,7 +99,7 @@ const SideBar = () => {
             mb: "25px",
           }}
         >
-          <Avatar
+          {/* <Avatar
             alt="avatar"
             src={avatar}
             sx={{ width: "100px", height: "100px" }}
@@ -115,7 +115,7 @@ const SideBar = () => {
             >
               CEO of Stank Industries
             </Typography>
-          </Box>
+          </Box> */}
         </Box>
       )}
 
@@ -244,49 +244,8 @@ const SideBar = () => {
             colors={colors}
             icon={<WavesOutlined />}
           /> */}
-          <Typography
-          variant="h6"
-          color={colors.gray[300]}
-          sx={{ m: "15px 0 5px 20px" }}
-        >
-          {!collapsed ? "ROI & Recomendations" : " "}
-        </Typography>
-        <Menu
-          menuItemStyles={{
-            button: {
-              ":hover": {
-                color: "#868dfb",
-                background: "transparent",
-                transition: ".4s ease",
-              },
-            },
-          }}
-        >
-          <Item
-            title="Return-on-Investments"
-            path="/form"
-            colors={colors}
-            icon={<PersonOutlined />}
-          />
-          <Item
-            title="Recommended Products"
-            path="/form"
-            colors={colors}
-            icon={<PersonOutlined />}
-          />
-          {/* <Item
-            title="Calendar"
-            path="/calendar"
-            colors={colors}
-            icon={<CalendarTodayOutlined />}
-          /> */}
-          {/* <Item
-            title="FAQ Page"
-            path="/faq"
-            colors={colors}
-            icon={<HelpOutlineOutlined />}
-          /> */}
-        </Menu>
+          
+        
         </Menu>
       </Box>
     </Sidebar>
