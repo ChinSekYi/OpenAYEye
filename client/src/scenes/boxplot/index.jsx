@@ -9,6 +9,8 @@ const BoxPlot = () => {
         <BoxPlotChart />
       </Box>
     </Box>
+
+    
   );
 };
 
