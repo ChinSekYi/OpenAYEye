@@ -41,6 +41,7 @@ function Dashboard() {
   const [campaignReach, setCampaign] = useState([]);
   const [latestEngage, setLatest] = useState([]);
   const [adSpend, setSpend] = useState([]); 
+  const [predROI, setROI] = useState([]);  
 
   useEffect(() => {
     api.get('totalTraffic')
@@ -99,7 +100,15 @@ function Dashboard() {
     });
   }, []);
 
-  // console.log(adSpend)
+  useEffect(() => {
+    api.get('predROI')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setROI(data);
+    });
+  }, []);
+
+  console.log(predROI)
 
 
   return (
@@ -403,11 +412,11 @@ function Dashboard() {
             </IconButton>
           </Box>
           <Box height="250px" mt="-20px">
-            {/* <BarChart 
-            data = { adSpend }
-            index = {"date"}
-            keys =  {['spending']}
-            isDashboard={false} /> */}
+            <BarChart 
+            data = { predROI }
+            index = {"start_date"}
+            keys =  {['clicks', 'leads', 'orders']}
+            isDashboard={false} />
           </Box>
         
         </Box>  
