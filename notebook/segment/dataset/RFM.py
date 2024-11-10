@@ -83,7 +83,7 @@ class RFM(Data):
         rfm['segment'] = rfm['recency_score'].astype(str) + rfm['frequency_score'].astype(str)
         rfm['segment'] = rfm['segment'].replace(seg_map, regex=True)
 
-        rfm = rfm.drop(columns=['recency', 'frequency', 'monetary'], axis=1)
+        # rfm = rfm.drop(columns=['recency', 'frequency', 'monetary'], axis=1)
         return rfm
 
     def get_X(self):

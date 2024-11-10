@@ -5,6 +5,10 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  List, 
+  ListItem,
+  ListItemButton,
+  ListItemText, 
 } from "@mui/material";
 import {
   Header,
@@ -108,7 +112,21 @@ function Dashboard() {
     });
   }, []);
 
-  console.log(predROI)
+  // console.log(predROI)
+  
+  const products = [{
+    id: 0,
+    item: 'Fixed Deposits',
+  }, {
+    id: 1,
+    item: 'Credit & Debit Card',
+  }, {
+    id: 2,
+    item: 'Account',
+  }, {
+    id: 3,
+    item: 'Loan',  
+  }];
 
 
   return (
@@ -421,9 +439,6 @@ function Dashboard() {
         
         </Box>  
 
-
-
-
         <Box
           gridColumn={
             isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
@@ -438,13 +453,40 @@ function Dashboard() {
               justifyContent="space-between"
             >
             <Box>
-            <Typography
+                <Typography
                   variant="h5"
                   fontWeight="600"
                   color={colors.gray[100]}
                 >
-                  Hibernating
+                  Loyal Customers
                 </Typography>
+                <List> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"1. " + 'Fixed Deposits'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"2. " + 'Credit & Debit Card'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"3. " + 'Account'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={ "4. " +  'Loan' } /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                </List> 
                 
             </Box>
             <Box height="250px" mt="-20px"></Box>
@@ -469,9 +511,35 @@ function Dashboard() {
                   fontWeight="600"
                   color={colors.gray[100]}
                 >
-                  New Customers
+                  At-Risk Customers
                 </Typography>
-                
+                <List> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"1. " + 'Account'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"2. " + 'Credit & Debit Card'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"3. " + 'Fixed Deposits'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={ "4. " +  'Loan' } /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                </List> 
             </Box>
             <Box height="250px" mt="-20px"></Box>
           </Box>
@@ -488,18 +556,44 @@ function Dashboard() {
               px="30px"
               display="flex"
               justifyContent="space-between"
+              height="250px"
             >
-            <Box>
-            <Typography
+                <Box>
+                <Typography
                   variant="h5"
                   fontWeight="600"
                   color={colors.gray[100]}
                 >
-                  Cannot Lose
+                New Customers
                 </Typography>
-                
+                <List> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"1. " + 'Credit & Debit Card'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"2. " + 'Fixed Deposits'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"3. " + 'Accounts'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={ "4. " +  'Loan' } /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                </List> 
             </Box>
-            <Box height="250px" mt="-20px"></Box>
           </Box>
         </Box>   
         <Box
@@ -516,14 +610,40 @@ function Dashboard() {
               justifyContent="space-between"
             >
             <Box>
-            <Typography
+                <Typography
                   variant="h5"
                   fontWeight="600"
                   color={colors.gray[100]}
                 >
-                  Need Attention
+                  Hibernating Customers
                 </Typography>
-                
+                <List> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"1. " + 'Fixed Deposits'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"2. " + 'Accounts'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"3. " + 'Credit and Debit Card'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={ "4. " +  'Loan' } /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                </List> 
             </Box>
             <Box height="250px" mt="-20px"></Box>
           </Box>

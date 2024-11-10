@@ -132,8 +132,14 @@ const SideBar = () => {
           }}
         >
           <Item
-            title="Dashboard"
+            title="Campaign"
             path="/"
+            colors={colors}
+            icon={<DashboardOutlined />}
+          />
+          <Item
+            title="Customers"
+            path="/customer"
             colors={colors}
             icon={<DashboardOutlined />}
           />
