@@ -67,6 +67,11 @@ class PredictPipeline:
             for i, target in enumerate(target_names):
                 results_dict[target] = pred_result[:, i][0]
 
+            cost_of_credit_card = 200 #Assumption that it is a entry-level card
+            orders = results_dict['orders'] 
+            profit = round((orders * cost_of_credit_card) - float(features['cost'].values[0]), 2)
+            results_dict['profit/loss'] = f"${profit}"
+
             return results_dict
 
         except Exception as e:
@@ -103,7 +108,7 @@ class CustomData:
 if __name__ == "__main__":
     user_input = {
         "category": "social",
-        "cost": "50000"
+        "cost": "500"
     }
 
     # Get input data in custom data format

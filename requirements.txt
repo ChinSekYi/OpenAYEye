@@ -16,4 +16,5 @@ flask>=3.0.3
 ipykernel>=6.29.5
 requests>=2.32.3
 tqdm
+dill=0.3.7
 #-e .
