@@ -42,10 +42,10 @@ function Customer() {
   const [convertedClients, setConverted] = useState([]);
   const [potentialCustomers, setPotential] = useState([]);
   const [conversionRate, setRate] = useState([]);
-  const [campaignReach, setCampaign] = useState([]);
-  const [latestEngage, setLatest] = useState([]);
-  const [adSpend, setSpend] = useState([]); 
-  const [predROI, setROI] = useState([]);  
+  const [segByIncome, setSegIncome] = useState([]);
+  const [segByAge, setSegAge] = useState([]);
+  const [churnBySeg, setChurnSeg] = useState([]);
+
 
   useEffect(() => {
     api.get('totalTraffic')
@@ -81,58 +81,35 @@ function Customer() {
   }, []);
 
   useEffect(() => {
-    api.get('campaignReach')
+    api.get('segByIncome')
       .then((res) => res.data.data)
       .then((data) => {
-      setCampaign(data);
-    });
-  }, []);
-  
-  useEffect(() => {
-    api.get('latestEngage')
-      .then((res) => res.data.data)
-      .then((data) => {
-      setLatest(data);
+        setSegIncome(data);
     });
   }, []);
 
   useEffect(() => {
-    api.get('adSpend')
+    api.get('segByAge')
       .then((res) => res.data.data)
       .then((data) => {
-        setSpend(data);
+        setSegAge(data);
     });
   }, []);
 
   useEffect(() => {
-    api.get('predROI')
+    api.get('churnBySeg')
       .then((res) => res.data.data)
       .then((data) => {
-        setROI(data);
+        setChurnSeg(data);
     });
   }, []);
 
-  // console.log(predROI)
-  
-  const products = [{
-    id: 0,
-    item: 'Fixed Deposits',
-  }, {
-    id: 1,
-    item: 'Credit & Debit Card',
-  }, {
-    id: 2,
-    item: 'Account',
-  }, {
-    id: 3,
-    item: 'Loan',  
-  }];
-
-
+  // console.log(segByIncome)
+    
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between">
-        <Header title="Campaign Tracking" subtitle="Welcome to your dashboard" />
+        <Header title="Customer Segmentation" subtitle="Welcome to your dashboard" />
         {!isXsDevices && (
           <Box>
             <Button
@@ -247,13 +224,9 @@ function Customer() {
               }
             />
           </Box>
-
-          {/* ---------------- Row 2 ---------------- */}
-
-          {/* Line Chart */}
           <Box
             gridColumn={
-              isXlDevices ? "span 8" : isMdDevices ? "span 6" : "span 4"
+              isXlDevices ? "span 12" : isMdDevices ? "span 6" : "span 4"
             }
             gridRow="span 2"
             bgcolor={colors.primary[400]}
@@ -270,7 +243,7 @@ function Customer() {
                   fontWeight="600"
                   color={colors.gray[100]}
                 >
-                  Campaign Reach
+                  Transactions By Income 
                 </Typography>
                 {/* <Typography
                   variant="h5"
@@ -288,66 +261,13 @@ function Customer() {
             </Box>
             <Box height="250px" mt="-20px">
               <BarChart 
-              data = { campaignReach }
-              index = {"date"}
-              keys =  {['scrolled', 'clicked', 'credentials', 'converted',]}
+              data = { segByIncome }
+              index = {"income_cat"}
+              keys =  {['Hibernating', 'At Risk', 'Loyal Customers', 'New Customers',]}
               isDashboard={false} />
             </Box>
+            
           </Box>
-          
-
-          {/* Transaction Data */}
-          <Box
-            gridColumn={isXlDevices ? "span 4" : "span 3"}
-            gridRow="span 2"
-            bgcolor={colors.primary[400]}
-            overflow="auto"
-          >
-            <Box borderBottom={`4px solid ${colors.primary[500]}`} p="15px" >
-              <Typography color={colors.gray[100]} variant="h5" fontWeight="600" justify="space-between">
-                Recent Engagements
-              </Typography>
-            </Box>
-
-            {latestEngage.map((transaction, index) => (
-              <Box
-                key={`${transaction.txId}-${index}`}
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-                borderBottom={`4px solid ${colors.primary[500]}`}
-                p="15px"
-              >
-                <Box>
-                  <Typography
-                    color={colors.greenAccent[500]}
-                    variant="h5"
-                    fontWeight="600"
-                  >
-                    {transaction.action}
-                  </Typography>
-                  <Typography color={colors.gray[100]}>
-                    {transaction.id}
-                  </Typography>
-                </Box>
-                <Typography color={colors.gray[100]}>
-                  {transaction.date}
-                </Typography>
-                <Typography color={colors.gray[100]}>
-                  {transaction.score}/5 Rating
-                </Typography>
-                {/* <Box
-                  bgcolor={colors.greenAccent[500]}
-                  p="5px 10px"
-                  borderRadius="4px"
-                >
-                  ${transaction.cost}
-                </Box> */}
-              </Box>
-            ))}
-          </Box>
-
-          {/* Line Chart */}
           <Box
             gridColumn={
               isXlDevices ? "span 12" : isMdDevices ? "span 6" : "span 4"
@@ -355,7 +275,7 @@ function Customer() {
             gridRow="span 2"
             bgcolor={colors.primary[400]}
           >
-          <Box
+            <Box
               mt="25px"
               px="30px"
               display="flex"
@@ -367,7 +287,7 @@ function Customer() {
                   fontWeight="600"
                   color={colors.gray[100]}
                 >
-                  Ad Spending
+                  Transactions Per Age
                 </Typography>
                 {/* <Typography
                   variant="h5"
@@ -385,15 +305,13 @@ function Customer() {
             </Box>
             <Box height="250px" mt="-20px">
               <BarChart 
-              data = { adSpend }
-              index = {"date"}
-              keys =  {['spending']}
+              data = { segByAge }
+              index = {"age_cat"}
+              keys =  {['Hibernating', 'At Risk', 'Loyal Customers', 'New Customers',]}
               isDashboard={false} />
             </Box>
-          
+            
           </Box>
-
-          {/* Line Chart */}
           <Box
             gridColumn={
               isXlDevices ? "span 12" : isMdDevices ? "span 6" : "span 4"
@@ -401,7 +319,7 @@ function Customer() {
             gridRow="span 2"
             bgcolor={colors.primary[400]}
           >
-          <Box
+            <Box
               mt="25px"
               px="30px"
               display="flex"
@@ -413,7 +331,7 @@ function Customer() {
                   fontWeight="600"
                   color={colors.gray[100]}
                 >
-                  Predicted ROI 
+                  Transactions Per Age
                 </Typography>
                 {/* <Typography
                   variant="h5"
@@ -431,14 +349,13 @@ function Customer() {
             </Box>
             <Box height="250px" mt="-20px">
               <BarChart 
-              data = { predROI }
-              index = {"start_date"}
-              keys =  {['clicks', 'leads', 'orders']}
+              data = { churnBySeg }
+              index = {"Segment"}
+              keys =  {['Remain', 'Exited']}
               isDashboard={false} />
             </Box>
-          
-          </Box>  
-
+            
+          </Box>
            
         </Box>
     </Box>

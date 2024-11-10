@@ -47,17 +47,23 @@ class RFM(Data):
 
     def get_RFM(self, group=["customer_id", "age", "gender"], 
             seg_map = {
-                r'[1-2][1-2]': 'Hibernating',
-                r'[1-2][3-4]': 'At Risk',
-                r'[1-2]5': 'Cannot Lose',
-                r'3[1-2]': 'About to Sleep',
-                r'33': 'Need Attention',
-                r'[3-4][4-5]': 'Loyal Customers',
-                r'41': 'Promising',
-                r'51': 'New Customers',
-                r'[4-5][2-3]': 'Potential Loyalists',
-                r'5[4-5]': 'Champions'
+                r'[1-3][1-3]': 'Hibernating',
+                r'[1-3][4-5]': 'At Risk',
+                r'[4-5][4-5]': 'Loyal Customers',
+                r'[4-5][1-3]': 'New Customers',
             }
+            # seg_map = {
+            #     r'[1-2][1-2]': 'Hibernating',
+            #     r'[1-2][3-4]': 'At Risk',
+            #     r'[1-2]5': 'Cannot Lose',
+            #     r'3[1-2]': 'About to Sleep',
+            #     r'33': 'Need Attention',
+            #     r'[3-4][4-5]': 'Loyal Customers',
+            #     r'41': 'Promising',
+            #     r'51': 'New Customers',
+            #     r'[4-5][2-3]': 'Potential Loyalists',
+            #     r'5[4-5]': 'Champions'
+            # }
         ):
         data = self.preprocess()
         data['day'] = data['date'].dt.day

@@ -6,6 +6,9 @@ from json import loads, dumps
 
 from dateutil.relativedelta import relativedelta
 
+ 
+from dataset import engine, RFM, Churn, Engagement
+
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -260,4 +263,64 @@ async def getROI():
     data['leadsColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
     data['ordersColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
     data = data.to_dict(orient='records')
+    return {'status': 'ok', 'data': data}
+
+@app.get("/segByIncome")
+async def getReach():
+    rfm = RFM(engine)
+    df = rfm.df
+    rfm_seg = rfm.get_RFM()
+    data = df.merge(rfm_seg, how='left', on='customer_id')
+    data['income_cat'] = pd.qcut(df['yearly_income'], [0, .5, .75, .90, 1.], labels=["Very Low", "Low", "Middle", "High"])
+    data  = data.groupby(['income_cat', 'segment']) \
+        .agg('count')['customer_id'].reset_index() \
+        .rename(columns={'customer_id':'count'}) \
+        .pivot(index="income_cat", columns="segment", values="count") \
+        .reset_index()
+
+    data['At RiskColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data['HibernatingColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
+    data['Loyal CustomersColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
+    data['New CustomersColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data = data.to_dict(orient="records")
+    
+    return {'status': 'ok', 'data': data}
+
+@app.get("/segByAge")
+async def getReach():
+    rfm = RFM(engine)
+    df = rfm.df
+    rfm_data = rfm.get_RFM()
+    data = df.merge(rfm_data, how='left', on='customer_id')
+    # data
+    data['age_cat'] = pd.qcut(data['age'], [.25, .5, .75, 1.], labels=["Young", "Middle", "Elderly"])
+    data  = data.groupby(['age_cat', 'segment']) \
+        .agg('count')['customer_id'].reset_index() \
+        .rename(columns={'customer_id':'count'}) \
+        .pivot(index="age_cat", columns="segment", values="count") \
+        .reset_index()
+
+    data['At RiskColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data['HibernatingColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
+    data['Loyal CustomersColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
+    data['New CustomersColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data = data.to_dict(orient="records")
+    
+    return {'status': 'ok', 'data': data}
+
+@app.get("/churnBySeg")
+async def getReach():
+    churn = Churn(engine)
+    rfm = RFM(engine)
+    churn = pd.concat([churn.df[['customer_id']], churn.preprocess()], axis=1)
+    data = churn.merge(rfm.get_RFM(), how='left', on='customer_id')
+    data  = data.groupby(['segment', 'churn']) \
+        .agg('count')['customer_id'].reset_index() \
+        .rename(columns={'customer_id':'count'}) \
+        .pivot(index="segment", columns="churn", values="count") \
+        .reset_index().rename(columns={"segment":"Segment", 0: "Remain", 1: "Exited"})
+    data['RemainColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data['ExitedColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
+    data = data.to_dict(orient='records')
+    
     return {'status': 'ok', 'data': data}

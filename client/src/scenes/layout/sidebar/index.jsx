@@ -118,8 +118,15 @@ const SideBar = () => {
           </Box> */}
         </Box>
       )}
-
+      
       <Box mb={5} pl={collapsed ? undefined : "5%"}>
+      <Typography
+          variant="h6"
+          color={colors.gray[300]}
+          sx={{ m: "15px 0 5px 20px" }}
+        >
+          {!collapsed ? "Main" : " "}
+        </Typography>
         <Menu
           menuItemStyles={{
             button: {
