@@ -68,18 +68,18 @@ const SideBar = () => {
                 gap="12px"
                 sx={{ transition: ".3s ease" }}
               >
-                <img
+                {/* <img
                   style={{ width: "30px", height: "30px", borderRadius: "8px" }}
                   src={logo}
                   alt="Argon"
-                />
+                /> */}
                 <Typography
                   variant="h4"
                   fontWeight="bold"
                   textTransform="capitalize"
                   color={colors.greenAccent[500]}
                 >
-                  Argon
+                  Bank-Marketing
                 </Typography>
               </Box>
             )}
@@ -99,7 +99,7 @@ const SideBar = () => {
             mb: "25px",
           }}
         >
-          <Avatar
+          {/* <Avatar
             alt="avatar"
             src={avatar}
             sx={{ width: "100px", height: "100px" }}
@@ -115,11 +115,18 @@ const SideBar = () => {
             >
               CEO of Stank Industries
             </Typography>
-          </Box>
+          </Box> */}
         </Box>
       )}
-
+      
       <Box mb={5} pl={collapsed ? undefined : "5%"}>
+      <Typography
+          variant="h6"
+          color={colors.gray[300]}
+          sx={{ m: "15px 0 5px 20px" }}
+        >
+          {!collapsed ? "Main" : " "}
+        </Typography>
         <Menu
           menuItemStyles={{
             button: {
@@ -132,13 +139,19 @@ const SideBar = () => {
           }}
         >
           <Item
-            title="Dashboard"
+            title="Campaign"
             path="/"
             colors={colors}
             icon={<DashboardOutlined />}
           />
+          <Item
+            title="Customers"
+            path="/customer"
+            colors={colors}
+            icon={<DashboardOutlined />}
+          />
         </Menu>
-        <Typography
+        {/* <Typography
           variant="h6"
           color={colors.gray[300]}
           sx={{ m: "15px 0 5px 20px" }}
@@ -174,44 +187,8 @@ const SideBar = () => {
             colors={colors}
             icon={<ReceiptOutlined />}
           />
-        </Menu>
-        <Typography
-          variant="h6"
-          color={colors.gray[300]}
-          sx={{ m: "15px 0 5px 20px" }}
-        >
-          {!collapsed ? "Pages" : " "}
-        </Typography>
-        <Menu
-          menuItemStyles={{
-            button: {
-              ":hover": {
-                color: "#868dfb",
-                background: "transparent",
-                transition: ".4s ease",
-              },
-            },
-          }}
-        >
-          <Item
-            title="Profile Form"
-            path="/form"
-            colors={colors}
-            icon={<PersonOutlined />}
-          />
-          <Item
-            title="Calendar"
-            path="/calendar"
-            colors={colors}
-            icon={<CalendarTodayOutlined />}
-          />
-          <Item
-            title="FAQ Page"
-            path="/faq"
-            colors={colors}
-            icon={<HelpOutlineOutlined />}
-          />
-        </Menu>
+        </Menu> */}
+
         <Typography
           variant="h6"
           color={colors.gray[300]}
@@ -280,6 +257,8 @@ const SideBar = () => {
             colors={colors}
             icon={<WavesOutlined />}
           /> */}
+          
+        
         </Menu>
       </Box>
     </Sidebar>

@@ -15,6 +15,7 @@ import FAQ from "./faq";
 import Geography from "./geography";
 import ScatterPlot from "./scatter";
 import HeatMap from "./heat";
+import Customer from "./customer";
 
 export {
   Navbar,
@@ -34,4 +35,5 @@ export {
   Geography,
   ScatterPlot,
   HeatMap,
+  Customer,
 };

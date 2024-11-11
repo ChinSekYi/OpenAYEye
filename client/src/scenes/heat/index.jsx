@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Header, HeatMap} from "../../components";
+import { Header, HeatMap } from "../../components";
 
 const Heat = () => {
   return (

@@ -5,6 +5,10 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  List, 
+  ListItem,
+  ListItemButton,
+  ListItemText, 
 } from "@mui/material";
 import {
   Header,
@@ -19,10 +23,14 @@ import {
   Email,
   PersonAdd,
   PointOfSale,
+  NotInterested,
+  AddReaction, 
   Traffic,
 } from "@mui/icons-material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
+import React, {useState, useEffect, useContext} from "react";
+import { api } from "../API/backend";
 
 function Dashboard() {
   const theme = useTheme();
@@ -30,10 +38,101 @@ function Dashboard() {
   const isXlDevices = useMediaQuery("(min-width: 1260px)");
   const isMdDevices = useMediaQuery("(min-width: 724px)");
   const isXsDevices = useMediaQuery("(max-width: 436px)");
+  const [totalTraffic, setTraffic] = useState([]);
+  const [convertedClients, setConverted] = useState([]);
+  const [potentialCustomers, setPotential] = useState([]);
+  const [conversionRate, setRate] = useState([]);
+  const [campaignReach, setCampaign] = useState([]);
+  const [latestEngage, setLatest] = useState([]);
+  const [adSpend, setSpend] = useState([]); 
+  const [predROI, setROI] = useState([]);  
+
+  useEffect(() => {
+    api.get('totalTraffic')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setTraffic(data);
+    });
+  }, []);
+  // console.log(totalTraffic)
+
+  useEffect(() => {
+    api.get('convertedClients')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setConverted(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('potentialCustomers')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setPotential(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('conversionRate')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setRate(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('campaignReach')
+      .then((res) => res.data.data)
+      .then((data) => {
+      setCampaign(data);
+    });
+  }, []);
+  
+  useEffect(() => {
+    api.get('latestEngage')
+      .then((res) => res.data.data)
+      .then((data) => {
+      setLatest(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('adSpend')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setSpend(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('predROI')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setROI(data);
+    });
+  }, []);
+
+  // console.log(predROI)
+  
+  const products = [{
+    id: 0,
+    item: 'Fixed Deposits',
+  }, {
+    id: 1,
+    item: 'Credit & Debit Card',
+  }, {
+    id: 2,
+    item: 'Account',
+  }, {
+    id: 3,
+    item: 'Loan',  
+  }];
+
+
   return (
     <Box m="20px">
       <Box display="flex" justifyContent="space-between">
-        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
+        <Header title="Campaign Tracking" subtitle="Welcome to your dashboard" />
         {!isXsDevices && (
           <Box>
             <Button
@@ -80,12 +179,12 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="11,361"
-            subtitle="Email Sent"
-            progress="0.75"
-            increase="+14%"
+            title={ totalTraffic }
+            subtitle="Traffic Received"
+            // progress="0.19036168720569081"
+            // increase="+14%"
             icon={
-              <Email
+              <Traffic
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -99,12 +198,12 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="431,225"
-            subtitle="Sales Obtained"
-            progress="0.50"
-            increase="+21%"
+            title={ convertedClients }
+            subtitle="Converted Clients"
+            // progress="0.50"
+            // increase="+21%"
             icon={
-              <PointOfSale
+              <AddReaction
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
               />
             }
@@ -118,10 +217,10 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="32,441"
-            subtitle="New Clients"
-            progress="0.30"
-            increase="+5%"
+            title={ potentialCustomers }
+            subtitle="Potential Clients"
+            // progress="0.30"
+            // increase="+5%"
             icon={
               <PersonAdd
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -137,10 +236,10 @@ function Dashboard() {
           justifyContent="center"
         >
           <StatBox
-            title="1,325,134"
-            subtitle="Traffic Received"
-            progress="0.80"
-            increase="+43%"
+            title={ conversionRate }
+            subtitle="Click Through Rate"
+            // progress="0.80"
+            // increase="+43%"
             icon={
               <Traffic
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
@@ -154,7 +253,7 @@ function Dashboard() {
         {/* Line Chart */}
         <Box
           gridColumn={
-            isXlDevices ? "span 8" : isMdDevices ? "span 6" : "span 3"
+            isXlDevices ? "span 8" : isMdDevices ? "span 6" : "span 4"
           }
           gridRow="span 2"
           bgcolor={colors.primary[400]}
@@ -171,15 +270,15 @@ function Dashboard() {
                 fontWeight="600"
                 color={colors.gray[100]}
               >
-                Revenue Generated
+                Campaign Reach
               </Typography>
-              <Typography
+              {/* <Typography
                 variant="h5"
                 fontWeight="bold"
                 color={colors.greenAccent[500]}
               >
                 $59,342.32
-              </Typography>
+              </Typography> */}
             </Box>
             <IconButton>
               <DownloadOutlined
@@ -188,9 +287,14 @@ function Dashboard() {
             </IconButton>
           </Box>
           <Box height="250px" mt="-20px">
-            <LineChart isDashboard={true} />
+            <BarChart 
+            data = { campaignReach }
+            index = {"date"}
+            keys =  {['scrolled', 'clicked', 'credentials', 'converted',]}
+            isDashboard={false} />
           </Box>
         </Box>
+        
 
         {/* Transaction Data */}
         <Box
@@ -199,13 +303,13 @@ function Dashboard() {
           bgcolor={colors.primary[400]}
           overflow="auto"
         >
-          <Box borderBottom={`4px solid ${colors.primary[500]}`} p="15px">
-            <Typography color={colors.gray[100]} variant="h5" fontWeight="600">
-              Recent Transactions
+          <Box borderBottom={`4px solid ${colors.primary[500]}`} p="15px" >
+            <Typography color={colors.gray[100]} variant="h5" fontWeight="600" justify="space-between">
+              Recent Engagements
             </Typography>
           </Box>
 
-          {mockTransactions.map((transaction, index) => (
+          {latestEngage.map((transaction, index) => (
             <Box
               key={`${transaction.txId}-${index}`}
               display="flex"
@@ -220,28 +324,358 @@ function Dashboard() {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.txId}
+                  {transaction.action}
                 </Typography>
                 <Typography color={colors.gray[100]}>
-                  {transaction.user}
+                  {transaction.id}
                 </Typography>
               </Box>
               <Typography color={colors.gray[100]}>
                 {transaction.date}
               </Typography>
-              <Box
+              <Typography color={colors.gray[100]}>
+                {transaction.score}/5 Rating
+              </Typography>
+              {/* <Box
                 bgcolor={colors.greenAccent[500]}
                 p="5px 10px"
                 borderRadius="4px"
               >
                 ${transaction.cost}
-              </Box>
+              </Box> */}
             </Box>
           ))}
         </Box>
 
-        {/* Revenue Details */}
+        {/* Line Chart */}
         <Box
+          gridColumn={
+            isXlDevices ? "span 12" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+        <Box
+            mt="25px"
+            px="30px"
+            display="flex"
+            justifyContent="space-between"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.gray[100]}
+              >
+                Ad Spending
+              </Typography>
+              {/* <Typography
+                variant="h5"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                $59,342.32
+              </Typography> */}
+            </Box>
+            <IconButton>
+              <DownloadOutlined
+                sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+              />
+            </IconButton>
+          </Box>
+          <Box height="250px" mt="-20px">
+            <BarChart 
+            data = { adSpend }
+            index = {"date"}
+            keys =  {['spending']}
+            isDashboard={false} />
+          </Box>
+        
+        </Box>
+
+        {/* Line Chart */}
+        <Box
+          gridColumn={
+            isXlDevices ? "span 12" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+        <Box
+            mt="25px"
+            px="30px"
+            display="flex"
+            justifyContent="space-between"
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.gray[100]}
+              >
+                Predicted ROI 
+              </Typography>
+              {/* <Typography
+                variant="h5"
+                fontWeight="bold"
+                color={colors.greenAccent[500]}
+              >
+                $59,342.32
+              </Typography> */}
+            </Box>
+            <IconButton>
+              <DownloadOutlined
+                sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+              />
+            </IconButton>
+          </Box>
+          <Box height="250px" mt="-20px">
+            <BarChart 
+            data = { predROI }
+            index = {"start_date"}
+            keys =  {['clicks', 'leads', 'orders']}
+            isDashboard={false} />
+          </Box>
+        
+        </Box>  
+
+        <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+            <Box>
+                <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Loyal Customers
+                </Typography>
+                <List> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"1. " + 'Fixed Deposits'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"2. " + 'Credit & Debit Card'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"3. " + 'Account'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={ "4. " +  'Loan' } /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                </List> 
+                
+            </Box>
+            <Box height="250px" mt="-20px"></Box>
+          </Box>
+        </Box>   
+        <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+            <Box>
+            <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  At-Risk Customers
+                </Typography>
+                <List> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"1. " + 'Account'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"2. " + 'Credit & Debit Card'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"3. " + 'Fixed Deposits'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={ "4. " +  'Loan' } /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                </List> 
+            </Box>
+            <Box height="250px" mt="-20px"></Box>
+          </Box>
+        </Box>   
+        <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+              height="250px"
+            >
+                <Box>
+                <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                New Customers
+                </Typography>
+                <List> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"1. " + 'Credit & Debit Card'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"2. " + 'Fixed Deposits'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"3. " + 'Accounts'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={ "4. " +  'Loan' } /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                </List> 
+            </Box>
+          </Box>
+        </Box>   
+        <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+            <Box>
+                <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Hibernating Customers
+                </Typography>
+                <List> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"1. " + 'Fixed Deposits'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"2. " + 'Accounts'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={"3. " + 'Credit and Debit Card'} /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                    <ListItem divider> 
+                        <ListItemButton> 
+                            <ListItemText  
+                                primary={ "4. " +  'Loan' } /> 
+                        </ListItemButton> 
+                    </ListItem> 
+                </List> 
+            </Box>
+            <Box height="250px" mt="-20px"></Box>
+          </Box>
+        </Box>  
+        {/* <Box
+          gridColumn={
+            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+          }
+          gridRow="span 2"
+          bgcolor={colors.primary[400]}
+        >
+          <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+            <Box>
+            <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Loyal Customers
+                </Typography>
+                
+            </Box>
+            <Box height="250px" mt="-20px"></Box>
+          </Box>
+        </Box>      */}
+        {/* Revenue Details */}
+        {/* <Box
           gridColumn={isXlDevices ? "span 4" : "span 3"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -269,10 +703,10 @@ function Dashboard() {
               Includes extra misc expenditures and costs
             </Typography>
           </Box>
-        </Box>
+        </Box> */}
 
         {/* Bar Chart */}
-        <Box
+        {/* <Box
           gridColumn={isXlDevices ? "span 4" : "span 3"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -293,10 +727,10 @@ function Dashboard() {
           >
             <BarChart isDashboard={true} />
           </Box>
-        </Box>
+        </Box> */}
 
         {/* Geography Chart */}
-        <Box
+        {/* <Box
           gridColumn={isXlDevices ? "span 4" : "span 3"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
@@ -313,7 +747,7 @@ function Dashboard() {
           >
             <GeographyChart isDashboard={true} />
           </Box>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );
