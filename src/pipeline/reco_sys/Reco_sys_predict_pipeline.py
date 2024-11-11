@@ -93,7 +93,13 @@ class PredictPipeline:
             loan_model_path = os.path.join("artifacts", "reco_sys_loan_covid_model.pkl")
             """
 
-            # For meteor
+            # For meteor dataset
+            """
+            account_model_path = os.path.join("artifacts", "reco_sys_account_meteor_model.pkl")
+            card_model_path = os.path.join("artifacts", "reco_sys_credit_card_debit_card_meteor_model.pkl")
+            fixed_model_deposits_path = os.path.join("artifacts", "reco_sys_fixed_deposits_meteor_model.pkl")
+            loan_model_path = os.path.join("artifacts", "reco_sys_loan_meteor_model.pkl")
+            """
 
             # Load the models
             models = {
