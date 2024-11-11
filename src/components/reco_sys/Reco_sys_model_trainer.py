@@ -1,11 +1,13 @@
 """
-Module for training and evaluating Logistic Regression models for multi-output regression tasks.
+Reco_sys_model_trainer.py
+
+This module is for training and evaluating Logistic Regression models for multi-output regression tasks.
 
 This module includes:
 - A configuration class for model training parameters.
 - A `ModelTrainer` class that handles model training, evaluation, and the saving of the best-performing models.
 
-The models are trained on features derived from a dataset that includes both categorical and numerical inputs. The targets consist of multiple numerical outputs (e.g., clicks, leads, orders).
+The models are trained on features derived from a dataset that includes both categorical and numerical inputs.
 
 Usage:
     >>> from model_trainer import ModelTrainer
@@ -85,6 +87,7 @@ class ModelTrainer:
         Returns:
             dict: A dictionary containing trained models for each target.
         """
+
         # Define the logistic regression model
         lr_model = LogisticRegression(max_iter=1000, class_weight='balanced', solver='liblinear')
 
@@ -220,8 +223,16 @@ if __name__ == "__main__":
         df_test = pd.read_csv('artifacts/reco_sys_test_data.csv') 
 
         # For covid dataset
+        """
         df_train = pd.read_csv('artifacts/clean_train_reco_covid.csv') 
         df_test = pd.read_csv('artifacts/clean_test_reco_covid.csv') 
+        """
+
+        # For meteor dataset
+        """
+        df_train = pd.read_csv('artifacts/clean_train_reco_meteor.csv') 
+        df_test = pd.read_csv('artifacts/clean_test_reco_meteor.csv') 
+        """
 
         # Initialize the ModelTrainer
         trainer = ModelTrainer()
