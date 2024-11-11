@@ -28,9 +28,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.multioutput import RegressorChain
 from sklearn.preprocessing import OneHotEncoder
 
-from src.exception import CustomException
-from src.logger import logging
-from src.utils import save_object
+from app.src.exception import CustomException
+from app.src.logger import logging
+from app.src.utils import save_object
 
 
 @dataclass

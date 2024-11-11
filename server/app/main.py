@@ -7,12 +7,10 @@ from json import loads, dumps
 from dateutil.relativedelta import relativedelta
 
  
-from dataset import engine, RFM, Churn, Engagement
+from app.dataset import engine, RFM, Churn, Engagement
 
 import warnings
 warnings.filterwarnings("ignore")
-
-from dataset import engine
 
 import sqlalchemy
 import uvicorn
@@ -216,8 +214,8 @@ async def getReach():
 @app.get("/predROI")
 async def getROI():
     from collections import OrderedDict
-    from src.exception import CustomException
-    from src.utils import load_object
+    from app.src.exception import CustomException
+    from app.src.utils import load_object
     import joblib
 
     def get_CLO(features):

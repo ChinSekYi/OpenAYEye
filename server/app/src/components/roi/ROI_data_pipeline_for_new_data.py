@@ -22,9 +22,9 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
 # Custom imports
-from src.exception import CustomException
-from src.logger import logging
-from src.utils import save_object
+from app.src.exception import CustomException
+from app.src.logger import logging
+from app.src.utils import save_object
 
 
 project_root = Path(__file__).resolve().parents[2]

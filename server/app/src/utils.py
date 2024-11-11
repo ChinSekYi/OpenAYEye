@@ -13,7 +13,7 @@ import sys
 import dill
 from sklearn.metrics import r2_score
 
-from src.exception import CustomException
+from app.src.exception import CustomException
 
 
 def save_object(file_path, obj):
