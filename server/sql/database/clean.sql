@@ -79,3 +79,39 @@ e.conversion_value
 FROM campaign c, engagement e
 WHERE c.campaign_id = e.campaign_id
 LIMIT 100;
+
+USE transact;
+SELECT COUNT(DISTINCT e.customer_id)
+FROM engagement e
+WHERE e.action_type = 'converted'
+AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
+
+USE transact;
+SELECT COUNT(e.customer_id)
+FROM engagement e
+WHERE e.action_type IN ('credentials', 'clicked')
+AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
+
+USE transact;
+SELECT t1.converted / t2.impressions FROM 
+(SELECT COUNT(DISTINCT e.customer_id) AS converted
+FROM engagement e
+WHERE e.action_type = 'converted'
+AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)) AS t1,
+(SELECT COUNT(DISTINCT e.customer_id) AS impressions
+FROM engagement e
+WHERE e.action_type IN ('converted', 'credentials', 'clicked')
+AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)) AS t2;
+
+USE transact;
+SELECT COUNT(DISTINCT e.customer_id)
+FROM engagement e
+WHERE e.action_type IN ('converted', 'credentials', 'clicked')
+AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
+
+
+USE transact;
+SELECT  SUM(c.budget)
+FROM campaign c
+WHERE c.start_date >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
+GROUP BY GROUP BY YEAR(c.start_date), MONTH(c.start_date)

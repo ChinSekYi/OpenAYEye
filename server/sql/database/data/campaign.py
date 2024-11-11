@@ -52,7 +52,7 @@ def seasonal_budget(month):
     return round(random.uniform(50, 200), 2)
 
 campaign_goals = ["awareness", "consideration", "conversion", "retention"]
-campaign_channels = ["email", "sms", "social", "app", "search", "influencer"]
+campaign_channels = [ "social",  "search", "influencer", "jkl"] # "app","email", "sms",
 
 
 # Generate data
