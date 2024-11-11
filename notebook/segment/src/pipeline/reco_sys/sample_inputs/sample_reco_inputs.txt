@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Bob",
+        "user_input": {
+            "age": 30,
+            "gender": "Male",
+            "gross_income": 512431200,
+            "customer_segment": "VIP",
+            "contract_length": 31,
+            "seniority_months": 12,
+            "primary_customer_status": "primary customer",
+            "new_customer_index": 'existing customer',
+            "customer_type_start_month": "Jan",
+            "country_residence": "Nicaragua",
+            "region": "North",
+            "join_channel": "University Partnership",
+            "deceased_index": "yes",
+            "foreigner_index": "no",
+            "residence_index": "no",
+            "customer_relation_type": "Individual"
+        }
+"""
+Output:
+Ranked Recommendations:
+1. Fixed Deposits
+2. Account
+3. Loan
+4. Credit and Debit Card
+"""
+
+
+    },
+    {
+        "name": "John",
+        "user_input": {
+            "age": 92,
+            "gender": "Male",
+            "gross_income": 500,
+            "customer_segment": "VIP",
+            "contract_length": 31,
+            "seniority_months": 12,
+            "primary_customer_status": "primary customer",
+            "new_customer_index": 'existing customer',
+            "customer_type_start_month":"Jan",
+            "country_residence": "Nicaragua",
+            "region": "North",
+            "join_channel": "University Partnership",
+            "deceased_index": "yes",
+            "foreigner_index": "no",
+            "residence_index": "yes",
+            "customer_relation_type": "Individual"
+        }
+    }
+]
+"""
+Output:
+ Ranked Recommendations:
+1. Account
+2. Fixed Deposits
+3. Credit and Debit Card
+4. Loan
+"""
