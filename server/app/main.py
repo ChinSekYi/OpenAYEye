@@ -7,7 +7,7 @@ from json import loads, dumps
 from dateutil.relativedelta import relativedelta
 
  
-from app.dataset import engine, RFM, Churn, Engagement
+from dataset import engine, RFM, Churn, Engagement
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -56,6 +56,7 @@ def getEntries(columns, table):
 
 @app.get("/health")
 async def health():
+    print(engine)
     return {"message": "health ok"}
 
 

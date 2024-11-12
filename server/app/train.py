@@ -10,8 +10,8 @@ if not sys.warnoptions:
     warnings.simplefilter("ignore")
     os.environ["PYTHONWARNINGS"] = "ignore" # Also affect subprocesse
  
-from dataset import engine, RFM, Churn, Engagement
-from models import CLFSwitcher, Transform, Pipe, parameters
+from .dataset import engine, RFM, Churn, Engagement
+from .models import CLFSwitcher, Transform, Pipe, parameters
 from sklearn.model_selection import GridSearchCV
 
 def train(X, y, pipeline, parameters):
