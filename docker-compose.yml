@@ -1,6 +1,7 @@
 services:
   db:
     build: ./sql
+    container_name: base
     restart: always
     environment:
       # MYSQL_USER: root
@@ -8,15 +9,15 @@ services:
       MYSQL_ROOT_PASSWORD: msql1234
     ports:
       - "3008:3306"
-    # volumes:
-    #   - db-data:/var/lib/mysql
   data:
-    build: ./database
+    build: ./data
+    container_name: data
     depends_on:
       - db
     command: python db.py
   app:
     build: ./server
+    container_name: app
     ports:
       - "8000:8000"
     depends_on:
@@ -24,4 +25,14 @@ services:
     command: uvicorn main:app --port 8000 --host 0.0.0.0
   client: 
     build: ./client
+    container_name: client
+    depends_on:
+      - app
+        # condition: service_healthy
+    # links: 
+    #     - app
+    restart: always
+    ports:
+      - "5173:5173"
+    command: npm run dev
   
