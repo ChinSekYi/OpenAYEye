@@ -5,7 +5,7 @@ from data.campaign import campaign
 
 random.seed(10)
 # Define number of entries to generate
-num_entries = int(1e+03)
+num_entries = int(1e+04)
 
 # Helper functions
 def random_date(start, end):

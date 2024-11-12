@@ -36,5 +36,5 @@ class Data():
     def get_X(self):
         pass
     
-    def get_X(self):
+    def get_y(self):
         pass

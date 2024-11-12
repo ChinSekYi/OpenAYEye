@@ -45,8 +45,9 @@ def get_users(path="data/users.csv", date_format = "%Y-%m"):
 	users = to_snakecase(to_lowercase(pd.read_csv(path)))
 	users['user'] = users['user'].astype(str).str.pad(width=4, side='left', fillchar='0')
 	users['birth_year'] = users['birth_year'].astype(str) + '-' + users['birth_month'].astype(str)
-	users['birth_year'] = pd.to_datetime(users['birth_year'], format=date_format)
-	users = users.drop(columns= ['birth_month'])
+	users['birth_year'] = pd.to_datetime(users['birth_year'], format=date_format).astype('datetime64[ns]')
+
+	users = users.drop(columns=['birth_month'])
 	users = users.rename(columns={'user':'customer_id', 'birth_year': 'birth_year_month'})
 	users['gender'] = users['gender'].astype('category')
 	for i in ['fixed_deposits', 'credit_card_debit_card', 'account']:
@@ -55,7 +56,8 @@ def get_users(path="data/users.csv", date_format = "%Y-%m"):
 		users[i] = est.predict(test)
 	users['loan'] = [random.choices([0,1], weights=[1-0.015, 0.015])[0] for _ in range(len(users))]
 	users = users.rename(columns={'fixed_deposits':'deposits', 'credit_card_debit_card': 'cards'})
-	return users
+	users = users.drop(columns=['birth_year_month'])
+	return users.loc[1:, :]
 
 
 def get_creditcards(path="data/credit_cards.csv", date_format = "%m/%Y"):
@@ -123,14 +125,13 @@ churn = get_churn(users)
 # %%
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship, Mapped, mapped_column
-from sqlalchemy import create_engine, MetaData, Column, Integer, String, Double, DateTime, ForeignKey
-from sqlalchemy.dialects.mysql import LONGTEXT
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 
 
-def create_db(user="root", password="msql1234", server="localhost", database="transact"):
-    SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
-        user, password, server, database
+def create_db(user="root", password="msql1234", server="db", port="3306", database="transact"):
+    SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}:{}/{}".format(
+        user, password, server, port, database
     )
     engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
@@ -139,26 +140,9 @@ def create_db(user="root", password="msql1234", server="localhost", database="tr
 
     return engine, SessionLocal, Base
 
-engine, SessionLocal, Base = create_db()
+engine, SessionLocal, Base = create_db(server="db")
 
-
-# %% [markdown]
-# # Schemas
-
-# %%
-
-# class Engagement(Base): # Independent
-# 	__tablename__ = "engagement"
-# 	engagement_id = Column(String(10), primary_key=True)
-# 	campaign_id = Column(String(32), ForeignKey("campaign.campaign_id", ondelete="CASCADE"), nullable=False)
-# 	customer_id = Column(String(10), ForeignKey("users.customer_id", ondelete="CASCADE"), nullable=False)
-# 	engagement_date = Column(DateTime)
-# 	action_type = Column(String(32))
-# 	device_type = Column(String(32))
-# 	feedback_score = Column(Integer)
-# 	conversion_value  = Column(Double)
-
-
+print(engine)
 # %% [markdown]
 # # Insert into Database
 
@@ -168,7 +152,7 @@ with engine.connect() as db:
 		'transactions':transactions,
 		'churn':churn, 
 		'campaign': campaign,
-		# 'engagement': engagement,
+		'engagement': engagement,
 		}
 	for k,v in dct.items():
 		try:
@@ -179,3 +163,9 @@ with engine.connect() as db:
 			db.rollback()
 			print("{} Failed".format(k))
 	db.close()
+# users.to_sql('users', con=engine, if_exists='append', index=False)
+# with engine.connect() as db:
+# 	query = sqlalchemy.text('''SELECT * FROM users ''')
+# 	fetched = db.execute(query).fetchall()
+# 	print(pd.DataFrame(fetched))
+# 	db.close()

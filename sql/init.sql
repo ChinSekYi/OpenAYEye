@@ -2,14 +2,15 @@ DROP SCHEMA IF EXISTS transact;
 CREATE SCHEMA transact; 
 
 USE transact;
-CREATE TABLE IF NOT EXISTS user (
+
+CREATE TABLE IF NOT EXISTS users (
 	customer_id CHAR(10) PRIMARY KEY,
     person VARCHAR(32) NOT NULL, 
 	current_age INTEGER,
 	retirement_age INTEGER,
-	birth_year_month TIMESTAMP NOT NULL,
+	-- birth_year_month TIMESTAMP,
 	gender VARCHAR(32) NOT NULL,
-	address VARCHAR(32) NOT NULL, 
+	address VARCHAR(64) NOT NULL, 
 	apartment INTEGER,
 	city VARCHAR(32) NOT NULL,
 	state VARCHAR(32) NOT NULL ,
@@ -61,3 +62,13 @@ CREATE TABLE IF NOT EXISTS campaign (
     displays INTEGER
 );
 
+CREATE TABLE IF NOT EXISTS engagement (
+    engagement_id CHAR(10) PRIMARY KEY,
+    campaign_id VARCHAR(32) NOT NULL REFERENCES campaign(campaign_id),
+    customer_id CHAR(10) NOT NULL REFERENCES user(customer_id),
+    engagement_date TIMESTAMP NOT NULL,
+    action_type VARCHAR(32) NOT NULL,
+    device_type VARCHAR(32),
+    feedback_score VARCHAR(32),
+    conversion_value NUMERIC
+);

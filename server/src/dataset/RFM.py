@@ -17,7 +17,7 @@ class RFM(Data):
     def preprocess(self):
         data = self.df.copy()
         data = data.drop(['person', 'retirement_age',
-            'birth_year_month', 'address', 'apartment', 'zipcode', 
+            'address', 'apartment', 'zipcode', 
             'city', 'latitude', 'longitude'], axis=1)
 
         data.rename(columns={'current_age':'age'}, inplace = True)

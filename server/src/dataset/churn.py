@@ -20,7 +20,7 @@ class Churn(Data):
 
     def preprocess(self):
         data = self.df.copy()
-        data = data.drop(['customer_id', 'person', 'retirement_age', 'birth_year_month',
+        data = data.drop(['customer_id', 'person', 'retirement_age', 
                    'address', 'apartment', 'zipcode', 'city', 'state',
                    'latitude', 'longitude'], axis=1)
         data['churn'] = np.where(data['churn_date'].isna(), 0, 1)

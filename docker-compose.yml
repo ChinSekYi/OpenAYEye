@@ -1,16 +1,27 @@
 services:
+  db:
+    build: ./sql
+    restart: always
+    environment:
+      # MYSQL_USER: root
+      MYSQL_DATABASE: transact
+      MYSQL_ROOT_PASSWORD: msql1234
+    ports:
+      - "3008:3306"
+    # volumes:
+    #   - db-data:/var/lib/mysql
+  data:
+    build: ./database
+    depends_on:
+      - db
+    command: python db.py
   app:
     build: ./server
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      - data
     command: uvicorn main:app --port 8000 --host 0.0.0.0
-  db:
-    build: ./sql
-    restart: always
-    environment:
-      MYSQL_DATABASE: 
-      MYSQL_ROOT_PASSWORD: msql1234
-    ports:
-      - "33006:3306"
+  client: 
+    build: ./client
+  
