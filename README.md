@@ -78,7 +78,11 @@ notebook/
 
 ## API documentation (endpoints, request/response formats)
 
+<br>
+
 ## [Optional] API documentation using Swagger/OpenAPI specification
+
+<br>
 
 # Web App
 - Run
