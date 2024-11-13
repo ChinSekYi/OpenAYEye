@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from pathlib import Path
 
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
@@ -26,8 +27,8 @@ def create_db(
         port=MYSQL_TCP_PORT, 
         database=MYSQL_DATABASE
     ):
-    SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}/{}".format(
-        user, password, host, database
+    SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}:{}/{}".format(
+        user, password, host, port, database
     )
     engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
@@ -36,4 +37,4 @@ def create_db(
 
     return engine, SessionLocal, Base
 
-engine, SessionLocal, Base = create_db()
+engine, SessionLocal, Base = create_db(host='db')

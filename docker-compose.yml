@@ -13,9 +13,13 @@ services:
     build: ./data
     env_file: .env  
     container_name: data
+    ports:
+      - "8001:8001"
     depends_on:
       - db
-    command: python db.py
+    healthcheck:
+      test: "curl -f http://localhost:8001/health"
+    command: uvicorn db:app --port 8001 --host 0.0.0.0
   app:
     build: ./server
     container_name: app
