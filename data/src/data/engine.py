@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
 
-load_dotenv("../../../engine.env")
+load_dotenv("../../../.env")
 
 MYSQL_ROOT_PASSWORD = os.getenv('MYSQL_ROOT_PASSWORD')
 MYSQL_DATABASE = os.getenv('MYSQL_DATABASE')
@@ -33,4 +33,4 @@ def create_db(
 
     return engine, SessionLocal, Base
 
-engine, SessionLocal, Base = create_db(host="localhost")
+engine, SessionLocal, Base = create_db(host="db")

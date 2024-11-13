@@ -11,6 +11,7 @@ services:
       - "3008:3306"
   data:
     build: ./data
+    env_file: .env  
     container_name: data
     depends_on:
       - db
@@ -18,6 +19,7 @@ services:
   app:
     build: ./server
     container_name: app
+    env_file: .env  
     ports:
       - "8000:8000"
     depends_on:

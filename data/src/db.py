@@ -113,6 +113,7 @@ users = get_users()
 transactions = get_transactions()
 churn = get_churn(users)
 
+# print(engine)
 
 # %%
 with engine.connect() as db:
