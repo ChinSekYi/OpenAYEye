@@ -17,12 +17,12 @@ class RFM_engage(Data):
         data = data[data['segment'] == self.segment].drop(['segment'], axis=1)
         return data
 
-    def get_X(self, ):
+    def get_X(self):
         data = self.preprocess()
         X = data.drop(['action_type'], axis=1)
         return X
 
-    def get_y(self, segment='Loyal Customers'):
+    def get_y(self):
         data = self.preprocess()
         y = data[['action_type']]
         return y
