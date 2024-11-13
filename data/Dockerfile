@@ -19,7 +19,4 @@ RUN pip install --no-cache-dir --upgrade -r /workspace/requirements.txt
 
 COPY src .
 
-CMD uvicorn main:app --port 8000 --host 0.0.0.0
-
-# docker build -t app .
-# docker run -d --name API -p 8000:8000 app
+# CMD python db.py

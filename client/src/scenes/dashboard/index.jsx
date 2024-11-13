@@ -104,13 +104,13 @@ function Dashboard() {
     });
   }, []);
 
-  useEffect(() => {
-    api.get('predROI')
-      .then((res) => res.data.data)
-      .then((data) => {
-        setROI(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   api.get('predROI')
+  //     .then((res) => res.data.data)
+  //     .then((data) => {
+  //       setROI(data);
+  //   });
+  // }, []);
 
   // console.log(predROI)
   
@@ -430,11 +430,11 @@ function Dashboard() {
             </IconButton>
           </Box>
           <Box height="250px" mt="-20px">
-            <BarChart 
+            {/* <BarChart 
             data = { predROI }
             index = {"start_date"}
             keys =  {['clicks', 'leads', 'orders']}
-            isDashboard={false} />
+            isDashboard={false} /> */}
           </Box>
         
         </Box>  
