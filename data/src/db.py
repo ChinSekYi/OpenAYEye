@@ -9,15 +9,10 @@ import numpy as np
 
 import warnings
 warnings.filterwarnings("ignore")
-from data import campaign, engagement, santender
+from data import engine, campaign, engagement, santender
 
 random.seed(10)
 
-# %% [markdown]
-# # Helper Functions
-# 
-
-# %%
 def to_lowercase(df):
 	df = df.copy()
 	df.rename({i:i.lower() for i in df.columns.values}, axis=1, inplace=True)
@@ -114,37 +109,10 @@ def get_churn(users,
     return churn
 
 
-
-
 users = get_users()
 transactions = get_transactions()
 churn = get_churn(users)
-# %% [markdown]
-# # Connect to Database
 
-# %%
-import sqlalchemy
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
-
-
-def create_db(user="root", password="msql1234", server="db", port="3306", database="transact"):
-    SQLALCHEMY_DATABASE_URL = "mysql+pymysql://{}:{}@{}:{}/{}".format(
-        user, password, server, port, database
-    )
-    engine = create_engine(SQLALCHEMY_DATABASE_URL)
-
-    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    Base = declarative_base()
-
-    return engine, SessionLocal, Base
-
-engine, SessionLocal, Base = create_db(server="db")
-
-print(engine)
-# %% [markdown]
-# # Insert into Database
 
 # %%
 with engine.connect() as db:
@@ -163,6 +131,7 @@ with engine.connect() as db:
 			db.rollback()
 			print("{} Failed".format(k))
 	db.close()
+	
 # users.to_sql('users', con=engine, if_exists='append', index=False)
 # with engine.connect() as db:
 # 	query = sqlalchemy.text('''SELECT * FROM users ''')
