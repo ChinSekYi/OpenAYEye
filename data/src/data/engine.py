@@ -33,4 +33,4 @@ def create_db(
 
     return engine, SessionLocal, Base
 
-engine, SessionLocal, Base = create_db(host="db")
+engine, SessionLocal, Base = create_db()
