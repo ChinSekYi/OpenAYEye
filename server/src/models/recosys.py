@@ -5,10 +5,16 @@ from collections import defaultdict
 from xgboost import XGBClassifier, XGBRFClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
+
 from sklearn.metrics.pairwise import pairwise_distances 
 from sklearn.preprocessing import MinMaxScaler
+
 from imblearn.over_sampling  import SMOTE
 from imblearn.pipeline import Pipeline
+
+# from tqdm import tqdm
+# from tqdm.auto import tqdm
+# from tqdm_loggable.auto import tqdm
 
 class RecoSystem():
 	def __init__(self, dataset):
@@ -19,7 +25,14 @@ class RecoSystem():
 		self.models = self.modeltrain()
 
 	def recommend(self):
-		reco = [self.hybrid(i) for i in self.df['customer_id']]
+		reco = []
+		max_iter = len(self.df)
+		for i in self.df['customer_id']:
+			if i % (max_iter//10) == 0:
+				print("Inferring : {}/{}".format(i, max_iter))
+			reco += [self.hybrid(i) ]
+		# reco = [self.hybrid(i) for i in self.df['customer_id']]
+		# reco = self.df['customer_id'].progress_apply(lambda x: self.hybrid(x))
 		data = pd.concat([self.df, pd.DataFrame(reco)], axis=1)
 		data['customer_id'] = data['customer_id'].apply(lambda x: str(x).zfill(4))
 		return data
