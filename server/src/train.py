@@ -14,7 +14,7 @@ if not sys.warnoptions:
     os.environ["PYTHONWARNINGS"] = "ignore" # Also affect subprocesse
  
 import shap
-from dataset import engine, RFM, Churn, Engagement, RFM_engage
+from dataset import engine, RFM, Churn, Engagement, RFM_engage, RFM_churn
 from models import CLFSwitcher, Transform, Pipe, parameters
 from sklearn.model_selection import GridSearchCV
 
@@ -22,7 +22,7 @@ rfm = RFM(engine)
 
 engage = Engagement(engine)
 
-# churn = Churn(engine)
+churn = Churn(engine)
 # churn = churn.get_dataset()[['customer_id', 'churn']]
 
 def train(data):
@@ -43,7 +43,14 @@ def train(data):
 
     return best_est
 
-engage_explain = train(RFM_engage(rfm, engage, 'Hibernating'))
+customer_lst = ['Hibernating','At Risk','Loyal Customers','New Customers']
+explained_dct = {}
+for customer in customer_lst:
+    engage_explain = train(RFM_engage(rfm, engage, customer))
+    churn_explain = train(RFM_churn(rfm, churn, customer))
+    explained_dct['engage ' + customer] = engage_explain
+    explained_dct['churn ' + customer] = churn_explain
+    # print(explained_dct)
 
 # shap_df = best_est.get_shap(X_col='engage_month', y_col='action_type', y_val='converted')
 # shap_df
