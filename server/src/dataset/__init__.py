@@ -4,3 +4,4 @@ from .engagement import *
 from .RFM import *
 from .RFM_engage import *
 from .data import *
+from .RFM_churn import *
