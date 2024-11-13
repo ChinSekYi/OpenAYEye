@@ -7,6 +7,14 @@ In today’s competitive financial sector, banks face challenges in effectively 
 Our project addresses this challenge by developing an AI-driven, personalized marketing system that leverages machine learning to analyze customer data in depth. By integrating customer insights, predictive analytics, and real-time optimization, our system aims to create highly tailored marketing campaigns that enhance customer engagement, improve conversion rates, and support data-driven decision-making for marketing teams.
 
 ## Instructions for setting up the environment and running the code
+1. Clone the Repository
+```
+git clone https://github.com/ChinSekYi/OpenAYEye.git
+cd OpenAYEye
+```
+
+... continued
+
 
 ## Description of the repository structure
 This is the top 2 levels of our repository structure. Unimportant files and folders are omitted below. 
