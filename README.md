@@ -53,7 +53,17 @@ OpenAYEye/
 └── sql/
     ├── Dockerfile
     └── init.sql
+```
 
+### Usage
+
+Jupyter notebooks for EDA and model building are in:
+```
+notebook/
+├── segment/
+├── roi-model/
+├── reco_system/
+└── src/
 ```
 
 <br>
