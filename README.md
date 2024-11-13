@@ -9,34 +9,22 @@ Our project addresses this challenge by developing an AI-driven, personalized ma
 ## Instructions for setting up the environment and running the code
 
 ## Description of the repository structure
+This is the top 2 levels of our repository structure. Unimportant files and folders are omitted below. 
 ```
 OpenAYEye/
 ├── docker-run.bash
-├── .DS_Store
-├── LICENSE
 ├── requirements.txt
-├── Makefile
-├── get_directory_structure.py
-├── test.py
 ├── README.md
 ├── .dockerignore
-├── .gitignore
-├── .gitattributes
 ├── docker-compose.yml
 ├── docker.env
 ├── engine.env
-├── .pytest_cache/
 ├── server/
 │   ├── requirements.txt
 │   ├── Dockerfile
 │   └── README.md
-├── __pycache__/
 ├── logs/
-├── .github/
 ├── notebook/
-├── .git/
-├── .vscode/
-│   └── settings.json
 ├── data/
 │   ├── requirements.txt
 │   ├── Dockerfile
@@ -50,8 +38,7 @@ OpenAYEye/
 │   ├── .gitignore
 │   ├── package-lock.json
 │   └── package.json
-├── src/
-│   └── .DS_Store
+├── src
 └── sql/
     ├── Dockerfile
     └── init.sql
