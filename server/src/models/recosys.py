@@ -118,7 +118,7 @@ class RecoSystem():
 			
 		return mdbs
 
-	def hybrid(self, user_id, f1=0.25, f2=0.25, f3=0.5):
+	def hybrid(self, user_id, f1=0.2, f2=0.60, f3=0.2):
 		"""
 		Function that calculates weighted hybrid recommendations for a given user.
 		It uses weights to calculate the probability of products. 
