@@ -6,31 +6,43 @@ from xgboost import XGBClassifier, XGBRFClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics.pairwise import pairwise_distances 
+from sklearn.preprocessing import MinMaxScaler
 from imblearn.over_sampling  import SMOTE
 from imblearn.pipeline import Pipeline
 
 class RecoSystem():
-	def __init__(self, df):
-		self.df = df
+	def __init__(self, dataset):
+		self.dataset = dataset
+		self.df = dataset.df
+		self.df['customer_id'] = self.df['customer_id'].astype(int)
+
+		self.models = self.modeltrain()
+
+	def recommend(self):
+		reco = [self.hybrid(i) for i in self.df['customer_id']]
+		data = pd.concat([self.df, pd.DataFrame(reco)], axis=1)
+		data['customer_id'] = data['customer_id'].apply(lambda x: str(x).zfill(4))
+		return data
 
 	def popularity_based(self):
 		"""
 		Function that calculates the probability of a product occurring. 
 		Probability range is <0, 1>.
 		"""
+		df = self.df[['customer_id', 'deposits', 'cards', 'account', 'loan']]
 		top_col = {}
-		for col in self.df.columns[1:]:
-			top_col[col] = self.df[col].value_counts()[1]
+		for col in df.columns[1:]:
+			top_col[col] = df[col].value_counts()[1]
 
 		for k, v in top_col.items():
-			top_col[k] = np.around(v / self.df.shape[0], decimals=4)
+			top_col[k] = np.around(v / df.shape[0], decimals=4)
 			
 		return top_col
 
 	def get_sim(self):
 		# create the user-item similarity matrix
 		# removes index names
-		df = self.df.set_index('customer_id')
+		df = self.df[['customer_id', 'deposits', 'cards', 'account', 'loan']].set_index('customer_id')
 		cosine_sim = 1 - pairwise_distances(df, metric="cosine")
 		return cosine_sim
 
@@ -42,7 +54,7 @@ class RecoSystem():
 		Probability range is <0, 1>.
 		"""
 		sim_matrix = self.get_sim()
-		df = self.df.set_index('customer_id')
+		df = self.df[['customer_id', 'deposits', 'cards', 'account', 'loan']].set_index('customer_id')
 		# computes the index in the user-item similarity matrix for a given user_id
 		cos_id = list(df.index).index(user_id) 
 		
@@ -96,6 +108,30 @@ class RecoSystem():
 				
 		return usit
 
+	def modeltrain(self):
+		df = self.df.set_index('customer_id')
+		df = df.drop(['person', 'retirement_age', 'address',
+			'apartment', 'zipcode', 'per_capita_income','num_credit_cards',
+			'fico_score', 'state', 'city', 'latitude', 'longitude', 'gender'], axis=1)
+		df.rename(columns={'current_age':'age'}, inplace = True)
+		df['yearly_income'] = df['yearly_income'].astype(np.float64)
+		df['total_debt'] = df['total_debt'].astype(np.float64)
+		# print(df)
+		mdbs = {}
+		
+		model_dct = {}
+		for c in df[['deposits', 'cards', 'account', 'loan']].columns:
+			model = Pipeline([
+				('scaler', MinMaxScaler()),
+				('smote', SMOTE(sampling_strategy='auto', k_neighbors=3)),
+				('clf', XGBRFClassifier(max_depth=5, n_estimators=100, random_state=10)),
+			])
+			y_train = df[c].astype('int')
+			x_train = df.drop([c], axis = 1)
+			model.fit(x_train, y_train)
+			model_dct[c + "_model"] = model
+		return model_dct
+
 	def modelbased(self, user_id):
 		"""
 		Function that calculates recommendations for a given user.
@@ -103,20 +139,25 @@ class RecoSystem():
 		Probability range is <0, 1>.   
 		"""
 		df = self.df.set_index('customer_id')
+		df = df.drop(['person', 'retirement_age', 'address',
+			'apartment', 'zipcode', 'per_capita_income','num_credit_cards',
+			'fico_score', 'state', 'city', 'latitude', 'longitude', 'gender'], axis=1)
+		df.rename(columns={'current_age':'age'}, inplace = True)
+		df['yearly_income'] = df['yearly_income'].astype(np.float64)
+		df['total_debt'] = df['total_debt'].astype(np.float64)
+
 		mdbs = {}
-		model = Pipeline([
-            ('smote', SMOTE(sampling_strategy='auto', k_neighbors=3)),
-            ('clf', DecisionTreeClassifier(max_depth=3, random_state=10)),
-        ])
-		for c in df.columns:
+		
+		model_dct = self.models
+		for c in df[['deposits', 'cards', 'account', 'loan']].columns:
+			model = model_dct[c + "_model"]
 			y_train = df[c].astype('int')
 			x_train = df.drop([c], axis = 1)
-			model.fit(x_train, y_train)
 			p_train = model.predict_proba(x_train[x_train.index == user_id])[:,1]
-			
 			mdbs[c] = p_train[0]
-			
+		
 		return mdbs
+		
 
 	def hybrid(self, user_id, f1=0.2, f2=0.60, f3=0.2):
 		"""
