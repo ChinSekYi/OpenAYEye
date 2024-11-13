@@ -8,7 +8,7 @@ from dateutil.relativedelta import relativedelta
 
  
 from dataset import engine, RFM, Churn, Engagement
-from train import explained_dct
+from train import explained_dct, reco_df
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -318,4 +318,21 @@ async def getReach():
     data['yesColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
     data = data.to_dict(orient='records')
     
+    return {'status': 'ok', 'data': data}
+
+@app.get("/recoBySeg")
+async def getReco():
+    rfm = RFM(engine)
+    rfm = rfm.get_RFM()[['customer_id', 'segment']]
+    
+    data = reco_df.merge(rfm, how='inner', on='customer_id') \
+        .drop(['customer_id', 'deposits', 'cards', 'account', 'loan'], axis=1) \
+        .groupby(['segment']) \
+        .agg('mean').reset_index()
+    data['deposits_recoColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data['cards_recoColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
+    data['account_recoColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
+    data['loan_recoColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data = data.to_dict(orient='records')
+    # print(reco_df)
     return {'status': 'ok', 'data': data}

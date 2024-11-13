@@ -14,8 +14,9 @@ if not sys.warnoptions:
     os.environ["PYTHONWARNINGS"] = "ignore" # Also affect subprocesse
  
 import shap
-from dataset import engine, RFM, Churn, Engagement, RFM_engage, RFM_churn
-from models import CLFSwitcher, Transform, Pipe, parameters
+from dataset import engine, RFM, Churn, Engagement, RFM_engage, RFM_churn, Reco
+from models import CLFSwitcher, Transform, Pipe, parameters, RecoSystem
+
 from sklearn.model_selection import GridSearchCV
 
 rfm = RFM(engine)
@@ -23,15 +24,12 @@ rfm = RFM(engine)
 engage = Engagement(engine)
 
 churn = Churn(engine)
-# churn = churn.get_dataset()[['customer_id', 'churn']]
 
 def train(data):
     X = data.get_X()
     y = data.get_y()
     ct = Transform(data)
     X, y = ct.get_Xy()
-    # ct.inverse_transform(pd.concat([X, y], axis=1))
-    # y
 
     pipeline = Pipe(ct).get_pipeline()
     def train(X, y, pipeline, parameters):
@@ -43,19 +41,32 @@ def train(data):
 
     return best_est
 
-customer_lst = ['Hibernating','At Risk','Loyal Customers','New Customers']
+# customer_lst = ['Hibernating','At Risk','Loyal Customers','New Customers']
+customer_lst = ['Loyal Customers']
 explained_dct = {}
 for customer in customer_lst:
     engage_explain = train(RFM_engage(rfm, engage, customer))
     churn_explain = train(RFM_churn(rfm, churn, customer))
     explained_dct['engage ' + customer] = engage_explain
     explained_dct['churn ' + customer] = churn_explain
-    # print(explained_dct)
 
-# shap_df = best_est.get_shap(X_col='engage_month', y_col='action_type', y_val='converted')
-# shap_df
+def recommend(dataset=Reco(engine)):
+    print('Modelling Recommendations...')
+    df = dataset.df[['customer_id', 'deposits', 'cards', 'account', 'loan']]
+    df['customer_id'] = df['customer_id'].astype(int)
+    recosys = RecoSystem(df)
+    reco = [recosys.hybrid(i) for i in df['customer_id']]
+    data = pd.concat([df, pd.DataFrame(reco)], axis=1)
+    data['customer_id'] = data['customer_id'].apply(lambda x: str(x).zfill(4))
+    print('Recommendations Done...')
+    return data
 
+# from pathlib import Path
 
-# plt.scatter(shap_df['engage_month__converted'], shap_df['shap'])
+# root_dir = Path(__file__).resolve().parent
+# env_path = os.path.join(str(root_dir),  "dataset/reco_df.csv")
 
+# reco_df = pd.read_csv("dataset/reco_df.csv")
+# reco_df['customer_id'] = reco_df['customer_id'].apply(lambda x: str(x).zfill(4))
 
+reco_df = recommend()
