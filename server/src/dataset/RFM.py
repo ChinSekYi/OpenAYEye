@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 
-from .data import Data
-# from engine import engine
+from data import Data
+from engine import engine
 
 class RFM(Data):
     def __init__(self, engine, 
@@ -82,14 +82,13 @@ class RFM(Data):
 
         rfm['recency_score'] = pd.qcut(rfm["recency"], 5, labels = [5,4,3,2,1])
         rfm['frequency_score'] = pd.qcut(rfm["frequency"].rank(method="first"), 5, labels=[1,2,3,4,5])
-        rfm['monetary_score'] = pd.qcut(rfm['monetary'], 5, labels = [1, 2, 3, 4, 5])
-
+        rfm['monetary_score'] = pd.qcut(rfm['monetary'].astype(np.float64), 5, labels = [1, 2, 3, 4, 5])
+        
         rfm['rfm_score'] = (rfm['recency_score'].astype(str) + rfm['frequency_score'].astype(str) + rfm['monetary_score'].astype(str))
 
         rfm['segment'] = rfm['recency_score'].astype(str) + rfm['frequency_score'].astype(str)
         rfm['segment'] = rfm['segment'].replace(seg_map, regex=True)
 
-        # rfm = rfm.drop(columns=['recency', 'frequency', 'monetary'], axis=1)
         return rfm
 
     def get_X(self):
@@ -108,7 +107,9 @@ class RFM(Data):
 #     'Promising', 'New Customers',
 #     'Potential Loyalists', 'Champions'
 # ]
-# rfm = RFM(engine)
+print(engine)
+rfm = RFM(engine)
+print(rfm.get_dataset())
 
 # print(rfm.df.columns)
 # print(rfm.get_num_cols())
