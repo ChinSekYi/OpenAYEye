@@ -7,7 +7,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
 
-load_dotenv("../../../.env")
+root_dir = Path(__file__).resolve().parent
+env_path = os.path.join(str(root_dir),  "../../../.env")
+
+load_dotenv(env_path)
 
 MYSQL_ROOT_PASSWORD = os.getenv('MYSQL_ROOT_PASSWORD')
 MYSQL_DATABASE = os.getenv('MYSQL_DATABASE')

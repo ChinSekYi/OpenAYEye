@@ -8,6 +8,7 @@ from dateutil.relativedelta import relativedelta
 
  
 from dataset import engine, RFM, Churn, Engagement
+from train import engage_explain
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -64,13 +65,6 @@ async def health():
 async def index():
     return {"message": "App Started"}
 
-# @app.get("/getChurn")
-# def getTeams(columns=["customerid", "surname", "creditscore", "age", "geography", "gender", "tenure " "exited"], table="churn"):
-#     # Runs query "SELECT id, name, age, phone, email, access FROM users;"
-#     fetched = getEntries(columns, table)
-#     columns = ['id'] + columns[1:]
-#     json_entry = [dict(zip(columns, i)) for i in fetched]
-#     return json_entry
 
 @app.get("/totalTraffic")
 async def getTraffic():

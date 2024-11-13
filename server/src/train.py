@@ -1,6 +1,9 @@
-
 import pandas as pd
 import numpy as np
+
+# from dateutil.relativedelta import relativedelta
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 
 import os
 import sys
@@ -10,36 +13,42 @@ if not sys.warnoptions:
     warnings.simplefilter("ignore")
     os.environ["PYTHONWARNINGS"] = "ignore" # Also affect subprocesse
  
-from .dataset import engine, RFM, Churn, Engagement
-from .models import CLFSwitcher, Transform, Pipe, parameters
+import shap
+from dataset import engine, RFM, Churn, Engagement, RFM_engage
+from models import CLFSwitcher, Transform, Pipe, parameters
 from sklearn.model_selection import GridSearchCV
 
-def train(X, y, pipeline, parameters):
-        grid_search = GridSearchCV(pipeline, parameters, cv=5, n_jobs=12, return_train_score=True, verbose=2)
-        grid_search.fit(X, y)
-        return grid_search, grid_search.best_estimator_[-1]
+rfm = RFM(engine)
 
-def main():
-    rfm = RFM(engine)
-    churn = Churn(engine)
-    engage = Engagement(engine)
+engage = Engagement(engine)
 
-    datasets = [rfm, churn, engage]
+# churn = Churn(engine)
+# churn = churn.get_dataset()[['customer_id', 'churn']]
 
-    best_estimators = {}
+def train(data):
+    X = data.get_X()
+    y = data.get_y()
+    ct = Transform(data)
+    X, y = ct.get_Xy()
+    # ct.inverse_transform(pd.concat([X, y], axis=1))
+    # y
 
-    for dt in datasets:
+    pipeline = Pipe(ct).get_pipeline()
+    def train(X, y, pipeline, parameters):
+            grid_search = GridSearchCV(pipeline, parameters, cv=5, n_jobs=12, return_train_score=True, verbose=2)
+            grid_search.fit(X, y)
+            return grid_search, grid_search.best_estimator_[-1]
+    _, best_est = train(X, y, pipeline, parameters)
+    best_est.explain(data, ct)
 
-        ct = Transform(dt)
-        X, y = ct.get_Xy()
-        pipeline = Pipe(ct).get_pipeline()
-        _, best_estimator = train(X, y, pipeline, parameters)
-        print(best_estimator.class_report(X, y))
-        best_estimators[dt.__class__.__name__] = best_estimator    
-        # print(best_estimator.feature_importance())
+    return best_est
 
-    return best_estimators
+engage_explain = train(RFM_engage(rfm, engage, 'Hibernating'))
+
+# shap_df = best_est.get_shap(X_col='engage_month', y_col='action_type', y_val='converted')
+# shap_df
 
 
-if __name__ == "__main__":
-    main()
+# plt.scatter(shap_df['engage_month__converted'], shap_df['shap'])
+
+
