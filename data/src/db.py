@@ -108,14 +108,10 @@ def get_churn(users,
     churn = pd.DataFrame(churn_data)
     return churn
 
-
 users = get_users()
 transactions = get_transactions()
 churn = get_churn(users)
 
-# print(engine)
-
-# %%
 with engine.connect() as db:
 	dct = {'users': users, 
 		'transactions':transactions,
@@ -169,8 +165,9 @@ app = create_app()
 # print(engine)
 @app.get("/health")
 async def health():
-    print(engine)
-    return {"message": "health ok"}
+	
+
+	return {"message": "health ok"}
 # users.to_sql('users', con=engine, if_exists='append', index=False)
 # with engine.connect() as db:
 # 	query = sqlalchemy.text('''SELECT * FROM users ''')

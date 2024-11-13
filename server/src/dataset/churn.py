@@ -23,6 +23,8 @@ class Churn(Data):
             'apartment', 'zipcode', 'per_capita_income','num_credit_cards',
             'fico_score', 'state', 'city', 'latitude', 'longitude'], axis=1)
         data = data.rename(columns={'current_age':'age', 'churn_date': 'churn'})
+        data['yearly_income'] = data['yearly_income'].astype(np.float64)
+        data['total_debt'] = data['total_debt'].astype(np.float64)
         # data['age'] = pd.qcut(data['age'], [0, .33, .67, 1.], labels=[0, 1, 2])    
         # data['yearly_income'] = pd.qcut(data['yearly_income'].astype(np.float64), [0, 0.33, .67, 1.], labels=[0, 1, 2])
         # data['total_debt'] = pd.qcut(data['total_debt'].astype(np.float64), [0, 0.33, .67, 1.], labels=[0, 1, 2])

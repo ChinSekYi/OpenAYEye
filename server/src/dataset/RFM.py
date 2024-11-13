@@ -42,10 +42,11 @@ class RFM(Data):
         data = super().get_dataset().drop(["amount", "date"], axis=1).drop_duplicates(['customer_id'])
         rfm = self.get_RFM()[['customer_id', 'segment']]
         data = data.merge(rfm, on=['customer_id'])
-        
-        data['age'] = pd.qcut(data['age'], [0, .33, .67, 1.], labels=[0, 1, 2])    
-        data['yearly_income'] = pd.qcut(data['yearly_income'].astype(np.float64), [0, 0.33, .67, 1.], labels=[0, 1, 2])
-        data['total_debt'] = pd.qcut(data['total_debt'].astype(np.float64), [0, 0.33, .67, 1.], labels=[0, 1, 2])
+        data['yearly_income'] = data['yearly_income'].astype(np.float64)
+        data['total_debt'] = data['total_debt'].astype(np.float64)
+        # data['age'] = pd.qcut(data['age'], [0, .33, .67, 1.], labels=[0, 1, 2])    
+        # data['yearly_income'] = pd.qcut(data['yearly_income'].astype(np.float64), [0, 0.33, .67, 1.], labels=[0, 1, 2])
+        # data['total_debt'] = pd.qcut(data['total_debt'].astype(np.float64), [0, 0.33, .67, 1.], labels=[0, 1, 2])
         # data = data.drop(["customer_id"], axis=1)
         return data
 
