@@ -6,6 +6,8 @@ In today’s competitive financial sector, banks face challenges in effectively 
 
 Our project addresses this challenge by developing an AI-driven, personalized marketing system that leverages machine learning to analyze customer data in depth. By integrating customer insights, predictive analytics, and real-time optimization, our system aims to create highly tailored marketing campaigns that enhance customer engagement, improve conversion rates, and support data-driven decision-making for marketing teams.
 
+<br>
+
 ## Instructions for setting up the environment and running the code
 1. Clone the Repository
 ```
@@ -15,6 +17,7 @@ cd OpenAYEye
 
 ... continued
 
+<br>
 
 ## Description of the repository structure
 This is the top 2 levels of our repository structure. Unimportant files and folders are omitted below. 
@@ -53,10 +56,15 @@ OpenAYEye/
 
 ```
 
+<br>
 
 ## Data sources and any necessary data preparation steps
 
+<br>
+
 ## Instructions for building and running the Docker container(s)
+
+<br>
 
 ## API documentation (endpoints, request/response formats)
 
