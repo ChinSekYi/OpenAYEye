@@ -18,6 +18,8 @@ class Transform():
 		self.y = list(dataset.get_y().columns)
 
 	def fit_transform(self):
+		# df = self.df
+		# df[self.num] = self.ct.fit_transform(self.df)
 		df = self.ct.fit_transform(self.df)
 		# print(self.cat, self.num)
 		# print(df.columns)
@@ -25,9 +27,9 @@ class Transform():
 		return df
 
 	def inverse_transform(self, df):
-		df = pd.DataFrame(df, columns=list(self.num) + list(self.cat))
-		df[num] = ct.named_transformers_['num_preprocess'].inverse_transform(df[num])
-		df[cat] = ct.named_transformers_['cat_preprocess'].inverse_transform(df[cat])
+		# df = pd.DataFrame(df, columns=list(self.num) + list(self.cat))
+		df[self.num] = self.ct.named_transformers_['num_preprocess'].inverse_transform(df[self.num])
+		df[self.cat] = self.ct.named_transformers_['cat_preprocess'].inverse_transform(df[self.cat])
 		return df
 	
 	def get_Xy(self):

@@ -30,7 +30,7 @@ def main():
 
     for dt in datasets:
 
-        ct = Transform(churn)
+        ct = Transform(dt)
         X, y = ct.get_Xy()
         pipeline = Pipe(ct).get_pipeline()
         _, best_estimator = train(X, y, pipeline, parameters)

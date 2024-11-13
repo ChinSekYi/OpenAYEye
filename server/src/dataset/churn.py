@@ -7,7 +7,6 @@ from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import SMOTE
 
 from .data import Data
-# from engine import engine
 
 class Churn(Data):
     def __init__(self, engine, query_string="""
@@ -20,10 +19,16 @@ class Churn(Data):
 
     def preprocess(self):
         data = self.df.copy()
-        data = data.drop(['customer_id', 'person', 'retirement_age', 
-                   'address', 'apartment', 'zipcode', 'city', 'state',
-                   'latitude', 'longitude'], axis=1)
-        data['churn'] = np.where(data['churn_date'].isna(), 0, 1)
+        data = data.drop(['person', 'retirement_age', 'address',
+            'apartment', 'zipcode', 'per_capita_income','num_credit_cards',
+            'fico_score', 'state', 'city', 'latitude', 'longitude'], axis=1)
+        data = data.rename(columns={'current_age':'age', 'churn_date': 'churn'})
+        data['age'] = pd.qcut(data['age'], [0, .33, .67, 1.], labels=[0, 1, 2])    
+        data['yearly_income'] = pd.qcut(data['yearly_income'].astype(np.float64), [0, 0.33, .67, 1.], labels=[0, 1, 2])
+        data['total_debt'] = pd.qcut(data['total_debt'].astype(np.float64), [0, 0.33, .67, 1.], labels=[0, 1, 2])
+        data['churn'] = data['churn'].apply(lambda x: 0 if pd.isnull(x) else 1)
+        # print(data['churn'])
+        # data = data.drop(["customer_id"], axis=1)
         return data
     
     def get_num_cols(self):
@@ -37,13 +42,15 @@ class Churn(Data):
     
     def get_X(self):
         data = self.preprocess()
-        X = data.drop(['churn', 'churn_date'], axis = 1)
+        X = data.drop(['churn'], axis = 1)
         return X
 
     def get_y(self):
         data = self.preprocess()
         return data[['churn']]
 
+
+# from engine import engine
+# print(engine)
 # churn = Churn(engine)
-# print(churn.get_X())
-# print(churn.get_y())
+# print(churn.get_dataset())
