@@ -2,6 +2,9 @@
 [![Python application test with Github Actions](https://github.com/ChinSekYi/OpenAYEye/actions/workflows/main.yml/badge.svg)](https://github.com/ChinSekYi/OpenAYEye/actions/workflows/main.yml)
 
 ## Project overview
+In today’s competitive financial sector, banks face challenges in effectively targeting customers with personalized marketing efforts. This often results in low engagement rates, inefficient use of resources, and missed opportunities to connect with customers in meaningful ways. The core challenge is the lack of personalization due to underutilization of vast customer data, which often leaves marketing campaigns generic and misaligned with individual preferences.
+
+Our project addresses this challenge by developing an AI-driven, personalized marketing system that leverages machine learning to analyze customer data in depth. By integrating customer insights, predictive analytics, and real-time optimization, our system aims to create highly tailored marketing campaigns that enhance customer engagement, improve conversion rates, and support data-driven decision-making for marketing teams.
 
 ## Instructions for setting up the environment and running the code
 
