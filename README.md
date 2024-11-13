@@ -9,6 +9,55 @@ Our project addresses this challenge by developing an AI-driven, personalized ma
 ## Instructions for setting up the environment and running the code
 
 ## Description of the repository structure
+```
+OpenAYEye/
+├── docker-run.bash
+├── .DS_Store
+├── LICENSE
+├── requirements.txt
+├── Makefile
+├── get_directory_structure.py
+├── test.py
+├── README.md
+├── .dockerignore
+├── .gitignore
+├── .gitattributes
+├── docker-compose.yml
+├── docker.env
+├── engine.env
+├── .pytest_cache/
+├── server/
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── README.md
+├── __pycache__/
+├── logs/
+├── .github/
+├── notebook/
+├── .git/
+├── .vscode/
+│   └── settings.json
+├── data/
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── README.md
+├── client/
+│   ├── README copy.md
+│   ├── index.html
+│   ├── Dockerfile
+│   ├── vite.config.js
+│   ├── README.md
+│   ├── .gitignore
+│   ├── package-lock.json
+│   └── package.json
+├── src/
+│   └── .DS_Store
+└── sql/
+    ├── Dockerfile
+    └── init.sql
+
+```
+
 
 ## Data sources and any necessary data preparation steps
 
