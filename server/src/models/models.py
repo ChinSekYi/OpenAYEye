@@ -6,7 +6,7 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KDTree
 # from sklearn.neural_network import MLPClassifier
-from xgboost import XGBClassifier, XGBRFClassifier
+from xgboost import XGBClassifier, XGBRFClassifier, XGBRegressor
 
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV
@@ -110,3 +110,50 @@ class CLFSwitcher(BaseEstimator):
 			
 		df = pd.DataFrame({'shap': val, (X_col + "__" +  y_val): dat})
 		return df
+
+class REGSwitcher(BaseEstimator):
+
+	def __init__(
+			self, 
+			estimator = XGBRegressor(),
+		):
+		"""
+		A Custom BaseEstimator that can switch between Regressors.
+		:param estimator: sklearn object - The Regressors
+		""" 
+		# self.linear_lst = [i.__name__ for i in [
+		# 	SGDClassifier,
+		# ]]
+		# self.NB_lst = [i.__name__ for i in [
+		# 	MultinomialNB,
+		# ]]
+		# self.tree_lst = [i.__name__ for i in [
+		# 	XGBClassifier,
+		# 	XGBRFClassifier,
+		# ]]
+		# # self.nn_lst = [i.__name__ for i in [
+		# # 	MLPClassifier,
+		# # ]]
+		# self.non_lin_lst = [i.__name__ for i in[
+		# 	KDTree,
+		# ]]
+		self.estimator = estimator
+
+
+	def fit(self, X, y=None, **kwargs):
+		self.estimator.fit(X, y)
+		return self
+
+
+	def predict(self, X, y=None):
+		return self.estimator.predict(X)
+
+
+	def predict_proba(self, X):
+		return self.estimator.predict_proba(X)
+
+	def class_report(self, X, y):
+		return classification_report(y, self.predict(X))
+
+	def score(self, X, y):
+		return self.estimator.score(X, y)

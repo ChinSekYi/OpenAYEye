@@ -67,6 +67,18 @@ ORDER BY t1.campaign_id, t1.start_date, t1.channel;
 
 USE transact;
 SELECT c.campaign_id,
+SUM(c.budget) AS mark_spent,
+c.channel as category,
+c.displays,
+SUM(CASE WHEN e.action_type = 'clicked' THEN 1 ELSE 0 END) AS clicks,
+SUM(CASE WHEN e.action_type = 'credentials' THEN 1 ELSE 0 END) AS leads, 
+SUM(CASE WHEN e.action_type = 'converted' THEN 1 ELSE 0 END) AS orders
+FROM campaign c, engagement e
+WHERE c.campaign_id = e.campaign_id
+GROUP BY c.campaign_id, c.channel, c.start_date;
+
+USE transact;
+SELECT c.campaign_id,
 c.campaign_name, 
 c.start_date, c.end_date,
 c.target_segment, 

@@ -7,8 +7,8 @@ from json import loads, dumps
 from dateutil.relativedelta import relativedelta
 
  
-from dataset import engine, RFM, Churn, Engagement
-from train import explained_dct, reco_df
+from dataset import engine, RFM, Churn, Engagement, RFM_engage, RFM_churn, Reco, ROI
+from train import explained_dct, reco_df, roi_est
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -209,50 +209,21 @@ async def getReach():
 
 @app.get("/predROI")
 async def getROI():
-    from collections import OrderedDict
-    from app.src.exception import CustomException
-    from app.src.utils import load_object
-    import joblib
+    roi = ROI(engine)
+    X = roi.get_X()
+    pred = roi_est.predict(X)
+    
+    data = roi.df
+    data[['clicks', 'leads', 'orders']] = pred
+    data[['clicks', 'leads', 'orders']] = data[['clicks', 'leads', 'orders']].astype(int)
+    # data['c_date'] = data['c_date'].dt.to_period("M").astype(str) 
+    data = data[data['c_date'] >= data['c_date'].max() - relativedelta(months=11)] \
+        .groupby([data['c_date'].dt.to_period("M")]) \
+        .agg({"clicks": ["sum"], "leads": ["sum"], "orders": ["sum"]}).reset_index()
+    data.columns = data.columns.get_level_values(0)
+    data['c_date'] = data['c_date'].astype(str)
+    data = data.rename(columns={'c_date': 'Campaign Month'})
 
-    def get_CLO(features):
-        model_path = os.path.join("artifacts", "roi_trained_model.pkl")
-        encoder_path = os.path.join("artifacts", "roi_onehot_encoder.pkl")
-
-        model = load_object(file_path=model_path)
-        encoder = joblib.load(encoder_path) # Load pre-fitted OneHotEncoder
-        # Apply the pre-fitted encoder to the new data
-        X_encoded = encoder.transform(features[['category']])  # Use transform, not fit_transform
-
-        # Get the expected encoded feature names from the encoder
-        encoded_columns = encoder.get_feature_names_out(['category'])
-
-        # Concatenate the encoded category columns with the 'cost' column
-        X_transformed = np.concatenate([X_encoded, features[['cost']].values], axis=1)
-
-        pred = model.predict(X_transformed)
-        return pd.DataFrame(pred, columns=['clicks', 'leads', 'orders'])
-
-    with engine.connect() as db:
-        query = sqlalchemy.text(
-            '''
-            SELECT * FROM campaign;
-            ''')
-        df = pd.DataFrame(db.execute(query).fetchall())
-        db.close()
-
-    features = df.rename(columns={'channel': 'category', 'budget':'cost'}).loc[:, ['category', 'cost']]
-    features
-
-    CLO = get_CLO(features)
-
-    df = pd.concat([df, CLO], axis=1)
-    df = df[df['start_date'] >= df['start_date'].max() - relativedelta(months=11)] \
-        .groupby([df['start_date'].dt.to_period("M")]) \
-        .agg({"clicks": ['sum'], "leads": ['sum'], "orders": ['sum']})[['clicks', 'leads', 'orders']].reset_index()
-
-    df.columns = df.columns.get_level_values(0)
-    df['start_date'] = df['start_date'].astype(str)
-    data = df
     data['clicksColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
     data['leadsColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
     data['ordersColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
@@ -325,11 +296,11 @@ async def getReco():
     rfm = RFM(engine)
     rfm = rfm.get_RFM()[['customer_id', 'segment']]
     
-    data = reco_df.merge(rfm, how='inner', on='customer_id') \
-	.drop(['customer_id', 'deposits', 'cards', 'account', 'loan'], axis=1) \
-	.loc[:, ['segment', 'deposits_reco', 'cards_reco', 'account_reco', 'loan_reco']] \
-	.groupby(['segment']) \
-	.agg('mean').reset_index()
+    data = reco_df.merge(rfm, how='left', on='customer_id') \
+        .drop(['customer_id', 'deposits', 'cards', 'account', 'loan'], axis=1) \
+        .loc[:, ['segment', 'deposits_reco', 'cards_reco', 'account_reco', 'loan_reco']] \
+        .groupby(['segment']) \
+        .agg('mean').reset_index()
     data['deposits_recoColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
     data['cards_recoColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
     data['account_recoColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
