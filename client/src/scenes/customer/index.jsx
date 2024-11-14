@@ -16,6 +16,7 @@ import {
   LineChart,
   ProgressCircle,
   BarChart,
+  ScatterPlot,
   GeographyChart,
 } from "../../components";
 import {
@@ -45,7 +46,45 @@ function Customer() {
   const [segByIncome, setSegIncome] = useState([]);
   const [segByAge, setSegAge] = useState([]);
   const [churnBySeg, setChurnSeg] = useState([]);
+  const [relateBudget, setRelateBudget] = useState([]);
+  const [relateGoal, setRelateGoal] = useState([]);
+  const [relateChannel, setRelateChannel] = useState([]);
+  const [relateEngage, setRelateEngage] = useState([]);
+  
+  useEffect(() => {
+    api.get('relateEngage')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setRelateEngage(data);
+    });
+  }, []);
 
+
+  useEffect(() => {
+    api.get('relateChannel')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setRelateChannel(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('relateGoal')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setRelateGoal(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('relateBudget')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setRelateBudget(data);
+    });
+  }, []);
+
+  // console.log(relateBudget)
 
   useEffect(() => {
     api.get('totalTraffic')
@@ -356,7 +395,180 @@ function Customer() {
             </Box>
             
           </Box>
-           
+          {/* Engage */}
+          
+          <Box
+            gridColumn={
+              isXlDevices ? "span 6" : isMdDevices ? "span 6" : "span 4"
+            }
+            gridRow="span 2"
+            bgcolor={colors.primary[400]}
+          >
+            <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+              <Box>
+                <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Campaign Budget on Conversion Amongst New Customers
+                </Typography>
+                {/* <Typography
+                  variant="h5"
+                  fontWeight="bold"
+                  color={colors.greenAccent[500]}
+                >
+                  $59,342.32
+                </Typography> */}
+              </Box>
+              <IconButton>
+                <DownloadOutlined
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box>
+            <Box height="250px" mt="-20px">
+              <ScatterPlot 
+              data = { relateBudget } 
+              />
+            </Box>
+            
+          </Box>
+          <Box
+            gridColumn={
+              isXlDevices ? "span 6" : isMdDevices ? "span 6" : "span 4"
+            }
+            gridRow="span 2"
+            bgcolor={colors.primary[400]}
+          >
+            <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+              <Box>
+                <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Campaign Goal on Conversion Amongst New Customers
+                </Typography>
+                {/* <Typography
+                  variant="h5"
+                  fontWeight="bold"
+                  color={colors.greenAccent[500]}
+                >
+                  $59,342.32
+                </Typography> */}
+              </Box>
+              <IconButton>
+                <DownloadOutlined
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box>
+            <Box height="250px" mt="-20px">
+              <BarChart 
+              data = { relateGoal } 
+              index = {"goal"}
+              keys =  {['mean']}
+              isDashboard={false} />
+            </Box>
+            
+          </Box>
+          <Box
+            gridColumn={
+              isXlDevices ? "span 6" : isMdDevices ? "span 6" : "span 4"
+            }
+            gridRow="span 2"
+            bgcolor={colors.primary[400]}
+          >
+            <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+              <Box>
+                <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Campaign Channel on Conversion Amongst New Customers
+                </Typography>
+                {/* <Typography
+                  variant="h5"
+                  fontWeight="bold"
+                  color={colors.greenAccent[500]}
+                >
+                  $59,342.32
+                </Typography> */}
+              </Box>
+              <IconButton>
+                <DownloadOutlined
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box>
+            <Box height="250px" mt="-20px">
+              <BarChart 
+              data = { relateChannel } 
+              index = {"channel"}
+              keys =  {['mean']}
+              isDashboard={false} />
+            </Box>
+            
+          </Box>
+          <Box
+            gridColumn={
+              isXlDevices ? "span 6" : isMdDevices ? "span 6" : "span 4"
+            }
+            gridRow="span 2"
+            bgcolor={colors.primary[400]}
+          >
+            <Box
+              mt="25px"
+              px="30px"
+              display="flex"
+              justifyContent="space-between"
+            >
+              <Box>
+                <Typography
+                  variant="h5"
+                  fontWeight="600"
+                  color={colors.gray[100]}
+                >
+                  Monthly Engagement on Conversion Amongst New Customers
+                </Typography>
+                {/* <Typography
+                  variant="h5"
+                  fontWeight="bold"
+                  color={colors.greenAccent[500]}
+                >
+                  $59,342.32
+                </Typography> */}
+              </Box>
+              <IconButton>
+                <DownloadOutlined
+                  sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+                />
+              </IconButton>
+            </Box>
+            <Box height="250px" mt="-20px">
+              <ScatterPlot 
+              data = { relateEngage }
+               />
+            </Box>
+            
+          </Box>
         </Box>
     </Box>
   );

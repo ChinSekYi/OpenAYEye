@@ -30,8 +30,6 @@ git clone https://github.com/ChinSekYi/OpenAYEye.git
 cd OpenAYEye
 ```
 
-... continued
-
 <br>
 
 ## Description of the repository structure
@@ -48,19 +46,18 @@ OpenAYEye/
 │   ├── requirements.txt           # Server dependencies
 │   ├── Dockerfile                 # Docker setup for server
 │   ├── README.md                  # Server README
-│   ├── artifacts/                 # Pretrained ML models
-│   ├── app/                       # Application files
+│   └── src/                       # Analytics source files
 ├── notebook/                      # Jupyter notebooks for EDA, model training etc
 │   ├── segment/                   # Segment model notebooks
 │   ├── roi-model/                 # ROI model notebooks 
-│   └── reco_system/               # Recommendation system notebooks 
-    └── src/                           # Data pipelining
-        ├── exception.py               # Custom exception handling classes
-        ├── pipeline/                  # Pipeline for prediction
-        ├── components/                # Pipeline for data ingestion and model training
-        ├── logger.py                  # Logging utility 
-        ├── utils.py                   # Utility functions
-        ├── main.py                    # To run Pipeline
+│   ├── reco_system/               # Recommendation system notebooks 
+│   └── src/                           # Data pipelining
+│       ├── exception.py               # Custom exception handling classes
+│       ├── pipeline/                  # Pipeline for prediction
+│       ├── components/                # Pipeline for data ingestion and model training
+│       ├── logger.py                  # Logging utility 
+│       ├── utils.py                   # Utility functions
+│       └── main.py                    # To run Pipeline
 ├── data/                          # Data processing and database code
 │   ├── requirements.txt           # Data dependencies
 │   ├── Dockerfile                 # Docker setup for data service
@@ -72,7 +69,7 @@ OpenAYEye/
 │   ├── README.md                  # Client README
 │   ├── public/                    # Public assets
 │   └── src/                       # Client source files
-├── sql/                           # SQL setup and initialization scripts
+└── sql/                           # SQL setup and initialization scripts
     ├── Dockerfile                 # Docker setup for SQL
     └── init.sql                   # SQL initialization script
 ```
@@ -88,8 +85,8 @@ Subgroup B worked on: `roi-model` and `reco_system`
 notebook/
 ├── segment/                             # code for RFM, customer segmentation
 ├── roi-model/    
-    └── roi-model-with-wiki.ipynb        # EDA & Model development for ROI model
-├── reco_system/  
+│   └── roi-model-with-wiki.ipynb        # EDA & Model development for ROI model
+└── reco_system/  
     └── logistic_regression              # Model development
     └── New_data_creation_covid.ipynb    # EDA & data manipulation Notebook for Covid event
     └── New_data_creation_meteor.ipynb   # EDA & data manipulation Notebook for Meteor event 
@@ -120,19 +117,19 @@ Link to wiki: [OpenAYEye Wiki](https://github.com/ChinSekYi/OpenAYEye/wiki)
 - For detailed coding steps for data preparation, please refer to the relevant Jupyter notebooks, as they include more detailed explanations and methods. Refer to "Jupyter notebooks for EDA and Model development" section above.
  
 
-<br>
-
-## Instructions for building and running the Docker container(s)
 
 <br>
 
-## API documentation (endpoints, request/response formats)
-
+## API documentation
+**Main Python File**
+Found in 
+```
+server/src/main.py          # The main entry point for the server-side application.
+```
 <br>
 
-## API documentation using Swagger/OpenAPI specification
+## Dockerized Web App
 
-### Web App
 - Run
 ```{bash}
 bash docker-run.bash
@@ -142,16 +139,6 @@ bash docker-run.bash
 
 ```{bash}
 docker compose up
-```
-
-Wait for the docker logs to stop runnning or until you see
-```{docker}
-data    | Engine(mysql+pymysql://root:***@db:3306/transact)
-data    | users Ok
-data    | transactions Ok
-data    | churn Ok
-data    | campaign Ok
-data    | engagement Ok
 ```
 
 - Webapp served on: [localhost:5173](http://localhost:5173)

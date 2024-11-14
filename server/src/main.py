@@ -362,3 +362,50 @@ async def getReco():
     data = data.to_dict(orient="records")
 
     return {"status": "ok", "data": data}
+
+def get_relation(explained_dct, est = 'engage New Customers', X_col="budget",
+        y_col="action_type", y_val="converted"
+    ):
+    data = explained_dct[est].get_shap(X_col, y_col, y_val)
+    data = pd.concat([data.iloc[:, -1], data.iloc[:, 0]], axis=1).sort_values(["{}__{}".format(X_col, y_val)])
+    data['shap'] = data['shap'].apply(lambda x:x*10000)
+    data = data.rename(columns={"shap": "y", "{}__{}".format(X_col, y_val): "x"}) \
+        .to_dict(orient='records')
+    data = [{'id':X_col.capitalize(), "data": data}]
+    return data
+
+def get_relation_cat(explained_dct, est = 'engage New Customers', X_col="goal",
+        y_col="action_type", y_val="converted"
+    ):
+    data = explained_dct[est].get_shap(X_col, y_col, y_val)
+    data = pd.concat([data.iloc[:, -1], data.iloc[:, 0]], axis=1).sort_values(["{}__{}".format(X_col, y_val)])
+    data['shap'] = data['shap'].apply(lambda x:x*10000)
+    data = data.groupby(["{}__{}".format(X_col, y_val)]) \
+        .agg(["mean"])['shap'].reset_index() \
+        .rename(columns={"shap": "Weight", "{}__{}".format(X_col, y_val): X_col})
+    data["meanColor"] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    # data['mean'] = data['mean'].astype(int)
+    data = data.to_dict(orient="records")
+    # data = [{'id':'1', "data": data}]
+    return data
+
+@app.get("/relateBudget")
+async def getRelateBudget():
+    data = get_relation(explained_dct, X_col="budget", y_col="action_type")
+    return {"status": "ok", "data": data}
+
+@app.get("/relateGoal")
+async def getRelateBudget():
+    data = get_relation_cat(explained_dct, X_col="goal", y_col="action_type")
+    return {"status": "ok", "data": data}
+
+@app.get("/relateChannel")
+async def getRelateBudget():
+    data = get_relation_cat(explained_dct, X_col="channel", y_col="action_type")
+    return {"status": "ok", "data": data}
+
+@app.get("/relateEngage")
+async def getRelateBudget():
+    data = get_relation(explained_dct, X_col="engage_month", y_col="action_type")
+    return {"status": "ok", "data": data}
+    engage_month
