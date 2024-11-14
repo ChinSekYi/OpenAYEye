@@ -33,19 +33,18 @@ OpenAYEye/
 │   ├── requirements.txt           # Server dependencies
 │   ├── Dockerfile                 # Docker setup for server
 │   ├── README.md                  # Server README
-│   ├── artifacts/                 # Pretrained ML models
-│   ├── app/                       # Application files
+│   └── src/                       # Analytics source files
 ├── notebook/                      # Jupyter notebooks for EDA, model training etc
 │   ├── segment/                   # Segment model notebooks
 │   ├── roi-model/                 # ROI model notebooks 
-│   └── reco_system/               # Recommendation system notebooks 
-    └── src/                           # Data pipelining
-        ├── exception.py               # Custom exception handling classes
-        ├── pipeline/                  # Pipeline for prediction
-        ├── components/                # Pipeline for data ingestion and model training
-        ├── logger.py                  # Logging utility 
-        ├── utils.py                   # Utility functions
-        ├── main.py                    # To run Pipeline
+│   ├── reco_system/               # Recommendation system notebooks 
+│   └── src/                           # Data pipelining
+│       ├── exception.py               # Custom exception handling classes
+│       ├── pipeline/                  # Pipeline for prediction
+│       ├── components/                # Pipeline for data ingestion and model training
+│       ├── logger.py                  # Logging utility 
+│       ├── utils.py                   # Utility functions
+│       └── main.py                    # To run Pipeline
 ├── data/                          # Data processing and database code
 │   ├── requirements.txt           # Data dependencies
 │   ├── Dockerfile                 # Docker setup for data service
@@ -57,7 +56,7 @@ OpenAYEye/
 │   ├── README.md                  # Client README
 │   ├── public/                    # Public assets
 │   └── src/                       # Client source files
-├── sql/                           # SQL setup and initialization scripts
+└── sql/                           # SQL setup and initialization scripts
     ├── Dockerfile                 # Docker setup for SQL
     └── init.sql                   # SQL initialization script
 ```
@@ -73,8 +72,8 @@ Subgroup B worked on: `roi-model` and `reco_system`
 notebook/
 ├── segment/                 
 ├── roi-model/    
-    └── roi-model-with-wiki.ipynb        # EDA & Model development for ROI model
-├── reco_system/  
+│   └── roi-model-with-wiki.ipynb        # EDA & Model development for ROI model
+└── reco_system/  
     └── logistic_regression              # Model development
     └── New_data_creation_covid.ipynb    # EDA & data manipulation Notebook for Covid event
     └── New_data_creation_meteor.ipynb   # EDA & data manipulation Notebook for Meteor event 
