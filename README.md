@@ -41,11 +41,11 @@ OpenAYEye/
 │   └── reco_system/               # Recommendation system notebooks 
     └── src/                           # Data pipelining
         ├── exception.py               # Custom exception handling classes
-        ├── pipeline/                  # Data pipeline components
-        ├── components/                # Reusable components and modules
-        ├── logger.py                  # Logging utility for the project
+        ├── pipeline/                  # Pipeline for prediction
+        ├── components/                # Pipeline for data ingestion and model training
+        ├── logger.py                  # Logging utility 
         ├── utils.py                   # Utility functions
-        ├── main.py                    # Main entry point of the project
+        ├── main.py                    # To run Pipeline
 ├── data/                          # Data processing and database code
 │   ├── requirements.txt           # Data dependencies
 │   ├── Dockerfile                 # Docker setup for data service
