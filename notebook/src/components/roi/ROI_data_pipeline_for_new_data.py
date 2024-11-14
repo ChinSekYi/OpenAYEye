@@ -26,7 +26,6 @@ from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object
 
-
 project_root = Path(__file__).resolve().parents[2]
 sys.path.append(str(project_root))
 
@@ -69,7 +68,10 @@ class DataTransformation:
             # Define the categorical pipeline with one-hot encoding
             cat_pipeline = Pipeline(
                 steps=[
-                    ("onehot", OneHotEncoder(sparse_output=False, handle_unknown="ignore"))
+                    (
+                        "onehot",
+                        OneHotEncoder(sparse_output=False, handle_unknown="ignore"),
+                    )
                 ]
             )
 
@@ -77,10 +79,10 @@ class DataTransformation:
             preprocessor = ColumnTransformer(
                 transformers=[
                     ("cat_pipeline", cat_pipeline, categorical_columns),
-                    ("num_pipeline", "passthrough", numerical_columns)
+                    ("num_pipeline", "passthrough", numerical_columns),
                 ]
             )
-            
+
             return preprocessor
 
         except Exception as e:
@@ -111,9 +113,8 @@ class DataTransformation:
             logging.info(f"Train DataFrame columns: {train_df.columns.tolist()}")
             logging.info(f"Test DataFrame columns: {test_df.columns.tolist()}")
 
-
-            input_feature_columns = ['category', 'cost']  # Input features
-            target_columns = ['clicks']  # Targets
+            input_feature_columns = ["category", "cost"]  # Input features
+            target_columns = ["clicks"]  # Targets
 
             # Separate the features and target variables
             input_feature_train_df = train_df[input_feature_columns]
@@ -122,13 +123,17 @@ class DataTransformation:
             input_feature_test_df = test_df[input_feature_columns]
             target_feature_test_df = test_df[target_columns]
 
-            logging.info(f"Input feature training DataFrame shape: {input_feature_train_df.shape}")
-            logging.info(f"Input feature testing DataFrame shape: {input_feature_test_df.shape}")
+            logging.info(
+                f"Input feature training DataFrame shape: {input_feature_train_df.shape}"
+            )
+            logging.info(
+                f"Input feature testing DataFrame shape: {input_feature_test_df.shape}"
+            )
 
             logging.info(
                 "Applying preprocessing object on training dataframe and testing dataframe"
             )
-            
+
             input_feature_train_arr = preprocessing_obj.fit_transform(
                 input_feature_train_df
             )
@@ -156,17 +161,24 @@ class DataTransformation:
             logging.error(f"An error occurred: {str(e)}")
             raise CustomException(e, sys) from e
 
+
 if __name__ == "__main__":
-    train_data_path = 'artifacts/roi_model_train_data.csv'
-    test_data_path = 'artifacts/roi_model_test_data.csv'
+    train_data_path = "artifacts/roi_model_train_data.csv"
+    test_data_path = "artifacts/roi_model_test_data.csv"
 
     # Initialize the DataTransformation class
     data_transformation = DataTransformation()
 
     try:
         # Call the initiate_data_transformation method and capture the output
-        train_array, test_array, preprocessor_path = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
-        
+        (
+            train_array,
+            test_array,
+            preprocessor_path,
+        ) = data_transformation.initiate_data_transformation(
+            train_data_path, test_data_path
+        )
+
         # Print the results
         print("Preprocessor object saved at:\n", preprocessor_path)
 

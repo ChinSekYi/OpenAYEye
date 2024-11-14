@@ -12,7 +12,6 @@ import sys
 
 import dill
 from sklearn.metrics import r2_score
-
 from src.exception import CustomException
 
 

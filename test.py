@@ -15,8 +15,10 @@ These tests are intended to be run as part of a Continuous Integration/Continuou
 Deployment (CI/CD) pipeline to ensure code quality and reliability.
 """
 
+
 def function(name):
     return name
+
 
 def test_placeholder():
     """A placeholder test to ensure pytest runs."""
