@@ -7,25 +7,42 @@ services:
       # MYSQL_USER: root
       MYSQL_DATABASE: transact
       MYSQL_ROOT_PASSWORD: msql1234
+    # healthcheck:
+    #   test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+    #   timeout: 20s
+    #   retries: 10
     ports:
       - "3008:3306"
   data:
     build: ./data
+    env_file: .env  
     container_name: data
+    ports:
+      - "8001:8001"
     depends_on:
       - db
-    command: python db.py
+      # db:
+      #   condition: service_healthy
+    healthcheck:
+      test: "curl -f http://localhost:8001/health"
+    command: uvicorn db:app --port 8001 --host 0.0.0.0
   app:
     build: ./server
     container_name: app
+    restart: always
+    tty: true
+    env_file: .env  
     ports:
       - "8000:8000"
     depends_on:
-      - data
+      data:
+        condition: service_healthy
     command: uvicorn main:app --port 8000 --host 0.0.0.0
   client: 
     build: ./client
     container_name: client
+    healthcheck:
+      test: "curl -f http://localhost:8000/health"
     depends_on:
       - app
         # condition: service_healthy

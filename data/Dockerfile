@@ -19,4 +19,6 @@ RUN pip install --no-cache-dir --upgrade -r /workspace/requirements.txt
 
 COPY src .
 
+CMD uvicorn db:app --port 8001 --host 0.0.0.0
+
 # CMD python db.py

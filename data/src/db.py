@@ -108,13 +108,10 @@ def get_churn(users,
     churn = pd.DataFrame(churn_data)
     return churn
 
-
 users = get_users()
 transactions = get_transactions()
 churn = get_churn(users)
 
-
-# %%
 with engine.connect() as db:
 	dct = {'users': users, 
 		'transactions':transactions,
@@ -131,7 +128,46 @@ with engine.connect() as db:
 			db.rollback()
 			print("{} Failed".format(k))
 	db.close()
+
+import os
+import numpy as np
+import pandas as pd
+from json import loads, dumps
+
+import warnings
+warnings.filterwarnings("ignore")
+
+import sqlalchemy
+import uvicorn
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+
+def create_app(
+    app=FastAPI()
+):
+    app.add_middleware(
+        CORSMiddleware,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    return app
+
+app = create_app()
+
+# print(engine)
+@app.get("/health")
+async def health():
 	
+
+	return {"message": "health ok"}
 # users.to_sql('users', con=engine, if_exists='append', index=False)
 # with engine.connect() as db:
 # 	query = sqlalchemy.text('''SELECT * FROM users ''')

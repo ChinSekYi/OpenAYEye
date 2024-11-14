@@ -331,7 +331,7 @@ function Customer() {
                   fontWeight="600"
                   color={colors.gray[100]}
                 >
-                  Transactions Per Age
+                  Churn Per Segment
                 </Typography>
                 {/* <Typography
                   variant="h5"
@@ -351,7 +351,7 @@ function Customer() {
               <BarChart 
               data = { churnBySeg }
               index = {"Segment"}
-              keys =  {['Remain', 'Exited']}
+              keys =  {['no', 'yes']}
               isDashboard={false} />
             </Box>
             

@@ -23,9 +23,19 @@ class Engagement(Data):
     
     def preprocess(self):
         data = self.df.copy()
-        data = data.drop(['campaign_id', 'campaign_name', 
-            'customer_id', 'device_type',
-            'feedback_score','conversion_value'], axis = 1)
+        data = data.drop(['campaign_id', 'campaign_name', 'displays', 'end_date',
+            'device_type', 'conversion_value'], axis = 1)
+        data['budget'] = data['budget'].astype(np.float64)
+        data['feedback_score'] = data['feedback_score'].astype(np.float64)
+        
+        # data['budget'] = pd.qcut(data['budget'].astype(np.float64), [0, .33, .67, 1.], labels=[0, 1, 2])    
+        data['engagement_date'] = data['engagement_date'].dt.month.astype('category')
+        data['start_date'] = data['start_date'].dt.month.astype('category')
+        
+        data = data.rename(columns={'engagement_date': 'engage_month', 'start_date':'campaign_month'})
+        obj_cols = data.select_dtypes(["object"]).columns
+        data[obj_cols] = data[obj_cols].astype('category')
+        
         return data
     
     def get_num_cols(self):

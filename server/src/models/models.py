@@ -14,6 +14,8 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import f1_score
 from sklearn.metrics import classification_report
 
+import shap
+
 class CLFSwitcher(BaseEstimator):
 
 	def __init__(
@@ -78,3 +80,33 @@ class CLFSwitcher(BaseEstimator):
 			# return list(zip(coef, columns))
 		return pd.DataFrame({"features": columns, "significance": coef}).sort_values(by=['significance'], ascending=False)
 		
+	def explain(self, data, ct):
+		self.data = data
+		self.ct = ct
+		X, y = ct.get_Xy()
+		instance = X.sample(n=100, random_state=1)
+		# print(instance)	
+		explainer = shap.Explainer(self.estimator, instance)
+		shap_values = explainer(instance)
+		self.shap_values = shap_values
+		# shap_val = self.get_shap(data, shap_values, ct, X_col, y_col, y_val)
+		return self.shap_values
+
+	def get_shap(self, X_col='engage_month', y_col='action_type', y_val='converted'):
+		cat_dict = {v:k for k, v in zip(self.ct.ct['cat_preprocess'].categories_, self.data.get_cat_cols())}
+		# print(cat_dict)
+		y_col = {k: v for v, k in enumerate(cat_dict[y_col])}
+		if len(self.shap_values.shape) == 3:
+			shap_val = self.shap_values[:, X_col,  y_col[y_val]]
+		else:
+			shap_val = self.shap_values[:, X_col]
+		if X_col in cat_dict.keys():
+			# print(self.shap_values.shape)
+			dat = [cat_dict[X_col][int(i)] for i in shap_val.data]
+		else:
+			dat = shap_val.data
+			
+		val = shap_val.values
+			
+		df = pd.DataFrame({'shap': val, (X_col + "__" +  y_val): dat})
+		return df

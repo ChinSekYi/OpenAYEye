@@ -103,13 +103,13 @@ def get_Products(path="data/recodataset.csv",
 		if account_col not in df.columns:
 			account_columns = [
 				"saving_account",      # ind_ahor_fin_ult1
-				"current_account",     # ind_cco_fin_ult1
+				# "current_account",     # ind_cco_fin_ult1
 				"derivada_account",    # ind_cder_fin_ult1
 				"payroll_account",     # ind_cno_fin_ult1
-				"junior_account",      # ind_ctju_fin_ult1
-				"more_particular_account",  # ind_ctma_fin_ult1
-				"particular_account",   # ind_ctop_fin_ult1
-				"particular_plus_account", # ind_ctpp_fin_ult1
+				# "junior_account",      # ind_ctju_fin_ult1
+				# "more_particular_account",  # ind_ctma_fin_ult1
+				# "particular_account",   # ind_ctop_fin_ult1
+				# "particular_plus_account", # ind_ctpp_fin_ult1
 				"e_account",           # ind_ecue_fin_ult1
 				"funds",               # ind_fond_fin_ult1
 				"home_account",        # ind_viv_fin_ult1

@@ -6,8 +6,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
+from pathlib import Path
 
-load_dotenv("../../../engine.env")
+root_dir = Path(__file__).resolve().parent
+env_path = os.path.join(str(root_dir),  "../../../.env")
+
+load_dotenv(env_path)
 
 MYSQL_ROOT_PASSWORD = os.getenv('MYSQL_ROOT_PASSWORD')
 MYSQL_DATABASE = os.getenv('MYSQL_DATABASE')
@@ -33,4 +37,4 @@ def create_db(
 
     return engine, SessionLocal, Base
 
-engine, SessionLocal, Base = create_db(host="localhost")
+engine, SessionLocal, Base = create_db()

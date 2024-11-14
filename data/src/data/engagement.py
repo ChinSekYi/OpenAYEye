@@ -1,7 +1,7 @@
 import pandas as pd
 import random
 from datetime import datetime, timedelta
-from data.campaign import campaign
+from .campaign import campaign
 
 random.seed(10)
 # Define number of entries to generate
