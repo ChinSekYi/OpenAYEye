@@ -171,7 +171,7 @@ One example:
   - Data ingestion and transformation pipeline.
   - Model training pipeline for predicting ROI-related metrics.
   - Prediction pipeline for new input data.
-- **Location**: `/src/components/roi/` for the components, `/src/pipeline/roi/` for the prediction pipeline.
+- **Location**: `/src/components/roi-model/` for the components, `/src/pipeline/roi-model/` for the prediction pipeline.
 
 ---
 
