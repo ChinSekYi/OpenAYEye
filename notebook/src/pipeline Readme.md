@@ -1,5 +1,18 @@
 # Python Pipeline Usages
 
+## Run both models below
+First, `cd notebook`. Then run: 
+```
+python3 -m src.main  
+```
+Output:  
+<div align="center">
+    <img src="image/Output from running main.png" alt="Output from running main" width="990"/>
+</div>
+
+
+<br>
+
 ## Recommendation System Model
 
 ### Overview
@@ -8,8 +21,11 @@ The Recommendation System model includes pipelines for data ingestion, training,
 ### Pipelines
 
 <div align="center">
-    <img src="image/Reco system pipeline flowchart.png" alt="Reco sys pipeline flowchart" width="450"/>
+    <a href="image/Reco system pipeline flowchart.png" target="_blank">
+        <img src="image/Reco system pipeline flowchart.png" alt="Reco sys pipeline flowchart" width="450"/>
+    </a>
 </div>
+
 
 #### 1. `Reco_sys_data_pipeline`
 - **Purpose**: Ingest and transform raw data.
@@ -49,7 +65,10 @@ The Recommendation System model includes pipelines for data ingestion, training,
     4. Loan
     ```
 
+<br>
+
 ### Instructions to Run Pipeline
+Ensure you: `cd notebook`
 1. **Data Ingestion, Cleaning, and Transformation**:
     ```
     python3 -m src.components.reco_sys.Reco_sys_data_pipeline
@@ -64,6 +83,8 @@ The Recommendation System model includes pipelines for data ingestion, training,
     ```
 
 ---
+
+<br>
 
 ## ROI Model
 
@@ -115,7 +136,10 @@ The ROI model consists of several Python pipelines designed for data ingestion, 
     OrderedDict([('clicks', 4077.91), ('leads', 91.88), ('orders', 11.2)])
     ```
 
+<br>
+
 ### Instructions to Run Pipeline
+Ensure you `cd notebook`
 1. **Data Ingestion, Cleaning, and Transformation**:
     ```
     python3 -m src.components.roi.ROI_data_pipeline
@@ -130,6 +154,8 @@ The ROI model consists of several Python pipelines designed for data ingestion, 
     ```
 
 ---
+
+<br>
 
 ### Conclusion
 This README provides an overview of the Python pipelines used in the Recommendation System and ROI models. Each section details the purpose and outputs of the pipelines, along with instructions for running them. Feel free to modify and expand upon these sections as necessary for your project!

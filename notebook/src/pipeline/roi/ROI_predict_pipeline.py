@@ -39,8 +39,8 @@ class PredictPipeline:
             OrderedDict: Predicted results.
         """
         try:
-            model_path = os.path.join("artifacts", "roi_trained_model.pkl")
-            encoder_path = os.path.join("artifacts", "roi_onehot_encoder.pkl")
+            model_path = os.path.join("src/artifacts", "roi_trained_model.pkl")
+            encoder_path = os.path.join("src/artifacts", "roi_onehot_encoder.pkl")
 
             model = load_object(file_path=model_path)
             encoder = joblib.load(encoder_path)  # Load pre-fitted OneHotEncoder
