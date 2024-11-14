@@ -117,7 +117,7 @@ Other relevant files such as `utils.py`, `logger.py` etc can also be found in th
 - For data preparation steps, refer to the wiki for relevant models such as RFM, Customer Behaviour EDA, Recommendation System and ROI model.  
 Link to wiki: [OpenAYEye Wiki](https://github.com/ChinSekYi/OpenAYEye/wiki)
 
-- For detailed coding steps for data preparation, please refer to the relevant Jupyter notebooks, as they include more detailed explanations and methods. Refer to "Jupyter notebooks for EDA and Model development" sectiion above.
+- For detailed coding steps for data preparation, please refer to the relevant Jupyter notebooks, as they include more detailed explanations and methods. Refer to "Jupyter notebooks for EDA and Model development" section above.
  
 
 <br>
