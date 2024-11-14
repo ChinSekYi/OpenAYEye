@@ -152,7 +152,7 @@ This repository includes two main data pipeline systems: the **Recommendation Sy
 
 One example:
 
-<div>
+<div style="text-align: center;">
     <img src="notebook/src/image/ROI pipeline flowchart.png" alt="ROI Pipeline flowchart" width="180"/>
 </div>
 
