@@ -156,15 +156,10 @@ data    | engagement Ok
 
 This repository includes two main data pipeline systems: the **Recommendation System (Reco)** and the **ROI Model**. These pipelines automate the steps of data ingestion, transformation, model training, and prediction, crucial for machine learning workflows in business applications such as customer recommendation and return on investment (ROI) analysis.
 
-Quick example:
+One example:
 
-<div style="display: flex; justify-content: center; align-items: center;">
-    <div style="margin-right: 20px;">
-        <img src="notebook/src/image/Reco system pipeline flowchart.png" alt="Reco sys pipeline flowchart" width="260"/>
-    </div>
-    <div>
-        <img src="notebook/src/image/ROI pipeline flowchart.png" alt="ROI Pipeline flowchart" width="180"/>
-    </div>
+<div>
+    <img src="notebook/src/image/ROI pipeline flowchart.png" alt="ROI Pipeline flowchart" width="180"/>
 </div>
 
 
