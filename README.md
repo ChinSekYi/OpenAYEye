@@ -159,17 +159,16 @@ data    | engagement Ok
 
 <br>
 
----
+
 
 ### Data Pipelining for MLOps
 
 This repository includes two main data pipeline systems: the **Recommendation System (Reco)** and the **ROI Model**. These pipelines automate the steps of data ingestion, transformation, model training, and prediction, crucial for machine learning workflows in business applications such as customer recommendation and return on investment (ROI) analysis.
 
 One example:
-
-<div style="text-align: center;">
+<p align="center">
     <img src="notebook/src/image/ROI pipeline flowchart.png" alt="ROI Pipeline flowchart" width="180"/>
-</div>
+</p>
 
 
 #### **Recommendation System Pipeline**
@@ -188,6 +187,6 @@ One example:
   - Prediction pipeline for new input data.
 - **Location**: `/src/components/roi-model/` for the components, `/src/pipeline/roi-model/` for the prediction pipeline.
 
----
+<br>
 
 For detailed instructions on running each pipeline, please refer to `src/pipeline README.md`.
