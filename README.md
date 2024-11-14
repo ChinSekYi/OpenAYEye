@@ -23,36 +23,40 @@ cd OpenAYEye
 This is the top 2 levels of our repository structure. Unimportant files and folders are omitted below. 
 ```
 OpenAYEye/
-├── docker-run.bash
-├── requirements.txt
-├── README.md
-├── .dockerignore
-├── docker-compose.yml
-├── docker.env
-├── engine.env
-├── server/
-│   ├── requirements.txt
-│   ├── Dockerfile
-│   └── README.md
-├── logs/
-├── notebook/
-├── data/
-│   ├── requirements.txt
-│   ├── Dockerfile
-│   └── README.md
-├── client/
-│   ├── README copy.md
-│   ├── index.html
-│   ├── Dockerfile
-│   ├── vite.config.js
-│   ├── README.md
-│   ├── .gitignore
-│   ├── package-lock.json
-│   └── package.json
-├── src
-└── sql/
-    ├── Dockerfile
-    └── init.sql
+├── docker-run.bash                # Bash script to run Docker
+├── requirements.txt               # Python dependencies
+├── Makefile                       # Automates tasks for project setup
+├── test.py                        # General test script
+├── README.md                      # Project README
+├── docker-compose.yml             # Docker Compose file for container orchestration
+├── server/                        # Server-side code and ML models
+│   ├── requirements.txt           # Server dependencies
+│   ├── Dockerfile                 # Docker setup for server
+│   ├── README.md                  # Server README
+│   ├── artifacts/                 # Pretrained ML models
+│   ├── app/                       # Application files
+├── logs/                          # Root level logs
+├── notebook/                      # Jupyter notebooks for data processing and analysis
+│   ├── segment/                   # Segment model notebooks and dependencies
+│   ├── roi-model/                 # ROI model notebooks and data
+│   └── reco_system/               # Recommendation system notebooks and data
+├── data/                          # Data processing and database code
+│   ├── requirements.txt           # Data dependencies
+│   ├── Dockerfile                 # Docker setup for data service
+│   ├── README.md                  # Data README
+│   └── src/                       # Data source files
+├── client/                        # Client-side code and setup
+│   ├── index.html                 # Client HTML file
+│   ├── Dockerfile                 # Docker setup for client
+│   ├── README.md                  # Client README
+│   ├── public/                    # Public assets
+│   └── src/                       # Client source files
+├── src/                           # Core source files
+│   ├── pipeline/                  # Data pipeline components
+│   ├── components/                # UI components (if applicable)
+├── sql/                           # SQL setup and initialization scripts
+    ├── Dockerfile                 # Docker setup for SQL
+    └── init.sql                   # SQL initialization script
 ```
 
 ### Usage
@@ -66,9 +70,34 @@ notebook/
 └── src/
 ```
 
+### Production-ready Python code
+**Main Python File**
+```
+server/src/main.py  #The main entry point for the server-side application.
+
+notebook/segment/main.py #Script for FastAPI app with endpoints for data queries and ML predictions.
+notebook/src/main.py  #Script for running data pipelines for recommendation system and ROI model. Refer to pipeline Readme.md for more info.
+```
+
 <br>
 
 ## Data sources and any necessary data preparation steps
+For data sources, refer to the Wiki [3. Overall Data Understanding Database Schema](https://github.com/ChinSekYi/OpenAYEye/wiki/3.-Overall-Data-Understanding-Database-Schema).
+
+For data preparation steps, refer to the wiki for relevant models such as RFM, Customer Behaviour EDA, Recommendation System and ROI model.  
+Link to wiki: [OpenAYEye Wiki](https://github.com/ChinSekYi/OpenAYEye/wiki)
+
+For detailed coding steps for data preparation, please refer to the relevant Jupyter notebooks, as they include more detailed explanations and methods. 
+
+To access these notebooks, go to:
+```
+notebook/
+├── segment/
+├── roi-model/
+├── reco_system/
+└── src/
+```
+
 
 <br>
 
