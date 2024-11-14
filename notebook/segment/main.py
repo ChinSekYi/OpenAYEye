@@ -1,21 +1,18 @@
 # %%
 import os
+import warnings
+from json import dumps, loads
+
 import numpy as np
 import pandas as pd
-from json import loads, dumps
-
+from dataset import RFM, Churn, Engagement, engine
 from dateutil.relativedelta import relativedelta
 
- 
-from dataset import engine, RFM, Churn, Engagement
-
-import warnings
 warnings.filterwarnings("ignore")
-
-from dataset import engine
 
 import sqlalchemy
 import uvicorn
+from dataset import engine
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -44,17 +41,18 @@ def create_app(
     )
     return app
 
+
 app = create_app()
+
 
 def getEntries(columns, table):
     db = engine.connect()
     col_string = ", ".join(columns)
-    query_string = sqlalchemy.text(
-        """SELECT {} FROM {};""".format(col_string, table)
-    )
+    query_string = sqlalchemy.text("""SELECT {} FROM {};""".format(col_string, table))
     fetched = db.execute(query_string).fetchall()
     json_entry = [dict(zip(columns, i)) for i in fetched]
     return fetched
+
 
 @app.get("/health")
 async def health():
@@ -65,6 +63,7 @@ async def health():
 async def index():
     return {"message": "App Started"}
 
+
 # @app.get("/getChurn")
 # def getTeams(columns=["customerid", "surname", "creditscore", "age", "geography", "gender", "tenure " "exited"], table="churn"):
 #     # Runs query "SELECT id, name, age, phone, email, access FROM users;"
@@ -73,58 +72,63 @@ async def index():
 #     json_entry = [dict(zip(columns, i)) for i in fetched]
 #     return json_entry
 
+
 @app.get("/totalTraffic")
 async def getTraffic():
     with engine.connect() as db:
         query = sqlalchemy.text(
-            '''
+            """
             SELECT COUNT(*) FROM engagement;
-            ''')
+            """
+        )
         df = db.execute(query).fetchone()
         # print(df)
         db.close()
     data = df[0]
-    return {'status': 'ok', 'data': "{:,}".format(data)}
+    return {"status": "ok", "data": "{:,}".format(data)}
+
 
 @app.get("/convertedClients")
 async def getConvertedClients():
     with engine.connect() as db:
         query = sqlalchemy.text(
-            '''
+            """
             SELECT COUNT(DISTINCT e.customer_id)
             FROM engagement e
             WHERE e.action_type = 'converted'
             AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
-            ''')
+            """
+        )
         df = db.execute(query).fetchone()
         # print(df)
         db.close()
     data = df[0]
-    return {'status': 'ok', 'data': "{:,}".format(data)}
+    return {"status": "ok", "data": "{:,}".format(data)}
 
 
 @app.get("/potentialCustomers")
 async def getConvertedClients():
     with engine.connect() as db:
         query = sqlalchemy.text(
-            '''
+            """
             SELECT COUNT(DISTINCT e.customer_id)
             FROM engagement e
             WHERE e.action_type IN ('credentials', 'clicked')
             AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY);
-            ''')
+            """
+        )
         df = db.execute(query).fetchone()
         # print(df)
         db.close()
     data = df[0]
-    return {'status': 'ok', 'data': "{:,}".format(data)}
+    return {"status": "ok", "data": "{:,}".format(data)}
 
 
 @app.get("/conversionRate")
 async def getConvertedClients():
     with engine.connect() as db:
         query = sqlalchemy.text(
-            '''
+            """
             SELECT t1.converted / t2.impressions FROM 
             (SELECT COUNT(DISTINCT e.customer_id) AS converted
             FROM engagement e
@@ -134,193 +138,243 @@ async def getConvertedClients():
             FROM engagement e
             WHERE e.action_type IN ('converted', 'credentials', 'clicked')
             AND e.engagement_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)) AS t2;
-            ''')
+            """
+        )
         df = db.execute(query).fetchone()
         # print(df)
         db.close()
     data = df[0]
-    return {'status': 'ok', 'data': "{:,}".format(data)}
-    
+    return {"status": "ok", "data": "{:,}".format(data)}
+
 
 @app.get("/campaignReach")
 async def getReach():
     with engine.connect() as db:
         query = sqlalchemy.text(
-            '''
+            """
             SELECT * FROM engagement;
-            ''')
+            """
+        )
         df = pd.DataFrame(db.execute(query).fetchall())
         db.close()
-    data = df[df['engagement_date'] >= df['engagement_date'].max() - relativedelta(months=11)] \
-        .groupby([df['engagement_date'].dt.to_period("M"), 'action_type']) \
-        .agg(['count'])['customer_id'] \
-        .reset_index() \
-        .pivot(index="engagement_date", columns="action_type", values="count") \
-        .reset_index() \
-        .loc[:, ['engagement_date', 'converted', 'credentials', 'clicked', 'scrolled']] \
-        .rename(columns={'engagement_date': 'date'}) \
-        .astype({'date': str})
+    data = (
+        df[
+            df["engagement_date"]
+            >= df["engagement_date"].max() - relativedelta(months=11)
+        ]
+        .groupby([df["engagement_date"].dt.to_period("M"), "action_type"])
+        .agg(["count"])["customer_id"]
+        .reset_index()
+        .pivot(index="engagement_date", columns="action_type", values="count")
+        .reset_index()
+        .loc[:, ["engagement_date", "converted", "credentials", "clicked", "scrolled"]]
+        .rename(columns={"engagement_date": "date"})
+        .astype({"date": str})
+    )
 
-    data['convertedColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
-    data['credentialsColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
-    data['clickedColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
-    data['scrolledColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data["convertedColor"] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data["credentialsColor"] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
+    data["clickedColor"] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
+    data["scrolledColor"] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
 
+    data = data.to_dict(orient="records")
 
-    data = data.to_dict(orient='records')
+    return {"status": "ok", "data": data}
 
-    return {'status': 'ok', 'data': data}
 
 @app.get("/latestEngage")
 async def getLatest():
     with engine.connect() as db:
         query = sqlalchemy.text(
-            '''
+            """
             SELECT *
             FROM engagement e
             ORDER BY e.engagement_date DESC
             LIMIT 10;
-            ''')
+            """
+        )
         df = pd.DataFrame(db.execute(query).fetchall())
         db.close()
 
-    df['engagement_date'] = df['engagement_date'].astype(str)
-    df = df.loc[:, ['customer_id', 'engagement_date', 'action_type', 'feedback_score']]
-    df = df.rename(columns={'customer_id': 'id', 'engagement_date': 'date', 'action_type': 'action', 'feedback_score': 'score'})
-    data = df.to_dict(orient='records')
+    df["engagement_date"] = df["engagement_date"].astype(str)
+    df = df.loc[:, ["customer_id", "engagement_date", "action_type", "feedback_score"]]
+    df = df.rename(
+        columns={
+            "customer_id": "id",
+            "engagement_date": "date",
+            "action_type": "action",
+            "feedback_score": "score",
+        }
+    )
+    data = df.to_dict(orient="records")
 
-    return {'status': 'ok', 'data': data}
+    return {"status": "ok", "data": data}
 
 
 @app.get("/adSpend")
 async def getReach():
     with engine.connect() as db:
         query = sqlalchemy.text(
-            '''
+            """
             SELECT * 
             FROM campaign c;
-            ''')
+            """
+        )
         df = pd.DataFrame(db.execute(query).fetchall())
         db.close()
-    data = df[df['start_date'] >= df['start_date'].max() - relativedelta(months=11)] \
-        .groupby([df['start_date'].dt.to_period("M")]) \
-        .agg({"budget": ['sum']})['budget'].reset_index().rename(columns={'start_date':'date', 'sum':'spending'})
-    data['date'] = data['date'].astype(str)
-    data['spending'] = data['spending'].astype(int)
-    data['spendingColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
-    data = data.to_dict(orient='records')
+    data = (
+        df[df["start_date"] >= df["start_date"].max() - relativedelta(months=11)]
+        .groupby([df["start_date"].dt.to_period("M")])
+        .agg({"budget": ["sum"]})["budget"]
+        .reset_index()
+        .rename(columns={"start_date": "date", "sum": "spending"})
+    )
+    data["date"] = data["date"].astype(str)
+    data["spending"] = data["spending"].astype(int)
+    data["spendingColor"] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
+    data = data.to_dict(orient="records")
 
-    return {'status': 'ok', 'data': data}
+    return {"status": "ok", "data": data}
 
 
 @app.get("/predROI")
 async def getROI():
     from collections import OrderedDict
+
+    import joblib
     from src.exception import CustomException
     from src.utils import load_object
-    import joblib
 
     def get_CLO(features):
         model_path = os.path.join("artifacts", "roi_trained_model.pkl")
         encoder_path = os.path.join("artifacts", "roi_onehot_encoder.pkl")
 
         model = load_object(file_path=model_path)
-        encoder = joblib.load(encoder_path) # Load pre-fitted OneHotEncoder
+        encoder = joblib.load(encoder_path)  # Load pre-fitted OneHotEncoder
         # Apply the pre-fitted encoder to the new data
-        X_encoded = encoder.transform(features[['category']])  # Use transform, not fit_transform
+        X_encoded = encoder.transform(
+            features[["category"]]
+        )  # Use transform, not fit_transform
 
         # Get the expected encoded feature names from the encoder
-        encoded_columns = encoder.get_feature_names_out(['category'])
+        encoded_columns = encoder.get_feature_names_out(["category"])
 
         # Concatenate the encoded category columns with the 'cost' column
-        X_transformed = np.concatenate([X_encoded, features[['cost']].values], axis=1)
+        X_transformed = np.concatenate([X_encoded, features[["cost"]].values], axis=1)
 
         pred = model.predict(X_transformed)
-        return pd.DataFrame(pred, columns=['clicks', 'leads', 'orders'])
+        return pd.DataFrame(pred, columns=["clicks", "leads", "orders"])
 
     with engine.connect() as db:
         query = sqlalchemy.text(
-            '''
+            """
             SELECT * FROM campaign;
-            ''')
+            """
+        )
         df = pd.DataFrame(db.execute(query).fetchall())
         db.close()
 
-    features = df.rename(columns={'channel': 'category', 'budget':'cost'}).loc[:, ['category', 'cost']]
+    features = df.rename(columns={"channel": "category", "budget": "cost"}).loc[
+        :, ["category", "cost"]
+    ]
     features
 
     CLO = get_CLO(features)
 
     df = pd.concat([df, CLO], axis=1)
-    df = df[df['start_date'] >= df['start_date'].max() - relativedelta(months=11)] \
-        .groupby([df['start_date'].dt.to_period("M")]) \
-        .agg({"clicks": ['sum'], "leads": ['sum'], "orders": ['sum']})[['clicks', 'leads', 'orders']].reset_index()
+    df = (
+        df[df["start_date"] >= df["start_date"].max() - relativedelta(months=11)]
+        .groupby([df["start_date"].dt.to_period("M")])
+        .agg({"clicks": ["sum"], "leads": ["sum"], "orders": ["sum"]})[
+            ["clicks", "leads", "orders"]
+        ]
+        .reset_index()
+    )
 
     df.columns = df.columns.get_level_values(0)
-    df['start_date'] = df['start_date'].astype(str)
+    df["start_date"] = df["start_date"].astype(str)
     data = df
-    data['clicksColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
-    data['leadsColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
-    data['ordersColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
-    data = data.to_dict(orient='records')
-    return {'status': 'ok', 'data': data}
+    data["clicksColor"] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data["leadsColor"] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
+    data["ordersColor"] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
+    data = data.to_dict(orient="records")
+    return {"status": "ok", "data": data}
+
 
 @app.get("/segByIncome")
 async def getReach():
     rfm = RFM(engine)
     df = rfm.df
     rfm_seg = rfm.get_RFM()
-    data = df.merge(rfm_seg, how='left', on='customer_id')
-    data['income_cat'] = pd.qcut(df['yearly_income'], [0, .5, .75, .90, 1.], labels=["Very Low", "Low", "Middle", "High"])
-    data  = data.groupby(['income_cat', 'segment']) \
-        .agg('count')['customer_id'].reset_index() \
-        .rename(columns={'customer_id':'count'}) \
-        .pivot(index="income_cat", columns="segment", values="count") \
+    data = df.merge(rfm_seg, how="left", on="customer_id")
+    data["income_cat"] = pd.qcut(
+        df["yearly_income"],
+        [0, 0.5, 0.75, 0.90, 1.0],
+        labels=["Very Low", "Low", "Middle", "High"],
+    )
+    data = (
+        data.groupby(["income_cat", "segment"])
+        .agg("count")["customer_id"]
         .reset_index()
+        .rename(columns={"customer_id": "count"})
+        .pivot(index="income_cat", columns="segment", values="count")
+        .reset_index()
+    )
 
-    data['At RiskColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
-    data['HibernatingColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
-    data['Loyal CustomersColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
-    data['New CustomersColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data["At RiskColor"] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data["HibernatingColor"] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
+    data["Loyal CustomersColor"] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
+    data["New CustomersColor"] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
     data = data.to_dict(orient="records")
-    
-    return {'status': 'ok', 'data': data}
+
+    return {"status": "ok", "data": data}
+
 
 @app.get("/segByAge")
 async def getReach():
     rfm = RFM(engine)
     df = rfm.df
     rfm_data = rfm.get_RFM()
-    data = df.merge(rfm_data, how='left', on='customer_id')
+    data = df.merge(rfm_data, how="left", on="customer_id")
     # data
-    data['age_cat'] = pd.qcut(data['age'], [.25, .5, .75, 1.], labels=["Young", "Middle", "Elderly"])
-    data  = data.groupby(['age_cat', 'segment']) \
-        .agg('count')['customer_id'].reset_index() \
-        .rename(columns={'customer_id':'count'}) \
-        .pivot(index="age_cat", columns="segment", values="count") \
+    data["age_cat"] = pd.qcut(
+        data["age"], [0.25, 0.5, 0.75, 1.0], labels=["Young", "Middle", "Elderly"]
+    )
+    data = (
+        data.groupby(["age_cat", "segment"])
+        .agg("count")["customer_id"]
         .reset_index()
+        .rename(columns={"customer_id": "count"})
+        .pivot(index="age_cat", columns="segment", values="count")
+        .reset_index()
+    )
 
-    data['At RiskColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
-    data['HibernatingColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
-    data['Loyal CustomersColor'] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
-    data['New CustomersColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data["At RiskColor"] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data["HibernatingColor"] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
+    data["Loyal CustomersColor"] = ["hsl(97, 70%, 50%)" for i in range(len(data))]
+    data["New CustomersColor"] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
     data = data.to_dict(orient="records")
-    
-    return {'status': 'ok', 'data': data}
+
+    return {"status": "ok", "data": data}
+
 
 @app.get("/churnBySeg")
 async def getReach():
     churn = Churn(engine)
     rfm = RFM(engine)
-    churn = pd.concat([churn.df[['customer_id']], churn.preprocess()], axis=1)
-    data = churn.merge(rfm.get_RFM(), how='left', on='customer_id')
-    data  = data.groupby(['segment', 'churn']) \
-        .agg('count')['customer_id'].reset_index() \
-        .rename(columns={'customer_id':'count'}) \
-        .pivot(index="segment", columns="churn", values="count") \
-        .reset_index().rename(columns={"segment":"Segment", 0: "Remain", 1: "Exited"})
-    data['RemainColor'] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
-    data['ExitedColor'] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
-    data = data.to_dict(orient='records')
-    
-    return {'status': 'ok', 'data': data}
+    churn = pd.concat([churn.df[["customer_id"]], churn.preprocess()], axis=1)
+    data = churn.merge(rfm.get_RFM(), how="left", on="customer_id")
+    data = (
+        data.groupby(["segment", "churn"])
+        .agg("count")["customer_id"]
+        .reset_index()
+        .rename(columns={"customer_id": "count"})
+        .pivot(index="segment", columns="churn", values="count")
+        .reset_index()
+        .rename(columns={"segment": "Segment", 0: "Remain", 1: "Exited"})
+    )
+    data["RemainColor"] = ["hsl(229, 70%, 50%)" for i in range(len(data))]
+    data["ExitedColor"] = ["hsl(296, 70%, 50%)" for i in range(len(data))]
+    data = data.to_dict(orient="records")
+
+    return {"status": "ok", "data": data}

@@ -4,16 +4,12 @@ install:
 
 test:
 	python -m pytest test.py
-	#--nbval notebook/EDA.ipynb notebook/MODEL_TRAINING.ipynb
 
 format:
-	isort **/*.py
-	black **/*.py
+	isort $(shell find . -name "*.py")
+	black $(shell find . -name "*.py")
 
 run:
 	python main.py
 
-lint:
-	pylint --disable=R,C  src/pipeline/*.py src/*.py src/components/*.py
-
-all: install format lint
+all: install format

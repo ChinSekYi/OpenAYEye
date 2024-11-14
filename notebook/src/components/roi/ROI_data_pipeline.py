@@ -30,10 +30,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-
 from src.exception import CustomException
 from src.logger import logging
-
 
 # Setting the project root path
 project_root = Path(__file__).resolve().parents[2]
@@ -45,6 +43,7 @@ class DataIngestionConfig:
     """
     Configuration class for data paths used in data ingestion processes.
     """
+
     dataset1_path: str = os.path.join("data", "Marketing.csv")
     dataset2_path: str = os.path.join("data", "online_advertising_performance_data.csv")
     combined_data_path: str = os.path.join("artifacts", "roi_model_combined_data.csv")
@@ -83,7 +82,7 @@ class DataIngestion:
         """
         df.drop_duplicates(inplace=True)
         df.dropna(inplace=True)
-        df['click_to_revenue_ratio'] = df['revenue'] / df['clicks']
+        df["click_to_revenue_ratio"] = df["revenue"] / df["clicks"]
         df_cleaned = df.drop(columns=["id", "c_date", "campaign_name", "campaign_id"])
         return df_cleaned.rename(columns={"mark_spent": "cost"})
 
@@ -92,46 +91,56 @@ class DataIngestion:
         Cleans dataset 2 by dropping all-null columns, calculating leads, and renaming columns.
         """
         # Create a copy of the DataFrame to avoid SettingWithCopyWarning
-        df_cleaned = df.dropna(axis=1, how='all').copy()
+        df_cleaned = df.dropna(axis=1, how="all").copy()
 
         base_conversion_rate = 0.025  # 2.5% of clicks turn into leads
-        conversion_adjustment = np.random.uniform(0.9, 1.1, len(df_cleaned))  # Random adjustment between 90% to 110%
+        conversion_adjustment = np.random.uniform(
+            0.9, 1.1, len(df_cleaned)
+        )  # Random adjustment between 90% to 110%
 
         # Create a synthetic 'leads' column based on clicks, budget, and random noise
-        df_cleaned['leads'] = (df_cleaned['clicks'] * base_conversion_rate * conversion_adjustment).astype(int)
+        df_cleaned["leads"] = (
+            df_cleaned["clicks"] * base_conversion_rate * conversion_adjustment
+        ).astype(int)
 
         # Drop specified columns
-        df_cleaned = df_cleaned.drop(columns=["month", "day", "campaign_number", "user_engagement", "banner"])
+        df_cleaned = df_cleaned.drop(
+            columns=["month", "day", "campaign_number", "user_engagement", "banner"]
+        )
 
-        #TODO: remove impressions and post_click_conversions
-        df_cleaned = df_cleaned.rename(columns={"placement": "category",
-                                                "displays": "impressions",
-                                                "post_click_conversions": "orders"})
+        # TODO: remove impressions and post_click_conversions
+        df_cleaned = df_cleaned.rename(
+            columns={
+                "placement": "category",
+                "displays": "impressions",
+                "post_click_conversions": "orders",
+            }
+        )
 
         # Replace 'abc' with 'jkl' in the 'category' column
-        df_cleaned['category'] = df_cleaned['category'].replace('abc', 'jkl')
+        df_cleaned["category"] = df_cleaned["category"].replace("abc", "jkl")
 
         # Remove the 'revenue' column
         df_cleaned = df_cleaned.drop(columns=["revenue"])
-        
-        # Rename columns
-        df_cleaned = df_cleaned.rename(columns={
-            "post_click_sales_amount": "revenue",
-        })
 
-        df_cleaned['click_to_revenue_ratio'] = df_cleaned.apply(
-            lambda row: row['revenue'] / row['clicks'] if row['clicks'] != 0 else 0, axis=1
+        # Rename columns
+        df_cleaned = df_cleaned.rename(
+            columns={
+                "post_click_sales_amount": "revenue",
+            }
+        )
+
+        df_cleaned["click_to_revenue_ratio"] = df_cleaned.apply(
+            lambda row: row["revenue"] / row["clicks"] if row["clicks"] != 0 else 0,
+            axis=1,
         )
 
         # Replace category elements with new values
-        df_cleaned['category'] = df_cleaned['category'].replace({
-            'mno': 'social',
-            'def': 'search',
-            'ghi': 'influencer',
-            'abc': 'media'
-        })
+        df_cleaned["category"] = df_cleaned["category"].replace(
+            {"mno": "social", "def": "search", "ghi": "influencer", "abc": "media"}
+        )
 
-        df_cleaned = df_cleaned.drop(columns=['click_to_revenue_ratio', 'impressions'])
+        df_cleaned = df_cleaned.drop(columns=["click_to_revenue_ratio", "impressions"])
 
         return df_cleaned
 
@@ -142,10 +151,14 @@ class DataIngestion:
         try:
             # Read datasets
             df1 = pd.read_csv(self.ingestion_config.dataset1_path)
-            logging.info(f"Dataset 1 loaded from {self.ingestion_config.dataset1_path}. Shape: {df1.shape}")
+            logging.info(
+                f"Dataset 1 loaded from {self.ingestion_config.dataset1_path}. Shape: {df1.shape}"
+            )
 
             df2 = pd.read_csv(self.ingestion_config.dataset2_path)
-            logging.info(f"Dataset 2 loaded from {self.ingestion_config.dataset2_path}. Shape: {df2.shape}")
+            logging.info(
+                f"Dataset 2 loaded from {self.ingestion_config.dataset2_path}. Shape: {df2.shape}"
+            )
 
             os.makedirs(
                 os.path.dirname(self.ingestion_config.combined_data_path), exist_ok=True
@@ -156,44 +169,56 @@ class DataIngestion:
             df2_cleaned = self.clean_dataset2(df2)
 
             # Combine datasets
-            common_columns = ["category", "cost", "clicks", "leads", "orders", "revenue"]
+            common_columns = [
+                "category",
+                "cost",
+                "clicks",
+                "leads",
+                "orders",
+                "revenue",
+            ]
 
-            df_combined = pd.concat([
-                df1_cleaned[common_columns].reset_index(drop=True), 
-                df2_cleaned[common_columns].reset_index(drop=True)
-            ], axis=0, ignore_index=True)
+            df_combined = pd.concat(
+                [
+                    df1_cleaned[common_columns].reset_index(drop=True),
+                    df2_cleaned[common_columns].reset_index(drop=True),
+                ],
+                axis=0,
+                ignore_index=True,
+            )
 
             # Save the combined data
-            output_path = self.ingestion_config.combined_data_path 
+            output_path = self.ingestion_config.combined_data_path
             df_combined.to_csv(output_path, index=False)
             logging.info("Combined data saved successfully.")
-            logging.info(f"Data ingestion and transformation for ROI model completed successfully. Combined data saved at: {output_path}.")
-            
+            logging.info(
+                f"Data ingestion and transformation for ROI model completed successfully. Combined data saved at: {output_path}."
+            )
+
             # Save training and test data
             logging.info("Train test split initiated.")
-            train_set, test_set = train_test_split(df_combined, test_size=0.2, random_state=42)
+            train_set, test_set = train_test_split(
+                df_combined, test_size=0.2, random_state=42
+            )
 
             train_output_path = self.ingestion_config.train_data_path
-            train_set.to_csv(
-                train_output_path, index=False, header=True
-            )
+            train_set.to_csv(train_output_path, index=False, header=True)
 
             test_output_path = self.ingestion_config.test_data_path
-            test_set.to_csv(
-                test_output_path, index=False, header=True
-            )
+            test_set.to_csv(test_output_path, index=False, header=True)
 
-            logging.info(f"Training and test data is saved successfully at: {train_output_path} and {test_output_path}.")
+            logging.info(
+                f"Training and test data is saved successfully at: {train_output_path} and {test_output_path}."
+            )
 
             return (
                 self.ingestion_config.train_data_path,
                 self.ingestion_config.test_data_path,
             )
-        
+
         except Exception as e:
             logging.error(f"Error during data ingestion: {str(e)}")
             raise CustomException(e, sys)
-
 
 
 if __name__ == "__main__":

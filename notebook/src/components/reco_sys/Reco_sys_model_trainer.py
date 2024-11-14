@@ -15,20 +15,22 @@ Usage:
 
 import os
 import sys
-import joblib
-
-import pandas as pd
 import warnings
+
+import joblib
+import pandas as pd
+
 warnings.filterwarnings("ignore")
 
-from tqdm import tqdm 
 from dataclasses import dataclass
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold
-from sklearn.metrics import confusion_matrix, classification_report
 
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold
 from src.exception import CustomException
 from src.logger import logging
+from tqdm import tqdm
+
 
 @dataclass
 class ModelTrainerConfig:
@@ -42,15 +44,30 @@ class ModelTrainerConfig:
         trained_account_model_file_path (str): File path to save the trained account model.
     """
 
-    trained_fixed_deposits_model_file_path = os.path.join("artifacts", "reco_sys_fixed_deposits_model.pkl")
+    trained_fixed_deposits_model_file_path = os.path.join(
+        "artifacts", "reco_sys_fixed_deposits_model.pkl"
+    )
     trained_loan_model_file_path = os.path.join("artifacts", "reco_sys_loan_model.pkl")
-    trained_credit_card_debit_card_file_path = os.path.join("artifacts", "reco_sys_credit_card_debit_card_model.pkl")
-    trained_account_model_file_path = os.path.join("artifacts", "reco_sys_account_model.pkl")
+    trained_credit_card_debit_card_file_path = os.path.join(
+        "artifacts", "reco_sys_credit_card_debit_card_model.pkl"
+    )
+    trained_account_model_file_path = os.path.join(
+        "artifacts", "reco_sys_account_model.pkl"
+    )
 
-    trained_fixed_deposits_model_file_path = os.path.join("artifacts", "reco_sys_fixed_deposits_covid_model.pkl")
-    trained_loan_model_file_path = os.path.join("artifacts", "reco_sys_loan_covid_model.pkl")
-    trained_credit_card_debit_card_file_path = os.path.join("artifacts", "reco_sys_credit_card_debit_card_covid_model.pkl")
-    trained_account_model_file_path = os.path.join("artifacts", "reco_sys_account_covid_model.pkl")
+    trained_fixed_deposits_model_file_path = os.path.join(
+        "artifacts", "reco_sys_fixed_deposits_covid_model.pkl"
+    )
+    trained_loan_model_file_path = os.path.join(
+        "artifacts", "reco_sys_loan_covid_model.pkl"
+    )
+    trained_credit_card_debit_card_file_path = os.path.join(
+        "artifacts", "reco_sys_credit_card_debit_card_covid_model.pkl"
+    )
+    trained_account_model_file_path = os.path.join(
+        "artifacts", "reco_sys_account_covid_model.pkl"
+    )
+
 
 class ModelTrainer:
     """
@@ -86,12 +103,14 @@ class ModelTrainer:
             dict: A dictionary containing trained models for each target.
         """
         # Define the logistic regression model
-        lr_model = LogisticRegression(max_iter=1000, class_weight='balanced', solver='liblinear')
+        lr_model = LogisticRegression(
+            max_iter=1000, class_weight="balanced", solver="liblinear"
+        )
 
         # Set up hyperparameters for tuning
         param_dist = {
-            'C': [0.001, 0.01, 0.1, 1],    # Reduced number of hyperparameters
-            'penalty': ['l1', 'l2'],       # Only two regularization types
+            "C": [0.001, 0.01, 0.1, 1],  # Reduced number of hyperparameters
+            "penalty": ["l1", "l2"],  # Only two regularization types
         }
 
         # Use StratifiedKFold for cross-validation
@@ -100,15 +119,19 @@ class ModelTrainer:
 
         # Perform random search with cross-validation
         logging.info("Perform random search with cross-validation.")
-        random_search = RandomizedSearchCV(lr_model, param_dist, n_iter=8, cv=skf, scoring='f1_macro', n_jobs=-1)
+        random_search = RandomizedSearchCV(
+            lr_model, param_dist, n_iter=8, cv=skf, scoring="f1_macro", n_jobs=-1
+        )
 
         for i in tqdm(range(y_train.shape[1]), desc="Training Models", unit="model"):
             logging.info(f"Training model for target column {y_train.columns[i]}")
-            
+
             # Train the model
             random_search.fit(X_train, y_train.iloc[:, i])
             self.models[y_train.columns[i]] = random_search.best_estimator_
-            logging.info(f"Best parameters for {y_train.columns[i]}: {random_search.best_params_}")
+            logging.info(
+                f"Best parameters for {y_train.columns[i]}: {random_search.best_params_}"
+            )
 
         return self.models
 
@@ -124,17 +147,19 @@ class ModelTrainer:
         """
         y_pred = model.predict(X_test)
         confusion = confusion_matrix(y_test[column_name], y_pred)
-        classification = classification_report(y_test[column_name], y_pred, output_dict=True)
+        classification = classification_report(
+            y_test[column_name], y_pred, output_dict=True
+        )
 
         # Store confusion matrix and classification report in output metrics
         self.output_metrics[column_name] = {
-            'confusion_matrix': confusion.tolist(),  # Convert to list for JSON serialization
-            'classification_report': classification
+            "confusion_matrix": confusion.tolist(),  # Convert to list for JSON serialization
+            "classification_report": classification,
         }
 
         logging.info(f"Confusion Matrix for {column_name}:\n{confusion}")
         logging.info(f"Classification Report for {column_name}:\n{classification}")
-        
+
     def evaluate_all_models(self, X_test, y_test):
         """
         Evaluates all trained models against the test dataset.
@@ -152,12 +177,12 @@ class ModelTrainer:
         Saves each trained model to its respective file path.
         """
         model_paths = {
-            'fixed_deposits': self.model_trainer_config.trained_fixed_deposits_model_file_path,
-            'loan': self.model_trainer_config.trained_loan_model_file_path,
-            'credit_card_debit_card': self.model_trainer_config.trained_credit_card_debit_card_file_path,
-            'account': self.model_trainer_config.trained_account_model_file_path
+            "fixed_deposits": self.model_trainer_config.trained_fixed_deposits_model_file_path,
+            "loan": self.model_trainer_config.trained_loan_model_file_path,
+            "credit_card_debit_card": self.model_trainer_config.trained_credit_card_debit_card_file_path,
+            "account": self.model_trainer_config.trained_account_model_file_path,
         }
-        
+
         for target, model in self.models.items():
             file_path = model_paths[target]
             joblib.dump(model, file_path)
@@ -183,16 +208,25 @@ class ModelTrainer:
         """
         try:
             logging.info("Selecting features and targets from the dataset.")
-            prediction_columns = ['fixed_deposits', 'loan', 'credit_card_debit_card', 'account']
-            X_train = df_train.drop(columns=prediction_columns)  # First 86 columns (features)
+            prediction_columns = [
+                "fixed_deposits",
+                "loan",
+                "credit_card_debit_card",
+                "account",
+            ]
+            X_train = df_train.drop(
+                columns=prediction_columns
+            )  # First 86 columns (features)
             y_train = df_train[prediction_columns]
 
-            X_test = df_test.drop(columns=prediction_columns)  # First 86 columns (features)
+            X_test = df_test.drop(
+                columns=prediction_columns
+            )  # First 86 columns (features)
             y_test = df_test[prediction_columns]
 
             # Normalize the feature columns
-            #scaler = StandardScaler()
-            #X_normalized = scaler.fit_transform(X)
+            # scaler = StandardScaler()
+            # X_normalized = scaler.fit_transform(X)
 
             logging.info("Start model training.")
             self.train_models(X_train, y_train)
@@ -204,7 +238,7 @@ class ModelTrainer:
             self.save_models()
 
             logging.info("Model training and evaluation completed successfully.")
-            return self.output_metrics , self.models
+            return self.output_metrics, self.models
 
         except Exception as e:
             raise CustomException(e, sys) from e
@@ -216,12 +250,12 @@ if __name__ == "__main__":
     """
     try:
         # Load your dataset (adjust the path to your actual dataset)
-        df_train = pd.read_csv('artifacts/reco_sys_train_data.csv') 
-        df_test = pd.read_csv('artifacts/reco_sys_test_data.csv') 
+        df_train = pd.read_csv("artifacts/reco_sys_train_data.csv")
+        df_test = pd.read_csv("artifacts/reco_sys_test_data.csv")
 
         # For covid dataset
-        df_train = pd.read_csv('artifacts/clean_train_reco_covid.csv') 
-        df_test = pd.read_csv('artifacts/clean_test_reco_covid.csv') 
+        df_train = pd.read_csv("artifacts/clean_train_reco_covid.csv")
+        df_test = pd.read_csv("artifacts/clean_test_reco_covid.csv")
 
         # Initialize the ModelTrainer
         trainer = ModelTrainer()
@@ -233,7 +267,7 @@ if __name__ == "__main__":
         BOLD = "\033[1m"
         RESET = "\033[0m"
         ORANGE = "\033[38;5;214m"  # An approximation of orange
-                
+
         # Print the structured output
         print(f"\n{BOLD}{ORANGE}Metrics for each model:{RESET} \n {output[0]}\n")
         print(f"{BOLD}{ORANGE}Final trained models:{RESET} \n {output[1]}")

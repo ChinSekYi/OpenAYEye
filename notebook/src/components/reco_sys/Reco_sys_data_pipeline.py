@@ -30,7 +30,6 @@ from pathlib import Path
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
-
 from src.components.reco_sys.data_processing_utils import *
 from src.exception import CustomException
 from src.logger import logging
@@ -55,7 +54,9 @@ class DataIngestionConfig:
     train_data_path: str = os.path.join("artifacts", "reco_sys_train_data.csv")
     test_data_path: str = os.path.join("artifacts", "reco_sys_test_data.csv")
     raw_data_path: str = os.path.join("data", "recodataset.csv")
-    column_mapping_path: str = os.path.join("src", "components", "reco_sys", "column_mapping.json")
+    column_mapping_path: str = os.path.join(
+        "src", "components", "reco_sys", "column_mapping.json"
+    )
 
 
 class DataIngestion:
@@ -80,7 +81,6 @@ class DataIngestion:
         self.ingestion_config = DataIngestionConfig()
         logging.debug(f"Ingestion configuration: {self.ingestion_config}")
 
-    
     def initiate_data_ingestion(self):
         """
         Initiates the data ingestion process.
@@ -105,10 +105,12 @@ class DataIngestion:
 
             df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
 
-            column_mapping = read_column_mapping(self.ingestion_config.column_mapping_path)
-            
+            column_mapping = read_column_mapping(
+                self.ingestion_config.column_mapping_path
+            )
+
             logging.info("Perform data cleaning required before SMOTE.")
-            df = process_csv(self.ingestion_config.raw_data_path,column_mapping)
+            df = process_csv(self.ingestion_config.raw_data_path, column_mapping)
             df = create_additional_columns(df)
             df = prepare_data_for_ml(df)
 
@@ -116,20 +118,18 @@ class DataIngestion:
             train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)
 
             logging.info("Perform SMOTE on training dataset only.")
-            train_set_ = perform_SMOTE(train_set)      
-            
+            train_set_ = perform_SMOTE(train_set)
+
             logging.info("Ingestion and transformation of the data is completed.")
             train_output_path = self.ingestion_config.train_data_path
-            train_set_.to_csv(
-                train_output_path, index=False, header=True
-            )
+            train_set_.to_csv(train_output_path, index=False, header=True)
 
             test_output_path = self.ingestion_config.test_data_path
-            test_set.to_csv(
-                test_output_path, index=False, header=True
-            )
+            test_set.to_csv(test_output_path, index=False, header=True)
 
-            logging.info(f"Training and test data saved at: {train_output_path} and {test_output_path}.")
+            logging.info(
+                f"Training and test data saved at: {train_output_path} and {test_output_path}."
+            )
 
             return (
                 self.ingestion_config.train_data_path,
@@ -140,9 +140,10 @@ class DataIngestion:
             raise CustomException(e, sys) from e
 
 
-
 if __name__ == "__main__":
     ingestion = DataIngestion()
     output_data_path = ingestion.initiate_data_ingestion()
-    print(f"Data ingestion, cleaning and transformation completed for: {ingestion.ingestion_config.raw_data_path}")
+    print(
+        f"Data ingestion, cleaning and transformation completed for: {ingestion.ingestion_config.raw_data_path}"
+    )
     print(f"Training and test data saved at: {output_data_path}")

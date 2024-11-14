@@ -8,17 +8,16 @@ It includes preprocessing, model training, evaluation, and prediction functions.
 
 import os
 import sys
-import joblib
-import warnings 
-
-import pandas as pd
-import numpy as np
-
+import warnings
 from collections import OrderedDict
+
+import joblib
+import numpy as np
+import pandas as pd
 from src.exception import CustomException
 from src.utils import load_object
 
-warnings.filterwarnings("ignore", category=UserWarning, module='sklearn')
+warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")
 
 
 class PredictPipeline:
@@ -44,23 +43,27 @@ class PredictPipeline:
             encoder_path = os.path.join("artifacts", "roi_onehot_encoder.pkl")
 
             model = load_object(file_path=model_path)
-            encoder = joblib.load(encoder_path) # Load pre-fitted OneHotEncoder
-            
+            encoder = joblib.load(encoder_path)  # Load pre-fitted OneHotEncoder
+
             # Apply the pre-fitted encoder to the new data
-            X_encoded = encoder.transform(features[['category']])  # Use transform, not fit_transform
+            X_encoded = encoder.transform(
+                features[["category"]]
+            )  # Use transform, not fit_transform
 
             # Get the expected encoded feature names from the encoder
-            encoded_columns = encoder.get_feature_names_out(['category'])
-            
+            encoded_columns = encoder.get_feature_names_out(["category"])
+
             # Concatenate the encoded category columns with the 'cost' column
-            X_transformed = np.concatenate([X_encoded, features[['cost']].values], axis=1)
-            
+            X_transformed = np.concatenate(
+                [X_encoded, features[["cost"]].values], axis=1
+            )
+
             # Create a DataFrame to ensure column names match the expected structure
-            column_names = list(encoded_columns) + ['cost']
+            column_names = list(encoded_columns) + ["cost"]
             X_transformed_df = pd.DataFrame(X_transformed, columns=column_names)
-            
+
             # Predict using the trained model
-            target_names = ['clicks', 'leads', 'orders']
+            target_names = ["clicks", "leads", "orders"]
             pred_result = model.predict(X_transformed_df)
 
             results_dict = OrderedDict()
@@ -101,10 +104,7 @@ class CustomData:
 
 # Example Usage
 if __name__ == "__main__":
-    user_input = {
-        "category": "social",
-        "cost": "50000"
-    }
+    user_input = {"category": "social", "cost": "50000"}
 
     # Get input data in custom data format
     custom_data = CustomData(**user_input)
@@ -119,5 +119,5 @@ if __name__ == "__main__":
     RESET = "\033[0m"
     ORANGE = "\033[38;5;214m"
 
-    print(f'{BOLD}{ORANGE}Input:{RESET}\n {features_df}\n')
-    print(f'{BOLD}{ORANGE}Predicted Results:{RESET}\n', predictions)
+    print(f"{BOLD}{ORANGE}Input:{RESET}\n {features_df}\n")
+    print(f"{BOLD}{ORANGE}Predicted Results:{RESET}\n", predictions)

@@ -1,10 +1,11 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 import sqlalchemy
 
-class Data():
+
+class Data:
     def __init__(self, engine, query_string):
-        self.engine = engine   
+        self.engine = engine
         with engine.connect() as db:
             query_string = sqlalchemy.text(query_string)
             fetched = pd.DataFrame(db.execute(query_string).fetchall())
@@ -35,6 +36,6 @@ class Data():
 
     def get_X(self):
         pass
-    
+
     def get_y(self):
         pass
