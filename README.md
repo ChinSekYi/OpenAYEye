@@ -86,7 +86,7 @@ Subgroup A worked on: `segment`
 Subgroup B worked on: `roi-model` and `reco_system`  
 ```
 notebook/
-├── segment/                 
+├── segment/                             # code for RFM, customer segmentation
 ├── roi-model/    
     └── roi-model-with-wiki.ipynb        # EDA & Model development for ROI model
 ├── reco_system/  
