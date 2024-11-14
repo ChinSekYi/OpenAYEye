@@ -144,7 +144,9 @@ data    | engagement Ok
 
 <br>
 
-### Data Pipelining for MLOps Overview
+---
+
+### Data Pipelining for MLOps
 
 This repository includes two main data pipeline systems: the **Recommendation System (Reco)** and the **ROI Model**. These pipelines automate the steps of data ingestion, transformation, model training, and prediction, crucial for machine learning workflows in business applications such as customer recommendation and return on investment (ROI) analysis.
 
