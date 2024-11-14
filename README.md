@@ -84,18 +84,7 @@ notebook/
 
 <br>
 
-# Web App
-Create a `.env` file in the root directory with lines
-
-```{bash}
-MYSQL_ROOT_PASSWORD=msql1234
-MYSQL_DATABASE=transact
-MYSQL_HOST=db
-MYSQL_USER=root
-MYSQL_TCP_PORT=3306
-```
-
-
+### Web App
 - Run
 ```{bash}
 bash docker-run.bash
