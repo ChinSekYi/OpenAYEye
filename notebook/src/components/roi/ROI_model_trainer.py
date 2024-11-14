@@ -40,8 +40,8 @@ class ModelTrainerConfig:
     - trained_model_file_path (str): File path to save the trained model.
     """
 
-    trained_model_file_path = os.path.join("artifacts", "roi_trained_model.pkl")
-    encoder_path = os.path.join("artifacts", "roi_onehot_encoder.pkl")
+    trained_model_file_path = os.path.join("src/artifacts", "roi_trained_model.pkl")
+    encoder_path = os.path.join("src/artifacts", "roi_onehot_encoder.pkl")
 
 
 class ModelTrainer:
@@ -156,7 +156,7 @@ if __name__ == "__main__":
     try:
         # Load your dataset (adjust the path to your actual dataset)
         df = pd.read_csv(
-            "artifacts/roi_model_train_data.csv"
+            "src/artifacts/roi_model_train_data.csv"
         )  # Replace with your dataset path
 
         # Initialize the ModelTrainer

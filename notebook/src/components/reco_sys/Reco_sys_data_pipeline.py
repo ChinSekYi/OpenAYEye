@@ -51,9 +51,9 @@ class DataIngestionConfig:
     - raw_data_path (str): Path to raw data file.
     """
 
-    train_data_path: str = os.path.join("artifacts", "reco_sys_train_data.csv")
-    test_data_path: str = os.path.join("artifacts", "reco_sys_test_data.csv")
-    raw_data_path: str = os.path.join("data", "recodataset.csv")
+    train_data_path: str = os.path.join("src/artifacts", "reco_sys_train_data.csv")
+    test_data_path: str = os.path.join("src/artifacts", "reco_sys_test_data.csv")
+    raw_data_path: str = os.path.join("../data/src/data", "recodataset.csv")
     column_mapping_path: str = os.path.join(
         "src", "components", "reco_sys", "column_mapping.json"
     )
