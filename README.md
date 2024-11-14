@@ -5,14 +5,14 @@
 1. [Project Overview](#project-overview)
 2. [Instructions for Setting Up the Environment and Running the Code](#instructions-for-setting-up-the-environment-and-running-the-code)
 3. [Description of the Repository Structure](#description-of-the-repository-structure)
-4. [Jupyter Notebooks for EDA and Model Development](#jupyter-notebooks-for-eda-and-model-development)
-5. [Production-Ready Python Code](#production-ready-python-code)
+    - [Jupyter Notebooks for EDA and Model Development](#jupyter-notebooks-for-eda-and-model-development)
+    - [Production-Ready Python Code](#production-ready-python-code)
 6. [Data Sources and Data Preparation Steps](#data-sources-and-data-preparation-steps)
 7. [Instructions for Building and Running the Docker Containers](#instructions-for-building-and-running-the-docker-containers)
 8. [API Documentation (Endpoints, Request/Response Formats)](#api-documentation-endpoints-requestresponse-formats)
-9. [Optional: API Documentation Using Swagger/OpenAPI Specification](#optional-api-documentation-using-swaggeropenapi-specification)
-10. [Web App](#web-app)
-11. [Data Pipelining for MLOps](#data-pipelining-for-mlops)
+9. [API Documentation Using Swagger/OpenAPI Specification](#api-documentation-using-swaggeropenapi-specification)
+    - [Web App](#web-app)
+10. [Data Pipelining for MLOps](#data-pipelining-for-mlops)
     - [Recommendation System Pipeline](#recommendation-system-pipeline)
     - [ROI Model Pipeline](#roi-model-pipeline)
 
@@ -130,7 +130,7 @@ Link to wiki: [OpenAYEye Wiki](https://github.com/ChinSekYi/OpenAYEye/wiki)
 
 <br>
 
-## [Optional] API documentation using Swagger/OpenAPI specification
+## API documentation using Swagger/OpenAPI specification
 
 ### Web App
 - Run
