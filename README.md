@@ -26,7 +26,7 @@ OpenAYEye/
 ├── docker-run.bash                # Bash script to run Docker
 ├── requirements.txt               # Python dependencies
 ├── Makefile                       # Automates tasks for project setup
-├── test.py                        # General test script
+├── test.py                        # Test script for CI/CD Github Actions
 ├── README.md                      # Project README
 ├── docker-compose.yml             # Docker Compose file for container orchestration
 ├── server/                        # Server-side code and ML models
@@ -35,11 +35,17 @@ OpenAYEye/
 │   ├── README.md                  # Server README
 │   ├── artifacts/                 # Pretrained ML models
 │   ├── app/                       # Application files
-├── logs/                          # Root level logs
-├── notebook/                      # Jupyter notebooks for data processing and analysis
-│   ├── segment/                   # Segment model notebooks and dependencies
-│   ├── roi-model/                 # ROI model notebooks and data
-│   └── reco_system/               # Recommendation system notebooks and data
+├── notebook/                      # Jupyter notebooks for EDA, model training etc
+│   ├── segment/                   # Segment model notebooks
+│   ├── roi-model/                 # ROI model notebooks 
+│   └── reco_system/               # Recommendation system notebooks 
+    └── src/                           # Data pipelining
+        ├── exception.py               # Custom exception handling classes
+        ├── pipeline/                  # Data pipeline components
+        ├── components/                # Reusable components and modules
+        ├── logger.py                  # Logging utility for the project
+        ├── utils.py                   # Utility functions
+        ├── main.py                    # Main entry point of the project
 ├── data/                          # Data processing and database code
 │   ├── requirements.txt           # Data dependencies
 │   ├── Dockerfile                 # Docker setup for data service
@@ -51,24 +57,24 @@ OpenAYEye/
 │   ├── README.md                  # Client README
 │   ├── public/                    # Public assets
 │   └── src/                       # Client source files
-├── src/                           # Core source files
-│   ├── pipeline/                  # Data pipeline components
-│   ├── components/                # UI components (if applicable)
 ├── sql/                           # SQL setup and initialization scripts
     ├── Dockerfile                 # Docker setup for SQL
     └── init.sql                   # SQL initialization script
 ```
 
-### Usage
+<br>
+
+### How to find relevant files
 
 Jupyter notebooks for EDA and model building are in:
 ```
 notebook/
-├── segment/
-├── roi-model/
-├── reco_system/
-└── src/
+├── segment/      # Subgroup A
+├── roi-model/    # Subgroup B
+├── reco_system/  # Subgroup B
 ```
+
+<br>
 
 ### Production-ready Python code
 **Main Python File**
@@ -76,28 +82,29 @@ notebook/
 server/src/main.py  #The main entry point for the server-side application.
 
 notebook/segment/main.py #Script for FastAPI app with endpoints for data queries and ML predictions.
-notebook/src/main.py  #Script for running data pipelines for recommendation system and ROI model. Refer to pipeline Readme.md for more info.
+notebook/src/main.py  #Script for running data pipelines for recommendation system and ROI model. Refer to "pipeline Readme.md" for more info.
 ```
+
+Other relevant files such as `utils.py`, `logger.py` etc can also be found in the repository.
 
 <br>
 
 ## Data sources and any necessary data preparation steps
-For data sources, refer to the Wiki [3. Overall Data Understanding Database Schema](https://github.com/ChinSekYi/OpenAYEye/wiki/3.-Overall-Data-Understanding-Database-Schema).
+- For data sources, refer to the Wiki [3. Overall Data Understanding Database Schema](https://github.com/ChinSekYi/OpenAYEye/wiki/3.-Overall-Data-Understanding-Database-Schema).
 
-For data preparation steps, refer to the wiki for relevant models such as RFM, Customer Behaviour EDA, Recommendation System and ROI model.  
+- For data preparation steps, refer to the wiki for relevant models such as RFM, Customer Behaviour EDA, Recommendation System and ROI model.  
 Link to wiki: [OpenAYEye Wiki](https://github.com/ChinSekYi/OpenAYEye/wiki)
 
-For detailed coding steps for data preparation, please refer to the relevant Jupyter notebooks, as they include more detailed explanations and methods. 
+- For detailed coding steps for data preparation, please refer to the relevant Jupyter notebooks, as they include more detailed explanations and methods. 
 
-To access these notebooks, go to:
-```
-notebook/
-├── segment/
-├── roi-model/
-├── reco_system/
-└── src/
-```
-
+    To access these notebooks, go to:
+    ```
+    notebook/
+    ├── segment/
+    ├── roi-model/
+    ├── reco_system/
+    └── src/
+    ```      
 
 <br>
 
@@ -110,8 +117,6 @@ notebook/
 <br>
 
 ## [Optional] API documentation using Swagger/OpenAPI specification
-
-<br>
 
 ### Web App
 - Run
@@ -136,3 +141,42 @@ data    | engagement Ok
 ```
 
 - Webapp served on: [localhost:5173](http://localhost:5173)
+
+
+<br>
+
+### Data Pipelining for MLOps Overview
+
+This repository includes two main data pipeline systems: the **Recommendation System (Reco)** and the **ROI Model**. These pipelines automate the steps of data ingestion, transformation, model training, and prediction, crucial for machine learning workflows in business applications such as customer recommendation and return on investment (ROI) analysis.
+
+Quick example:
+
+<div style="display: flex; justify-content: center; align-items: center;">
+    <div style="margin-right: 20px;">
+        <img src="notebook/src/image/Reco system pipeline flowchart.png" alt="Reco sys pipeline flowchart" width="260"/>
+    </div>
+    <div>
+        <img src="notebook/src/image/ROI pipeline flowchart.png" alt="ROI Pipeline flowchart" width="180"/>
+    </div>
+</div>
+
+
+#### **Recommendation System Pipeline**
+- **Purpose**: To ingest, clean, transform, and generate personalized recommendations based on historical data.
+- **Pipelines**:
+  - Data ingestion and transformation pipeline.
+  - Model training pipeline to generate insights.
+  - Prediction pipeline for generating ranked recommendations.
+- **Location**: `/src/components/reco_sys/` for the components, `/src/pipeline/reco_sys/` for the prediction pipeline.
+
+#### **ROI Model Pipeline**
+- **Purpose**: To process and analyze data to predict the ROI for marketing campaigns, based on features such as cost and category.
+- **Pipelines**:
+  - Data ingestion and transformation pipeline.
+  - Model training pipeline for predicting ROI-related metrics.
+  - Prediction pipeline for new input data.
+- **Location**: `/src/components/roi/` for the components, `/src/pipeline/roi/` for the prediction pipeline.
+
+---
+
+For detailed instructions on running each pipeline, please refer to `src/pipeline README.md`.
