@@ -26,15 +26,17 @@ class RecoSystem():
 
 	def recommend(self):
 		reco = []
-		max_iter = len(self.df)
-		for i in self.df['customer_id']:
-			if i % (max_iter//10) == 0:
-				print("Inferring : {}/{}".format(i, max_iter))
+		df = self.df.sample(frac=0.2, random_state=10).reset_index(drop=True)
+		max_iter = len(df)
+		for i in df['customer_id']:
+			# if i % (max_iter//10) == 0:
+				# print("Inferring : {}/{}".format(i, max_iter))
 			reco += [self.hybrid(i) ]
 		# reco = [self.hybrid(i) for i in self.df['customer_id']]
 		# reco = self.df['customer_id'].progress_apply(lambda x: self.hybrid(x))
-		data = pd.concat([self.df, pd.DataFrame(reco)], axis=1)
+		data = pd.concat([df, pd.DataFrame(reco)], axis=1)
 		data['customer_id'] = data['customer_id'].apply(lambda x: str(x).zfill(4))
+		# data = data.sample(frac=0.2, random_state=10)
 		return data
 
 	def popularity_based(self):

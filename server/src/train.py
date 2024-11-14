@@ -14,8 +14,8 @@ if not sys.warnoptions:
     os.environ["PYTHONWARNINGS"] = "ignore" # Also affect subprocesse
  
 import shap
-from dataset import engine, RFM, Churn, Engagement, RFM_engage, RFM_churn, Reco
-from models import CLFSwitcher, Transform, Pipe, parameters, RecoSystem
+from dataset import engine, RFM, Churn, Engagement, RFM_engage, RFM_churn, Reco, ROI
+from models import CLFSwitcher, REGSwitcher, Transform, Pipe, parameters, reg_parameters, RecoSystem
 
 from sklearn.model_selection import GridSearchCV
 
@@ -42,6 +42,24 @@ def train(data):
 
     return best_est
 
+def train_roi(data):
+	X = data.get_X()
+	y = data.get_y()
+	# ct = Transform(data)
+	# X, y = ct.get_Xy()
+
+	pipeline = Pipe(task="REG").get_pipeline()
+	def train(X, y, pipeline, parameters):
+			grid_search = GridSearchCV(pipeline, reg_parameters, cv=5, n_jobs=12, return_train_score=True, verbose=1)
+			# grid_search = pipeline
+			grid_search.fit(X, y)
+			return grid_search, grid_search.best_estimator_[-1]
+	_, best_est = train(X, y, pipeline, parameters)
+	# print(best_est.predict(X))
+	return best_est
+roi = ROI(engine)
+roi_est = train_roi(roi)
+
 print('Fitting for recomendations, totalling 1 fits')
 reco = Reco(engine)
 recosys = RecoSystem(reco)
@@ -55,6 +73,8 @@ for customer in customer_lst:
     churn_explain = train(RFM_churn(rfm, churn, customer))
     explained_dct['engage ' + customer] = engage_explain
     explained_dct['churn ' + customer] = churn_explain
+
+
 
 # from pathlib import Path
 
