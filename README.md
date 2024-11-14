@@ -15,8 +15,6 @@ git clone https://github.com/ChinSekYi/OpenAYEye.git
 cd OpenAYEye
 ```
 
-... continued
-
 <br>
 
 ## Description of the repository structure
@@ -104,19 +102,19 @@ Link to wiki: [OpenAYEye Wiki](https://github.com/ChinSekYi/OpenAYEye/wiki)
 - For detailed coding steps for data preparation, please refer to the relevant Jupyter notebooks, as they include more detailed explanations and methods. Refer to "Jupyter notebooks for EDA and Model development" sectiion above.
  
 
-<br>
-
-## Instructions for building and running the Docker container(s)
 
 <br>
 
-## API documentation (endpoints, request/response formats)
-
+## API documentation
+**Main Python File**
+Found in 
+```
+server/src/main.py          # The main entry point for the server-side application.
+```
 <br>
 
-## [Optional] API documentation using Swagger/OpenAPI specification
+## Dockerized Web App
 
-### Web App
 - Run
 ```{bash}
 bash docker-run.bash
@@ -126,16 +124,6 @@ bash docker-run.bash
 
 ```{bash}
 docker compose up
-```
-
-Wait for the docker logs to stop runnning or until you see
-```{docker}
-data    | Engine(mysql+pymysql://root:***@db:3306/transact)
-data    | users Ok
-data    | transactions Ok
-data    | churn Ok
-data    | campaign Ok
-data    | engagement Ok
 ```
 
 - Webapp served on: [localhost:5173](http://localhost:5173)

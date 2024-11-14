@@ -3,14 +3,14 @@
 import { ResponsiveBoxPlot } from '@nivo/boxplot';
 import { useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import { mockDataBoxPlot as data } from "../data/mockData";
+import { mockDataBoxPlot } from "../data/mockData";
 
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-const BoxPlotChart = () => {
+const BoxPlotChart = ({data = mockDataBoxPlot , isDashboard = false }) => {
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 
