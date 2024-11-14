@@ -141,12 +141,19 @@ bash docker-run.bash
 docker compose up
 ```
 
+- Wait for the following messages to appear
+```{docker}
+app   | INFO:     Started server process [1]
+app   | INFO:     Waiting for application startup.
+app   | INFO:     Application startup complete.
+app   | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+
 - Webapp served on: [localhost:5173](http://localhost:5173)
+- Webapp will be served when `app` container is ready
 
 
 <br>
-
-
 
 ### Data Pipelining for MLOps
 
