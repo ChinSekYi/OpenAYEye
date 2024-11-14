@@ -64,14 +64,21 @@ OpenAYEye/
 
 <br>
 
-### How to find relevant files
 
-Jupyter notebooks for EDA and model building are in:
+### Jupyter notebooks for EDA and Model development
+Can be found under `notebook/`  
+Subgroup A worked on: `segment`  
+Subgroup B worked on: `roi-model` and `reco_system`  
 ```
 notebook/
-├── segment/      # Subgroup A
-├── roi-model/    # Subgroup B
-├── reco_system/  # Subgroup B
+├── segment/                 
+├── roi-model/    
+    └── roi-model-with-wiki.ipynb        # EDA & Model development for ROI model
+├── reco_system/  
+    └── logistic_regression              # Model development
+    └── New_data_creation_covid.ipynb    # EDA & data manipulation Notebook for Covid event
+    └── New_data_creation_meteor.ipynb   # EDA & data manipulation Notebook for Meteor event 
+    └── santender_cleaning.ipynb         # EDA Notebook 
 ```
 
 <br>
@@ -79,10 +86,10 @@ notebook/
 ### Production-ready Python code
 **Main Python File**
 ```
-server/src/main.py  #The main entry point for the server-side application.
-
-notebook/segment/main.py #Script for FastAPI app with endpoints for data queries and ML predictions.
-notebook/src/main.py  #Script for running data pipelines for recommendation system and ROI model. Refer to "pipeline Readme.md" for more info.
+server/src/main.py          # The main entry point for the server-side application.
+notebook/segment/main.py    # Script for FastAPI app with endpoints for data queries and ML predictions.
+notebook/src/main.py        # Script for running data pipelines for recommendation system and ROI model. 
+                            # Refer to "Data Pipelining for MLOps Overview" section at the end of this README.md
 ```
 
 Other relevant files such as `utils.py`, `logger.py` etc can also be found in the repository.
