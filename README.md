@@ -3,7 +3,7 @@
 
 # Table of Contents
 1. [Project Overview](#project-overview)
-2. [Instructions for Setting Up the Environment and Running the Code](#instructions-for-setting-up-the-environment-and-running-the-code)
+2. [Instructions for Setting Up the Environment](#instructions-for-setting-up-the-environment)
 3. [Description of the Repository Structure](#description-of-the-repository-structure)
     - [Jupyter Notebooks for EDA and Model Development](#jupyter-notebooks-for-eda-and-model-development)
     - [Production-Ready Python Code](#production-ready-python-code)
@@ -23,7 +23,7 @@ Our project addresses this challenge by developing an AI-driven, personalized ma
 
 <br>
 
-## Instructions for setting up the environment and running the code
+## Instructions for setting up the environment
 1. Clone the Repository
 ```
 git clone https://github.com/ChinSekYi/OpenAYEye.git
