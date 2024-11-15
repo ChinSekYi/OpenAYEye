@@ -48,8 +48,8 @@ services:
     build: ./client
     container_name: client
     depends_on:
-      app:
-        condition: service_healthy
+      - app
+        # condition: service_healthy
     restart: always
     ports:
       - "5173:5173"
