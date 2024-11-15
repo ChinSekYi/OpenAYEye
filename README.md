@@ -128,7 +128,7 @@ server/src/main.py          # The main entry point for the server-side applicati
 ```
 <br>
 
-## Dockerized Web App
+## Dockerized Web App / API
 
 - Run
 ```{bash}
@@ -141,7 +141,7 @@ bash docker-run.bash
 docker compose up
 ```
 
-- Wait for the following messages to appear
+- For API, Wait for the following messages to appear
 ```{docker}
 app   | INFO:     Started server process [1]
 app   | INFO:     Waiting for application startup.
@@ -149,7 +149,8 @@ app   | INFO:     Application startup complete.
 app   | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-- Webapp served on: [localhost:5173](http://localhost:5173)
+- Frontend Webapp served on: [localhost:5173](http://localhost:5173)
+- Backend API served on: [localhost:8000](http://localhost:8000) 
 - Webapp will be served when `app` container is ready
 
 
