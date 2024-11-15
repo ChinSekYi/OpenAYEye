@@ -46,6 +46,15 @@ function Dashboard() {
   const [latestEngage, setLatest] = useState([]);
   const [adSpend, setSpend] = useState([]); 
   const [predROI, setROI] = useState([]);  
+  const [recoBySeg, setReco] = useState([]);  
+
+  useEffect(() => {
+    api.get('recoBySeg')
+      .then((res) => res.data.data)
+      .then((data) => {
+        setReco(data);
+    });
+  }, []);
 
   useEffect(() => {
     api.get('totalTraffic')
@@ -401,7 +410,7 @@ function Dashboard() {
           gridRow="span 2"
           bgcolor={colors.primary[400]}
         >
-        <Box
+          <Box
             mt="25px"
             px="30px"
             display="flex"
@@ -438,316 +447,46 @@ function Dashboard() {
           </Box>
         
         </Box>  
-
         <Box
           gridColumn={
-            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
+            isXlDevices ? "span 12" : isMdDevices ? "span 6" : "span 4"
           }
           gridRow="span 2"
           bgcolor={colors.primary[400]}
         >
           <Box
-              mt="25px"
-              px="30px"
-              display="flex"
-              justifyContent="space-between"
-            >
-            <Box>
-                <Typography
-                  variant="h5"
-                  fontWeight="600"
-                  color={colors.gray[100]}
-                >
-                  Loyal Customers
-                </Typography>
-                <List> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"1. " + 'Fixed Deposits'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"2. " + 'Credit & Debit Card'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"3. " + 'Account'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={ "4. " +  'Loan' } /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                </List> 
-                
-            </Box>
-            <Box height="250px" mt="-20px"></Box>
-          </Box>
-        </Box>   
-        <Box
-          gridColumn={
-            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
-          }
-          gridRow="span 2"
-          bgcolor={colors.primary[400]}
-        >
-          <Box
-              mt="25px"
-              px="30px"
-              display="flex"
-              justifyContent="space-between"
-            >
-            <Box>
-            <Typography
-                  variant="h5"
-                  fontWeight="600"
-                  color={colors.gray[100]}
-                >
-                  At-Risk Customers
-                </Typography>
-                <List> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"1. " + 'Account'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"2. " + 'Credit & Debit Card'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"3. " + 'Fixed Deposits'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={ "4. " +  'Loan' } /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                </List> 
-            </Box>
-            <Box height="250px" mt="-20px"></Box>
-          </Box>
-        </Box>   
-        <Box
-          gridColumn={
-            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
-          }
-          gridRow="span 2"
-          bgcolor={colors.primary[400]}
-        >
-          <Box
-              mt="25px"
-              px="30px"
-              display="flex"
-              justifyContent="space-between"
-              height="250px"
-            >
-                <Box>
-                <Typography
-                  variant="h5"
-                  fontWeight="600"
-                  color={colors.gray[100]}
-                >
-                New Customers
-                </Typography>
-                <List> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"1. " + 'Credit & Debit Card'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"2. " + 'Fixed Deposits'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"3. " + 'Accounts'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={ "4. " +  'Loan' } /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                </List> 
-            </Box>
-          </Box>
-        </Box>   
-        <Box
-          gridColumn={
-            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
-          }
-          gridRow="span 2"
-          bgcolor={colors.primary[400]}
-        >
-          <Box
-              mt="25px"
-              px="30px"
-              display="flex"
-              justifyContent="space-between"
-            >
-            <Box>
-                <Typography
-                  variant="h5"
-                  fontWeight="600"
-                  color={colors.gray[100]}
-                >
-                  Hibernating Customers
-                </Typography>
-                <List> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"1. " + 'Fixed Deposits'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"2. " + 'Accounts'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={"3. " + 'Credit and Debit Card'} /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                    <ListItem divider> 
-                        <ListItemButton> 
-                            <ListItemText  
-                                primary={ "4. " +  'Loan' } /> 
-                        </ListItemButton> 
-                    </ListItem> 
-                </List> 
-            </Box>
-            <Box height="250px" mt="-20px"></Box>
-          </Box>
-        </Box>  
-        {/* <Box
-          gridColumn={
-            isXlDevices ? "span 3" : isMdDevices ? "span 6" : "span 4"
-          }
-          gridRow="span 2"
-          bgcolor={colors.primary[400]}
-        >
-          <Box
-              mt="25px"
-              px="30px"
-              display="flex"
-              justifyContent="space-between"
-            >
-            <Box>
-            <Typography
-                  variant="h5"
-                  fontWeight="600"
-                  color={colors.gray[100]}
-                >
-                  Loyal Customers
-                </Typography>
-                
-            </Box>
-            <Box height="250px" mt="-20px"></Box>
-          </Box>
-        </Box>      */}
-        {/* Revenue Details */}
-        {/* <Box
-          gridColumn={isXlDevices ? "span 4" : "span 3"}
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-          p="30px"
-        >
-          <Typography variant="h5" fontWeight="600">
-            Campaign
-          </Typography>
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
             mt="25px"
-          >
-            <ProgressCircle size="125" />
-            <Typography
-              textAlign="center"
-              variant="h5"
-              color={colors.greenAccent[500]}
-              sx={{ mt: "15px" }}
-            >
-              $48,352 revenue generated
-            </Typography>
-            <Typography textAlign="center">
-              Includes extra misc expenditures and costs
-            </Typography>
-          </Box>
-        </Box> */}
-
-        {/* Bar Chart */}
-        {/* <Box
-          gridColumn={isXlDevices ? "span 4" : "span 3"}
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-        >
-          <Typography
-            variant="h5"
-            fontWeight="600"
-            sx={{ p: "30px 30px 0 30px" }}
-          >
-            Sales Quantity
-          </Typography>
-          <Box
+            px="30px"
             display="flex"
-            alignItems="center"
-            justifyContent="center"
-            height="250px"
-            mt="-20px"
+            justifyContent="space-between"
           >
-            <BarChart isDashboard={true} />
+            <Box>
+              <Typography
+                variant="h5"
+                fontWeight="600"
+                color={colors.gray[100]}
+              >
+                Recommendations
+              </Typography>
+            </Box>
+            <IconButton>
+              <DownloadOutlined
+                sx={{ fontSize: "26px", color: colors.greenAccent[500] }}
+              />
+            </IconButton>
           </Box>
-        </Box> */}
-
-        {/* Geography Chart */}
-        {/* <Box
-          gridColumn={isXlDevices ? "span 4" : "span 3"}
-          gridRow="span 2"
-          backgroundColor={colors.primary[400]}
-          padding="30px"
-        >
-          <Typography variant="h5" fontWeight="600" mb="15px">
-            Geography Based Traffic
-          </Typography>
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            height="200px"
-          >
-            <GeographyChart isDashboard={true} />
+          <Box height="250px" mt="-20px">
+            <BarChart 
+            data = { recoBySeg }
+            index = {"segment"}
+            keys =  {["deposits_reco", "cards_reco", "account_reco", "loan_reco"]}
+            isDashboard={false} />
           </Box>
-        </Box> */}
+        
+        </Box>
+         
+          
+        
       </Box>
     </Box>
   );

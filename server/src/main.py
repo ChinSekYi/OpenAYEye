@@ -58,7 +58,7 @@ def getEntries(columns, table):
 
 @app.get("/health")
 async def health():
-    print(engine)
+    # print(engine)
     return {"message": "health ok"}
 
 

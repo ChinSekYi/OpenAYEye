@@ -41,17 +41,15 @@ services:
     depends_on:
       data:
         condition: service_healthy
+    healthcheck:
+      test: "curl -f http://localhost:8000/health"
     command: uvicorn main:app --port 8000 --host 0.0.0.0
   client: 
     build: ./client
     container_name: client
-    healthcheck:
-      test: "curl -f http://localhost:8000/health"
     depends_on:
-      - app
-        # condition: service_healthy
-    # links: 
-    #     - app
+      app:
+        condition: service_healthy
     restart: always
     ports:
       - "5173:5173"
